@@ -1,0 +1,35 @@
+{
+	"navigation": {
+		"subMenu": {
+			"categories": "Categories",
+			"brands": "Brands",
+			"extra": "Extra"
+		}
+	},
+	"paths": {
+		"shop": "Shop",
+		"stronghold": "Stronghold",
+		"approach": "Approach",
+		"blog": "Blog",
+		"b2b": "B2B",
+		"faq": "FAQ",
+		"contact": "Contact",
+		"shippingPolicy": "Shipping",
+		"termsOfService": "Terms and conditions",
+		"refundPolicy": "Return policy",
+		"privacyPolicy": "Privacy",
+		"ownership": "Legal notice"
+	},
+	"footer": {
+		"newsletter": {
+			"title": "Subscribe to our newsletter",
+			"placeholder": "Please enter your email address...",
+			"success": "You have successfully subscribed to the newsletter",
+			"error": "Something went wrong. Please try again later."
+		}
+	},
+	"error": {
+		"404": "Page not found",
+		"default": "An error occurred"
+	}
+}
