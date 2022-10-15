@@ -8,7 +8,7 @@ export default function SectionIndicator({ mainRef }: any) {
 	const [scroll, setScroll] = useRecoilState(scrollState);
 
 	return (
-		<div className="hidden lg:flex lg:flex-col lg:gap-12 lg:justify-center lg:py-page lg:z-50 lg:fixed lg:right-24 lg:top-0 lg:bottom-0">
+		<div className="hidden lg:flex lg:flex-col lg:gap-12 lg:justify-center lg:py-page lg:z-40 lg:fixed lg:right-24 lg:top-0 lg:bottom-0">
 			{Array.from({ length: scroll.length }, (_, i) => i).map((i) => (
 				<div
 					key={i}
