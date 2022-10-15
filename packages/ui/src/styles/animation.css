@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	/* 
+    
+    
+        Shrinking
+    */
+	.shrink-animation {
+		@apply hover:scale-95 transform transition-transform duration-200 ease-in-out;
+	}
+
+	.shrink-animation-lg {
+		@apply hover:scale-90 transform transition-transform duration-200 ease-in-out;
+	}
+
+	.shrink-animation-xl {
+		@apply hover:scale-75 transform transition-transform duration-200 ease-in-out;
+	}
+
+	.shrink-animation-2xl {
+		@apply hover:scale-50 transform transition-transform duration-200 ease-in-out;
+	}
+	/* 
+    
+    
+    
+        Growing
+    */
+	.grow-animation {
+		@apply hover:scale-105 transform transition-transform duration-200 ease-in-out;
+	}
+
+	.grow-animation-lg {
+		@apply hover:scale-110 transform transition-transform duration-200 ease-in-out;
+	}
+
+	.grow-animation-xl {
+		@apply hover:scale-125 transform transition-transform duration-200 ease-in-out;
+	}
+
+	.grow-animation-2xl {
+		@apply hover:scale-150 transform transition-transform duration-200 ease-in-out;
+	}
+}

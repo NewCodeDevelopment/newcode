@@ -1,9 +1,10 @@
 import Head from "next/head";
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, useRef } from "react";
 import classNames from "classnames";
 import Navigation from "../navigation/Navigation";
 import Footer from "../footer/Footer";
 import { usePathHook, usePaths } from "../config/paths";
+import { useScroll } from "utils";
 
 export interface MainLayoutProps extends HTMLAttributes<HTMLElement> {
 	px?: boolean;
@@ -32,6 +33,9 @@ export default function MainLayout({
 	className,
 	...props
 }: MainLayoutProps) {
+	const mainRef = useRef<HTMLElement>(null);
+	useScroll(mainRef);
+
 	return (
 		<>
 			<Head>
@@ -42,6 +46,7 @@ export default function MainLayout({
 
 			<main
 				{...props}
+				ref={mainRef}
 				className={classNames(
 					//  y-axis
 					py && "py-page",
@@ -51,13 +56,25 @@ export default function MainLayout({
 					px && "px-page",
 					pl && "pl-page",
 					pr && "pr-page",
+					"bg-red-500",
+					// other
 					className
 				)}
 			>
 				{children}
-			</main>
 
-			{/* {footer && <Footer pathsHook={pathsHook} />} */}
+				{footer && <Footer pathsHook={pathsHook} />}
+			</main>
 		</>
 	);
+}
+{
+	/* <div className="fixed right-0 top-[50%] z-50 flex flex-col gap-4">
+				<Button shape="square" onClick={() => setScroll("up")}>
+					<Angle className="rotate-180 w-5 fill-light-300" />
+				</Button>
+				<Button shape="square" onClick={() => setScroll("down")}>
+					<Angle className="w-5 fill-light-300" />
+				</Button>
+			</div> */
 }

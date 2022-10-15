@@ -13,14 +13,15 @@ export { default as ArrowCircleLink } from "./actions/ArrowCircleLink";
  *
  * Components
  */
+export { default as Section } from "./components/Section";
 export { default as CaseBanner } from "./components/CaseBanner";
 export { default as Error } from "./components/Error";
-export { default as Skeleton } from "./components/Skeleton";
 export { default as Dropdown } from "./components/Dropdown";
-export { default as Spinner } from "./components/Spinner";
 export { default as PageLoader } from "./components/PageLoader";
+export { default as InitialLoader } from "./components/InitialLoader";
 export { default as Landing } from "./components/Landing";
 export { default as ServicesSection } from "./components/ServicesSection";
+export { default as PageTransition } from "./components/PageTransition";
 /**
  *
  *
@@ -31,9 +32,11 @@ export {
 	textColors,
 	bgColors,
 	fillColors,
+	borderColors,
 	hoverBgColors,
 	hoverFillColors,
 	hoverTextColors,
+	hoverBorderColors,
 } from "./config/colors";
 export type { usePathHook } from "./config/paths";
 export { usePaths } from "./config/paths";
@@ -63,8 +66,14 @@ export { default as Arrow } from "./icons/actions/Arrow";
 export { default as CloseIcon } from "./icons/actions/CloseIcon";
 export { default as PlaneIcon } from "./icons/actions/PlaneIcon";
 export { default as Logo } from "./icons/brand/Logo";
-export { default as SadFaceIcon } from "./icons/brand/SadFaceIcon";
 export { default as PlusIcon } from "./icons/services/PlusIcon";
 export { default as FacebookIcon } from "./icons/socials/FacebookIcon";
 export { default as InstagramIcon } from "./icons/socials/InstagramIcon";
 export { default as CircleArrow } from "./icons/actions/CircleArrow";
+/**
+ *
+ *
+ *
+ * Footer
+ */
+export { default as Footer } from "./footer/Footer";

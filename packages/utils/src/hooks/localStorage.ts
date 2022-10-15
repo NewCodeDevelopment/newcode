@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function useLocalStorage<T>(key: string, initialValue: T) {
 	// State to store our value
@@ -23,6 +23,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
 			return initialValue;
 		}
 	});
+
 	// Return a wrapped version of useState's setter function that ...
 	// ... persists the new value to localStorage.
 	const setValue = (value: T | ((val: T) => T)) => {

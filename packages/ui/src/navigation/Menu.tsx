@@ -27,7 +27,7 @@ export default function Menu({
 	const animation = {
 		container: {
 			closed: {
-				left: "-100vw",
+				left: "-120vw",
 				transition: {
 					ease: animationConfiguration.ease,
 					delay: animationConfiguration.duration / 2,
@@ -65,7 +65,7 @@ export default function Menu({
 
 	return (
 		<motion.nav
-			className="bg-red-500 fixed px-page py-28 w-full h-screen flex flex-col justify-between gap-12 overflow-hidden"
+			className="bg-red-500 z-0 fixed px-page py-28 w-full h-screen flex flex-col justify-between gap-12 overflow-hidden"
 			onAnimationComplete={() => animationCompleteCallback(true)}
 			initial={false}
 			animate={open ? "opened" : "closed"}

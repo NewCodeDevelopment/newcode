@@ -7,10 +7,12 @@ export const [
 	textColors,
 	bgColors,
 	fillColors,
+	borderColors,
 	// hover
 	hoverTextColors,
 	hoverBgColors,
 	hoverFillColors,
+	hoverBorderColors,
 ]: {
 	[key in Color]: {
 		[key in ColorVariants]: string;
@@ -112,6 +114,36 @@ export const [
 			700: "fill-transparent",
 		},
 	},
+	{
+		red: {
+			300: "border-red-300",
+			400: "border-red-400",
+			500: "border-red-500",
+			600: "border-red-600",
+			700: "border-red-700",
+		},
+		light: {
+			300: "border-light-300",
+			400: "border-light-400",
+			500: "border-light-500",
+			600: "border-light-600",
+			700: "border-light-700",
+		},
+		dark: {
+			300: "border-dark-300",
+			400: "border-dark-400",
+			500: "border-dark-500",
+			600: "border-dark-600",
+			700: "border-dark-700",
+		},
+		transparent: {
+			300: "border-transparent",
+			400: "border-transparent",
+			500: "border-transparent",
+			600: "border-transparent",
+			700: "border-transparent",
+		},
+	},
 	/*
 
 
@@ -206,6 +238,36 @@ export const [
 			500: "hover:fill-transparent",
 			600: "hover:fill-transparent",
 			700: "hover:fill-transparent",
+		},
+	},
+	{
+		red: {
+			300: "hover:border-red-300",
+			400: "hover:border-red-400",
+			500: "hover:border-red-500",
+			600: "hover:border-red-600",
+			700: "hover:border-red-700",
+		},
+		light: {
+			300: "hover:border-light-300",
+			400: "hover:border-light-400",
+			500: "hover:border-light-500",
+			600: "hover:border-light-600",
+			700: "hover:border-light-700",
+		},
+		dark: {
+			300: "hover:border-dark-300",
+			400: "hover:border-dark-400",
+			500: "hover:border-dark-500",
+			600: "hover:border-dark-600",
+			700: "hover:border-dark-700",
+		},
+		transparent: {
+			300: "hover:border-transparent",
+			400: "hover:border-transparent",
+			500: "hover:border-transparent",
+			600: "hover:border-transparent",
+			700: "hover:border-transparent",
 		},
 	},
 ];

@@ -8,6 +8,7 @@
 		"lint": "eslint *.ts*"
 	},
 	"devDependencies": {
+		"@types/js-cookie": "^3.0.2",
 		"@types/react": "^18.0.21",
 		"@types/react-dom": "^18.0.6",
 		"eslint": "^8.24.0",
@@ -16,5 +17,8 @@
 		"tsconfig": "*",
 		"typescript": "^4.5.2",
 		"utils": "*"
+	},
+	"dependencies": {
+		"eslint": "^8.25.0"
 	}
 }

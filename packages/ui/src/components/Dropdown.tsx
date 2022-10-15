@@ -24,20 +24,33 @@ export default function Dropdown({
 	...props
 }: Props) {
 	const linksVariants = {
-		initial: { opacity: 0, y: 0, height: 0, border: 0 },
-		enter: { opacity: 1, y: 0, height: "auto" },
+		initial: {
+			opacity: 0,
+			y: 0,
+			height: 0,
+			border: 0,
+		},
+		enter: {
+			opacity: 1,
+			y: 0,
+			height: "auto",
+		},
 	};
 
 	const angleVariants = {
-		initial: { rotate: 0 },
-		enter: { rotate: 135 },
+		initial: {
+			rotate: 0,
+		},
+		enter: {
+			rotate: 135,
+		},
 	};
 
 	return (
 		<div {...props} className={classNames("flex flex-col gap-4", className)}>
 			<motion.div
 				className={classNames(
-					"flex flex-row justify-between items-center gap-4 md:w-fit cursor-pointer",
+					"flex flex-row justify-between items-center gap-4 cursor-pointer",
 					titleClassName
 				)}
 				onClick={(e) => {
@@ -48,7 +61,7 @@ export default function Dropdown({
 				<span className="text-xl font-bold">{title}</span>
 
 				<PlusIcon
-					className="w-4"
+					className="w-4 hidden lg:block"
 					initial="initial"
 					animate={opened ? "enter" : "initial"}
 					variants={angleVariants}

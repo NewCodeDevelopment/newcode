@@ -1,35 +1,36 @@
 import Heading from "../typography/Heading";
-import classNames from "classnames";
-import { HTMLAttributes } from "react";
 import RobotIcon from "../icons/actions/RobotIcon";
+import Section from "./Section";
+import { useRecoilState } from "recoil";
+import { loadingState } from "utils";
+import { useEffect } from "react";
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+interface Props {
 	statusCode?: number;
 	title: string;
 }
 
-export default function Error({
-	title,
-	statusCode,
-	className,
-	...props
-}: Props) {
-	return (
-		<div
-			{...props}
-			className={classNames(
-				"w-full flex flex-col justify-center items-center text-center gap-12 md:gap-16",
-				className
-			)}
-		>
-			<RobotIcon className="fill-red-500 w-1/2 xl:w-1/5" />
+export default function Error({ title, statusCode }: Props) {
+	const [_, setLoading] = useRecoilState(loadingState);
 
-			{statusCode && (
-				<Heading type="h2" color="red">
-					{statusCode}
-				</Heading>
-			)}
-			<Heading type="h3">{title}</Heading>
-		</div>
+	useEffect(() => {
+		setLoading(false);
+	});
+
+	return (
+		<Section bg="dark" align="center">
+			<div className="flex flex-col justify-center items-center text-center gap-12 md:gap-16">
+				<RobotIcon className="fill-red-500 w-1/2 xl:w-full" />
+
+				<span className="flex flex-col gap-4">
+					{statusCode && (
+						<Heading type="h2" color="red">
+							{statusCode}
+						</Heading>
+					)}
+					<Heading type="h3">{title}</Heading>
+				</span>
+			</div>
+		</Section>
 	);
 }

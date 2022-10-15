@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { ReactElement, useState } from "react";
+import { ReactElement } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { promises as fs } from "fs";
@@ -15,14 +15,13 @@ const CaseBanner = dynamic(() => import("ui").then((mod) => mod.CaseBanner));
 const ServicesSection = dynamic(() =>
 	import("ui").then((mod) => mod.ServicesSection)
 );
+const Section = dynamic(() => import("ui").then((mod) => mod.Section));
 
 interface Props {
 	cases: Case[];
 }
 
 export default function Home({ cases }: Props) {
-	const [state, setState] = useState(false);
-
 	return (
 		<>
 			<Landing title="Code makes life easier" />
@@ -32,18 +31,20 @@ export default function Home({ cases }: Props) {
 				About
 				*
 			 */}
-			<div className="px-page bg-light-500 py-20 flex flex-col gap-6">
-				<Heading type="h3" color="red">
-					Our Mission_
-				</Heading>
-				<Paragraph color="dark">
-					At NewCode, we like to make life easier through technology. We do this
-					by defining problems, listening to the story and solving them in the
-					best possible way. We tackle this in a qualitative, transparent and
-					honest way.
-				</Paragraph>
-				<HyperLink href="/about">The back-end of NewCode</HyperLink>
-			</div>
+			<Section bg="light">
+				<div className="flex flex-col gap-6 xl:py-[20%] self-center">
+					<Heading type="h3" color="red">
+						Our Mission_
+					</Heading>
+					<Paragraph color="dark" maxCharacters={50}>
+						At NewCode, we like to make life easier through technology. We do
+						this by defining problems, listening to the story and solving them
+						in the best possible way. We tackle this in a qualitative,
+						transparent and honest way.
+					</Paragraph>
+					<HyperLink href="/about">The back-end of NewCode</HyperLink>
+				</div>
+			</Section>
 			{/* 
 				*
 				*
@@ -52,16 +53,29 @@ export default function Home({ cases }: Props) {
 			 */}
 			<CaseBanner case={cases[0]} />
 
-			<section className="bg-light-500 px-page py-20 flex flex-col gap-8">
-				<Heading type="h3" color="dark">
-					Services_
-				</Heading>
+			{/* 
+			 	*
+				*
+				Services
+				*
+			 */}
+			<Section bg="light">
+				<div className="flex flex-col gap-6 self-center w-full">
+					<Heading type="h3" color="dark">
+						Services_
+					</Heading>
 
-				<ServicesSection />
+					<ServicesSection />
 
-				<HyperLink href="/services">Learn about our services</HyperLink>
-			</section>
-
+					<HyperLink href="/services">Learn about our services</HyperLink>
+				</div>
+			</Section>
+			{/* 
+				*
+				*
+				Case
+				*
+			 */}
 			<CaseBanner case={cases[1]} />
 		</>
 	);

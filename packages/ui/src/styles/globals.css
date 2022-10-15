@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./font/index.css";
+@import "./navigation.css";
+@import "./spacing.css";
+@import "./utility.css";
+@import "./animation.css";
+@import "./section.css";
+
+html {
+	@extend .no-scrollbar;
+	@apply bg-dark-700 overflow-hidden;
+}
+/* scroll-smooth */

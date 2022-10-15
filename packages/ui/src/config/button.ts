@@ -37,7 +37,7 @@ const sizes = {
 	paddingSizes: {
 		long: {
 			small: "py-3 px-10",
-			medium: "py-4 px-12",
+			medium: "py-3 px-10",
 			large: "py-5 px-20",
 		},
 		square: {

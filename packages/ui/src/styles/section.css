@@ -1,0 +1,6 @@
+.scrolling-section {
+	@apply scale-[99%] lg:scale-[98%];
+	/* blur-[0.5px]; */
+	/* @apply scale-90; */
+	/* @apply border-8 lg:border-[20px] scale-95;*/
+}

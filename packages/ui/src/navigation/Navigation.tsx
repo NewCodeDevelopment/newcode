@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { HTMLAttributes, useEffect, useState } from "react";
 import Menu from "./Menu";
-import { Logo } from "..";
+import { Logo, textColors } from "..";
 import classNames from "classnames";
 import { useRouter } from "next/router";
 import { usePathHook } from "../config/paths";
+import { useRecoilState } from "recoil";
+import { bgColorState } from "utils";
 
 interface Props extends HTMLAttributes<HTMLElement> {
 	pathsHook: () => usePathHook;
@@ -20,7 +22,19 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 
 	const { mainRoutes } = pathsHook();
 
+	const [bgColor, setBgColor] = useRecoilState(bgColorState);
+	const [oldBgColor, setOldBgColor] = useState(bgColor);
+
 	const cycleMenu = () => {
+		if (open) {
+			setBgColor(oldBgColor);
+		}
+
+		if (!open) {
+			setOldBgColor(bgColor);
+			setBgColor("light");
+		}
+
 		if (!animationComplete) return;
 		setAnimationComplete(false);
 		setOpen(!open);
@@ -57,8 +71,9 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
             */}
 			<div
 				className={classNames(
-					"px-page py-5 flex flex-row justify-between items-center bg-dark-700 bg-opacity-20 backdrop-filter backdrop-blur-xl",
+					"px-page py-5 flex flex-row justify-between items-center  xl:py-12 ",
 					open && "bg-transparent"
+					//bg-dark-700 bg-opacity-20 backdrop-filter backdrop-blur-xl xl:bg-transparent xl:backdrop-blur-0
 				)}
 			>
 				{/* 
@@ -69,16 +84,25 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
                 */}
 				<Link href="/">
 					<a
-						className="flex flex-row gap-3"
+						className="flex flex-row gap-3 z-10"
 						onClick={open ? cycleMenu : undefined}
 					>
 						<Logo
 							className={classNames(
-								"w-8 fill-red-500 text-light-500",
+								"w-8 xl:w-12 fill-red-500 text-light-500",
 								open && "fill-light-500"
 							)}
 						/>
-						<span className="font-black text-xl text-light-500">NewCode</span>
+						<span
+							className={classNames(
+								"font-black text-xl xl:text-3xl",
+								open && "text-light-500",
+								"transition-all duration-1000 ease-in-out",
+								textColors[bgColor][500]
+							)}
+						>
+							NewCode
+						</span>
 					</a>
 				</Link>
 
@@ -88,7 +112,14 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 
                     Mobile
                 */}
-				<a className="text-light-500 font-bold xl:hidden" onClick={cycleMenu}>
+				<a
+					className={classNames(
+						"text-light-500 z-10 font-bold xl:hidden",
+						"transition-all duration-1000 ease-in-out",
+						textColors[bgColor][500]
+					)}
+					onClick={cycleMenu}
+				>
 					{open ? "Close" : "Navigate"}_
 				</a>
 
@@ -103,8 +134,12 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 						<Link key={index} href={path}>
 							<a
 								className={classNames(
-									"text-light-500 font-bold pb-4",
-									currentRoute == path ? "border-b-red-500 border-b-2" : ""
+									"font-bold xl:text-xl navigation-link",
+									currentRoute == path
+										? "navigation-currentRoute text-red-500"
+										: "",
+									"transition-all duration-1000 ease-in-out",
+									textColors[bgColor][500]
 								)}
 							>
 								{name}_

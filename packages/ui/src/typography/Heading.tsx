@@ -12,14 +12,12 @@ interface Props extends HTMLAttributes<HTMLHeadingElement> {
 }
 
 type HeadingTypes = "h1" | "h2" | "h3" | "h4";
-// | "h4" | "h5"
 
 export const headingStyles: { [K in HeadingTypes]: string } = {
-	h1: "font-black text-8xl md:text-[10rem] 2xl:text-[14rem]",
-	h2: "font-black text-5xl md:text-8xl 2xl:text-[9rem]",
-	h3: "font-black text-2xl 2xl:text-6xl",
-	h4: "font-bold text-lg md:text-3xl 2xl:text-4xl",
-	// h5: "font-medium text-lg md:text-xl 2xl:text-2xl",
+	h1: "font-black text-8xl md:text-[10rem]",
+	h2: "font-black text-5xl md:text-7xl lg:text-7xl xl:text-7xl 2xl:text-9xl",
+	h3: "font-black text-2xl md:text-3xl",
+	h4: "font-bold text-lg md:text-xl",
 };
 
 export default function Heading({
