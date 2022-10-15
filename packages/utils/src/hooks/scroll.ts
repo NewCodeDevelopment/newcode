@@ -175,6 +175,11 @@ export function useScroll(mainRef: RefObject<HTMLElement>) {
 			scrolling(0);
 			onceRef.current = true;
 		}
+		setScroll({
+			currentIndex: currentIndexRef.current,
+			length: [...((mainRef.current?.childNodes as any) ?? [])].length,
+			caller: "event",
+		});
 		/**
 		 *
 		 *
