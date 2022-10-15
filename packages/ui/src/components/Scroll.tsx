@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { HTMLAttributes } from "react";
 import cn from "classnames";
 
-interface Props extends HTMLAttributes<HTMLElement> {}
+interface Props extends HTMLAttributes<SVGElement> {}
 
 export default function Scroll({ className, ...props }: Props) {
 	return (

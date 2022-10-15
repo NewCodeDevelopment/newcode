@@ -1,8 +1,6 @@
-import { motion, SVGMotionProps } from "framer-motion";
+import { motion } from "framer-motion";
 
-interface Props extends SVGMotionProps<"svg"> {}
-
-export default function LandingLogo({ ...props }: Props) {
+export default function LandingLogo({ ...props }: any) {
 	const styles = [
 		{
 			// default fill black
