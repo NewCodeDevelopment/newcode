@@ -31,7 +31,7 @@ export const buttonColors = (variant: buttonVariant, color: Color) => {
 const sizes = {
 	textSizes: {
 		small: "text-sm",
-		medium: "text-base",
+		medium: "text-sm",
 		large: "text-lg",
 	},
 	paddingSizes: {

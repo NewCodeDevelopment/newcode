@@ -7,6 +7,7 @@ export { default as Button } from "./actions/Button";
 export { default as HyperLink } from "./actions/HyperLink";
 export { default as ArrowLink } from "./actions/ArrowLink";
 export { default as ArrowCircleLink } from "./actions/ArrowCircleLink";
+export { default as Popup } from "./actions/Popup";
 
 /**
  *
@@ -22,6 +23,7 @@ export { default as InitialLoader } from "./components/InitialLoader";
 export { default as Landing } from "./components/Landing";
 export { default as ServicesSection } from "./components/ServicesSection";
 export { default as PageTransition } from "./components/PageTransition";
+export { default as SectionIndicator } from "./components/SectionIndicator";
 /**
  *
  *

@@ -47,7 +47,10 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 	return (
 		<header
 			{...props}
-			className={classNames("fixed z-40 w-full left-0 top-0", className)}
+			className={classNames(
+				"fixed z-40 w-full left-0 top-0 transform transition-all duration-200 ease-in-out",
+				className
+			)}
 		>
 			{/* 
             
@@ -71,9 +74,8 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
             */}
 			<div
 				className={classNames(
-					"px-page py-5 flex flex-row justify-between items-center  xl:py-12 ",
+					"px-page py-4 flex flex-row justify-between items-center xl:py-12 bg-dark-700 bg-opacity-20 backdrop-filter backdrop-blur-xl xl:bg-transparent xl:backdrop-blur-0",
 					open && "bg-transparent"
-					//bg-dark-700 bg-opacity-20 backdrop-filter backdrop-blur-xl xl:bg-transparent xl:backdrop-blur-0
 				)}
 			>
 				{/* 
@@ -89,13 +91,13 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 					>
 						<Logo
 							className={classNames(
-								"w-8 xl:w-12 fill-red-500 text-light-500",
+								"w-6 xl:w-12 fill-red-500 text-light-500",
 								open && "fill-light-500"
 							)}
 						/>
 						<span
 							className={classNames(
-								"font-black text-xl xl:text-3xl",
+								"font-black text-lg xl:text-3xl",
 								open && "text-light-500",
 								"transition-all duration-1000 ease-in-out",
 								textColors[bgColor][500]
@@ -114,7 +116,7 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
                 */}
 				<a
 					className={classNames(
-						"text-light-500 z-10 font-bold xl:hidden",
+						"text-light-500 z-10 text-md font-bold xl:hidden",
 						"transition-all duration-1000 ease-in-out",
 						textColors[bgColor][500]
 					)}

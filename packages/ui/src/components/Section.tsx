@@ -52,7 +52,7 @@ export default function Section({
 			{...props}
 			data-color={navigationColors[bg]}
 			className={classNames(
-				"relative h-screen grid grid-cols-1 grid-rows-1 transform transition-all duration-200 ease-in-out",
+				"grid grid-cols-1 grid-rows-1 transform transition-all duration-200 ease-in-out lg:relative lg:h-screen",
 				bgColors[bg],
 				alignItems[align],
 				"border-red-500",

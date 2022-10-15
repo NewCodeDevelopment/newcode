@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import { useTranslation } from "next-i18next";
 import { HTMLAttributes } from "react";
-import { usePathHook } from "../config/paths";
 import Section from "../components/Section";
 import Heading from "../typography/Heading";
 import Paragraph from "../typography/Paragraph";
@@ -9,16 +8,13 @@ import { motion } from "framer-motion";
 import ArrowCircleLink from "../actions/ArrowCircleLink";
 import Image from "next/image";
 
-interface Props extends HTMLAttributes<HTMLElement> {
-	pathsHook: () => usePathHook;
-}
+interface Props extends HTMLAttributes<HTMLElement> {}
 
-export default function Footer({ pathsHook, className, ...props }: Props) {
+export default function Footer({ className, ...props }: Props) {
 	const { t } = useTranslation("common");
-	const { mainRoutes, policyRoutes } = pathsHook();
 
 	return (
-		<Section bg="dark" className="pb-4 lg:pb-12 lg:py-20" pt py={false}>
+		<Section bg="dark" className="pt-24 pb-12 lg:pb-12 lg:py-20" pt py={false}>
 			<Image
 				src="/images/footer-background.jpg"
 				alt="footer background"
@@ -27,7 +23,7 @@ export default function Footer({ pathsHook, className, ...props }: Props) {
 				objectPosition="center"
 				className="-z-10"
 			/>
-			<footer className="z-0 h-full w-full grid grid-cols-1 gap-y-16 lg:gap-x-20 lg:grid-cols-2 lg:grid-rows-[1fr_min-content] self-start lg:self-center">
+			<footer className="z-0 h-full w-full grid grid-cols-1 gap-y-20 lg:gap-x-20 lg:grid-cols-2 lg:grid-rows-[1fr_min-content] self-start lg:self-center">
 				{/* 
 				
 				

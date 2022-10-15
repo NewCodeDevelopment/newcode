@@ -15,7 +15,7 @@ type paragraphSizes = "small" | "medium" | "large";
 
 export const paragraphStyles: { [K in paragraphSizes]: string } = {
 	small: "text-base xl:text-lg",
-	medium: "text-xl xl:text-2xl",
+	medium: "text-md xl:text-2xl",
 	large: "text-2xl xl:text-3xl",
 };
 

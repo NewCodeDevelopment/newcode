@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import { ReactElement } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { promises as fs } from "fs";
 import path from "path";
@@ -22,6 +23,8 @@ interface Props {
 }
 
 export default function Home({ cases }: Props) {
+	const { t } = useTranslation("pages", { keyPrefix: "home" });
+
 	return (
 		<>
 			<Landing title="Code makes life easier" />
@@ -34,15 +37,12 @@ export default function Home({ cases }: Props) {
 			<Section bg="light">
 				<div className="flex flex-col gap-6 xl:py-[20%] self-center">
 					<Heading type="h3" color="red">
-						Our Mission_
+						{t("mission.title")}
 					</Heading>
 					<Paragraph color="dark" maxCharacters={50}>
-						At NewCode, we like to make life easier through technology. We do
-						this by defining problems, listening to the story and solving them
-						in the best possible way. We tackle this in a qualitative,
-						transparent and honest way.
+						{t("mission.description")}
 					</Paragraph>
-					<HyperLink href="/about">The back-end of NewCode</HyperLink>
+					<HyperLink href="/about">{t("mission.button")}</HyperLink>
 				</div>
 			</Section>
 			{/* 
@@ -59,8 +59,13 @@ export default function Home({ cases }: Props) {
 				Services
 				*
 			 */}
-			<Section bg="light">
-				<div className="flex flex-col gap-6 self-center w-full">
+			<Section
+				bg="light"
+				style={{
+					position: "unset",
+				}}
+			>
+				<div className="flex flex-col gap-6 lg:gap-10 self-center w-full">
 					<Heading type="h3" color="dark">
 						Services_
 					</Heading>

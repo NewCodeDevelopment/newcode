@@ -5,6 +5,8 @@ import Navigation from "../navigation/Navigation";
 import Footer from "../footer/Footer";
 import { usePathHook, usePaths } from "../config/paths";
 import { useScroll } from "utils";
+import Popup from "../actions/Popup";
+import SectionIndicator from "../components/SectionIndicator";
 
 export interface MainLayoutProps extends HTMLAttributes<HTMLElement> {
 	px?: boolean;
@@ -44,6 +46,9 @@ export default function MainLayout({
 
 			{navigation && <Navigation pathsHook={pathsHook} />}
 
+			<Popup />
+			<SectionIndicator mainRef={mainRef} />
+
 			<main
 				{...props}
 				ref={mainRef}
@@ -63,7 +68,7 @@ export default function MainLayout({
 			>
 				{children}
 
-				{footer && <Footer pathsHook={pathsHook} />}
+				{footer && <Footer />}
 			</main>
 		</>
 	);

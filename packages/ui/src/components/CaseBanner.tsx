@@ -17,7 +17,7 @@ export default function CaseBanner({
 		<Section
 			{...props}
 			className={classNames(
-				"relative px-page py-64 flex flex-col justify-end items-start",
+				"relative px-page pt-[50vh] pb-20 lg:py-40 flex flex-col justify-end items-start",
 				className
 			)}
 		>

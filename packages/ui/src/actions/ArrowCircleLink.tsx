@@ -29,12 +29,12 @@ export default function ArrowCircleLink({
 	return (
 		<Link href={path} passHref>
 			<motion.a
-				className={classNames("flex flex-row items-center gap-4", className)}
+				className={classNames("flex flex-row items-center gap-3", className)}
 				variants={variants}
 				onClick={onClick}
 			>
-				<CircleArrow className={classNames("w-12 xl:w-16", bgColors[bgColor])} />
-				<span className="text-light-500 font-black text-2xl lg:text-3xl">
+				<CircleArrow className={classNames("w-8 lg:w-16", bgColors[bgColor])} />
+				<span className="text-light-500 font-black text-xl lg:text-3xl">
 					{description}
 				</span>
 			</motion.a>

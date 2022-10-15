@@ -31,3 +31,5 @@ export {
 	transitionState,
 	type ITransitionState,
 } from "./src/states/transition";
+export { popupState, type IPopupState } from "./src/states/popup";
+export { scrollState, type IScrollState } from "./src/states/scroll";
