@@ -1,4 +1,5 @@
-import { HTMLAttributes, useEffect, useState } from "react";
+import { HTMLAttributes, useEffect, useRef } from "react";
+import { useWindow } from "utils";
 import { LandingLogo, Heading, Section } from "..";
 import Scroll from "./Scroll";
 
@@ -7,11 +8,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
 }
 
 export default function Landing({ title, className, ...props }: Props) {
-	const [height, setHeight] = useState(0);
-
-	useEffect(() => {
-		setHeight(window.innerHeight);
-	}, []);
+	const { height } = useWindow();
 
 	return (
 		<Section
@@ -19,7 +16,7 @@ export default function Landing({ title, className, ...props }: Props) {
 			bg="dark"
 			className="relative"
 			style={{
-				height: height,
+				height: height ? height : "100vh",
 			}}
 			align="center"
 		>

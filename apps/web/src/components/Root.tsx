@@ -10,7 +10,7 @@ const PageTransition = dynamic(() =>
 export default function Root({ children }: any) {
 	return (
 		<>
-			{/* <InitialLoader /> */}
+			<InitialLoader />
 			{/* <PageTransition /> */}
 			{children}
 		</>
