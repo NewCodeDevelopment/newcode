@@ -10,20 +10,13 @@ export default function Document(props: DocumentProps) {
 			<Head>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
-				<meta name="keywords" content="koffie koffie-ervaring duurzaam" />
-				<meta
-					name="title"
-					content="Koffie op maat, bonen, machines, workshops, advies - The God Shot "
-				/>
+				<meta name="keywords" content="code software automation solutions" />
+				<meta name="title" content="Code makes life easier. - NewCode" />
 				<meta
 					name="description"
-					content="Je kan bij ons terecht voor het trainen en optimaliseren van jouw koffie-ervaring. Zowel particulieren als bedrijven."
+					content="Bij NewCode willen we graag jouw leven vergemakkelijken aan de hand van technologie, door naar jouw verhaal te luisteren."
 				/>
 				<link rel="icon" href="/favicon.svg" />
-				<link
-					rel="stylesheet"
-					href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-				/>
 			</Head>
 			<body>
 				<Main />
