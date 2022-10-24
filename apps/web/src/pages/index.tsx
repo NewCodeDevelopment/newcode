@@ -27,6 +27,12 @@ export default function Home({ cases }: Props) {
 
 	return (
 		<>
+			{/* 
+				*
+				*
+				Landing
+				*
+			 */}
 			<Landing title="Code makes life easier" />
 			{/* 
 				*

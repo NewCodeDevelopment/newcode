@@ -6,8 +6,8 @@ export default function ServicesSection() {
 	const [open, setOpen] = useState<string>("");
 
 	return (
-		<div className="grid grid-cols-1 gap-y-12 xl:grid-cols-2 xl:gap-x-20">
-			<div className="flex flex-col gap-4 xl:grow">
+		<div className="grid grid-cols-1 gap-y-12 lg:grid-cols-2 lg:gap-x-20">
+			<div className="flex flex-col gap-4 lg:grow">
 				<Heading type="h4" color="red">
 					NewCode_
 				</Heading>
@@ -45,7 +45,7 @@ export default function ServicesSection() {
 				/>
 			</div>
 
-			<div className="flex flex-col gap-4 xl:grow">
+			<div className="flex flex-col gap-4 lg:grow">
 				<Heading type="h4" color="red">
 					Existing Code_
 				</Heading>

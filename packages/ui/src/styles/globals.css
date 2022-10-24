@@ -12,5 +12,6 @@
 html {
 	@extend .no-scrollbar;
 	@apply bg-dark-700 lg:overflow-hidden;
+	/* lg:overflow-hidden */
 }
 /* scroll-smooth */

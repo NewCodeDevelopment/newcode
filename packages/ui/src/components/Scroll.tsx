@@ -6,7 +6,7 @@ interface Props extends HTMLAttributes<SVGElement> {}
 
 export default function Scroll({ className, ...props }: Props) {
 	return (
-		<svg {...props} viewBox="0 0 19 27" className={cn("w-6 lg:w-8", className)}>
+		<svg {...props} viewBox="0 0 19 27" className={cn("w-6 xl:w-8", className)}>
 			<path
 				d="M9.5,2A7.5,7.5,0,0,0,2,9.5v8a7.5,7.5,0,0,0,15,0v-8A7.5,7.5,0,0,0,9.5,2m0-2A9.5,9.5,0,0,1,19,9.5v8a9.5,9.5,0,0,1-19,0v-8A9.5,9.5,0,0,1,9.5,0Z"
 				fill="#d3d3d3"

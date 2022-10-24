@@ -1,11 +1,10 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { loadingState } from "utils";
-import Cookies from "js-cookie";
+import { loadingState, useWindow } from "utils";
 
 export default function InitialLoader() {
 	const [loading, setLoading] = useRecoilState(loadingState);
+	const { height } = useWindow();
 
 	return (
 		<AnimatePresence mode="wait">
@@ -13,6 +12,9 @@ export default function InitialLoader() {
 				<>
 					<motion.div
 						className="h-screen w-full bg-dark-700 z-50 absolute left-0 right-0 top-0 bottom-0 grid grid-cols-1 place-items-center"
+						style={{
+							height: height,
+						}}
 						exit={{
 							opacity: 0,
 						}}

@@ -44,7 +44,7 @@ export default function ServiceCard({
 						scale: 0,
 					}}
 				>
-					<span className="flex flex-row justify-between">
+					<span className="flex flex-row justify-between items-center">
 						<Heading color="red" type="h3">
 							{title}
 						</Heading>
@@ -70,14 +70,14 @@ export default function ServiceCard({
 				opened={id === open}
 				setOpened={() => setOpen(id === open ? "" : id)}
 				title={title}
-				className="hidden lg:flex bg-light-400 p-5 rounded-xl h-min"
+				className="hidden xl:flex bg-light-400 p-5 rounded-xl h-min"
 			>
 				<Paragraph size="small" color="dark" maxCharacters={50}>
 					{description}
 				</Paragraph>
 			</Dropdown>
 
-			<div className="lg:hidden">
+			<div className="xl:hidden">
 				<Heading
 					color="dark"
 					type="h4"

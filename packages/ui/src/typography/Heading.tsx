@@ -14,7 +14,7 @@ interface Props extends HTMLAttributes<HTMLHeadingElement> {
 type HeadingTypes = "h1" | "h2" | "h3" | "h4";
 
 export const headingStyles: { [K in HeadingTypes]: string } = {
-	h1: "font-black text-8xl md:text-[10rem]",
+	h1: "font-black text-8xl md:text-[9rem] lg:text-9xl 2xl:text-[15rem]",
 	h2: "font-black text-5xl md:text-7xl lg:text-7xl xl:text-7xl 2xl:text-9xl",
 	h3: "font-black text-2xl md:text-3xl",
 	h4: "font-bold text-lg md:text-xl",

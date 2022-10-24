@@ -20,7 +20,7 @@ export default function Popup() {
 		<AnimatePresence mode="wait">
 			{state.show && (
 				<motion.div
-					className="lg:hidden z-50 fixed left-0 right-0 top-0 bottom-0 px-page py-page grid grid-cols-1 place-items-center bg-dark-700 bg-opacity-20 backdrop-filter backdrop-blur-xl"
+					className="z-50 fixed left-0 right-0 top-0 bottom-0 px-page py-page grid grid-cols-1 place-items-center bg-dark-700 bg-opacity-20 backdrop-filter backdrop-blur-xl"
 					variants={animations.background}
 					initial="initial"
 					animate="enter"

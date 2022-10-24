@@ -14,7 +14,11 @@ export default function ErrorPage() {
 }
 
 ErrorPage.getLayout = function getLayout(page: ReactElement) {
-	return <MainLayout footer={false}>{page}</MainLayout>;
+	return (
+		<MainLayout footer={false} scrollIndicator={false}>
+			{page}
+		</MainLayout>
+	);
 };
 
 export async function getStaticProps({ locale }: Params) {

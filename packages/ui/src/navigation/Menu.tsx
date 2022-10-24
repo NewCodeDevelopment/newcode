@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowCircleLink } from "..";
 import classnames from "classnames";
-import { IRoute } from "utils";
+import { IRoute, useWindow } from "utils";
 import { useEffect, useState } from "react";
 
 interface Props {
@@ -20,11 +20,7 @@ export default function Menu({
 	animationCompleteCallback,
 	cycleMenuCallback,
 }: Props) {
-	const [height, setHeight] = useState(0);
-
-	useEffect(() => {
-		setHeight(window.innerHeight);
-	}, []);
+	const { height } = useWindow();
 
 	const animationConfiguration = {
 		duration: 0.7,

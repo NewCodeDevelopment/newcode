@@ -74,7 +74,7 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
             */}
 			<div
 				className={classNames(
-					"px-page py-4 flex flex-row justify-between items-center xl:py-12 bg-dark-700 bg-opacity-20 backdrop-filter backdrop-blur-xl xl:bg-transparent xl:backdrop-blur-0",
+					"px-page py-4 flex flex-row justify-between items-center xl:py-12 bg-dark-700 bg-opacity-20 backdrop-filter backdrop-blur-xl lg:bg-transparent lg:backdrop-blur-0",
 					open && "bg-transparent"
 				)}
 			>
@@ -86,7 +86,7 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
                 */}
 				<Link href="/">
 					<a
-						className="flex flex-row gap-3 z-10"
+						className="flex flex-row gap-3 items-center z-10"
 						onClick={open ? cycleMenu : undefined}
 					>
 						<Logo

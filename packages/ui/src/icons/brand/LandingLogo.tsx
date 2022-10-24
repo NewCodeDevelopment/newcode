@@ -68,6 +68,9 @@ export default function LandingLogo({ ...props }: any) {
 					repeat: Infinity,
 				},
 			},
+			hover: {
+				scale: 1.1,
+			},
 		},
 		path: {
 			on: {
@@ -86,8 +89,9 @@ export default function LandingLogo({ ...props }: any) {
 		<motion.svg
 			{...props}
 			id="landingLogo"
-			animate="on"
 			variants={animation.container}
+			animate="on"
+			// whileHover="hover"
 			viewBox="-50 -30 1000 719.779"
 		>
 			<motion.path

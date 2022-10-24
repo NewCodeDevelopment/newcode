@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { HTMLAttributes } from "react";
+import { useWindow } from "utils";
 import { Color } from "../config/colors";
 
 interface Props extends HTMLAttributes<HTMLElement> {
@@ -25,8 +26,11 @@ export default function Section({
 	bg = "dark",
 	align = "left",
 	className,
+	style,
 	...props
 }: Props) {
+	const { height, width } = useWindow();
+
 	const bgColors: { [key in Color]: string } = {
 		red: "bg-red-500",
 		dark: "bg-dark-700",
@@ -46,6 +50,8 @@ export default function Section({
 		center: "place-items-center",
 		right: "place-items-end",
 	};
+
+	console.log("Sectionnnn", height, width);
 
 	return (
 		<section
@@ -67,6 +73,10 @@ export default function Section({
 
 				className
 			)}
+			style={{
+				height: width > 1024 ? height : "auto",
+				...style,
+			}}
 		>
 			{children}
 		</section>

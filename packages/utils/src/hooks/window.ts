@@ -1,54 +1,34 @@
-import { useState, useEffect } from "react";
+import { useRef, useState, useLayoutEffect, useCallback } from "react";
 
 export function useWindow() {
-	const [window, setWindow] = useState<{
-		width: number | null;
-		height: number | null;
-	}>({
-		width: null,
-		height: null,
-	});
+	// const height = useRef<number | string>("100vh");
+	// const width = useRef<number | string>("100vw");
 
-	useEffect(() => {
-		const windowRef = window as any;
+	const [height, setHeight] = useState<number | string>("100vh");
+	const [width, setWidth] = useState<number | string>("100vw");
 
-		setWindow({
-			width: windowRef.innerWidth as number,
-			height: windowRef.innerHeight as number,
-		});
-	});
+	useLayoutEffect(() => {
+		handleResize();
+	}, []);
+
+	useLayoutEffect(() => {
+		window.addEventListener("resize", handleResize);
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
+
+	const handleResize = useCallback(() => {
+		console.log("resize", height, width);
+		setHeight(window.innerHeight);
+		setWidth(window.innerWidth);
+		// height.current = window.innerHeight;
+		// width.current = window.innerWidth;
+	}, [setHeight, setWidth]);
 
 	return {
-		width: window.width,
-		height: window.height,
+		width,
+		height,
 	};
 }
-
-// export function useWindowDimensions() {
-// 	// Initialize state with undefined width/height so server and client renders match
-// 	// Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
-// 	const [windowSize, setWindowSize] = useState<{
-// 		width: number | undefined;
-// 		height: number | undefined;
-// 	}>({
-// 		width: undefined,
-// 		height: undefined,
-// 	});
-// 	useEffect(() => {
-// 		// Handler to call on window resize
-// 		function handleResize() {
-// 			// Set window width/height to state
-// 			setWindowSize({
-// 				width: window.innerWidth,
-// 				height: window.innerHeight,
-// 			});
-// 		}
-// 		// Add event listener
-// 		window.addEventListener("resize", handleResize);
-// 		// Call handler right away so state gets updated with initial window size
-// 		handleResize();
-// 		// Remove event listener on cleanup
-// 		return () => window.removeEventListener("resize", handleResize);
-// 	}, []); // Empty array ensures that effect is only run on mount
-// 	return windowSize;
-// }
