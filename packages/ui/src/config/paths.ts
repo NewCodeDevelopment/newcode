@@ -11,8 +11,8 @@ export const usePaths: () => usePathHook = () => {
 
 	const mainRoutes = [
 		{ name: t("work"), path: "/work" },
-		{ name: t("about"), path: "/about" },
 		{ name: t("services"), path: "/services" },
+		{ name: t("about"), path: "/about" },
 		{ name: t("connect"), path: "/connect" },
 	];
 

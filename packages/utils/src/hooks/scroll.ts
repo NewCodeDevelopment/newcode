@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { bgColorState, INavigationState } from "../states/navigation";
 import { IScrollState, scrollState } from "../states/scroll";
 import { useRouter } from "next/router";
+import { DESKTOP_MIN_WIDTH } from "../const";
 /**
  *
  *
@@ -18,7 +19,7 @@ import { useRouter } from "next/router";
  *
  */
 const SCROLLING_CLASS = "scrolling-section";
-const MIN_WIDTH = 1024;
+const MIN_WIDTH = DESKTOP_MIN_WIDTH;
 /**
  *
  *
@@ -271,6 +272,7 @@ export function useScroll(mainRef: RefObject<HTMLElement>) {
 				length: [...((mainRef.current?.childNodes as any) ?? [])].length,
 				caller: "event",
 			});
+			setBgColor("light");
 		}
 
 		updateScroll();

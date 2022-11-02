@@ -20,11 +20,8 @@ export function useWindow() {
 	}, []);
 
 	const handleResize = useCallback(() => {
-		console.log("resize", height, width);
 		setHeight(window.innerHeight);
 		setWidth(window.innerWidth);
-		// height.current = window.innerHeight;
-		// width.current = window.innerWidth;
 	}, [setHeight, setWidth]);
 
 	return {

@@ -24,6 +24,10 @@ export { default as Landing } from "./components/Landing";
 export { default as ServicesSection } from "./components/ServicesSection";
 export { default as PageTransition } from "./components/PageTransition";
 export { default as SectionIndicator } from "./components/SectionIndicator";
+export {
+	type Testimonial,
+	default as Testimonials,
+} from "./components/Testimonials";
 /**
  *
  *

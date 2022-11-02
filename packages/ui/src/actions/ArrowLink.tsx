@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { HTMLAttributes } from "react";
 import { Arrow, Color, fillColors, textColors } from "..";
 import classNames from "classnames";
+import { motion, HTMLMotionProps } from "framer-motion";
 
-interface Props extends HTMLAttributes<HTMLAnchorElement> {
+interface Props extends HTMLMotionProps<"a"> {
 	href: string;
 	description: string;
 	color?: Color;
@@ -20,17 +20,20 @@ export default function ArrowLink({
 }: Props) {
 	return (
 		<Link href={href} target={target}>
-			<a
+			<motion.a
 				{...props}
 				className={classNames(
-					"flex flex-row items-center gap-4",
+					"flex cursor-pointer flex-row items-center gap-4 text-xl font-bold",
 					textColors[color][700],
 					fillColors[color][500],
 					className
 				)}
+				whileHover={{
+					gap: "25px",
+				}}
 			>
-				{description} <Arrow className="w-8" direction="left-to-right" />
-			</a>
+				{description} <Arrow className="w-12" direction="left-to-right" />
+			</motion.a>
 		</Link>
 	);
 }

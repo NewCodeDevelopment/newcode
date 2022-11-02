@@ -1,0 +1,41 @@
+{
+  "title": "Middleware",
+  "description": {
+    "short": "Lorem ipsim dolor sit amet",
+    "main": "lorem ipsum",
+    "problem": "lorem ipsum",
+    "solution": "lorem ipsum"
+  },
+  "client": "Donvil",
+  "sector": "Schoenen & Lingerie",
+  "service": "Automation",
+  "type": "software",
+  "year": "2021",
+  "productUrl": "https://www.donvil-dimoda.com",
+  "bannerImage": {
+    "url": "/images/cases/middleware/banner.jpg",
+    "alt": "Donvil Dimoda"
+  },
+  "images": [
+    {
+      "url": "https://picsum.photos/500/500",
+      "alt": "Donvil Dimoda"
+    },
+    {
+      "url": "https://picsum.photos/500/500",
+      "alt": "Donvil Dimoda"
+    },
+    {
+      "url": "https://picsum.photos/500/500",
+      "alt": "Donvil Dimoda"
+    },
+    {
+      "url": "https://picsum.photos/500/500",
+      "alt": "Donvil Dimoda"
+    },
+    {
+      "url": "https://picsum.photos/500/500",
+      "alt": "Donvil Dimoda"
+    }
+  ]
+}

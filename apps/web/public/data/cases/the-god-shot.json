@@ -1,0 +1,41 @@
+{
+  "title": "Webshop",
+  "description": {
+    "short": "Lorem ipsum",
+    "main": "lorem ipsum",
+    "problem": "lorem ipsum",
+    "solution": "lorem ipsum"
+  },
+  "client": "Momento",
+  "sector": "Fast-food",
+  "service": "Web & App",
+  "type": "website",
+  "year": "2022",
+  "productUrl": "https://thegodshot.be",
+  "bannerImage": {
+    "url": "/images/cases/the-god-shot/banner.webp",
+    "alt": "The God Shot"
+  },
+  "images": [
+    {
+      "url": "https://picsum.photos/500/500",
+      "alt": "Donvil Dimoda"
+    },
+    {
+      "url": "https://picsum.photos/500/500",
+      "alt": "Donvil Dimoda"
+    },
+    {
+      "url": "https://picsum.photos/500/500",
+      "alt": "Donvil Dimoda"
+    },
+    {
+      "url": "https://picsum.photos/500/500",
+      "alt": "Donvil Dimoda"
+    },
+    {
+      "url": "https://picsum.photos/500/500",
+      "alt": "Donvil Dimoda"
+    }
+  ]
+}

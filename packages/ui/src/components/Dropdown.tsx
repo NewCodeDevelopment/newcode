@@ -1,15 +1,15 @@
 import classNames from "classnames";
-import { AnimatePresence, motion } from "framer-motion";
-import { HTMLAttributes } from "react";
+import { AnimatePresence, motion, HTMLMotionProps } from "framer-motion";
 import { PlusIcon } from "..";
 
-interface Props extends HTMLAttributes<HTMLElement> {
+interface Props extends HTMLMotionProps<"div"> {
 	opened: boolean;
 	setOpened: (opened: boolean) => void;
 	children: any;
 	title: string;
 	titleClassName?: string;
 	childrenClassName?: string;
+	theme: "light" | "dark";
 }
 
 export default function Dropdown({
@@ -21,50 +21,72 @@ export default function Dropdown({
 	onClick,
 	titleClassName,
 	childrenClassName,
+	theme,
 	...props
 }: Props) {
-	const linksVariants = {
-		initial: {
-			opacity: 0,
-			y: 0,
-			height: 0,
-			border: 0,
+	const animations = {
+		container: {
+			initial: {
+				height: "min-content",
+			},
+			opened: {
+				height: "max-content",
+			},
 		},
-		enter: {
-			opacity: 1,
-			y: 0,
-			height: "auto",
+		children: {
+			initial: {
+				opacity: 0,
+				height: 0,
+			},
+			opened: {
+				opacity: 1,
+				height: "fit-content",
+			},
 		},
-	};
-
-	const angleVariants = {
-		initial: {
-			rotate: 0,
-		},
-		enter: {
-			rotate: 135,
+		angle: {
+			initial: {
+				rotate: 0,
+			},
+			enter: {
+				rotate: 135,
+			},
 		},
 	};
 
 	return (
-		<div {...props} className={classNames("flex flex-col gap-4", className)}>
+		<motion.div
+			{...props}
+			className={classNames("flex cursor-pointer flex-col gap-4", className)}
+			onClick={(e) => {
+				setOpened(!opened);
+				onClick && onClick(e);
+			}}
+			variants={animations.container}
+			initial="initial"
+			animate={opened ? "opened" : "initial"}
+			transition={{
+				duration: 0.3,
+				delay: 0.1,
+				ease: "easeInOut",
+			}}
+		>
 			<motion.div
 				className={classNames(
-					"flex flex-row justify-between items-center gap-4 cursor-pointer",
+					"flex flex-row items-center justify-between gap-4",
 					titleClassName
 				)}
-				onClick={(e) => {
-					setOpened(!opened);
-					onClick && onClick(e);
-				}}
 			>
 				<span className="text-xl font-bold">{title}</span>
 
 				<PlusIcon
-					className="w-4 hidden lg:block"
+					className={classNames(
+						"hidden w-4 lg:block",
+						theme === "light" && "fill-dark-300",
+						theme === "dark" && "fill-light-300"
+					)}
+					variants={animations.angle}
 					initial="initial"
 					animate={opened ? "enter" : "initial"}
-					variants={angleVariants}
 				/>
 			</motion.div>
 
@@ -72,14 +94,19 @@ export default function Dropdown({
 				{opened && (
 					<motion.div
 						className={childrenClassName}
+						variants={animations.children}
 						initial="initial"
-						animate={opened ? "enter" : "initial"}
-						variants={linksVariants}
+						animate="opened"
+						exit="initial"
+						transition={{
+							duration: 0.1,
+							ease: "easeInOut",
+						}}
 					>
 						{children}
 					</motion.div>
 				)}
 			</AnimatePresence>
-		</div>
+		</motion.div>
 	);
 }

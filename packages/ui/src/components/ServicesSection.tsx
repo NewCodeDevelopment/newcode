@@ -2,7 +2,11 @@ import { useState } from "react";
 import Heading from "../typography/Heading";
 import ServiceCard from "./ServiceCard";
 
-export default function ServicesSection() {
+interface Props {
+	theme: "light" | "dark";
+}
+
+export default function ServicesSection({ theme }: Props) {
 	const [open, setOpen] = useState<string>("");
 
 	return (
@@ -20,6 +24,7 @@ export default function ServicesSection() {
 					id={"1"}
 					open={open}
 					setOpen={setOpen}
+					theme={theme}
 				/>
 
 				<ServiceCard
@@ -31,6 +36,7 @@ export default function ServicesSection() {
 					id={"2"}
 					open={open}
 					setOpen={setOpen}
+					theme={theme}
 				/>
 
 				<ServiceCard
@@ -42,6 +48,7 @@ export default function ServicesSection() {
 					id={"3"}
 					open={open}
 					setOpen={setOpen}
+					theme={theme}
 				/>
 			</div>
 
@@ -58,6 +65,7 @@ export default function ServicesSection() {
 					id={"4"}
 					open={open}
 					setOpen={setOpen}
+					theme={theme}
 				/>
 
 				<ServiceCard
@@ -68,6 +76,7 @@ export default function ServicesSection() {
 					id={"5"}
 					open={open}
 					setOpen={setOpen}
+					theme={theme}
 				/>
 			</div>
 		</div>

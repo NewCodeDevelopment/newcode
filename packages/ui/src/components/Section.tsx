@@ -1,9 +1,10 @@
 import classNames from "classnames";
-import { HTMLAttributes } from "react";
-import { useWindow } from "utils";
+import { forwardRef } from "react";
+import { DESKTOP_MIN_WIDTH, useWindow } from "utils";
 import { Color } from "../config/colors";
+import { motion, HTMLMotionProps } from "framer-motion";
 
-interface Props extends HTMLAttributes<HTMLElement> {
+interface Props extends HTMLMotionProps<"section"> {
 	children: any;
 	px?: boolean;
 	py?: boolean;
@@ -15,70 +16,76 @@ interface Props extends HTMLAttributes<HTMLElement> {
 	align?: "left" | "center" | "right";
 }
 
-export default function Section({
-	children,
-	px = true,
-	py = true,
-	pt,
-	pb,
-	pl,
-	pr,
-	bg = "dark",
-	align = "left",
-	className,
-	style,
-	...props
-}: Props) {
-	const { height, width } = useWindow();
+const Section = forwardRef<HTMLElement, Props>(
+	(
+		{
+			children,
+			px = true,
+			py = true,
+			pt,
+			pb,
+			pl,
+			pr,
+			bg = "dark",
+			align = "left",
+			className,
+			style,
+			...props
+		},
+		ref
+	) => {
+		const { height, width } = useWindow();
 
-	const bgColors: { [key in Color]: string } = {
-		red: "bg-red-500",
-		dark: "bg-dark-700",
-		light: "bg-light-500",
-		transparent: "bg-transparent",
-	};
+		const bgColors: { [key in Color]: string } = {
+			red: "bg-red-500",
+			dark: "bg-dark-700",
+			light: "bg-light-500",
+			transparent: "bg-transparent",
+		};
 
-	const navigationColors: { [key in Color]: string } = {
-		red: "dark",
-		dark: "light",
-		light: "dark",
-		transparent: "dark",
-	};
+		const navigationColors: { [key in Color]: string } = {
+			red: "dark",
+			dark: "light",
+			light: "dark",
+			transparent: "dark",
+		};
 
-	const alignItems = {
-		left: "place-items-start",
-		center: "place-items-center",
-		right: "place-items-end",
-	};
+		const alignItems = {
+			left: "place-items-start",
+			center: "place-items-center",
+			right: "place-items-end",
+		};
 
-	console.log("Sectionnnn", height, width);
+		return (
+			<motion.section
+				{...props}
+				ref={ref}
+				data-color={navigationColors[bg]}
+				className={classNames(
+					"z-0 grid grid-cols-1 grid-rows-1 transition-all duration-200 ease-in-out lg:relative lg:h-screen",
+					bgColors[bg],
+					alignItems[align],
+					"border-red-500",
+					//  y-axis
+					py && "py-page",
+					pt && "pt-page",
+					pb && "pb-page",
+					// x -axis
+					px && "px-page",
+					pl && "pl-page",
+					pr && "pr-page",
 
-	return (
-		<section
-			{...props}
-			data-color={navigationColors[bg]}
-			className={classNames(
-				"grid grid-cols-1 grid-rows-1 transform transition-all duration-200 ease-in-out lg:relative lg:h-screen",
-				bgColors[bg],
-				alignItems[align],
-				"border-red-500",
-				//  y-axis
-				py && "py-page",
-				pt && "pt-page",
-				pb && "pb-page",
-				// x -axis
-				px && "px-page",
-				pl && "pl-page",
-				pr && "pr-page",
+					className
+				)}
+				style={{
+					height: width > DESKTOP_MIN_WIDTH ? height : "auto",
+					...style,
+				}}
+			>
+				{children}
+			</motion.section>
+		);
+	}
+);
 
-				className
-			)}
-			style={{
-				height: width > 1024 ? height : "auto",
-				...style,
-			}}
-		>
-			{children}
-		</section>
-	);
-}
+export default Section;
