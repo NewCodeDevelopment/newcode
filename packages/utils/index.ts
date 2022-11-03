@@ -19,9 +19,9 @@ export { checkImage, checkImageAlt, checkImageSrc } from "./src/checkers/image";
 
     Types
 */
-export type { IRoute } from "./src/types/paths";
-export type { Image } from "./src/types/image";
-export type { Case } from "./src/types/cases";
+export * from "./src/types/paths";
+export * from "./src/types/image";
+export * from "./src/types/cases";
 /*
 
 

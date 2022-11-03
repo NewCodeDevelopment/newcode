@@ -23,6 +23,9 @@ const ServicesSection = dynamic(() =>
 const Section = dynamic(() => import("ui").then((mod) => mod.Section), {
     ssr: false,
 });
+const DescriptionSection = dynamic(() =>
+    import("ui").then((mod) => mod.DescriptionSection),
+);
 
 interface Props {
     cases: Case[];
@@ -39,29 +42,22 @@ export default function Home({ cases }: Props) {
 				Landing
 				*
 			 */}
-            <Landing title="Code makes life easier" />
+            <Landing title={t("landing.title")} />
             {/* 
 				*
 				*
 				About
 				*
 			 */}
-            <Section bg="light" align="center">
-                <div className="flex flex-col gap-6 self-center xl:py-[20%]">
-                    <Heading type="h3" color="red">
-                        {t("mission.title")}
-                    </Heading>
-                    <Paragraph
-                        size="large"
-                        color="dark"
-                        maxCharacters={45}
-                        className="font-extrabold"
-                    >
-                        {t("mission.description")}
-                    </Paragraph>
-                    <HyperLink href="/about">{t("mission.button")}</HyperLink>
-                </div>
-            </Section>
+            <DescriptionSection
+                bg="light"
+                title={t("mission.title")}
+                description={t("mission.description")}
+                link={{
+                    href: "/about",
+                    text: t("mission.button"),
+                }}
+            />
             {/* 
 				*
 				*
@@ -84,14 +80,12 @@ export default function Home({ cases }: Props) {
             >
                 <div className="flex w-full flex-col gap-6 self-center lg:gap-10">
                     <Heading type="h3" color="dark">
-                        Services_
+                        {t("services.title")}_
                     </Heading>
 
                     <ServicesSection theme="light" />
 
-                    <HyperLink href="/services">
-                        Learn about our services
-                    </HyperLink>
+                    <HyperLink href="/services">{t("services.link")}</HyperLink>
                 </div>
             </Section>
             {/* 
@@ -133,16 +127,4 @@ export async function getStaticProps({ locale }: Params) {
             cases: data,
         },
     };
-}
-
-{
-    /* <div className="absolute left-0 right-0 top-0 bottom-0 -z-30 grid place-items-center text-[10rem] font-extrabold text-light-400 shadow-inner">
-<span
-  style={{
-    textShadow: "0px 2px 5px #00000005",
-  }}
->
-  NewCode
-</span>
-</div> */
 }

@@ -1,9 +1,113 @@
 {
-	"home": {
-		"mission": {
-			"title": "Onze Missie_",
-			"description": "Bij NewCode willen we graag het leven vergemakkelijken aan de hand van technologie. Dit doen we door naar uw problemen en uw verhaal te luisteren en deze op de best mogelijke manier op te lossen. We pakken dit aan op een kwalitatieve, transparante en eerlijke werkwijze.",
-			"button": "De backend van NewCode"
-		}
-	}
+    "home": {
+        "landing": {
+            "title": "Code makes life easier"
+        },
+        "mission": {
+            "title": "Onze Missie",
+            "description": "Bij NewCode willen we graag het leven vergemakkelijken aan de hand van technologie. Dit doen we door naar uw problemen en uw verhaal te luisteren en deze op de best mogelijke manier op te lossen. We pakken dit aan op een kwalitatieve, transparante en eerlijke werkwijze.",
+            "button": "De backend van NewCode"
+        },
+        "services": {
+            "title": "Services",
+            "link": "Bekijk onze services"
+        }
+    },
+    "services": {
+        "approach": {
+            "title": "Aanpak",
+            "items": [
+                {
+                    "title": "Analysis",
+                    "description": "In de analysefase worden de problemen geanalyseerd en bekijken we hoe we het proces zullen aanpakken. We bekijken in deze fase niet enkel de technische im- plementatie, maar gaan eveneens na hoe we het best mogelijke gebruiksge- mak kunnen aanbieden."
+                },
+                {
+                    "title": "Strategy",
+                    "description": "In de strategiefase definiëren we doel- stellingen qua tijd en kwaliteit, om u een doordacht product op te leveren waar- op u kan rekenen. We definiëren onze doelstellingen niet enkel technisch, maar ook visueel zodat het resultaat perfect plaats kan nemen in uw ecosysteem."
+                },
+                {
+                    "title": "Creation",
+                    "description": "Na een onderzoeksfase zijn we klaar en voorbereid om te starten met de imple- mentatie. In deze fase realiseren we uw oplossing."
+                },
+                {
+                    "title": "Polishing",
+                    "description": "Wanneer alles is afgewerkt, kunnen er nog oneffenheden achterblijven. Daar- om gaan we in deze fase alle imperfec- ties polijsten. Dit doen we door het pro- duct uitvoerig te testen, te optimaliseren en te herevalueren, zodat uw product van de beste kwaliteit is."
+                }
+            ]
+        }
+    },
+    "about": {
+        "landing": {
+            "title": "Onze Backend"
+        },
+        "nature": [
+            {
+                "title": "Our nature",
+                "values": [
+                    "Powerful",
+                    "Strong",
+                    "Dynamic",
+                    "Classy",
+                    "Simplicity",
+                    "Structure"
+                ]
+            },
+            {
+                "title": "Nature of our partner",
+                "values": [
+                    "Innovative",
+                    "Ambitious",
+                    "Growth mindset",
+                    "Authentic",
+                    "Enthusiastic",
+                    "Hands-on"
+                ]
+            }
+        ],
+        "vision": {
+            "title": "Our Vision",
+            "description": "Our vision is a world where we move everyone forward and create positive change. Facilitate, simplify and optimize."
+        },
+        "values": {
+            "title": "Values",
+            "items": [
+                {
+                    "title": "Accessible",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                },
+                {
+                    "title": "Surprising",
+                    "description": "Wij onderscheiden ons, zowel qua aanpak als eindresultaat."
+                },
+                {
+                    "title": "Made easy",
+                    "description": "De wereld is ingewikkeld genoeg, daarom maken wij het graag makkelijk voor u."
+                },
+                {
+                    "title": "Mindful",
+                    "description": "Wij begrijpen waar jij als bedrijf naartoe wilt."
+                }
+            ]
+        },
+        "tools": {
+            "title": "Tools"
+        }
+    },
+    "testimonials": [
+        {
+            "body": "1Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+            "name": "John Doe",
+            "company": "Donvil"
+        },
+        {
+            "body": "1Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+            "name": "John Doe",
+            "company": "KAPMES"
+        },
+        {
+            "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+            "name": "John Doe",
+            "company": "Momento"
+        }
+    ]
 }

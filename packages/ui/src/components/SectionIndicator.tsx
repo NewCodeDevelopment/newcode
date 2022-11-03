@@ -9,8 +9,8 @@ export default function SectionIndicator() {
 	const [scroll, setScroll] = useRecoilState(scrollState);
 
 	return (
-		<motion.div className="hidden lg:flex lg:flex-col lg:gap-10 xl:gap-12 lg:justify-center lg:py-page lg:z-40 lg:fixed lg:right-16 lg:top-0 lg:bottom-0">
-			{scroll.length > 0 &&
+		<motion.div className="lg:py-page hidden lg:fixed lg:right-16 lg:top-0 lg:bottom-0 lg:z-40 lg:flex lg:flex-col lg:justify-center lg:gap-10 xl:gap-12">
+			{scroll.length > 1 &&
 				Array.from({ length: scroll.length }, (_, i) => i).map((i) => (
 					<AnimatePresence mode="wait" key={i}>
 						<motion.div
@@ -45,7 +45,7 @@ export default function SectionIndicator() {
 								transition: { duration: 0.2 },
 							}}
 							className={classNames(
-								"w-3 h-3 xl:w-4 xl:h-4 aspect-square rounded-full cursor-pointer",
+								"aspect-square h-3 w-3 cursor-pointer rounded-full xl:h-4 xl:w-4",
 								bgColors[bgColor][600]
 							)}
 						>

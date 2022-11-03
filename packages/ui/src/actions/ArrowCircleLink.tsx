@@ -34,7 +34,7 @@ export default function ArrowCircleLink({
 				onClick={onClick}
 			>
 				<CircleArrow className={classNames("w-8 lg:w-16", bgColors[bgColor])} />
-				<span className="text-light-500 font-black text-xl lg:text-3xl">
+				<span className="text-light-500 text-xl font-extrabold lg:text-3xl">
 					{description}
 				</span>
 			</motion.a>

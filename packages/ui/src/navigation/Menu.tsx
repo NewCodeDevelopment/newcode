@@ -78,7 +78,7 @@ export default function Menu({
 	return (
 		<>
 			<motion.nav
-				className="bg-red-500 z-0 fixed px-page pt-28 pb-16 w-full h-screen flex flex-col justify-between gap-12 overflow-hidden"
+				className="px-page fixed z-0 flex h-screen w-full flex-col justify-between gap-12 overflow-hidden bg-red-500 pt-28 pb-16"
 				onAnimationComplete={() => animationCompleteCallback(true)}
 				style={{
 					height: height,
@@ -98,7 +98,7 @@ export default function Menu({
 						<Link key={index} href={path}>
 							<motion.a
 								className={classnames(
-									"text-light-500 font-black text-4xl pb-2",
+									"text-light-500 pb-2 text-4xl font-extrabold",
 									path === currentRoute && "text-dark-500"
 								)}
 								variants={animation.links}
@@ -116,7 +116,7 @@ export default function Menu({
                 Contact container 
             
             */}
-				<div className="flex flex-col gap-5 text-light-500">
+				<div className="text-light-500 flex flex-col gap-5">
 					<ArrowCircleLink
 						description="5 steps to connect"
 						path="/connect/form"
@@ -126,14 +126,14 @@ export default function Menu({
 
 					<div className="flex flex-col gap-2">
 						<motion.a
-							className="font-bold text-xl xl:text-2xl"
+							className="text-xl font-bold xl:text-2xl"
 							href="tel:+32471492451"
 							variants={animation.links}
 						>
 							+32 (0) 471 492 451
 						</motion.a>
 						<motion.a
-							className="font-bold text-xl xl:text-2xl"
+							className="text-xl font-bold xl:text-2xl"
 							href="mailto:info@newcode.be"
 							variants={animation.links}
 						>
@@ -142,7 +142,7 @@ export default function Menu({
 					</div>
 
 					<motion.div
-						className="flex flex-row gap-8 font-bold text-md text-dark-500"
+						className="text-md text-dark-500 flex flex-row gap-8 font-bold"
 						variants={animation.links}
 					>
 						<a

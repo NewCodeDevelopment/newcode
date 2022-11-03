@@ -3,6 +3,7 @@ import { Heading, Paragraph } from "..";
 import Section from "./Section";
 import { AnimatePresence, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useTranslation } from "next-i18next";
 
 export type Testimonial = {
 	body: string;
@@ -10,11 +11,15 @@ export type Testimonial = {
 	company: string;
 };
 
-interface Props {
-	testimonials: Testimonial[];
-}
+interface Props {}
 
-export default function Testimonials({ testimonials }: Props) {
+export default function Testimonials({}: Props) {
+	const { t } = useTranslation("pages");
+
+	const testimonials = t("testimonials", {
+		returnObjects: true,
+	}) as Testimonial[];
+
 	const [ref, inView] = useInView();
 
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -70,7 +75,7 @@ export default function Testimonials({ testimonials }: Props) {
 	return (
 		<Section bg="red" align="center">
 			<motion.div
-				className="flex flex-col gap-8 self-center text-center lg:gap-12"
+				className="flex flex-col gap-6 self-center text-center lg:gap-8"
 				whileInView={{
 					opacity: [0, 1],
 					y: [-20, 0],
@@ -97,14 +102,15 @@ export default function Testimonials({ testimonials }: Props) {
 										color="dark"
 										maxCharacters={40}
 										size="large"
-										className="font-extrabold italic"
+										className="italic"
+										weight="extrabold"
 									>
 										“{body}”
 									</Paragraph>
 
 									<div className="flex flex-col gap-3">
 										<Heading type="h3">{name}</Heading>
-										<Heading type="h4" color="dark" className="font-medium">
+										<Heading type="h4" color="dark" weight="medium">
 											{company}
 										</Heading>
 									</div>

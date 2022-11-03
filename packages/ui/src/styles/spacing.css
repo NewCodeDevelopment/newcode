@@ -39,26 +39,26 @@
 */
 	/* Padding */
 	.py-page {
-		@apply py-20 md:py-40 lg:py-64 xl:py-80 2xl:py-[17vh];
+		@apply py-24 md:py-40 lg:py-64 xl:py-80 2xl:py-[17vh];
 	}
 
 	.pt-page {
-		@apply pt-20 md:pt-40 lg:pt-64 xl:pt-80 2xl:pt-[17vh];
+		@apply pt-24 md:pt-40 lg:pt-64 xl:pt-80 2xl:pt-[17vh];
 	}
 
 	.pb-page {
-		@apply pb-20 md:pb-40 lg:pb-64 xl:pb-80 2xl:pb-[17vh];
+		@apply pb-24 md:pb-40 lg:pb-64 xl:pb-80 2xl:pb-[17vh];
 	}
 	/* Margin */
 	.my-page {
-		@apply my-20 md:my-40 lg:my-64 xl:my-80 2xl:my-[17vh];
+		@apply my-24 md:my-40 lg:my-64 xl:my-80 2xl:my-[17vh];
 	}
 
 	.mt-page {
-		@apply mt-20 md:mt-40 lg:mt-64 xl:mt-80 2xl:mt-[17vh];
+		@apply mt-24 md:mt-40 lg:mt-64 xl:mt-80 2xl:mt-[17vh];
 	}
 
 	.mb-page {
-		@apply mb-20 md:mb-40 lg:mb-64 xl:mb-80 2xl:mb-[17vh];
+		@apply mb-24 md:mb-40 lg:mb-64 xl:mb-80 2xl:mb-[17vh];
 	}
 }

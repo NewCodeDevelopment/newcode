@@ -4,6 +4,7 @@ import Section from "./Section";
 import { useRecoilState } from "recoil";
 import { loadingState, useWindow } from "utils";
 import { useEffect } from "react";
+import Image from "next/image";
 
 interface Props {
 	statusCode?: number;
@@ -26,8 +27,17 @@ export default function Error({ title, statusCode }: Props) {
 				height: height ? height : "100vh",
 			}}
 		>
-			<div className="flex flex-col justify-center items-center text-center gap-12 md:gap-16">
-				<RobotIcon className="fill-red-500 w-1/2 xl:w-full" />
+			<Image
+				src="/images/footer-background.jpg"
+				alt="footer background"
+				layout="fill"
+				objectFit="cover"
+				objectPosition="center"
+				className="-z-10"
+			/>
+
+			<div className="flex flex-col items-center justify-center gap-12 text-center md:gap-16">
+				<RobotIcon className="w-1/2 fill-red-500 xl:w-full" />
 
 				<span className="flex flex-col gap-4">
 					{statusCode && (

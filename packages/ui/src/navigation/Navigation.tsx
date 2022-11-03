@@ -48,7 +48,7 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 		<header
 			{...props}
 			className={classNames(
-				"fixed z-40 w-full left-0 top-0 transform transition-all duration-200 ease-in-out",
+				"fixed left-0 top-0 z-40 w-full transform transition-all duration-200 ease-in-out",
 				className
 			)}
 		>
@@ -74,7 +74,7 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
             */}
 			<div
 				className={classNames(
-					"px-page py-4 flex flex-row justify-between items-center xl:py-12 bg-dark-700 bg-opacity-20 backdrop-filter backdrop-blur-xl lg:bg-transparent lg:backdrop-blur-0",
+					"px-page bg-dark-700 flex flex-row items-center justify-between bg-opacity-20 py-4 backdrop-blur-xl backdrop-filter lg:bg-transparent lg:backdrop-blur-0 xl:py-12",
 					open && "bg-transparent"
 				)}
 			>
@@ -86,18 +86,18 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
                 */}
 				<Link href="/">
 					<a
-						className="flex flex-row gap-3 items-center z-10"
+						className="z-10 flex flex-row items-center gap-3"
 						onClick={open ? cycleMenu : undefined}
 					>
 						<Logo
 							className={classNames(
-								"w-6 xl:w-12 fill-red-500 text-light-500",
+								"text-light-500 w-6 fill-red-500 xl:w-12",
 								open && "fill-light-500"
 							)}
 						/>
 						<span
 							className={classNames(
-								"font-black text-lg xl:text-3xl",
+								"text-lg font-extrabold xl:text-3xl",
 								open && "text-light-500",
 								"transition-all duration-1000 ease-in-out",
 								textColors[bgColor][500]
@@ -116,7 +116,7 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
                 */}
 				<a
 					className={classNames(
-						"text-light-500 z-10 text-md font-bold xl:hidden",
+						"text-light-500 text-md z-10 font-bold xl:hidden",
 						"transition-all duration-1000 ease-in-out",
 						textColors[bgColor][500]
 					)}
@@ -136,7 +136,7 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 						<Link key={index} href={path}>
 							<a
 								className={classNames(
-									"font-bold xl:text-xl navigation-link",
+									"navigation-link font-bold xl:text-xl",
 									currentRoute == path
 										? "navigation-currentRoute text-red-500"
 										: "",

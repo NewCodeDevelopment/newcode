@@ -1,4 +1,10 @@
-import { Color, textColors } from "../config/colors";
+import {
+	Color,
+	textColors,
+	headingStyles,
+	HeadingTypes,
+	FontWeights,
+} from "..";
 import classNames from "classnames";
 import { createElement, HTMLAttributes } from "react";
 
@@ -9,20 +15,13 @@ interface Props extends HTMLAttributes<HTMLHeadingElement> {
 	className?: string;
 	breakpoint?: number;
 	maxCharacters?: number;
+	weight?: FontWeights;
 }
-
-type HeadingTypes = "h1" | "h2" | "h3" | "h4";
-
-export const headingStyles: { [K in HeadingTypes]: string } = {
-	h1: "font-black text-8xl md:text-[9rem] lg:text-9xl 2xl:text-[15rem]",
-	h2: "font-black text-5xl md:text-7xl lg:text-7xl xl:text-7xl 2xl:text-9xl",
-	h3: "font-black text-2xl md:text-3xl",
-	h4: "font-bold text-lg md:text-xl",
-};
 
 export default function Heading({
 	children,
 	type,
+	weight,
 	color = "light",
 	breakpoint = 0,
 	className,
@@ -34,7 +33,7 @@ export default function Heading({
 		{
 			...props,
 			className: classNames(
-				headingStyles[type],
+				headingStyles(type, weight),
 				textColors[color][500],
 				className
 			),

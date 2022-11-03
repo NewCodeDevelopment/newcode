@@ -8,23 +8,19 @@ const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Error = dynamic(() => import("ui").then((mod) => mod.Error));
 
 export default function ErrorPage() {
-	const { t } = useTranslation("common", { keyPrefix: "error" });
+    const { t } = useTranslation("common", { keyPrefix: "error" });
 
-	return <Error title={t("default")} statusCode={404} />;
+    return <Error title={t("default")} statusCode={404} />;
 }
 
 ErrorPage.getLayout = function getLayout(page: ReactElement) {
-	return (
-		<MainLayout footer={false} scrollIndicator={false}>
-			{page}
-		</MainLayout>
-	);
+    return <MainLayout footer={false}>{page}</MainLayout>;
 };
 
 export async function getStaticProps({ locale }: Params) {
-	return {
-		props: {
-			...(await serverSideTranslations(locale || "nl", ["common"])),
-		},
-	};
+    return {
+        props: {
+            ...(await serverSideTranslations(locale || "nl", ["common"])),
+        },
+    };
 }

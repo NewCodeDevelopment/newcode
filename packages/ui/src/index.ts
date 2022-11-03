@@ -15,6 +15,8 @@ export { default as Popup } from "./actions/Popup";
  * Components
  */
 export { default as Section } from "./components/Section";
+export { default as DescriptionSection } from "./components/DescriptionSection";
+export { default as GridSection } from "./components/GridSection";
 export { default as CaseBanner } from "./components/CaseBanner";
 export { default as Error } from "./components/Error";
 export { default as Dropdown } from "./components/Dropdown";
@@ -24,6 +26,7 @@ export { default as Landing } from "./components/Landing";
 export { default as ServicesSection } from "./components/ServicesSection";
 export { default as PageTransition } from "./components/PageTransition";
 export { default as SectionIndicator } from "./components/SectionIndicator";
+export { default as Scroll } from "./components/Scroll";
 export {
 	type Testimonial,
 	default as Testimonials,
@@ -33,19 +36,10 @@ export {
  *
  * Config
  */
-export type { Color, ColorVariants } from "./config/colors";
-export {
-	textColors,
-	bgColors,
-	fillColors,
-	borderColors,
-	hoverBgColors,
-	hoverFillColors,
-	hoverTextColors,
-	hoverBorderColors,
-} from "./config/colors";
-export type { usePathHook } from "./config/paths";
-export { usePaths } from "./config/paths";
+export * from "./config/colors";
+export * from "./config/button";
+export * from "./config/paths";
+export * from "./config/typography";
 /**
  *
  *
@@ -76,6 +70,14 @@ export { default as PlusIcon } from "./icons/services/PlusIcon";
 export { default as FacebookIcon } from "./icons/socials/FacebookIcon";
 export { default as InstagramIcon } from "./icons/socials/InstagramIcon";
 export { default as CircleArrow } from "./icons/actions/CircleArrow";
+export { default as CSharpIcon } from "./icons/tools/CSharpIcon";
+export { default as DockerIcon } from "./icons/tools/DockerIcon";
+export { default as GraphQLIcon } from "./icons/tools/GraphQLIcon";
+export { default as PostgresIcon } from "./icons/tools/PostgresIcon";
+export { default as ReactIcon } from "./icons/tools/ReactIcon";
+export { default as NodeIcon } from "./icons/tools/NodeIcon";
+export { default as NextIcon } from "./icons/tools/NextIcon";
+export { default as TailwindLogo } from "./icons/tools/TailwindLogo";
 /**
  *
  *

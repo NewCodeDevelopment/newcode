@@ -1,7 +1,4 @@
-import { HTMLAttributes } from "react";
-import { useWindow } from "utils";
-import { LandingLogo, Heading, Section } from "..";
-import Scroll from "./Scroll";
+import { LandingLogo, Heading, Section, Scroll } from "..";
 import { HTMLMotionProps } from "framer-motion";
 
 interface Props extends HTMLMotionProps<"section"> {

@@ -1,15 +1,17 @@
 import { forwardRef } from "react";
 import { HTMLMotionProps, motion } from "framer-motion";
 import classNames from "classnames";
-import { Color } from "..";
 import Link from "next/link";
 import {
+	Color,
+	FontWeights,
+	fontWeights,
 	buttonColors,
 	buttonShape,
 	buttonShapes,
 	buttonSize,
 	buttonVariant,
-} from "../config/button";
+} from "..";
 
 interface Props extends HTMLMotionProps<"a"> {
 	children: any;
@@ -18,6 +20,7 @@ interface Props extends HTMLMotionProps<"a"> {
 	variant?: buttonVariant;
 	size?: buttonSize;
 	shape?: buttonShape;
+	weight?: FontWeights;
 }
 
 const HyperLink = forwardRef<HTMLAnchorElement, Props>(
@@ -28,6 +31,7 @@ const HyperLink = forwardRef<HTMLAnchorElement, Props>(
 			color = "red",
 			shape = "pill",
 			variant = "filled",
+			weight = "bold",
 			target,
 			children,
 			className,
@@ -65,7 +69,8 @@ const HyperLink = forwardRef<HTMLAnchorElement, Props>(
 					className={classNames(
 						buttonColors(variant, color),
 						buttonShapes(shape, size),
-						"font-semibold w-fit h-fit",
+						fontWeights(weight),
+						"h-fit w-fit font-bold",
 						className
 					)}
 					variants={animation}

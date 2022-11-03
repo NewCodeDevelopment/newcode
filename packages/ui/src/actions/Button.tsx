@@ -1,14 +1,16 @@
 import { forwardRef } from "react";
 import { HTMLMotionProps, motion } from "framer-motion";
 import classNames from "classnames";
-import { Color } from "..";
 import {
+	Color,
+	FontWeights,
+	fontWeights,
 	buttonColors,
 	buttonShape,
 	buttonShapes,
 	buttonSize,
 	buttonVariant,
-} from "../config/button";
+} from "..";
 
 interface Props extends HTMLMotionProps<"button"> {
 	children: any;
@@ -16,6 +18,7 @@ interface Props extends HTMLMotionProps<"button"> {
 	variant?: buttonVariant;
 	size?: buttonSize;
 	shape?: buttonShape;
+	weight?: FontWeights;
 }
 
 const Button = forwardRef<HTMLButtonElement, Props>(
@@ -25,6 +28,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
 			color = "red",
 			shape = "pill",
 			variant = "filled",
+			weight = "bold",
 			children,
 			className,
 			disabled,
@@ -61,7 +65,8 @@ const Button = forwardRef<HTMLButtonElement, Props>(
 				className={classNames(
 					buttonColors(variant, color),
 					buttonShapes(shape, size),
-					"font-semibold w-fit h-fit",
+					fontWeights(weight),
+					"h-fit w-fit",
 					className
 				)}
 				disabled={disabled}

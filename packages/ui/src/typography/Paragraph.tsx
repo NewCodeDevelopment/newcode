@@ -1,4 +1,10 @@
-import { Color, textColors } from "../config/colors";
+import {
+	Color,
+	textColors,
+	ParagraphSizes,
+	paragraphStyles,
+	FontWeights,
+} from "..";
 import classNames from "classnames";
 import { createElement, HTMLAttributes } from "react";
 
@@ -7,17 +13,10 @@ interface Props extends HTMLAttributes<HTMLParagraphElement> {
 	color?: Color;
 	className?: string;
 	breakpoint?: number;
-	size?: paragraphSizes;
+	size?: ParagraphSizes;
 	maxCharacters?: number;
+	weight?: FontWeights;
 }
-
-type paragraphSizes = "small" | "medium" | "large";
-
-export const paragraphStyles: { [K in paragraphSizes]: string } = {
-	small: "text-base xl:text-lg",
-	medium: "text-md xl:text-2xl",
-	large: "text-2xl xl:text-3xl",
-};
 
 export default function Paragraph({
 	children,
@@ -25,6 +24,7 @@ export default function Paragraph({
 	color = "light",
 	breakpoint = 0,
 	size = "medium",
+	weight,
 	maxCharacters,
 	...props
 }: Props) {
@@ -33,8 +33,7 @@ export default function Paragraph({
 		{
 			...props,
 			className: classNames(
-				"font-light",
-				paragraphStyles[size],
+				paragraphStyles(size, weight),
 				textColors[color][500],
 				className
 			),
