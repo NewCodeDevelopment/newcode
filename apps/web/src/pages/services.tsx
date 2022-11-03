@@ -35,7 +35,7 @@ export default function Services() {
             >
                 <div className="flex w-full flex-col gap-6 self-center lg:gap-10">
                     <Heading type="h3" color="light">
-                        Services_
+                        {t("landing.title")}_
                     </Heading>
 
                     <ServicesSection theme="dark" />
@@ -80,6 +80,8 @@ export async function getStaticProps({ locale }: Params) {
             ...(await serverSideTranslations(locale || "nl", [
                 "common",
                 "pages",
+                "services",
+                "testimonials",
             ])),
         },
     };

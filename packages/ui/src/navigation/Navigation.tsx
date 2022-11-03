@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { usePathHook } from "../config/paths";
 import { useRecoilState } from "recoil";
 import { bgColorState } from "utils";
+import { useTranslation } from "next-i18next";
 
 interface Props extends HTMLAttributes<HTMLElement> {
 	pathsHook: () => usePathHook;
@@ -14,6 +15,8 @@ interface Props extends HTMLAttributes<HTMLElement> {
 
 export default function Navigation({ pathsHook, className, ...props }: Props) {
 	const router = useRouter();
+
+	const { t } = useTranslation("common", { keyPrefix: "navigation" });
 
 	const [currentRoute, setCurrentRoute] = useState("");
 
@@ -122,7 +125,7 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 					)}
 					onClick={cycleMenu}
 				>
-					{open ? "Close" : "Navigate"}_
+					{open ? t("cycleMenu.close") : t("cycleMenu.open")}_
 				</a>
 
 				{/* 
@@ -136,11 +139,9 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 						<Link key={index} href={path}>
 							<a
 								className={classNames(
-									"navigation-link font-bold xl:text-xl",
-									currentRoute == path
-										? "navigation-currentRoute text-red-500"
-										: "",
-									"transition-all duration-1000 ease-in-out",
+									"navigation-link font-bold transition-all duration-1000 ease-in-out xl:text-xl",
+									currentRoute == path &&
+										"navigation-currentRoute text-red-500",
 									textColors[bgColor][500]
 								)}
 							>

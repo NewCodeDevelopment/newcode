@@ -1,16 +1,26 @@
 {
-	"navigation": {},
-	"paths": {
-		"work": "Work",
-		"about": "About",
-		"services": "Services",
-		"connect": "Connect",
-		"termsOfService": "Algemene voorwaarden",
-		"privacyPolicy": "Privacy"
-	},
-	"footer": {},
-	"error": {
-		"404": "Pagina niet gevonden",
-		"default": "Er is een fout opgetreden"
-	}
+    "navigation": {
+        "cycleMenu": {
+            "open": "Navigate",
+            "close": "Close"
+        },
+        "connect": "5 steps to connect"
+    },
+    "paths": {
+        "work": "Work",
+        "about": "About",
+        "services": "Services",
+        "connect": "Connect",
+        "termsOfService": "Algemene voorwaarden",
+        "privacyPolicy": "Privacy"
+    },
+    "footer": {
+        "title": "Let’s get this code going",
+        "description": "Got an exciting project to work on or just want to say hello?",
+        "connect": "5 steps to connect"
+    },
+    "error": {
+        "404": "Pagina niet gevonden",
+        "default": "Er is een fout opgetreden"
+    }
 }

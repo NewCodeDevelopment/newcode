@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowCircleLink } from "..";
+import { ArrowCircleLink, useContactInformation } from "..";
 import classnames from "classnames";
 import { IRoute, useWindow } from "utils";
-import { useEffect, useState } from "react";
+import { useTranslation } from "next-i18next";
 
 interface Props {
 	routes: IRoute[];
@@ -21,6 +21,10 @@ export default function Menu({
 	cycleMenuCallback,
 }: Props) {
 	const { height } = useWindow();
+
+	const { t } = useTranslation("common", { keyPrefix: "navigation" });
+
+	const { socials, contact } = useContactInformation();
 
 	const animationConfiguration = {
 		duration: 0.7,
@@ -66,15 +70,6 @@ export default function Menu({
 		},
 	};
 
-	useEffect(() => {
-		if (open) {
-			const elem = document.documentElement;
-			if (elem.requestFullscreen) {
-				elem.requestFullscreen();
-			}
-		}
-	}, [open]);
-
 	return (
 		<>
 			<motion.nav
@@ -118,7 +113,7 @@ export default function Menu({
             */}
 				<div className="text-light-500 flex flex-col gap-5">
 					<ArrowCircleLink
-						description="5 steps to connect"
+						description={t("connect")}
 						path="/connect/form"
 						onClick={cycleMenuCallback}
 						variants={animation.links}
@@ -127,17 +122,17 @@ export default function Menu({
 					<div className="flex flex-col gap-2">
 						<motion.a
 							className="text-xl font-bold xl:text-2xl"
-							href="tel:+32471492451"
+							href={contact.phone.href}
 							variants={animation.links}
 						>
-							+32 (0) 471 492 451
+							{contact.phone.text}
 						</motion.a>
 						<motion.a
 							className="text-xl font-bold xl:text-2xl"
-							href="mailto:info@newcode.be"
+							href={contact.email.href}
 							variants={animation.links}
 						>
-							info@newcode.be
+							{contact.email.text}
 						</motion.a>
 					</div>
 
@@ -145,27 +140,11 @@ export default function Menu({
 						className="text-md text-dark-500 flex flex-row gap-8 font-bold"
 						variants={animation.links}
 					>
-						<a
-							href="https://www.facebook.com/newcodedevelopment"
-							target="_blank"
-							rel="noreferrer"
-						>
-							Facebook_
-						</a>
-						<a
-							href="https://www.instagram.com/newcode.be/"
-							target="_blank"
-							rel="noreferrer"
-						>
-							Instagram_
-						</a>
-						<a
-							href="https://www.linkedin.com/company/newcode-development"
-							target="_blank"
-							rel="noreferrer"
-						>
-							Linkedin_
-						</a>
+						{socials.map(({ name, url }, index) => (
+							<a key={index} href={url} target="_blank" rel="noreferrer">
+								{name}_
+							</a>
+						))}
 					</motion.div>
 				</div>
 			</motion.nav>

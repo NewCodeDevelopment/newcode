@@ -13,7 +13,15 @@
             "link": "Bekijk onze services"
         }
     },
+    "work": {
+        "landing": {
+            "title": "Life made easier"
+        }
+    },
     "services": {
+        "landing": {
+            "title": "Services"
+        },
         "approach": {
             "title": "Aanpak",
             "items": [
@@ -93,21 +101,8 @@
             "title": "Tools"
         }
     },
-    "testimonials": [
-        {
-            "body": "1Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-            "name": "John Doe",
-            "company": "Donvil"
-        },
-        {
-            "body": "1Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-            "name": "John Doe",
-            "company": "KAPMES"
-        },
-        {
-            "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-            "name": "John Doe",
-            "company": "Momento"
-        }
-    ]
+    "case": {
+        "title": "Case Study",
+        "link": "See case study"
+    }
 }

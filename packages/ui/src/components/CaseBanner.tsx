@@ -3,15 +3,9 @@ import Image from "next/image";
 import { Heading, Paragraph, ArrowLink, Section } from "..";
 import classNames from "classnames";
 import { useInView } from "react-intersection-observer";
-import {
-	motion,
-	HTMLMotionProps,
-	AnimatePresence,
-	useScroll,
-	MotionValue,
-	useTransform,
-} from "framer-motion";
+import { motion, HTMLMotionProps } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "next-i18next";
 
 interface Props extends HTMLMotionProps<"section"> {
 	case: Case;
@@ -22,10 +16,12 @@ export default function CaseBanner({
 	className,
 	...props
 }: Props) {
+	const { t } = useTranslation("pages", { keyPrefix: "case" });
+
 	const previousScroll = useRef<number>(0);
 	const { width, height } = useWindow();
 
-	const { inView, ref, entry } = useInView({
+	const { inView, ref } = useInView({
 		threshold: 0.1,
 	});
 
@@ -139,10 +135,10 @@ export default function CaseBanner({
 			})}
 
 			<motion.div className="z-10 flex flex-col gap-4 self-end" style={{ y }}>
-				<Heading type="h3">Case Study_</Heading>
+				<Heading type="h3">{t("title")}_</Heading>
 				<Heading type="h2">{title + "_"}</Heading>
 				<Paragraph size="small">{description.short}</Paragraph>
-				<ArrowLink description="See case study" href={"/work/case/" + path} />
+				<ArrowLink description={t("link")} href={"/work/case/" + path} />
 			</motion.div>
 		</Section>
 	);

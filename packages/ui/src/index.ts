@@ -40,6 +40,7 @@ export * from "./config/colors";
 export * from "./config/button";
 export * from "./config/paths";
 export * from "./config/typography";
+export * from "./config/contact";
 /**
  *
  *

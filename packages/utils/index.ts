@@ -4,10 +4,11 @@ export * from "./src/const";
 
     Hooks
 */
-export { useScroll } from "./src/hooks/scroll";
-export { useLocalStorage } from "./src/hooks/localStorage";
-export { useParams } from "./src/hooks/params";
-export { useWindow } from "./src/hooks/window";
+export * from "./src/hooks/scroll";
+export * from "./src/hooks/localStorage";
+export * from "./src/hooks/params";
+export * from "./src/hooks/window";
+export * from "./src/hooks/cases";
 /*
 
 

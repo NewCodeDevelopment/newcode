@@ -3,9 +3,7 @@ import { ReactElement } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import { promises as fs } from "fs";
-import path from "path";
-import { Case } from "utils";
+import { useCases } from "utils";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Landing = dynamic(() => import("ui").then((mod) => mod.Landing), {
@@ -13,7 +11,6 @@ const Landing = dynamic(() => import("ui").then((mod) => mod.Landing), {
 });
 const HyperLink = dynamic(() => import("ui").then((mod) => mod.HyperLink));
 const Heading = dynamic(() => import("ui").then((mod) => mod.Heading));
-const Paragraph = dynamic(() => import("ui").then((mod) => mod.Paragraph));
 const CaseBanner = dynamic(() => import("ui").then((mod) => mod.CaseBanner), {
     ssr: false,
 });
@@ -27,12 +24,10 @@ const DescriptionSection = dynamic(() =>
     import("ui").then((mod) => mod.DescriptionSection),
 );
 
-interface Props {
-    cases: Case[];
-}
-
-export default function Home({ cases }: Props) {
+export default function Home() {
     const { t } = useTranslation("pages", { keyPrefix: "home" });
+
+    const cases = useCases();
 
     return (
         <>
@@ -104,27 +99,14 @@ Home.getLayout = function getLayout(page: ReactElement) {
 };
 
 export async function getStaticProps({ locale }: Params) {
-    const directory = path.join(process.cwd(), "public/data/cases");
-    const filenames = await fs.readdir(directory);
-
-    const data = await Promise.all(
-        filenames.map(async (filename) => {
-            return {
-                ...JSON.parse(
-                    await fs.readFile(path.join(directory, filename), "utf8"),
-                ),
-                path: filename.split(".")[0],
-            };
-        }),
-    );
-
     return {
         props: {
             ...(await serverSideTranslations(locale || "nl", [
                 "common",
                 "pages",
+                "services",
+                "cases",
             ])),
-            cases: data,
         },
     };
 }

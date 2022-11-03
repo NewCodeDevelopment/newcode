@@ -1,17 +1,18 @@
-import classNames from "classnames";
 import { useTranslation } from "next-i18next";
-import { HTMLAttributes } from "react";
-import Section from "../components/Section";
-import Heading from "../typography/Heading";
-import Paragraph from "../typography/Paragraph";
 import { motion } from "framer-motion";
-import ArrowCircleLink from "../actions/ArrowCircleLink";
 import Image from "next/image";
+import {
+	useContactInformation,
+	Paragraph,
+	Heading,
+	Section,
+	ArrowCircleLink,
+} from "..";
 
-interface Props extends HTMLAttributes<HTMLElement> {}
+export default function Footer() {
+	const { t } = useTranslation("common", { keyPrefix: "footer" });
 
-export default function Footer({ className, ...props }: Props) {
-	const { t } = useTranslation("common");
+	const { contact, socials } = useContactInformation();
 
 	return (
 		<Section
@@ -36,12 +37,10 @@ export default function Footer({ className, ...props }: Props) {
 				*/}
 				<div className="flex flex-col gap-6 lg:gap-12 lg:self-center">
 					<Heading type="h2" color="light" maxCharacters={10}>
-						Let’s get this code going_
+						{t("title")}_
 					</Heading>
 
-					<Paragraph maxCharacters={25}>
-						Got an exciting project to work on or just want to say hello ?
-					</Paragraph>
+					<Paragraph maxCharacters={25}>{t("description")}</Paragraph>
 				</div>
 
 				{/* 
@@ -53,38 +52,22 @@ export default function Footer({ className, ...props }: Props) {
             */}
 				<div className="text-light-500 flex flex-col gap-6 lg:place-self-end lg:self-center">
 					<ArrowCircleLink
-						description="5 steps to connect"
+						description={t("connect")}
 						path="/connect/form"
 						bgColor="red"
 					/>
 
 					<div className="flex flex-col gap-2 text-2xl font-bold lg:text-3xl xl:text-4xl">
-						<motion.a href="tel:+32471492451">+32 (0) 471 492 451</motion.a>
-						<motion.a href="mailto:info@newcode.be">info@newcode.be</motion.a>
+						<motion.a href={contact.phone.href}>{contact.phone.text}</motion.a>
+						<motion.a href={contact.email.href}>{contact.email.text}</motion.a>
 					</div>
 
 					<motion.div className="text-md flex flex-row gap-8 font-bold text-red-500 lg:text-lg xl:text-xl">
-						<a
-							href="https://www.facebook.com/newcodedevelopment"
-							target="_blank"
-							rel="noreferrer"
-						>
-							Facebook_
-						</a>
-						<a
-							href="https://www.instagram.com/newcode.be/"
-							target="_blank"
-							rel="noreferrer"
-						>
-							Instagram_
-						</a>
-						<a
-							href="https://www.linkedin.com/company/newcode-development"
-							target="_blank"
-							rel="noreferrer"
-						>
-							Linkedin_
-						</a>
+						{socials.map(({ name, url }, index) => (
+							<a key={index} href={url} target="_blank" rel="noreferrer">
+								{name}_
+							</a>
+						))}
 					</motion.div>
 				</div>
 				{/* 

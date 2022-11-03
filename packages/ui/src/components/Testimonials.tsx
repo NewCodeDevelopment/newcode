@@ -14,11 +14,9 @@ export type Testimonial = {
 interface Props {}
 
 export default function Testimonials({}: Props) {
-	const { t } = useTranslation("pages");
+	const { t } = useTranslation("testimonials");
 
-	const testimonials = t("testimonials", {
-		returnObjects: true,
-	}) as Testimonial[];
+	const testimonials = t("items", { returnObjects: true }) as Testimonial[];
 
 	const [ref, inView] = useInView();
 
@@ -82,7 +80,7 @@ export default function Testimonials({}: Props) {
 				}}
 			>
 				<Heading type="h3" color="light">
-					Testimonials_
+					{t("title")}_
 				</Heading>
 
 				<AnimatePresence mode="wait">

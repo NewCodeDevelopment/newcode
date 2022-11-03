@@ -1,6 +1,12 @@
+import { useTranslation } from "next-i18next";
 import { useState } from "react";
 import Heading from "../typography/Heading";
 import ServiceCard from "./ServiceCard";
+
+type ServiceItem = {
+	title: string;
+	description: string;
+};
 
 interface Props {
 	theme: "light" | "dark";
@@ -9,14 +15,56 @@ interface Props {
 export default function ServicesSection({ theme }: Props) {
 	const [open, setOpen] = useState<string>("");
 
+	const { t } = useTranslation("services");
+
+	const newItems = t("new.items", { returnObjects: true }) as ServiceItem[];
+	const existingItems = t("existing.items", {
+		returnObjects: true,
+	}) as ServiceItem[];
+
 	return (
 		<div className="grid grid-cols-1 gap-y-12 lg:grid-cols-2 lg:gap-x-20">
 			<div className="flex flex-col gap-4 lg:grow">
 				<Heading type="h4" color="red">
-					NewCode_
+					{t("new.title")}_
 				</Heading>
 
-				<ServiceCard
+				{newItems.map((item, index) => (
+					<ServiceCard
+						key={index}
+						id={index.toString()}
+						title={item.title}
+						description={item.description}
+						theme={theme}
+						open={open}
+						setOpen={setOpen}
+					/>
+				))}
+			</div>
+
+			<div className="flex flex-col gap-4 lg:grow">
+				<Heading type="h4" color="red">
+					{t("existing.title")}_
+				</Heading>
+
+				{existingItems.map((item, index) => (
+					<ServiceCard
+						key={index}
+						id={(index + newItems.length).toString()}
+						title={item.title}
+						description={item.description}
+						theme={theme}
+						open={open}
+						setOpen={setOpen}
+					/>
+				))}
+			</div>
+		</div>
+	);
+}
+
+{
+	/* <ServiceCard
 					title="Web & App"
 					description="Wil je graag je onderneming automatiseren of een interactief platform
 					maken dat kan allemaal met behulp van webapplicaties. Zo kan je overal
@@ -49,14 +97,11 @@ export default function ServicesSection({ theme }: Props) {
 					open={open}
 					setOpen={setOpen}
 					theme={theme}
-				/>
-			</div>
+				/> */
+}
 
-			<div className="flex flex-col gap-4 lg:grow">
-				<Heading type="h4" color="red">
-					Existing Code_
-				</Heading>
-
+{
+	/* 
 				<ServiceCard
 					title="E-commerce"
 					description="Heb je een populair probleem dat veel terugkomt? Dan hebben we
@@ -77,8 +122,5 @@ export default function ServicesSection({ theme }: Props) {
 					open={open}
 					setOpen={setOpen}
 					theme={theme}
-				/>
-			</div>
-		</div>
-	);
+				/> */
 }

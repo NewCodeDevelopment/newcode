@@ -114,8 +114,8 @@ export default function About() {
             */}
             <DescriptionSection
                 bg="dark"
-                title="Our Vision"
-                description="Our vision is a world where we move everyone forward and create positive change. Facilitate, simplify and optimize."
+                title={t("vision.title")}
+                description={t("vision.description")}
             />
             {/* 
                 *
@@ -219,6 +219,7 @@ export async function getStaticProps({ locale }: Params) {
             ...(await serverSideTranslations(locale || "nl", [
                 "common",
                 "pages",
+                "testimonials",
             ])),
         },
     };
