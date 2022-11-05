@@ -26,6 +26,11 @@ export default function Menu({
 
 	const { socials, contact } = useContactInformation();
 
+	function currentRouteHandler(path: string) {
+		const currentPath = currentRoute.split("/").slice(0, 2).join("/");
+		return currentPath === path;
+	}
+
 	const animationConfiguration = {
 		duration: 0.7,
 		ease: [1, 0.165, 0.165, 1],
@@ -94,7 +99,7 @@ export default function Menu({
 							<motion.a
 								className={classnames(
 									"text-light-500 pb-2 text-4xl font-extrabold",
-									path === currentRoute && "text-dark-500"
+									currentRouteHandler(path) && "text-dark-500"
 								)}
 								variants={animation.links}
 							>

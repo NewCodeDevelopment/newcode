@@ -43,11 +43,14 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 		setOpen(!open);
 	};
 
+	function currentRouteHandler(path: string) {
+		const currentPath = router.route.split("/").slice(0, 2).join("/");
+		return currentPath === path;
+	}
+
 	useEffect(() => {
 		setCurrentRoute(router.pathname);
 	}, [router.pathname]);
-
-	console.log("bgColor", bgColor);
 
 	return (
 		<header
@@ -153,13 +156,13 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 									bgColor === "dark" && "navigation-link-red text-light-500",
 									bgColor === "red" && "navigation-link-dark text-dark-500",
 
-									currentRoute == path &&
+									currentRouteHandler(path) &&
 										bgColor === "light" &&
 										"navigation-currentRoute-red text-red-500",
-									currentRoute == path &&
+									currentRouteHandler(path) &&
 										bgColor === "dark" &&
 										"navigation-currentRoute-red text-red-500",
-									currentRoute == path &&
+									currentRouteHandler(path) &&
 										bgColor === "red" &&
 										"navigation-currentRoute-dark text-light-500"
 								)}

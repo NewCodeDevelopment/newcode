@@ -8,13 +8,15 @@ const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Heading = dynamic(() => import("ui").then((mod) => mod.Heading));
 const Section = dynamic(() => import("ui").then((mod) => mod.Section));
 const GridSection = dynamic(() => import("ui").then((mod) => mod.GridSection));
-const ServicesSection = dynamic(() =>
-    import("ui").then((mod) => mod.ServicesSection),
-);
-const Testimonials = dynamic(() =>
-    import("ui").then((mod) => mod.Testimonials),
-);
-
+const ServicesSection = dynamic(() => import("ui").then((mod) => mod.ServicesSection));
+const Testimonials = dynamic(() => import("ui").then((mod) => mod.Testimonials));
+/**
+ *
+ *
+ *
+ *
+ *
+ */
 export default function ServicesPage() {
     const { t } = useTranslation("pages", { keyPrefix: "services" });
 
@@ -69,11 +71,23 @@ export default function ServicesPage() {
         </>
     );
 }
-
+/**
+ *
+ *
+ *
+ *
+ *
+ */
 ServicesPage.getLayout = function getLayout(page: ReactElement) {
     return <MainLayout>{page}</MainLayout>;
 };
-
+/**
+ *
+ *
+ *
+ *
+ *
+ */
 export async function getStaticProps({ locale }: Params) {
     return {
         props: {

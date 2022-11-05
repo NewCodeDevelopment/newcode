@@ -19,6 +19,8 @@ export interface MainLayoutProps extends HTMLAttributes<HTMLElement> {
 	navigation?: boolean;
 	footer?: boolean;
 	pathsHook?: () => usePathHook;
+	scroll?: boolean;
+	scrollIndicator?: boolean;
 }
 
 export default function MainLayout({
@@ -32,11 +34,15 @@ export default function MainLayout({
 	navigation = true,
 	footer = true,
 	pathsHook = usePaths,
+	scroll = true,
+	scrollIndicator = true,
 	className,
 	...props
 }: MainLayoutProps) {
 	const mainRef = useRef<HTMLElement>(null);
-	useScroll(mainRef);
+	{
+		scroll && useScroll(mainRef);
+	}
 
 	return (
 		<>
@@ -47,7 +53,7 @@ export default function MainLayout({
 			{navigation && <Navigation pathsHook={pathsHook} />}
 
 			<Popup />
-			<SectionIndicator />
+			{scrollIndicator && <SectionIndicator />}
 
 			<main
 				{...props}

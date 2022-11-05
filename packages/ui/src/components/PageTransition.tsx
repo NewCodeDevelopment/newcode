@@ -10,7 +10,6 @@ export default function PageTransition() {
 
 	useEffect(() => {
 		function handleRouteChangeStart() {
-			console.log("routeChangeStart");
 			setTransition(true);
 		}
 
@@ -25,7 +24,7 @@ export default function PageTransition() {
 		<>
 			{transition && (
 				<motion.div
-					className="hidden lg:block absolute z-50 bg-red-500 left-0 top-0 bottom-0 lg:bg-opacity-20 lg:backdrop-filter lg:backdrop-blur-xl"
+					className="absolute left-0 top-0 bottom-0 z-50 hidden bg-red-500 lg:block lg:bg-opacity-20 lg:backdrop-blur-xl lg:backdrop-filter"
 					animate={{
 						width: ["0%", "100%", "100%", "0%"],
 						left: ["0%", "0%", "100%", "100%"],

@@ -3,12 +3,11 @@ import { ReactElement, useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import { useCase, useSiblingCases } from "utils";
+import { checkImage, useCase, useSiblingCases } from "utils";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import { useRouter } from "next/router";
 import casesFile from "@/public/locales/nl/cases.json";
-// import { Landing } from "ui";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Heading = dynamic(() => import("ui").then((mod) => mod.Heading));
@@ -17,7 +16,13 @@ const Paragraph = dynamic(() => import("ui").then((mod) => mod.Paragraph));
 const Scroll = dynamic(() => import("ui").then((mod) => mod.Scroll));
 const Section = dynamic(() => import("ui").then((mod) => mod.Section));
 const Arrow = dynamic(() => import("ui").then((mod) => mod.Arrow));
-
+/**
+ *
+ *
+ *
+ *
+ *
+ */
 interface Props {
     handle: string;
 }
@@ -31,17 +36,8 @@ export default function CasePage({ handle }: Props) {
     //     threshold: 1,
     // });
 
-    const {
-        title,
-        description,
-        client,
-        sector,
-        service,
-        type,
-        year,
-        productUrl,
-        images,
-    } = useCase(handle);
+    const { title, description, client, sector, service, type, year, productUrl, images } =
+        useCase(handle);
 
     const { left, right } = useSiblingCases(handle);
 
@@ -49,7 +45,7 @@ export default function CasePage({ handle }: Props) {
     //     if (inView) {
     //         router.prefetch("/work");
     //         router.push("/work", undefined, { shallow: true, scroll: false });
-    //         console.log("in view");
+    //
     //     }
     // }, [inView]);
 
@@ -68,11 +64,7 @@ export default function CasePage({ handle }: Props) {
                             {title}
                             <span className="text-red-500">_</span>
                         </Heading>
-                        <Paragraph
-                            size="large"
-                            weight="bold"
-                            maxCharacters={30}
-                        >
+                        <Paragraph size="large" weight="bold" maxCharacters={30}>
                             {description.main}
                         </Paragraph>
                     </div>
@@ -139,17 +131,10 @@ export default function CasePage({ handle }: Props) {
                     description: description.solution,
                 },
             ].map(({ title, description }, index) => (
-                <Section
-                    bg="dark"
-                    align="center"
-                    key={index}
-                    py={false}
-                    px={false}
-                >
+                <Section bg="dark" align="center" key={index} py={false} px={false}>
                     <div className="flex h-full w-full flex-col">
                         <Image
-                            src={images[index].url}
-                            alt={images[index].alt}
+                            {...checkImage(images[index])}
                             width={100}
                             height={100}
                             layout="responsive"
@@ -178,16 +163,14 @@ export default function CasePage({ handle }: Props) {
             <Section bg="dark" py={false} px={false}>
                 <div className="grid h-full w-full grid-cols-1 grid-rows-3 gap-y-12 gap-x-12 pt-8 lg:grid-cols-2 lg:grid-rows-2 lg:p-0">
                     <Image
-                        src={images[2].url}
-                        alt={images[2].alt}
+                        {...checkImage(images[2])}
                         width={100}
                         height={100}
                         objectFit="cover"
                         layout="responsive"
                     />
                     <Image
-                        src={images[3].url}
-                        alt={images[3].alt}
+                        {...checkImage(images[3])}
                         width={100}
                         height={100}
                         objectFit="cover"
@@ -195,12 +178,7 @@ export default function CasePage({ handle }: Props) {
                     />
 
                     <span className="relative lg:col-span-2">
-                        <Image
-                            src={images[4].url}
-                            alt={images[4].alt}
-                            objectFit="cover"
-                            layout="fill"
-                        />
+                        <Image {...checkImage(images[4])} objectFit="cover" layout="fill" />
                     </span>
                 </div>
             </Section>
@@ -215,7 +193,7 @@ export default function CasePage({ handle }: Props) {
                 bg="red"
                 align="center"
                 className="relative"
-                style={{ height: "100vh" }}
+                mobileScreen
                 // py={false}
                 // onScroll={() => router.push("/work")}
                 // onTouchMove={() => router.push("/work")}
@@ -230,10 +208,7 @@ export default function CasePage({ handle }: Props) {
                                 variant="text"
                                 shape="none"
                             >
-                                <Arrow
-                                    direction="right-to-left"
-                                    className="w-8 fill-light-500"
-                                />
+                                <Arrow direction="right-to-left" className="w-8 fill-light-500" />
                                 <Heading type="h4">{right.title}</Heading>
                             </HyperLink>
                         ) : (
@@ -247,10 +222,7 @@ export default function CasePage({ handle }: Props) {
                                 shape="none"
                             >
                                 <Heading type="h4">{left.title}</Heading>
-                                <Arrow
-                                    direction="left-to-right"
-                                    className="w-8 fill-light-500"
-                                />
+                                <Arrow direction="left-to-right" className="w-8 fill-light-500" />
                             </HyperLink>
                         ) : (
                             <div>&nbsp;</div>
@@ -260,12 +232,7 @@ export default function CasePage({ handle }: Props) {
                     <div className="flex  flex-col items-center justify-center gap-12 text-center">
                         <Heading type="h2">{t("connect.title")}_</Heading>
 
-                        <HyperLink
-                            href="/connect"
-                            target="_blank"
-                            color="dark"
-                            size="large"
-                        >
+                        <HyperLink href="/connect" target="_blank" color="dark" size="large">
                             {t("connect.link")}
                         </HyperLink>
                     </div>
@@ -292,21 +259,29 @@ export default function CasePage({ handle }: Props) {
         </>
     );
 }
-
+/**
+ *
+ *
+ *
+ *
+ *
+ */
 CasePage.getLayout = function getLayout(page: ReactElement) {
     return <MainLayout footer={false}>{page}</MainLayout>;
 };
-
+/**
+ *
+ *
+ *
+ *
+ *
+ */
 export async function getStaticProps({ params, locale }: Params) {
     const { handle } = params;
 
     return {
         props: {
-            ...(await serverSideTranslations(locale || "nl", [
-                "common",
-                "pages",
-                "cases",
-            ])),
+            ...(await serverSideTranslations(locale || "nl", ["common", "pages", "cases"])),
             handle,
         },
     };

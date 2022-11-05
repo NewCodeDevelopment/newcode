@@ -6,13 +6,15 @@ import { useCases } from "utils";
 import { useTranslation } from "next-i18next";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
-const Landing = dynamic(() => import("ui").then((mod) => mod.Landing), {
-    ssr: false,
-});
-const CaseBanner = dynamic(() => import("ui").then((mod) => mod.CaseBanner), {
-    ssr: false,
-});
-
+const Landing = dynamic(() => import("ui").then((mod) => mod.Landing));
+const CaseBanner = dynamic(() => import("ui").then((mod) => mod.CaseBanner));
+/**
+ *
+ *
+ *
+ *
+ *
+ */
 export default function WorkPage() {
     const { t } = useTranslation("pages", { keyPrefix: "work" });
 
@@ -33,19 +35,27 @@ export default function WorkPage() {
         </>
     );
 }
-
+/**
+ *
+ *
+ *
+ *
+ *
+ */
 WorkPage.getLayout = function getLayout(page: ReactElement) {
     return <MainLayout>{page}</MainLayout>;
 };
-
+/**
+ *
+ *
+ *
+ *
+ *
+ */
 export async function getStaticProps({ locale }: Params) {
     return {
         props: {
-            ...(await serverSideTranslations(locale || "nl", [
-                "common",
-                "pages",
-                "cases",
-            ])),
+            ...(await serverSideTranslations(locale || "nl", ["common", "pages", "cases"])),
         },
     };
 }

@@ -10,29 +10,24 @@ const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Heading = dynamic(() => import("ui").then((mod) => mod.Heading));
 const GridSection = dynamic(() => import("ui").then((mod) => mod.GridSection));
 const Scroll = dynamic(() => import("ui").then((mod) => mod.Scroll));
-const Testimonials = dynamic(() =>
-    import("ui").then((mod) => mod.Testimonials),
-);
-const DescriptionSection = dynamic(() =>
-    import("ui").then((mod) => mod.DescriptionSection),
-);
-const Section = dynamic(() => import("ui").then((mod) => mod.Section), {
-    ssr: false,
-});
-
+const Testimonials = dynamic(() => import("ui").then((mod) => mod.Testimonials));
+const DescriptionSection = dynamic(() => import("ui").then((mod) => mod.DescriptionSection));
+const Section = dynamic(() => import("ui").then((mod) => mod.Section));
 const CSharpIcon = dynamic(() => import("ui").then((mod) => mod.CSharpIcon));
 const DockerIcon = dynamic(() => import("ui").then((mod) => mod.DockerIcon));
 const GraphQLIcon = dynamic(() => import("ui").then((mod) => mod.GraphQLIcon));
 const NextIcon = dynamic(() => import("ui").then((mod) => mod.NextIcon));
 const NodeIcon = dynamic(() => import("ui").then((mod) => mod.NodeIcon));
-const PostgresIcon = dynamic(() =>
-    import("ui").then((mod) => mod.PostgresIcon),
-);
+const PostgresIcon = dynamic(() => import("ui").then((mod) => mod.PostgresIcon));
 const ReactIcon = dynamic(() => import("ui").then((mod) => mod.ReactIcon));
-const TailwindLogo = dynamic(() =>
-    import("ui").then((mod) => mod.TailwindLogo),
-);
-
+const TailwindLogo = dynamic(() => import("ui").then((mod) => mod.TailwindLogo));
+/**
+ *
+ *
+ *
+ *
+ *
+ */
 type NatureItem = {
     title: string;
     values: string[];
@@ -53,12 +48,7 @@ export default function AboutPage() {
 				Landing
 				*
 			 */}
-            <Section
-                bg="dark"
-                align="center"
-                className="relative h-screen pb-52"
-                style={{ height: "100vh" }}
-            >
+            <Section bg="dark" align="center" className="relative h-screen pb-52" mobileScreen>
                 <Image
                     src="/images/about/landing.jpg"
                     alt="Landing"
@@ -190,9 +180,7 @@ export default function AboutPage() {
                                     },
                                 }}
                             >
-                                {
-                                    <icon.icon className="w-1/2 fill-red-500 stroke-dark-500" />
-                                }
+                                {<icon.icon className="w-1/2 fill-red-500 stroke-dark-500" />}
                             </motion.div>
                         ))}
                     </div>
@@ -208,19 +196,27 @@ export default function AboutPage() {
         </>
     );
 }
-
+/**
+ *
+ *
+ *
+ *
+ *
+ */
 AboutPage.getLayout = function getLayout(page: ReactElement) {
     return <MainLayout>{page}</MainLayout>;
 };
-
+/**
+ *
+ *
+ *
+ *
+ *
+ */
 export async function getStaticProps({ locale }: Params) {
     return {
         props: {
-            ...(await serverSideTranslations(locale || "nl", [
-                "common",
-                "pages",
-                "testimonials",
-            ])),
+            ...(await serverSideTranslations(locale || "nl", ["common", "pages", "testimonials"])),
         },
     };
 }

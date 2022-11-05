@@ -2,12 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "./font/index.css";
+@import "./colors.css";
+@import "./font";
 @import "./navigation.css";
 @import "./spacing.css";
 @import "./utility.css";
 @import "./animation.css";
 @import "./section.css";
+@import "./input.css";
 
 html {
 	@extend .no-scrollbar;

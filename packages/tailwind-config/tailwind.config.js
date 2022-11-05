@@ -8,38 +8,38 @@ module.exports = {
 		colors: {
 			transparent: "transparent",
 			red: {
-				300: "#ff7d5c",
-				400: "#ff5a36",
-				500: "#ff1800",
-				600: "#f10300",
-				700: "#da0000",
+				300: "rgb(var(--tailwind-color-red-300) / <alpha-value>)",
+				400: "rgb(var(--tailwind-color-red-400) / <alpha-value>)",
+				500: "rgb(var(--tailwind-color-red-500) / <alpha-value>)", // prima)ry
+				600: "rgb(var(--tailwind-color-red-600) / <alpha-value>)",
+				700: "rgb(var(--tailwind-color-red-700) / <alpha-value>)",
 			},
 			light: {
-				300: "#f9f9f9",
-				400: "#E4E4E4",
-				500: "#d8d8d8",
-				600: "#b4b4b4",
-				700: "#c8c8c8",
+				300: "rgb(var(--tailwind-color-light-300) / <alpha-value>)",
+				400: "rgb(var(--tailwind-color-light-400) / <alpha-value>)",
+				500: "rgb(var(--tailwind-color-light-500) / <alpha-value>)", // prima)ry
+				600: "rgb(var(--tailwind-color-light-600) / <alpha-value>)",
+				700: "rgb(var(--tailwind-color-light-700) / <alpha-value>)",
 			},
 			dark: {
-				300: "#373734",
-				400: "#5e565a",
-				500: "#262626",
-				600: "#151515",
-				700: "#0d0208",
+				300: "rgb(var(--tailwind-color-dark-300) / <alpha-value>)",
+				400: "rgb(var(--tailwind-color-dark-400) / <alpha-value>)",
+				500: "rgb(var(--tailwind-color-dark-500) / <alpha-value>)", // prima)ry
+				600: "rgb(var(--tailwind-color-dark-600) / <alpha-value>)",
+				700: "rgb(var(--tailwind-color-dark-700) / <alpha-value>)",
 			},
 			black: "#000",
 			white: "#fff",
 		},
 		fontFamily: {
-			sans: ["Gilroy", "sans-serif"],
+			sans: "var(--font-family)",
 		},
-		fontWeight:{
+		fontWeight: {
 			light: 300,
 			normal: 400,
 			medium: 500,
 			bold: 700,
 			extrabold: 800,
-		}
+		},
 	},
 };

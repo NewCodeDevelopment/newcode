@@ -15,6 +15,7 @@ interface Props extends HTMLMotionProps<"section"> {
 	bg?: Color;
 	align?: "left" | "center" | "right";
 	hiddenSection?: boolean;
+	mobileScreen?: boolean;
 }
 
 const Section = forwardRef<HTMLElement, Props>(
@@ -32,6 +33,7 @@ const Section = forwardRef<HTMLElement, Props>(
 			className,
 			style,
 			hiddenSection = false,
+			mobileScreen = false,
 			...props
 		},
 		ref
@@ -81,7 +83,12 @@ const Section = forwardRef<HTMLElement, Props>(
 					className
 				)}
 				style={{
-					height: width > DESKTOP_MIN_WIDTH ? height : "auto",
+					height:
+						width > DESKTOP_MIN_WIDTH
+							? height
+							: mobileScreen
+							? "100vh"
+							: "auto",
 					...style,
 				}}
 			>

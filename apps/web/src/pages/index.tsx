@@ -6,24 +6,20 @@ import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { useCases } from "utils";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
-const Landing = dynamic(() => import("ui").then((mod) => mod.Landing), {
-    ssr: false,
-});
+const Landing = dynamic(() => import("ui").then((mod) => mod.Landing));
 const HyperLink = dynamic(() => import("ui").then((mod) => mod.HyperLink));
 const Heading = dynamic(() => import("ui").then((mod) => mod.Heading));
-const CaseBanner = dynamic(() => import("ui").then((mod) => mod.CaseBanner), {
-    ssr: false,
-});
-const ServicesSection = dynamic(() =>
-    import("ui").then((mod) => mod.ServicesSection),
-);
-const Section = dynamic(() => import("ui").then((mod) => mod.Section), {
-    ssr: false,
-});
-const DescriptionSection = dynamic(() =>
-    import("ui").then((mod) => mod.DescriptionSection),
-);
-
+const CaseBanner = dynamic(() => import("ui").then((mod) => mod.CaseBanner));
+const Section = dynamic(() => import("ui").then((mod) => mod.Section));
+const ServicesSection = dynamic(() => import("ui").then((mod) => mod.ServicesSection));
+const DescriptionSection = dynamic(() => import("ui").then((mod) => mod.DescriptionSection));
+/**
+ *
+ *
+ *
+ *
+ *
+ */
 export default function HomePage() {
     const { t } = useTranslation("pages", { keyPrefix: "home" });
 
@@ -93,11 +89,23 @@ export default function HomePage() {
         </>
     );
 }
-
+/**
+ *
+ *
+ *
+ *
+ *
+ */
 HomePage.getLayout = function getLayout(page: ReactElement) {
     return <MainLayout>{page}</MainLayout>;
 };
-
+/**
+ *
+ *
+ *
+ *
+ *
+ */
 export async function getStaticProps({ locale }: Params) {
     return {
         props: {

@@ -46,8 +46,12 @@ export * from "./config/contact";
  *
  * Layout
  */
-export type { MainLayoutProps } from "./layout/MainLayout";
-export { default as MainLayout } from "./layout/MainLayout";
+
+export {
+	type MainLayoutProps,
+	default as MainLayout,
+} from "./layout/MainLayout";
+export { default as Root } from "./layout/Root";
 
 /**
  *
@@ -59,10 +63,18 @@ export { default as Paragraph } from "./typography/Paragraph";
 /**
  *
  *
+ *
+ * Footer
+ */
+export { default as Footer } from "./footer/Footer";
+/**
+ *
+ *
  * Icons
  */
 export { default as LandingLogo } from "./icons/brand/LandingLogo";
 export { default as Angle } from "./icons/actions/Angle";
+export { default as HomeIcon } from "./icons/actions/HomeIcon";
 export { default as Arrow } from "./icons/actions/Arrow";
 export { default as CloseIcon } from "./icons/actions/CloseIcon";
 export { default as PlaneIcon } from "./icons/actions/PlaneIcon";
@@ -82,7 +94,7 @@ export { default as TailwindLogo } from "./icons/tools/TailwindLogo";
 /**
  *
  *
- *
- * Footer
+ * Inputs
  */
-export { default as Footer } from "./footer/Footer";
+export { default as Input } from "./inputs/Input";
+export { default as FormInput } from "./inputs/FormInput";

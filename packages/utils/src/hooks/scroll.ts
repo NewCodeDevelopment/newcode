@@ -43,238 +43,260 @@ export function useScroll(mainRef: RefObject<HTMLElement>) {
 	const [bgColor, setBgColor] = useRecoilState(bgColorState);
 	const [scroll, setScroll] = useRecoilState(scrollState);
 
-	/**
-	 *
-	 *
-	 * Scroll Indicator Length
-	 *
-	 */
-	const scrollIndicatorLength = useCallback(() => {
-		const allChildren = [...((mainRef.current?.childNodes as any) ?? [])];
-		const children = allChildren.filter(
-			(child: HTMLElement) => child.getAttribute("data-visibility") !== "hidden"
-		);
-		return children.length;
-	}, [mainRef]);
-	/**
-	 *
-	 *
-	 *
-	 *  SCROLLING
-	 *
-	 *
-	 */
-	const scrolling = useCallback(async (to: string | number) => {
-		await gsap.to(window, {
-			duration: 0.7,
-			scrollTo: to,
-			ease: "power1.out",
-		});
-	}, []);
-	/**
-	 *
-	 *
-	 *
-	 *  HANDLE SCROLL
-	 *
-	 *
-	 */
-	const handleScroll = useCallback(
-		async (
-			mainRef: RefObject<HTMLElement>,
-			currentIndex: number,
-			setBgColor: (color: INavigationState) => void,
-			setScroll: (scroll: IScrollState) => void
-		) => {
-			const { innerHeight } = window;
-			/*
-		
-				Children of the mainRef
-			*/
-			const main = mainRef.current;
-			const children = [...((main?.childNodes as any) ?? [])];
-			/*
-		
-				Check if the current index is valid
-			
-				*/
-			if (!children[currentIndex]) {
-				console.log("NO MORE CHILDREN");
-				return;
-			}
-			/*
-			
-				CurrenChild
-		
-			*/
-			const currentChild = children[currentIndex];
-			/*
-		
-				Adding classes
-		
-			*/
-			children.forEach((child) => child.classList.add(SCROLLING_CLASS));
+	const functions = {
+		setInitial: useCallback(async () => {
+			await new Promise((resolve) => setTimeout(resolve, 100));
 
-			await new Promise((r) => setTimeout(r, 200));
-			/*
-		
-				Scrolling
-		
-			*/
-			await scrolling(currentIndex * innerHeight);
-			/*
-		
-				Changing nav color
-		
-			*/
-			setBgColor(currentChild.getAttribute("data-color") ?? "");
+			functions.scrolling(0);
+			currentIndexRef.current = 0;
+
 			setScroll({
-				currentIndex,
-				length: scrollIndicatorLength(),
+				currentIndex: currentIndexRef.current,
+				length: functions.scrollIndicatorLength(),
 				caller: "event",
 			});
-			/*
-		
-				Removing classes
-		
-			*/
-			await new Promise((r) => setTimeout(r, 200));
 
-			children.forEach((child) => {
-				child.classList.remove(SCROLLING_CLASS);
+			setBgColor("dark");
+		}, []),
+		/**
+		 *
+		 *
+		 * Scroll Indicator Length
+		 *
+		 */
+		scrollIndicatorLength: useCallback(() => {
+			const allChildren = [...((mainRef.current?.childNodes as any) ?? [])];
+			const children = allChildren.filter(
+				(child: HTMLElement) =>
+					child.getAttribute("data-visibility") !== "hidden"
+			);
+			return children.length;
+		}, [mainRef]),
+		/**
+		 *
+		 *
+		 *
+		 *  SCROLLING
+		 *
+		 *
+		 */
+		scrolling: useCallback(async (to: string | number) => {
+			await gsap.to(window, {
+				duration: 0.7,
+				scrollTo: to,
+				ease: "power1.out",
 			});
-		},
-		[scrolling]
-	);
+		}, []),
+		/**
+		 *
+		 *
+		 *
+		 *  HANDLE SCROLL
+		 *
+		 *
+		 */
+		handleScroll: useCallback(
+			async (
+				mainRef: RefObject<HTMLElement>,
+				currentIndex: number,
+				setBgColor: (color: INavigationState) => void,
+				setScroll: (scroll: IScrollState) => void
+			) => {
+				const { innerHeight } = window;
+				/*
+			
+					Children of the mainRef
+				*/
+				const main = mainRef.current;
+				const children = [...((main?.childNodes as any) ?? [])];
+				/*
+			
+					Check if the current index is valid
+				
+					*/
+				if (!children[currentIndex]) {
+					console.log("NO MORE CHILDREN");
+					return;
+				}
+				/*
+				
+					CurrenChild
+			
+				*/
+				const currentChild = children[currentIndex];
+				/*
+			
+					Adding classes
+			
+				*/
+				children.forEach((child) => child.classList.add(SCROLLING_CLASS));
 
-	/**
-	 *
-	 * HANDLE KEY
-	 *
-	 */
-	const handleKey = useCallback(async (event: KeyboardEvent) => {
-		if (window.innerWidth <= MIN_WIDTH) return;
+				await new Promise((r) => setTimeout(r, 200));
+				/*
+			
+					Scrolling
+			
+				*/
+				await functions.scrolling(currentIndex * innerHeight);
+				/*
+			
+					Changing nav color
+			
+				*/
+				setBgColor(currentChild.getAttribute("data-color") ?? "");
+				setScroll({
+					currentIndex,
+					length: functions.scrollIndicatorLength(),
+					caller: "event",
+				});
+				/*
+			
+					Removing classes
+			
+				*/
+				await new Promise((r) => setTimeout(r, 200));
 
-		window.removeEventListener("keydown", handleKey);
+				children.forEach((child) => {
+					child.classList.remove(SCROLLING_CLASS);
+				});
+			},
+			[]
+		),
+		/**
+		 *
+		 *
+		 * HANDLE KEY
+		 *
+		 *
+		 */
+		handleKey: useCallback(async (event: KeyboardEvent) => {
+			if (window.innerWidth <= MIN_WIDTH) return;
 
-		const { key } = event;
+			window.removeEventListener("keydown", functions.handleKey);
 
-		if (key !== "ArrowDown" && key !== "ArrowUp") return;
+			const { key } = event;
 
-		let currentIndex = currentIndexRef.current;
+			if (key !== "ArrowDown" && key !== "ArrowUp") return;
 
-		if (key === "ArrowDown") currentIndex++;
-		if (key === "ArrowUp") currentIndex--;
+			let currentIndex = currentIndexRef.current;
 
-		currentIndexRef.current = currentIndex;
+			if (key === "ArrowDown") currentIndex++;
+			if (key === "ArrowUp") currentIndex--;
 
-		await handleScroll(mainRef, currentIndex, setBgColor, setScroll);
+			currentIndexRef.current = currentIndex;
 
-		window.addEventListener("keydown", handleKey);
-	}, []);
-	/**
-	 *
-	 * HANDLE WHEEL
-	 *
-	 */
-	const handleWheel = useCallback(async (event: WheelEvent) => {
-		if (window.innerWidth <= MIN_WIDTH) return;
+			await functions.handleScroll(
+				mainRef,
+				currentIndex,
+				setBgColor,
+				setScroll
+			);
 
-		window.removeEventListener("wheel", handleWheel);
+			window.addEventListener("keydown", functions.handleKey);
+		}, []),
+		/**
+		 *
+		 *
+		 * HANDLE WHEEL
+		 *
+		 *
+		 */
+		handleWheel: useCallback(async (event: WheelEvent) => {
+			if (window.innerWidth <= MIN_WIDTH) return;
 
-		const { deltaY } = event;
+			window.removeEventListener("wheel", functions.handleWheel);
 
-		if (deltaY === 0 || deltaY === -0) {
+			const { deltaY } = event;
+
+			if (deltaY === 0 || deltaY === -0) {
+				await new Promise((r) => setTimeout(r, 100));
+				window.addEventListener("wheel", functions.handleWheel);
+				return;
+			}
+
+			const scrollAmount = Math.round(deltaY) * 10;
+
+			let currentIndex = currentIndexRef.current;
+
+			if (scrollAmount >= 0) currentIndex++;
+			if (scrollAmount <= 0) currentIndex--;
+
+			currentIndexRef.current = currentIndex;
+
 			await new Promise((r) => setTimeout(r, 100));
-			window.addEventListener("wheel", handleWheel);
-			return;
-		}
 
-		const scrollAmount = Math.round(deltaY) * 10;
+			await functions.handleScroll(
+				mainRef,
+				currentIndex,
+				setBgColor,
+				setScroll
+			);
 
-		let currentIndex = currentIndexRef.current;
+			await new Promise((r) => setTimeout(r, 100));
 
-		if (scrollAmount >= 0) currentIndex++;
-		if (scrollAmount <= 0) currentIndex--;
+			window.addEventListener("wheel", functions.handleWheel);
+		}, []),
+		/**
+		 *
+		 *
+		 * HANDLE Touch Start
+		 *
+		 *
+		 */
+		handleTouchStart: useCallback(async (event: TouchEvent) => {
+			if (window.innerWidth <= MIN_WIDTH) return;
 
-		currentIndexRef.current = currentIndex;
+			window.removeEventListener("touchstart", functions.handleTouchStart);
 
-		await new Promise((r) => setTimeout(r, 100));
+			touchStartRef.current = event.touches[0].clientY;
 
-		await handleScroll(mainRef, currentIndex, setBgColor, setScroll);
+			window.addEventListener("touchstart", functions.handleTouchStart);
+		}, []),
+		/**
+		 *
+		 *
+		 * HANDLE Touch Start
+		 *
+		 *
+		 */
+		handleTouchMove: useCallback(async (event: TouchEvent) => {
+			if (window.innerWidth <= MIN_WIDTH) return;
 
-		await new Promise((r) => setTimeout(r, 100));
+			window.removeEventListener("touchmove", functions.handleTouchMove);
 
-		window.addEventListener("wheel", handleWheel);
-	}, []);
+			const { clientY } = event.touches[0];
+			const direction = touchStartRef.current - clientY > 0;
+
+			let currentIndex = currentIndexRef.current;
+
+			if (direction) currentIndex++;
+			if (!direction) currentIndex--;
+
+			currentIndexRef.current = currentIndex;
+
+			await new Promise((r) => setTimeout(r, 100));
+
+			await functions.handleScroll(
+				mainRef,
+				currentIndex,
+				setBgColor,
+				setScroll
+			);
+
+			await new Promise((r) => setTimeout(r, 100));
+
+			window.addEventListener("touchmove", functions.handleTouchMove);
+		}, []),
+	};
 
 	/**
 	 *
-	 * HANDLE Touch
-	 *
-	 */
-	const handleTouchStart = useCallback(async (event: TouchEvent) => {
-		if (window.innerWidth <= MIN_WIDTH) return;
-
-		window.removeEventListener("touchstart", handleTouchStart);
-
-		touchStartRef.current = event.touches[0].clientY;
-
-		window.addEventListener("touchstart", handleTouchStart);
-	}, []);
-
-	const handleTouchMove = useCallback(async (event: TouchEvent) => {
-		if (window.innerWidth <= MIN_WIDTH) return;
-
-		window.removeEventListener("touchmove", handleTouchMove);
-
-		const { clientY } = event.touches[0];
-		const direction = touchStartRef.current - clientY > 0;
-
-		let currentIndex = currentIndexRef.current;
-
-		if (direction) currentIndex++;
-		if (!direction) currentIndex--;
-
-		currentIndexRef.current = currentIndex;
-
-		await new Promise((r) => setTimeout(r, 100));
-
-		await handleScroll(mainRef, currentIndex, setBgColor, setScroll);
-
-		await new Promise((r) => setTimeout(r, 100));
-
-		window.addEventListener("touchmove", handleTouchMove);
-	}, []);
-
-	/**
-	 *
-	 *
-	 *
-	 *  GLOBAL REGISTER
-	 *
+	 * Setting GSAP ScrollTo Plugin
 	 *
 	 */
 	useEffect(() => {
-		/**
-		 *
-		 * Setting GSAP ScrollTo Plugin
-		 *
-		 */
 		const ScrollToPlugin = require("gsap/ScrollToPlugin");
 		gsap.registerPlugin(ScrollToPlugin);
-		/**
-		 *
-		 * Setting the initial scroll
-		 *
-		 */
-		currentIndexRef.current = 0;
-		scrolling(0);
-		setScroll({
-			currentIndex: currentIndexRef.current,
-			length: scrollIndicatorLength(),
-			caller: "event",
-		});
 	}, []);
 	/**
 	 *
@@ -283,21 +305,7 @@ export function useScroll(mainRef: RefObject<HTMLElement>) {
 	 *
 	 */
 	useEffect(() => {
-		async function updateScroll() {
-			currentIndexRef.current = 0;
-
-			await new Promise((resolve) => setTimeout(resolve, 100));
-
-			setScroll({
-				currentIndex: currentIndexRef.current,
-				length: scrollIndicatorLength(),
-				caller: "event",
-			});
-
-			setBgColor("dark");
-		}
-
-		updateScroll();
+		functions.setInitial();
 	}, [router]);
 	/**
 	 *
@@ -311,7 +319,7 @@ export function useScroll(mainRef: RefObject<HTMLElement>) {
 		if (scroll.caller === "event") return;
 
 		currentIndexRef.current = scroll.currentIndex;
-		handleScroll(mainRef, scroll.currentIndex, setBgColor, () => {});
+		functions.handleScroll(mainRef, scroll.currentIndex, setBgColor, () => {});
 	}, [scroll]);
 	/**
 	 *
@@ -321,18 +329,37 @@ export function useScroll(mainRef: RefObject<HTMLElement>) {
 	 *
 	 */
 	useEffect(() => {
-		window.addEventListener("keydown", handleKey);
+		window.addEventListener("keydown", functions.handleKey);
 
-		window.addEventListener("wheel", handleWheel);
+		window.addEventListener("wheel", functions.handleWheel);
 
-		window.addEventListener("touchstart", handleTouchStart);
-		window.addEventListener("touchmove", handleTouchMove);
+		window.addEventListener("touchstart", functions.handleTouchStart);
+		window.addEventListener("touchmove", functions.handleTouchMove);
 
 		return () => {
-			window.removeEventListener("keydown", handleKey);
-			window.removeEventListener("wheel", handleWheel);
-			window.removeEventListener("touchstart", handleTouchStart);
-			window.removeEventListener("touchmove", handleTouchMove);
+			window.removeEventListener("keydown", functions.handleKey);
+			window.removeEventListener("wheel", functions.handleWheel);
+			window.removeEventListener("touchstart", functions.handleTouchStart);
+			window.removeEventListener("touchmove", functions.handleTouchMove);
 		};
-	}, [handleKey, handleWheel]);
+	}, [
+		functions.handleKey,
+		functions.handleWheel,
+		functions.handleTouchStart,
+		functions.handleTouchMove,
+	]);
 }
+
+/**
+ *
+ *
+ * Scroll Indicator Length
+ *
+ */
+// const scrollIndicatorLength = useCallback(() => {
+// 	const allChildren = [...((mainRef.current?.childNodes as any) ?? [])];
+// 	const children = allChildren.filter(
+// 		(child: HTMLElement) => child.getAttribute("data-visibility") !== "hidden"
+// 	);
+// 	return children.length;
+// }, [mainRef]);

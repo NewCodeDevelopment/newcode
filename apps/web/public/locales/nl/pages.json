@@ -51,14 +51,7 @@
         "nature": [
             {
                 "title": "Our nature",
-                "values": [
-                    "Powerful",
-                    "Strong",
-                    "Dynamic",
-                    "Classy",
-                    "Simplicity",
-                    "Structure"
-                ]
+                "values": ["Powerful", "Strong", "Dynamic", "Classy", "Simplicity", "Structure"]
             },
             {
                 "title": "Nature of our partner",
@@ -122,6 +115,44 @@
             "title": "Lets get this code going",
             "link": "Start a project",
             "scroll": "Scroll down to all cases"
+        }
+    },
+    "form": {
+        "name": {
+            "title": "What is your name?",
+            "placeholder": "Hi, I’m the Codemaster. Who are you?",
+            "errors": {
+                "required": "Vul hier uw naam in"
+            }
+        },
+        "business": {
+            "title": "What’s your business?",
+            "placeholder": "We are NewCode, What’s yours?",
+            "errors": {
+                "required": "Vul hier uw bedrijfsnaam in"
+            }
+        },
+        "email": {
+            "title": "How can we reach you?",
+            "placeholder": "Send me an email at...",
+            "errors": {
+                "required": "Vul hier uw emailadres in",
+                "pattern": "Vul een geldig emailadres in"
+            }
+        },
+        "phone": {
+            "title": "Can we call you?",
+            "placeholder": "Yeah you can call me at... (optional)"
+        },
+        "message": {
+            "title": "Got an exciting project to work on? Or just wanna say hello?",
+            "placeholder": "Let’s make a plan. Make a difference. Make it big.",
+            "errors": {
+                "required": "Vul hier uw bericht in"
+            }
+        },
+        "thanks": {
+            "title": "You’ve done it! Ready to make something great?"
         }
     }
 }

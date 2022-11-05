@@ -65,7 +65,7 @@ export default function CaseBanner({
 				"px-page relative flex flex-col items-start justify-end overflow-hidden pt-[50vh] pb-40 lg:py-64",
 				className
 			)}
-			style={{ height: "100vh" }}
+			mobileScreen
 		>
 			<Image
 				{...checkImage(bannerImage)}
@@ -121,7 +121,7 @@ export default function CaseBanner({
 				return (
 					<span
 						key={index}
-						className="text-dark-500 absolute left-[30vw] -z-20 text-5xl font-bold opacity-30 lg:text-[750%]"
+						className="text-dark-500 absolute left-[30vw] -z-20 text-5xl font-bold opacity-10 lg:text-[750%]"
 						style={{
 							left: `${coordinates.left}%`,
 							top: `calc(${coordinates.top}% + ${y * 2}px)`,

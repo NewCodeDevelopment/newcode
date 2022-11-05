@@ -8,28 +8,34 @@ import nextI18NextConfig from "../../next-i18next.config.js";
 import { RecoilRoot } from "recoil";
 
 const PageLoader = dynamic(() => import("ui").then((mod) => mod.PageLoader));
-const Root = dynamic(() => import("../components/Root"));
-
+const Root = dynamic(() => import("ui").then((mod) => mod.Root));
+/**
+ *
+ *
+ *
+ *
+ *
+ */
 export type NextPageWithLayout = NextPage & {
-	getLayout?: (page: ReactElement) => ReactNode;
+    getLayout?: (page: ReactElement) => ReactNode;
 };
 
 type AppPropsWithLayout = AppProps & {
-	Component: NextPageWithLayout;
+    Component: NextPageWithLayout;
 };
 
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
-	const getLayout = Component.getLayout ?? ((page) => page);
+    const getLayout = Component.getLayout ?? ((page) => page);
 
-	return (
-		<RecoilRoot>
-			<Root>
-				<Suspense fallback={<PageLoader />}>
-					{getLayout(<Component {...pageProps} />)}
-				</Suspense>
-			</Root>
-		</RecoilRoot>
-	);
+    return (
+        <RecoilRoot>
+            <Root>
+                <Suspense fallback={<PageLoader />}>
+                    {getLayout(<Component {...pageProps} />)}
+                </Suspense>
+            </Root>
+        </RecoilRoot>
+    );
 };
 
 export default appWithTranslation(MyApp, nextI18NextConfig);

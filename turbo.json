@@ -4,14 +4,14 @@
 		"build": {
 			"dependsOn": ["^build"],
 			"outputs": ["dist/**", ".next/**"],
-			"env": ["NODE_ENV"]
+			"env": ["NODE_ENV", "SENDGRID_API_KEY", "ADMIN_EMAIL"]
 		},
 		"lint": {
 			"outputs": []
 		},
 		"dev": {
 			"cache": false,
-			"env": ["NODE_ENV"]
+			"env": ["NODE_ENV", "SENDGRID_API_KEY", "ADMIN_EMAIL"]
 		}
 	},
 	"globalEnv": ["NODE_ENV"]

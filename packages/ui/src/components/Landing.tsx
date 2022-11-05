@@ -14,7 +14,7 @@ const Landing = forwardRef<HTMLElement, Props>(
 				{...props}
 				bg="dark"
 				className="relative h-screen pb-52"
-				style={{ height: "100vh" }}
+				mobileScreen
 				align="center"
 				hiddenSection={hiddenSection}
 				ref={ref}
