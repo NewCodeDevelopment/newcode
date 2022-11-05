@@ -46,7 +46,13 @@ export type ParagraphSizes = "small" | "medium" | "large";
 export const paragraphStyles = (size: ParagraphSizes, weight?: FontWeights) => {
 	return {
 		small: classNames("text-base xl:text-lg", fontWeights(weight || "normal")),
-		medium: classNames("text-md xl:text-2xl", fontWeights(weight || "normal")),
-		large: classNames("text-xl xl:text-3xl", fontWeights(weight || "normal")),
+		medium: classNames(
+			"text-md xl:text-xl 2xl:text-2xl",
+			fontWeights(weight || "normal")
+		),
+		large: classNames(
+			"text-xl lg:text-2xl 2xl:text-3xl",
+			fontWeights(weight || "normal")
+		),
 	}[size];
 };

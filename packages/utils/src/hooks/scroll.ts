@@ -46,6 +46,19 @@ export function useScroll(mainRef: RefObject<HTMLElement>) {
 	/**
 	 *
 	 *
+	 * Scroll Indicator Length
+	 *
+	 */
+	const scrollIndicatorLength = useCallback(() => {
+		const allChildren = [...((mainRef.current?.childNodes as any) ?? [])];
+		const children = allChildren.filter(
+			(child: HTMLElement) => child.getAttribute("data-visibility") !== "hidden"
+		);
+		return children.length;
+	}, [mainRef]);
+	/**
+	 *
+	 *
 	 *
 	 *  SCROLLING
 	 *
@@ -115,7 +128,11 @@ export function useScroll(mainRef: RefObject<HTMLElement>) {
 		
 			*/
 			setBgColor(currentChild.getAttribute("data-color") ?? "");
-			setScroll({ currentIndex, length: children.length, caller: "event" });
+			setScroll({
+				currentIndex,
+				length: scrollIndicatorLength(),
+				caller: "event",
+			});
 			/*
 		
 				Removing classes
@@ -251,10 +268,11 @@ export function useScroll(mainRef: RefObject<HTMLElement>) {
 		 * Setting the initial scroll
 		 *
 		 */
+		currentIndexRef.current = 0;
 		scrolling(0);
 		setScroll({
 			currentIndex: currentIndexRef.current,
-			length: [...((mainRef.current?.childNodes as any) ?? [])].length,
+			length: scrollIndicatorLength(),
 			caller: "event",
 		});
 	}, []);
@@ -266,13 +284,17 @@ export function useScroll(mainRef: RefObject<HTMLElement>) {
 	 */
 	useEffect(() => {
 		async function updateScroll() {
+			currentIndexRef.current = 0;
+
 			await new Promise((resolve) => setTimeout(resolve, 100));
+
 			setScroll({
 				currentIndex: currentIndexRef.current,
-				length: [...((mainRef.current?.childNodes as any) ?? [])].length,
+				length: scrollIndicatorLength(),
 				caller: "event",
 			});
-			setBgColor("light");
+
+			setBgColor("dark");
 		}
 
 		updateScroll();

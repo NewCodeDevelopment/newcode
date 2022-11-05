@@ -35,7 +35,7 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 
 		if (!open) {
 			setOldBgColor(bgColor);
-			setBgColor("light");
+			setBgColor("dark");
 		}
 
 		if (!animationComplete) return;
@@ -46,6 +46,8 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 	useEffect(() => {
 		setCurrentRoute(router.pathname);
 	}, [router.pathname]);
+
+	console.log("bgColor", bgColor);
 
 	return (
 		<header
@@ -94,8 +96,11 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 					>
 						<Logo
 							className={classNames(
-								"text-light-500 w-6 fill-red-500 xl:w-12",
-								open && "fill-light-500"
+								"text-light-500 w-6  xl:w-12",
+								open && "fill-light-500",
+								bgColor === "dark" && "fill-red-500",
+								bgColor === "light" && "fill-red-500",
+								bgColor === "red" && "fill-dark-500"
 							)}
 						/>
 						<span
@@ -103,7 +108,9 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 								"text-lg font-extrabold xl:text-3xl",
 								open && "text-light-500",
 								"transition-all duration-1000 ease-in-out",
-								textColors[bgColor][500]
+								bgColor === "light" && "text-dark-500",
+								bgColor === "dark" && "text-light-500",
+								bgColor === "red" && "text-dark-500"
 							)}
 						>
 							NewCode
@@ -121,7 +128,9 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 					className={classNames(
 						"text-light-500 text-md z-10 font-bold xl:hidden",
 						"transition-all duration-1000 ease-in-out",
-						textColors[bgColor][500]
+						bgColor === "light" && "text-dark-500",
+						bgColor === "dark" && "text-light-500",
+						bgColor === "red" && "text-dark-500"
 					)}
 					onClick={cycleMenu}
 				>
@@ -139,10 +148,20 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 						<Link key={index} href={path}>
 							<a
 								className={classNames(
-									"navigation-link font-bold transition-all duration-1000 ease-in-out xl:text-xl",
+									"font-bold transition-all duration-1000 ease-in-out xl:text-xl",
+									bgColor === "light" && "navigation-link-red text-dark-500",
+									bgColor === "dark" && "navigation-link-red text-light-500",
+									bgColor === "red" && "navigation-link-dark text-dark-500",
+
 									currentRoute == path &&
-										"navigation-currentRoute text-red-500",
-									textColors[bgColor][500]
+										bgColor === "light" &&
+										"navigation-currentRoute-red text-red-500",
+									currentRoute == path &&
+										bgColor === "dark" &&
+										"navigation-currentRoute-red text-red-500",
+									currentRoute == path &&
+										bgColor === "red" &&
+										"navigation-currentRoute-dark text-light-500"
 								)}
 							>
 								{name}_

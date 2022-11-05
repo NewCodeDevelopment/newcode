@@ -12,11 +12,11 @@ interface Props extends HTMLMotionProps<"section"> {
 }
 
 export default function CaseBanner({
-	case: { title, description, path, bannerImage },
+	case: { title, description, handle, bannerImage },
 	className,
 	...props
 }: Props) {
-	const { t } = useTranslation("pages", { keyPrefix: "case" });
+	const { t } = useTranslation("pages", { keyPrefix: "case.banner" });
 
 	const previousScroll = useRef<number>(0);
 	const { width, height } = useWindow();
@@ -33,7 +33,8 @@ export default function CaseBanner({
 
 			if (inView) {
 				const direction = scrollY - previousScroll.current;
-				const scrollAmount = width < DESKTOP_MIN_WIDTH ? 0.5 : 0.2;
+				const scrollAmount =
+					typeof width === "number" ? Math.abs(width / 1000) : 0.5;
 
 				if (direction > 0) {
 					setY((y) => y + scrollAmount);
@@ -69,13 +70,11 @@ export default function CaseBanner({
 			<Image
 				{...checkImage(bannerImage)}
 				layout="fill"
-				width={100}
-				height={100}
 				objectFit="cover"
 				className="top-0 left-0 -z-30"
 			/>
 
-			<div className="bg-dark-700 absolute top-0 left-0 -z-10 h-full w-full bg-opacity-30 backdrop-blur-[6px] backdrop-filter" />
+			<div className="bg-dark-700 absolute top-0 left-0 -z-10 h-full w-full bg-opacity-40 backdrop-blur-[6px] backdrop-filter" />
 
 			{[
 				{
@@ -122,10 +121,10 @@ export default function CaseBanner({
 				return (
 					<span
 						key={index}
-						className="text-light-500 absolute left-[30vw] -z-20 text-5xl font-bold opacity-30 lg:text-[750%]"
+						className="text-dark-500 absolute left-[30vw] -z-20 text-5xl font-bold opacity-30 lg:text-[750%]"
 						style={{
-							left: (Number(width) / 100) * coordinates.left,
-							top: (Number(height) / 100) * coordinates.top + y * 2,
+							left: `${coordinates.left}%`,
+							top: `calc(${coordinates.top}% + ${y * 2}px)`,
 							rotate: `${rotate}deg`,
 						}}
 					>
@@ -138,7 +137,7 @@ export default function CaseBanner({
 				<Heading type="h3">{t("title")}_</Heading>
 				<Heading type="h2">{title + "_"}</Heading>
 				<Paragraph size="small">{description.short}</Paragraph>
-				<ArrowLink description={t("link")} href={"/work/case/" + path} />
+				<ArrowLink description={t("link")} href={"/case/" + handle} />
 			</motion.div>
 		</Section>
 	);

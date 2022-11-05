@@ -5,11 +5,11 @@ import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 
-export default function Connect() {
+export default function ConnectPage() {
     return <></>;
 }
 
-Connect.getLayout = function getLayout(page: ReactElement) {
+ConnectPage.getLayout = function getLayout(page: ReactElement) {
     return <MainLayout>{page}</MainLayout>;
 };
 

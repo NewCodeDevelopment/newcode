@@ -38,7 +38,7 @@ type NatureItem = {
     values: string[];
 };
 
-export default function About() {
+export default function AboutPage() {
     const { t } = useTranslation("pages", { keyPrefix: "about" });
 
     const natureObject = t("nature", {
@@ -142,7 +142,7 @@ export default function About() {
                 *
             */}
             <Section bg="dark" align="center">
-                <div className="flex max-w-4xl flex-col gap-6 self-center lg:gap-10">
+                <div className="flex flex-col gap-6 self-center lg:max-w-xl lg:gap-10 2xl:max-w-4xl">
                     <Heading type="h3" color="red">
                         {t("tools.title")}_
                     </Heading>
@@ -209,7 +209,7 @@ export default function About() {
     );
 }
 
-About.getLayout = function getLayout(page: ReactElement) {
+AboutPage.getLayout = function getLayout(page: ReactElement) {
     return <MainLayout>{page}</MainLayout>;
 };
 

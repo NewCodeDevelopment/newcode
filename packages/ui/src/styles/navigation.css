@@ -1,5 +1,5 @@
-.navigation-link::after {
-	@apply bg-red-700;
+.navigation-link-red::after,
+.navigation-link-dark::after {
 	content: "";
 	display: block;
 	width: 0;
@@ -8,16 +8,33 @@
 	transition: width 0.3s ease-in-out;
 }
 
-.navigation-link:hover::after {
+.navigation-link-red:hover::after,
+.navigation-link-dark:hover::after {
 	width: 100%;
 }
 
-.navigation-currentRoute::after {
-	@apply bg-red-700;
+.navigation-currentRoute-red::after,
+.navigation-currentRoute-dark::after {
 	content: "";
 	display: block;
 	width: 0;
 	height: 3px;
 	margin-top: 0.5rem;
 	width: 100%;
+}
+
+.navigation-link-red::after {
+	@apply bg-red-700;
+}
+
+.navigation-currentRoute-red::after {
+	@apply bg-red-700;
+}
+
+.navigation-link-dark::after {
+	@apply bg-dark-700;
+}
+
+.navigation-currentRoute-dark::after {
+	@apply bg-dark-700;
 }

@@ -15,7 +15,7 @@ const Testimonials = dynamic(() =>
     import("ui").then((mod) => mod.Testimonials),
 );
 
-export default function Services() {
+export default function ServicesPage() {
     const { t } = useTranslation("pages", { keyPrefix: "services" });
 
     return (
@@ -70,7 +70,7 @@ export default function Services() {
     );
 }
 
-Services.getLayout = function getLayout(page: ReactElement) {
+ServicesPage.getLayout = function getLayout(page: ReactElement) {
     return <MainLayout>{page}</MainLayout>;
 };
 

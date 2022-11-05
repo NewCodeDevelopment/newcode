@@ -46,7 +46,9 @@ export default function SectionIndicator() {
 							}}
 							className={classNames(
 								"aspect-square h-3 w-3 cursor-pointer rounded-full xl:h-4 xl:w-4",
-								bgColors[bgColor][600]
+								bgColor === "dark" && "bg-light-600",
+								bgColor === "light" && "bg-dark-600",
+								bgColor === "red" && "bg-dark-600"
 							)}
 						>
 							&nbsp;

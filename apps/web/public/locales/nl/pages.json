@@ -102,7 +102,26 @@
         }
     },
     "case": {
-        "title": "Case Study",
-        "link": "See case study"
+        "banner": {
+            "title": "Case Study",
+            "link": "See case study"
+        },
+        "landing": {
+            "client": "Klant",
+            "sector": "Sector",
+            "service": "Service",
+            "type": "Type",
+            "year": "Jaar",
+            "link": "Launch Site"
+        },
+        "content": {
+            "problem": "The problem",
+            "solution": "The Solution"
+        },
+        "connect": {
+            "title": "Lets get this code going",
+            "link": "Start a project",
+            "scroll": "Scroll down to all cases"
+        }
     }
 }

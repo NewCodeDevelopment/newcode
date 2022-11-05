@@ -45,7 +45,7 @@ const HyperLink = forwardRef<HTMLAnchorElement, Props>(
 				opacity: 1,
 			},
 			clicked: {
-				scale: [0.9, 1],
+				scale: [0.99, 1.01],
 				transition: {
 					duration: 0.2,
 					stiffness: 10,
@@ -70,7 +70,7 @@ const HyperLink = forwardRef<HTMLAnchorElement, Props>(
 						buttonColors(variant, color),
 						buttonShapes(shape, size),
 						fontWeights(weight),
-						"h-fit w-fit font-bold",
+						"h-fit w-fit cursor-pointer",
 						className
 					)}
 					variants={animation}

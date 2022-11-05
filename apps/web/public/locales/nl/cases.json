@@ -1,13 +1,12 @@
 {
-    "cases": [
-        {
-            "path": "donvil",
+    "cases": {
+        "donvil": {
             "title": "Middleware",
             "description": {
                 "short": "Lorem ipsim dolor sit amet",
-                "main": "lorem ipsum",
-                "problem": "lorem ipsum",
-                "solution": "lorem ipsum"
+                "main": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero leo, pellentesque ornare, adipiscing vitae, rhoncus commodo.",
+                "problem": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero leo, pellentesque ornare, .Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero leo, pellentesque ornare, .",
+                "solution": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero leo, pellentesque ornare, .Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero leo, pellentesque ornare, ."
             },
             "client": "Donvil",
             "sector": "Schoenen & Lingerie",
@@ -21,29 +20,28 @@
             },
             "images": [
                 {
-                    "url": "https://picsum.photos/500/500",
+                    "url": "https://picsum.photos/id/1/3000/3000",
                     "alt": "Donvil Dimoda"
                 },
                 {
-                    "url": "https://picsum.photos/500/500",
+                    "url": "https://picsum.photos/id/2/3000/3000",
                     "alt": "Donvil Dimoda"
                 },
                 {
-                    "url": "https://picsum.photos/500/500",
+                    "url": "https://picsum.photos/id/3/3000/3000",
                     "alt": "Donvil Dimoda"
                 },
                 {
-                    "url": "https://picsum.photos/500/500",
+                    "url": "https://picsum.photos/id/4/3000/3000",
                     "alt": "Donvil Dimoda"
                 },
                 {
-                    "url": "https://picsum.photos/500/500",
+                    "url": "https://picsum.photos/id/5/3000/3000",
                     "alt": "Donvil Dimoda"
                 }
             ]
         },
-        {
-            "path": "the-god-shot",
+        "the-god-shot": {
             "title": "Webshop",
             "description": {
                 "short": "Lorem ipsum",
@@ -84,5 +82,5 @@
                 }
             ]
         }
-    ]
+    }
 }

@@ -1,7 +1,7 @@
 import { Image } from "./image";
 
 export interface Case {
-	path: string;
+	handle: string;
 	title: string;
 	description: {
 		short: string;
@@ -11,7 +11,7 @@ export interface Case {
 	};
 	client: string;
 	sector: string;
-	services: string;
+	service: string;
 	type: string;
 	year: string;
 	productUrl: string;

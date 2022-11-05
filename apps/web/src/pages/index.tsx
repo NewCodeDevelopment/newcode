@@ -24,7 +24,7 @@ const DescriptionSection = dynamic(() =>
     import("ui").then((mod) => mod.DescriptionSection),
 );
 
-export default function Home() {
+export default function HomePage() {
     const { t } = useTranslation("pages", { keyPrefix: "home" });
 
     const cases = useCases();
@@ -94,7 +94,7 @@ export default function Home() {
     );
 }
 
-Home.getLayout = function getLayout(page: ReactElement) {
+HomePage.getLayout = function getLayout(page: ReactElement) {
     return <MainLayout>{page}</MainLayout>;
 };
 

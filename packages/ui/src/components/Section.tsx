@@ -14,6 +14,7 @@ interface Props extends HTMLMotionProps<"section"> {
 	pr?: boolean;
 	bg?: Color;
 	align?: "left" | "center" | "right";
+	hiddenSection?: boolean;
 }
 
 const Section = forwardRef<HTMLElement, Props>(
@@ -30,6 +31,7 @@ const Section = forwardRef<HTMLElement, Props>(
 			align = "left",
 			className,
 			style,
+			hiddenSection = false,
 			...props
 		},
 		ref
@@ -44,10 +46,10 @@ const Section = forwardRef<HTMLElement, Props>(
 		};
 
 		const navigationColors: { [key in Color]: string } = {
-			red: "dark",
-			dark: "light",
-			light: "dark",
-			transparent: "dark",
+			red: "red",
+			dark: "dark",
+			light: "light",
+			transparent: "light",
 		};
 
 		const alignItems = {
@@ -60,6 +62,7 @@ const Section = forwardRef<HTMLElement, Props>(
 			<motion.section
 				{...props}
 				ref={ref}
+				data-visibility={hiddenSection ? "hidden" : "visible"}
 				data-color={navigationColors[bg]}
 				className={classNames(
 					"z-0 grid grid-cols-1 grid-rows-1 transition-all duration-200 ease-in-out lg:relative lg:h-screen",

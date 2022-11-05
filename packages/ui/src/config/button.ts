@@ -38,7 +38,7 @@ const sizes = {
 		long: {
 			small: "py-3 px-10",
 			medium: "py-3 px-10",
-			large: "py-5 px-20",
+			large: "py-4 px-16 lg:py-5 lg:px-20",
 		},
 		square: {
 			small: "py-3 px-3",

@@ -13,7 +13,7 @@ const CaseBanner = dynamic(() => import("ui").then((mod) => mod.CaseBanner), {
     ssr: false,
 });
 
-export default function Work() {
+export default function WorkPage() {
     const { t } = useTranslation("pages", { keyPrefix: "work" });
 
     const cases = useCases();
@@ -34,7 +34,7 @@ export default function Work() {
     );
 }
 
-Work.getLayout = function getLayout(page: ReactElement) {
+WorkPage.getLayout = function getLayout(page: ReactElement) {
     return <MainLayout>{page}</MainLayout>;
 };
 
