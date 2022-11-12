@@ -153,6 +153,9 @@
         },
         "thanks": {
             "title": "You’ve done it! Ready to make something great?"
+        },
+        "fail": {
+            "title": "Oops, something went wrong. Please try again later."
         }
     }
 }

@@ -5,6 +5,7 @@ import { useTranslation } from "next-i18next";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import landingImage from "@/public/images/about/landing.jpg";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Heading = dynamic(() => import("ui").then((mod) => mod.Heading));
@@ -50,7 +51,7 @@ export default function AboutPage() {
 			 */}
             <Section bg="dark" align="center" className="relative h-screen pb-52" mobileScreen>
                 <Image
-                    src="/images/about/landing.jpg"
+                    src={landingImage}
                     alt="Landing"
                     layout="fill"
                     objectFit="cover"
