@@ -95,7 +95,8 @@ export default function FormPage() {
                 <ul>
                     <li>Name: ${data.name}</li>
                     <li>Business: ${data.business}</li>
-                    <li>Contact: ${data.email}</li>
+                    <li>Email: ${data.email}</li>
+                    <li>Phone: ${data.phone}</li>
                     <li>Message: ${data.message}</li>
                 </ul>
                 
