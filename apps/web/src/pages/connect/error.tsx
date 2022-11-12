@@ -14,9 +14,9 @@ const Error = dynamic(() => import("ui").then((mod) => mod.Error));
  *
  */
 export default function ErrorPage() {
-    const { t } = useTranslation("pages", { keyPrefix: "forn.fail" });
+    const { t } = useTranslation("pages", { keyPrefix: "form.fail" });
 
-    return <Error title={t("default")} statusCode={500} />;
+    return <Error title={t("title")} statusCode={500} />;
 }
 /**
  *

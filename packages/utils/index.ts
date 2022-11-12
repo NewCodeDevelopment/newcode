@@ -9,12 +9,13 @@ export * from "./src/hooks/localStorage";
 export * from "./src/hooks/params";
 export * from "./src/hooks/window";
 export * from "./src/hooks/cases";
+export * from "./src/hooks/mail";
 /*
 
 
     Checkers
 */
-export { checkImage, checkImageAlt, checkImageSrc } from "./src/checkers/image";
+export * from "./src/checkers/image";
 /*
 
 
@@ -23,16 +24,14 @@ export { checkImage, checkImageAlt, checkImageSrc } from "./src/checkers/image";
 export * from "./src/types/paths";
 export * from "./src/types/image";
 export * from "./src/types/cases";
+export * from "./src/types/mail";
 /*
 
 
     States
 */
-export { bgColorState, type INavigationState } from "./src/states/navigation";
-export { loadingState, type ILoadingState } from "./src/states/loading";
-export {
-	transitionState,
-	type ITransitionState,
-} from "./src/states/transition";
-export { popupState, type IPopupState } from "./src/states/popup";
-export { scrollState, type IScrollState } from "./src/states/scroll";
+export * from "./src/states/navigation";
+export * from "./src/states/loading";
+export * from "./src/states/transition";
+export * from "./src/states/popup";
+export * from "./src/states/scroll";

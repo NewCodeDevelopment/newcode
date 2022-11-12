@@ -45,7 +45,7 @@ export default function Error({ title, statusCode }: Props) {
 							{statusCode}
 						</Heading>
 					)}
-					<Heading type="h3">{title}</Heading>
+					<Heading type="h3" maxCharacters={20}>{title}</Heading>
 				</span>
 			</div>
 		</Section>

@@ -2,13 +2,13 @@ import dynamic from "next/dynamic";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { useForm, RegisterOptions } from "react-hook-form";
-import { bgColorState, useWindow } from "utils";
+import { bgColorState, useSendMail, useWindow } from "utils";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { HTMLInputTypeAttribute, ReactElement, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FormInput } from "ui";
-import { MailData } from "../api/mail";
+import { FormInput, PlaneIcon } from "ui";
+import { MailData } from "utils";
 import { useRecoilState } from "recoil";
 import axios from "axios";
 
@@ -53,6 +53,9 @@ export default function FormPage() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [reverse, setReverse] = useState(false);
     const [_, setBgColor] = useRecoilState(bgColorState);
+    const [submit, setSubmit] = useState(false);
+
+    const mutation = useSendMail();
 
     const {
         register,
@@ -85,7 +88,7 @@ export default function FormPage() {
     }
 
     async function handleSend(data: typeof IFormInputs) {
-        console.log(data);
+        setSubmit(true);
 
         const body: MailData = {
             subject: "Contact Form",
@@ -104,70 +107,64 @@ export default function FormPage() {
             `,
         };
 
-        router.push("/connect/thanks");
-
-        try {
-            await axios.post("/api/mail", body);
-        } catch (e) {
-            router.push("/connect/error");
-        }
+        mutation.mutate(body);
     }
 
     const formFiels: FormFieldType[] = [
-        {
-            title: t("name.title"),
-            name: "name",
-            type: "text",
-            placeholder: t("name.placeholder"),
-            options: {
-                required: t("name.errors.required"),
-            },
-            previous: {
-                type: "button",
-                onClick: router.back,
-            },
-        },
-        {
-            title: t("business.title"),
-            name: "business",
-            type: "text",
-            placeholder: t("business.placeholder"),
-            options: {
-                required: t("business.errors.required"),
-            },
-            previous: {
-                type: "button",
-                onClick: handleBack,
-            },
-        },
-        {
-            title: t("email.title"),
-            name: "email",
-            type: "email",
-            placeholder: t("email.placeholder"),
-            options: {
-                required: t("email.errors.required"),
-                pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                    message: t("email.errors.pattern"),
-                },
-            },
-            previous: {
-                type: "button",
-                onClick: handleBack,
-            },
-        },
-        {
-            title: t("phone.title"),
-            name: "phone",
-            type: "tel",
-            placeholder: t("phone.placeholder"),
-            options: {},
-            previous: {
-                type: "button",
-                onClick: handleBack,
-            },
-        },
+        // {
+        //     title: t("name.title"),
+        //     name: "name",
+        //     type: "text",
+        //     placeholder: t("name.placeholder"),
+        //     options: {
+        //         required: t("name.errors.required"),
+        //     },
+        //     previous: {
+        //         type: "button",
+        //         onClick: router.back,
+        //     },
+        // },
+        // {
+        //     title: t("business.title"),
+        //     name: "business",
+        //     type: "text",
+        //     placeholder: t("business.placeholder"),
+        //     options: {
+        //         required: t("business.errors.required"),
+        //     },
+        //     previous: {
+        //         type: "button",
+        //         onClick: handleBack,
+        //     },
+        // },
+        // {
+        //     title: t("email.title"),
+        //     name: "email",
+        //     type: "email",
+        //     placeholder: t("email.placeholder"),
+        //     options: {
+        //         required: t("email.errors.required"),
+        //         pattern: {
+        //             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+        //             message: t("email.errors.pattern"),
+        //         },
+        //     },
+        //     previous: {
+        //         type: "button",
+        //         onClick: handleBack,
+        //     },
+        // },
+        // {
+        //     title: t("phone.title"),
+        //     name: "phone",
+        //     type: "tel",
+        //     placeholder: t("phone.placeholder"),
+        //     options: {},
+        //     previous: {
+        //         type: "button",
+        //         onClick: handleBack,
+        //     },
+        // },
         {
             title: t("message.title"),
             name: "message",
@@ -186,69 +183,87 @@ export default function FormPage() {
     return (
         <Section bg={currentIndex % 2 === 0 ? "dark" : "light"} align="center" style={{ height }}>
             <form className="flex w-full max-w-xl flex-col" onSubmit={handleSubmit(onSubmit)}>
-                {formFiels.map(({ title, name, placeholder, type, options, previous }, index) => (
-                    <AnimatePresence mode="wait" key={index}>
-                        {currentIndex === index && (
-                            <motion.div
-                                className="flex flex-col gap-12"
-                                initial={{
-                                    opacity: 0,
-                                    y: reverse ? "-25vh" : "25vh",
-                                }}
-                                animate={{
-                                    opacity: 1,
-                                    y: 0,
-                                    transition: {
-                                        duration: 0.5,
-                                        delay: 0.5,
-                                    },
-                                }}
-                                exit={{
-                                    opacity: 0,
-                                    y: reverse ? "25vh" : "-25vh",
-                                    transition: {
-                                        duration: 0.5,
-                                    },
-                                }}
-                            >
-                                <Heading type="h3" color={index % 2 === 0 ? "light" : "dark"}>
-                                    <span className="text-red-500">{index + 1 + ". "}</span>
-                                    {title}_
-                                </Heading>
+                {formFiels.map(
+                    ({ title, name, placeholder, type, options, previous }, index, array) => (
+                        <AnimatePresence mode="wait" key={index}>
+                            {currentIndex === index && (
+                                <motion.div
+                                    className="flex flex-col gap-12"
+                                    initial={{
+                                        opacity: 0,
+                                        y: reverse ? "-25vh" : "25vh",
+                                    }}
+                                    animate={{
+                                        opacity: 1,
+                                        y: 0,
+                                        transition: {
+                                            duration: 0.5,
+                                            delay: 0.5,
+                                        },
+                                    }}
+                                    exit={{
+                                        opacity: 0,
+                                        y: reverse ? "25vh" : "-25vh",
+                                        transition: {
+                                            duration: 0.5,
+                                        },
+                                    }}
+                                >
+                                    <Heading type="h3" color={index % 2 === 0 ? "light" : "dark"}>
+                                        <span className="text-red-500">{index + 1 + ". "}</span>
+                                        {title}_
+                                    </Heading>
 
-                                <FormInput
-                                    type={type}
-                                    placeholder={placeholder}
-                                    className="w-full"
-                                    theme={index % 2 === 0 ? "dark" : "light"}
-                                    autoFocus={currentIndex === index}
-                                    error={errors[name]?.message}
-                                    {...register(name, options)}
-                                />
+                                    <FormInput
+                                        type={type}
+                                        placeholder={placeholder}
+                                        className="w-full"
+                                        theme={index % 2 === 0 ? "dark" : "light"}
+                                        autoFocus={currentIndex === index}
+                                        error={errors[name]?.message}
+                                        {...register(name, options)}
+                                    />
 
-                                <div className="flex w-full flex-row items-center justify-between gap-4">
-                                    <Button
-                                        type={previous.type}
-                                        onClick={previous.onClick}
-                                        variant="text"
-                                        shape="none"
-                                    >
-                                        <Arrow
-                                            direction="right-to-left"
-                                            className="w-12 fill-dark-300"
-                                        />
-                                    </Button>
-                                    <Button type="submit" variant="text" shape="none">
-                                        <Arrow
-                                            direction="left-to-right"
-                                            className="w-12 fill-red-500"
-                                        />
-                                    </Button>
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                ))}
+                                    <div className="flex w-full flex-row items-center justify-between gap-4">
+                                        <Button
+                                            type={previous.type}
+                                            onClick={previous.onClick}
+                                            variant="text"
+                                            shape="none"
+                                        >
+                                            <Arrow
+                                                direction="right-to-left"
+                                                className="w-12 fill-dark-300"
+                                            />
+                                        </Button>
+                                        <Button type="submit" variant="text" shape="none">
+                                            {array.length === index + 1 ? (
+                                                <PlaneIcon
+                                                    className="w-8 fill-dark-300"
+                                                    initial={{
+                                                        x: 0,
+                                                        opacity: 1,
+                                                    }}
+                                                    animate={
+                                                        submit && {
+                                                            x: 10,
+                                                            opacity: 0,
+                                                        }
+                                                    }
+                                                />
+                                            ) : (
+                                                <Arrow
+                                                    direction="left-to-right"
+                                                    className="w-12 fill-red-500"
+                                                />
+                                            )}
+                                        </Button>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    ),
+                )}
             </form>
         </Section>
     );
