@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { AnimatePresence, motion, HTMLMotionProps } from "framer-motion";
-import { PlusIcon } from "..";
+import { PlusIcon } from "../..";
 
 interface Props extends HTMLMotionProps<"div"> {
 	opened: boolean;

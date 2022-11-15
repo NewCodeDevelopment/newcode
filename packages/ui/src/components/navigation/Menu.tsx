@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowCircleLink, useContactInformation } from "..";
+import { ArrowCircleLink, useContactInformation } from "../..";
 import classnames from "classnames";
 import { IRoute, useWindow } from "utils";
 import { useTranslation } from "next-i18next";

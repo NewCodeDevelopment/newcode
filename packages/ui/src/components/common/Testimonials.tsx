@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Heading, Paragraph } from "..";
-import Section from "./Section";
 import { AnimatePresence, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useTranslation } from "next-i18next";
+import { Heading, Paragraph } from "..";
+import Section from "./Section";
 
 export type Testimonial = {
 	body: string;

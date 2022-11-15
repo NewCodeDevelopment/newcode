@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { forwardRef } from "react";
 import { DESKTOP_MIN_WIDTH, useWindow } from "utils";
-import { Color } from "../config/colors";
+import { Color } from "../..";
 import { motion, HTMLMotionProps } from "framer-motion";
 
 interface Props extends HTMLMotionProps<"section"> {

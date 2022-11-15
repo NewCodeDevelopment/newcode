@@ -181,7 +181,7 @@ export default function AboutPage() {
                                     },
                                 }}
                             >
-                                {<icon.icon className="w-1/2 fill-red-500 stroke-dark-500" />}
+                                {<icon.icon className="w-1/2 fill-light-500 stroke-dark-500" />}
                             </motion.div>
                         ))}
                     </div>

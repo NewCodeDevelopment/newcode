@@ -1,10 +1,10 @@
-import Heading from "../typography/Heading";
-import RobotIcon from "../icons/actions/RobotIcon";
 import Section from "./Section";
 import { useRecoilState } from "recoil";
 import { loadingState, useWindow } from "utils";
 import { useEffect } from "react";
 import Image from "next/image";
+import { Heading } from "..";
+import { RobotIcon } from "../..";
 
 interface Props {
 	statusCode?: number;
@@ -45,7 +45,9 @@ export default function Error({ title, statusCode }: Props) {
 							{statusCode}
 						</Heading>
 					)}
-					<Heading type="h3" maxCharacters={20}>{title}</Heading>
+					<Heading type="h3" maxCharacters={20}>
+						{title}
+					</Heading>
 				</span>
 			</div>
 		</Section>

@@ -1,12 +1,10 @@
 import Head from "next/head";
 import { HTMLAttributes, useRef } from "react";
 import classNames from "classnames";
-import Navigation from "../navigation/Navigation";
-import Footer from "../footer/Footer";
-import { usePathHook, usePaths } from "../config/paths";
+import { usePathHook, usePaths } from "../..";
 import { useScroll } from "utils";
 import Popup from "../actions/Popup";
-import SectionIndicator from "../components/SectionIndicator";
+import { Navigation, Footer, SectionIndicator } from "..";
 
 export interface MainLayoutProps extends HTMLAttributes<HTMLElement> {
 	px?: boolean;

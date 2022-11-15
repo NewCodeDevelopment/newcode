@@ -1,6 +1,7 @@
-import { LandingLogo, Heading, Section, Scroll } from "..";
+import { Heading, Section, Scroll } from "..";
 import { HTMLMotionProps } from "framer-motion";
 import { forwardRef } from "react";
+import { LandingLogo } from "../..";
 
 interface Props extends HTMLMotionProps<"section"> {
 	title: string;

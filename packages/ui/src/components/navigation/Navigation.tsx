@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { HTMLAttributes, useEffect, useState } from "react";
 import Menu from "./Menu";
-import { Logo, textColors } from "..";
+import { Logo } from "../..";
 import classNames from "classnames";
 import { useRouter } from "next/router";
-import { usePathHook } from "../config/paths";
+import { usePathHook } from "../../config/paths";
 import { useRecoilState } from "recoil";
 import { bgColorState } from "utils";
 import { useTranslation } from "next-i18next";

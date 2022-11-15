@@ -11,7 +11,7 @@ export default function InitialLoader() {
 			{loading && (
 				<>
 					<motion.div
-						className="h-screen w-full bg-dark-700 z-50 absolute left-0 right-0 top-0 bottom-0 grid grid-cols-1 place-items-center"
+						className="bg-dark-700 absolute left-0 right-0 top-0 bottom-0 z-50 grid h-screen w-full grid-cols-1 place-items-center"
 						style={{
 							height: height,
 						}}
@@ -26,7 +26,7 @@ export default function InitialLoader() {
 									pathLength: [0, 1, 1],
 									pathOffset: [1, 0, 0],
 									fill: ["#262626", "#262626", "#ff1800"],
-									stroke: ["#d8d8d8", "#d8d8d8", "#d8d8d8"],
+									stroke: ["#ff1800", "#ff1800", "#ff1800"],
 									strokeWidth: [2, 2, 0],
 								}}
 								transition={{

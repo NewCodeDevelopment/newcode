@@ -1,7 +1,6 @@
 import { useRecoilState } from "recoil";
 import { bgColorState, scrollState } from "utils";
 import classNames from "classnames";
-import { bgColors } from "..";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function SectionIndicator() {

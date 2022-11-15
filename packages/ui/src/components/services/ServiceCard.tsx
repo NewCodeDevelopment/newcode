@@ -1,12 +1,10 @@
 import { HTMLAttributes } from "react";
-import Heading from "../typography/Heading";
-import Paragraph from "../typography/Paragraph";
-import Dropdown from "./Dropdown";
-import CloseIcon from "../icons/actions/CloseIcon";
 import { motion } from "framer-motion";
 import { popupState } from "utils";
 import { useRecoilState } from "recoil";
 import classNames from "classnames";
+import { CloseIcon } from "../..";
+import { Heading, Paragraph, Dropdown } from "..";
 
 interface Props extends HTMLAttributes<HTMLElement> {
 	title: string;

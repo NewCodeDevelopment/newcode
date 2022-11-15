@@ -1,6 +1,6 @@
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
-import Heading from "../typography/Heading";
+import { Heading } from "..";
 import ServiceCard from "./ServiceCard";
 
 type ServiceItem = {

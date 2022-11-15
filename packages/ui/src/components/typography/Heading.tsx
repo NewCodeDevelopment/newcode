@@ -1,45 +1,46 @@
 import {
 	Color,
 	textColors,
-	ParagraphSizes,
-	paragraphStyles,
+	headingStyles,
+	HeadingTypes,
 	FontWeights,
-} from "..";
+} from "../..";
 import classNames from "classnames";
 import { createElement, HTMLAttributes } from "react";
 
-interface Props extends HTMLAttributes<HTMLParagraphElement> {
+interface Props extends HTMLAttributes<HTMLHeadingElement> {
 	children: any;
+	type: HeadingTypes;
 	color?: Color;
 	className?: string;
 	breakpoint?: number;
-	size?: ParagraphSizes;
 	maxCharacters?: number;
 	weight?: FontWeights;
 }
 
-export default function Paragraph({
+export default function Heading({
 	children,
-	className,
+	type,
+	weight,
 	color = "light",
 	breakpoint = 0,
-	size = "medium",
-	weight,
+	className,
 	maxCharacters,
 	...props
 }: Props) {
 	return createElement(
-		"p",
+		type,
 		{
 			...props,
 			className: classNames(
-				paragraphStyles(size, weight),
+				headingStyles(type, weight),
 				textColors[color][500],
 				className
 			),
 			style: {
 				...(breakpoint > 0 && {
 					WebkitLineClamp: breakpoint,
+					lineHeight: 1.2,
 					overflow: "hidden",
 					textOverflow: "ellipsis",
 					display: "-webkit-box",

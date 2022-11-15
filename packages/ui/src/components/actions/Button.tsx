@@ -1,7 +1,6 @@
 import { forwardRef } from "react";
 import { HTMLMotionProps, motion } from "framer-motion";
 import classNames from "classnames";
-import Link from "next/link";
 import {
 	Color,
 	FontWeights,
@@ -11,11 +10,10 @@ import {
 	buttonShapes,
 	buttonSize,
 	buttonVariant,
-} from "..";
+} from "../..";
 
-interface Props extends HTMLMotionProps<"a"> {
+interface Props extends HTMLMotionProps<"button"> {
 	children: any;
-	href: string;
 	color?: Color;
 	variant?: buttonVariant;
 	size?: buttonSize;
@@ -23,18 +21,17 @@ interface Props extends HTMLMotionProps<"a"> {
 	weight?: FontWeights;
 }
 
-const HyperLink = forwardRef<HTMLAnchorElement, Props>(
+const Button = forwardRef<HTMLButtonElement, Props>(
 	(
 		{
-			href,
 			size = "medium",
 			color = "red",
 			shape = "pill",
 			variant = "filled",
 			weight = "bold",
-			target,
 			children,
 			className,
+			disabled,
 			...props
 		},
 		ref
@@ -45,7 +42,7 @@ const HyperLink = forwardRef<HTMLAnchorElement, Props>(
 				opacity: 1,
 			},
 			clicked: {
-				scale: [0.99, 1.01],
+				scale: [0.9, 1],
 				transition: {
 					duration: 0.2,
 					stiffness: 10,
@@ -62,27 +59,26 @@ const HyperLink = forwardRef<HTMLAnchorElement, Props>(
 		};
 
 		return (
-			<Link href={href} target={target}>
-				<motion.a
-					{...props}
-					ref={ref}
-					className={classNames(
-						buttonColors(variant, color),
-						buttonShapes(shape, size),
-						fontWeights(weight),
-						"h-fit w-fit cursor-pointer",
-						className
-					)}
-					variants={animation}
-					initial="initial"
-					whileTap="clicked"
-					whileHover="hover"
-				>
-					{children}
-				</motion.a>
-			</Link>
+			<motion.button
+				{...props}
+				ref={ref}
+				className={classNames(
+					buttonColors(variant, color),
+					buttonShapes(shape, size),
+					fontWeights(weight),
+					"h-fit w-fit",
+					className
+				)}
+				disabled={disabled}
+				variants={animation}
+				initial="initial"
+				whileTap="clicked"
+				whileHover="hover"
+			>
+				{children}
+			</motion.button>
 		);
 	}
 );
 
-export default HyperLink;
+export default Button;

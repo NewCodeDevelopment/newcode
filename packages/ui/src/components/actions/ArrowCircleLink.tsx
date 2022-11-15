@@ -1,6 +1,6 @@
 import { motion, HTMLMotionProps } from "framer-motion";
 import Link from "next/link";
-import { CircleArrow, Color, fillColors } from "..";
+import { CircleArrow, Color, fillColors } from "../..";
 import classNames from "classnames";
 
 interface Props extends HTMLMotionProps<"a"> {

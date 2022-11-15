@@ -111,60 +111,60 @@ export default function FormPage() {
     }
 
     const formFiels: FormFieldType[] = [
-        // {
-        //     title: t("name.title"),
-        //     name: "name",
-        //     type: "text",
-        //     placeholder: t("name.placeholder"),
-        //     options: {
-        //         required: t("name.errors.required"),
-        //     },
-        //     previous: {
-        //         type: "button",
-        //         onClick: router.back,
-        //     },
-        // },
-        // {
-        //     title: t("business.title"),
-        //     name: "business",
-        //     type: "text",
-        //     placeholder: t("business.placeholder"),
-        //     options: {
-        //         required: t("business.errors.required"),
-        //     },
-        //     previous: {
-        //         type: "button",
-        //         onClick: handleBack,
-        //     },
-        // },
-        // {
-        //     title: t("email.title"),
-        //     name: "email",
-        //     type: "email",
-        //     placeholder: t("email.placeholder"),
-        //     options: {
-        //         required: t("email.errors.required"),
-        //         pattern: {
-        //             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-        //             message: t("email.errors.pattern"),
-        //         },
-        //     },
-        //     previous: {
-        //         type: "button",
-        //         onClick: handleBack,
-        //     },
-        // },
-        // {
-        //     title: t("phone.title"),
-        //     name: "phone",
-        //     type: "tel",
-        //     placeholder: t("phone.placeholder"),
-        //     options: {},
-        //     previous: {
-        //         type: "button",
-        //         onClick: handleBack,
-        //     },
-        // },
+        {
+            title: t("name.title"),
+            name: "name",
+            type: "text",
+            placeholder: t("name.placeholder"),
+            options: {
+                required: t("name.errors.required"),
+            },
+            previous: {
+                type: "button",
+                onClick: router.back,
+            },
+        },
+        {
+            title: t("business.title"),
+            name: "business",
+            type: "text",
+            placeholder: t("business.placeholder"),
+            options: {
+                required: t("business.errors.required"),
+            },
+            previous: {
+                type: "button",
+                onClick: handleBack,
+            },
+        },
+        {
+            title: t("email.title"),
+            name: "email",
+            type: "email",
+            placeholder: t("email.placeholder"),
+            options: {
+                required: t("email.errors.required"),
+                pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                    message: t("email.errors.pattern"),
+                },
+            },
+            previous: {
+                type: "button",
+                onClick: handleBack,
+            },
+        },
+        {
+            title: t("phone.title"),
+            name: "phone",
+            type: "tel",
+            placeholder: t("phone.placeholder"),
+            options: {},
+            previous: {
+                type: "button",
+                onClick: handleBack,
+            },
+        },
         {
             title: t("message.title"),
             name: "message",

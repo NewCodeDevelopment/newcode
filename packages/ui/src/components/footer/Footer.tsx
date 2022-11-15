@@ -7,7 +7,7 @@ import {
 	Heading,
 	Section,
 	ArrowCircleLink,
-} from "..";
+} from "../..";
 
 export default function Footer() {
 	const { t } = useTranslation("common", { keyPrefix: "footer" });

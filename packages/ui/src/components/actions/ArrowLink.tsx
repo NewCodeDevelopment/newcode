@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Arrow, Color, fillColors, textColors } from "..";
+import { Arrow, Color, fillColors, textColors } from "../..";
 import classNames from "classnames";
 import { motion, HTMLMotionProps } from "framer-motion";
 

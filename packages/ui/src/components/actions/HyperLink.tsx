@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import { HTMLMotionProps, motion } from "framer-motion";
 import classNames from "classnames";
+import Link from "next/link";
 import {
 	Color,
 	FontWeights,
@@ -10,10 +11,11 @@ import {
 	buttonShapes,
 	buttonSize,
 	buttonVariant,
-} from "..";
+} from "../..";
 
-interface Props extends HTMLMotionProps<"button"> {
+interface Props extends HTMLMotionProps<"a"> {
 	children: any;
+	href: string;
 	color?: Color;
 	variant?: buttonVariant;
 	size?: buttonSize;
@@ -21,17 +23,18 @@ interface Props extends HTMLMotionProps<"button"> {
 	weight?: FontWeights;
 }
 
-const Button = forwardRef<HTMLButtonElement, Props>(
+const HyperLink = forwardRef<HTMLAnchorElement, Props>(
 	(
 		{
+			href,
 			size = "medium",
 			color = "red",
 			shape = "pill",
 			variant = "filled",
 			weight = "bold",
+			target,
 			children,
 			className,
-			disabled,
 			...props
 		},
 		ref
@@ -42,7 +45,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
 				opacity: 1,
 			},
 			clicked: {
-				scale: [0.9, 1],
+				scale: [0.99, 1.01],
 				transition: {
 					duration: 0.2,
 					stiffness: 10,
@@ -59,26 +62,27 @@ const Button = forwardRef<HTMLButtonElement, Props>(
 		};
 
 		return (
-			<motion.button
-				{...props}
-				ref={ref}
-				className={classNames(
-					buttonColors(variant, color),
-					buttonShapes(shape, size),
-					fontWeights(weight),
-					"h-fit w-fit",
-					className
-				)}
-				disabled={disabled}
-				variants={animation}
-				initial="initial"
-				whileTap="clicked"
-				whileHover="hover"
-			>
-				{children}
-			</motion.button>
+			<Link href={href} target={target}>
+				<motion.a
+					{...props}
+					ref={ref}
+					className={classNames(
+						buttonColors(variant, color),
+						buttonShapes(shape, size),
+						fontWeights(weight),
+						"h-fit w-fit cursor-pointer",
+						className
+					)}
+					variants={animation}
+					initial="initial"
+					whileTap="clicked"
+					whileHover="hover"
+				>
+					{children}
+				</motion.a>
+			</Link>
 		);
 	}
 );
 
-export default Button;
+export default HyperLink;

@@ -1,5 +1,6 @@
-import { Section, Heading, Paragraph, Color } from "..";
+import { Section, Heading, Paragraph } from "..";
 import { motion } from "framer-motion";
+import { Color } from "../..";
 
 interface Props {
 	bg: "light" | "dark";

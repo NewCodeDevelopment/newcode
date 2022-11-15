@@ -1,6 +1,6 @@
-import { Case, checkImage, DESKTOP_MIN_WIDTH, useWindow } from "utils";
+import { Case, checkImage, useWindow } from "utils";
 import Image from "next/image";
-import { Heading, Paragraph, ArrowLink, Section } from "..";
+import { Heading, Paragraph, ArrowLink, Section } from "../..";
 import classNames from "classnames";
 import { useInView } from "react-intersection-observer";
 import { motion, HTMLMotionProps } from "framer-motion";
