@@ -10,8 +10,7 @@ const InitialLoader = dynamic(() =>
 export default function Root({ children }: any) {
 	return (
 		<>
-			{/* {process.env.NODE_ENV !== "development" && <InitialLoader />} */}
-			<InitialLoader />
+			{process.env.NODE_ENV !== "development" && <InitialLoader />}
 			{/* <PageTransition /> */}
 			{children}
 		</>
