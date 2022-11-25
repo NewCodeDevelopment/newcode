@@ -1,5 +1,5 @@
 import { Html, Main, NextScript, Head, DocumentProps } from "next/document";
-import i18nextConfig from "../../next-i18next.config";
+import i18nextConfig from "../next-i18next.config";
 /**
  *
  *

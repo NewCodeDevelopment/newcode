@@ -145,7 +145,7 @@
             "placeholder": "Yeah you can call me at... (optional)"
         },
         "message": {
-            "title": "Got an exciting project to work on? Or just wanna say hello?",
+            "title": "Got an exciting project to work on? \n Or just wanna say hello?",
             "placeholder": "Let’s make a plan. Make a difference. Make it big.",
             "errors": {
                 "required": "Vul hier uw bericht in"

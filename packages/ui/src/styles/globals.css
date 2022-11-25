@@ -13,7 +13,7 @@
 
 html {
 	@extend .no-scrollbar;
-	@apply bg-dark-700 lg:overflow-hidden;
+	@apply bg-dark-700 whitespace-pre-line lg:overflow-hidden;
 	/* lg:overflow-hidden */
 }
 /* scroll-smooth */

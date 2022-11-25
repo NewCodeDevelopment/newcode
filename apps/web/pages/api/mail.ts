@@ -9,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const msg = {
         to: process.env.ADMIN_EMAIL,
-        from: "info@newcode.be",
+        from: "no-reply@newcode.be",
         subject: subject,
         html: body,
     };
