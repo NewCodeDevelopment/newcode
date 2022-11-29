@@ -62,7 +62,7 @@ const HyperLink = forwardRef<HTMLAnchorElement, Props>(
 		};
 
 		return (
-			<Link href={href} target={target}>
+            <Link href={href} target={target} legacyBehavior>
 				<motion.a
 					{...props}
 					ref={ref}
@@ -81,7 +81,7 @@ const HyperLink = forwardRef<HTMLAnchorElement, Props>(
 					{children}
 				</motion.a>
 			</Link>
-		);
+        );
 	}
 );
 

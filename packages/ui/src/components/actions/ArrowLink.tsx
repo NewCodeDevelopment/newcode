@@ -19,7 +19,7 @@ export default function ArrowLink({
 	...props
 }: Props) {
 	return (
-		<Link href={href} target={target}>
+        <Link href={href} target={target} legacyBehavior>
 			<motion.a
 				{...props}
 				className={classNames(
@@ -35,5 +35,5 @@ export default function ArrowLink({
 				{description} <Arrow className="w-12" direction="left-to-right" />
 			</motion.a>
 		</Link>
-	);
+    );
 }

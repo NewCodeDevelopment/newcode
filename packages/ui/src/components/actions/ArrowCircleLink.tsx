@@ -27,7 +27,7 @@ export default function ArrowCircleLink({
 	};
 
 	return (
-		<Link href={path} passHref>
+        <Link href={path} passHref legacyBehavior>
 			<motion.a
 				className={classNames("flex flex-row items-center gap-3", className)}
 				variants={variants}
@@ -39,5 +39,5 @@ export default function ArrowCircleLink({
 				</span>
 			</motion.a>
 		</Link>
-	);
+    );
 }
