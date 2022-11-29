@@ -3,7 +3,7 @@ import { ReactElement } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { motion } from "framer-motion";
 import landingImage from "@/public/images/about/landing.jpg";
 

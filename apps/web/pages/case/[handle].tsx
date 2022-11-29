@@ -4,7 +4,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { checkImage, useCase, useSiblingCases } from "utils";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useInView } from "react-intersection-observer";
 import { useRouter } from "next/router";
 import casesFile from "@/public/locales/nl/cases.json";
