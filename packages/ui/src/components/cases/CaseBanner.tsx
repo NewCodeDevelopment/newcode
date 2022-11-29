@@ -1,5 +1,5 @@
 import { Case, checkImage, useWindow } from "utils";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Heading, Paragraph, ArrowLink, Section } from "../..";
 import classNames from "classnames";
 import { useInView } from "react-intersection-observer";

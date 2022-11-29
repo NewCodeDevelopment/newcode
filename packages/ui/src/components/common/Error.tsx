@@ -2,7 +2,7 @@ import Section from "./Section";
 import { useRecoilState } from "recoil";
 import { loadingState, useWindow } from "utils";
 import { useEffect } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Heading } from "..";
 import { RobotIcon } from "../..";
 
