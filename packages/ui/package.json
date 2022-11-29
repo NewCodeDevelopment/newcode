@@ -1,14 +1,12 @@
 {
 	"name": "ui",
-	"version": "0.0.0",
-	"main": "./index.tsx",
-	"types": "./index.tsx",
-	"license": "MIT",
+	"version": "1.0.0",
+	"main": "index.tsx",
+	"types": "index.tsx",
 	"scripts": {
 		"lint": "eslint *.ts*"
 	},
 	"devDependencies": {
-		"@types/js-cookie": "^3.0.2",
 		"@types/react": "^18.0.21",
 		"@types/react-dom": "^18.0.6",
 		"eslint": "^8.24.0",
@@ -17,13 +15,5 @@
 		"tsconfig": "*",
 		"typescript": "^4.5.2",
 		"utils": "*"
-	},
-	"dependencies": {
-		"classnames": "^2.3.2",
-		"eslint": "^8.25.0",
-		"framer-motion": "^7.6.4",
-		"next": "12.3.1",
-		"next-i18next": "^12.1.0",
-		"react-intersection-observer": "^9.4.0"
 	}
 }

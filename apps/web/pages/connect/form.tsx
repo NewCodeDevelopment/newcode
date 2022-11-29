@@ -10,7 +10,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FormInput, PlaneIcon } from "ui";
 import { MailData } from "utils";
 import { useRecoilState } from "recoil";
-import axios from "axios";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Arrow = dynamic(() => import("ui").then((mod) => mod.Arrow));

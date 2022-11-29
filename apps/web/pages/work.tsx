@@ -53,6 +53,8 @@ WorkPage.getLayout = function getLayout(page: ReactElement) {
  *
  */
 export async function getStaticProps({ locale }: Params) {
+    console.log(fetch(process.env.API_URL + "/cases").then((res) => res.json()));
+
     return {
         props: {
             ...(await serverSideTranslations(locale || "nl", ["common", "pages", "cases"])),
