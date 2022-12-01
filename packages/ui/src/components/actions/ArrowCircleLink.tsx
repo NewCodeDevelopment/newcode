@@ -1,6 +1,6 @@
 import { motion, HTMLMotionProps } from "framer-motion";
 import Link from "next/link";
-import { CircleArrow, Color, fillColors } from "../..";
+import { CircleArrow } from "../..";
 import classNames from "classnames";
 
 interface Props extends HTMLMotionProps<"a"> {
@@ -27,7 +27,7 @@ export default function ArrowCircleLink({
 	};
 
 	return (
-        <Link href={path} passHref legacyBehavior>
+		<Link href={path} passHref legacyBehavior>
 			<motion.a
 				className={classNames("flex flex-row items-center gap-3", className)}
 				variants={variants}
@@ -39,5 +39,5 @@ export default function ArrowCircleLink({
 				</span>
 			</motion.a>
 		</Link>
-    );
+	);
 }

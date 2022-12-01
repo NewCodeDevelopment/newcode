@@ -13,3 +13,6 @@ module.exports = withTM({
 //     const withNextBundleAnalyzer = require("next-bundle-analyzer")();
 //     nextConfig = withNextBundleAnalyzer(nextConfig);
 // }
+// experimental: {
+//     transpilePackages: ["ui", "utils"],
+// },
