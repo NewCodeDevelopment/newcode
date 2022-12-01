@@ -20,6 +20,7 @@ export default function Document(props: DocumentProps) {
                     src="https://www.googletagmanager.com/gtag/js?id=G-GC84HEE4ZZ"
                 />
                 <Script
+                    id="gtm-script"
                     strategy="afterInteractive"
                     dangerouslySetInnerHTML={{
                         __html: `

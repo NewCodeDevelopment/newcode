@@ -15,8 +15,7 @@ const CaseBanner = dynamic(() => import("ui").then((mod) => mod.CaseBanner));
  *
  *
  */
-export default function WorkPage({ data }: any) {
-    console.log(data);
+export default function WorkPage() {
     const { t } = useTranslation("pages", { keyPrefix: "work" });
 
     const cases = useCases();
@@ -73,27 +72,9 @@ WorkPage.getLayout = function getLayout(page: ReactElement) {
 // }
 
 export async function getServerSideProps({ locale }: Params) {
-    const data = await fetch(process.env.API_URL + "/cases", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.API_TOKEN}`,
-        },
-    }).then((res) => res.json());
-    console.log(
-        `
-        
-            Data fetched from: ${process.env.NEXT_PUBLIC_API_URL}
-
-            json: ${JSON.stringify(data)}
-        
-        `,
-    );
-
     return {
         props: {
             ...(await serverSideTranslations(locale || "nl", ["common", "pages", "cases"])),
-            data,
         },
     };
 }
