@@ -52,26 +52,7 @@ WorkPage.getLayout = function getLayout(page: ReactElement) {
  *
  *
  */
-// export async function getStaticProps({ locale }: Params) {
-//     const data = await fetch(process.env.API_URL + "/cases").then((res) => res.json());
-//     console.log(
-//         `
-
-//             Data fetched from: ${process.env.NEXT_PUBLIC_API_URL}
-
-//             json: ${data}
-
-//         `,
-//     );
-
-//     return {
-//         props: {
-//             ...(await serverSideTranslations(locale || "nl", ["common", "pages", "cases"])),
-//         },
-//     };
-// }
-
-export async function getServerSideProps({ locale }: Params) {
+export async function getStaticProps({ locale }: Params) {
     return {
         props: {
             ...(await serverSideTranslations(locale || "nl", ["common", "pages", "cases"])),
