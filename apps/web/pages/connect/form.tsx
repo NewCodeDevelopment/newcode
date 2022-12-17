@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { HTMLInputTypeAttribute, ReactElement, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FormInput, PlaneIcon } from "ui";
+import { FormInput, PlaneIcon, Steps } from "ui";
 import { MailData } from "utils";
 import { useRecoilState } from "recoil";
 
@@ -180,7 +180,19 @@ export default function FormPage() {
     ];
 
     return (
-        <Section bg={currentIndex % 2 === 0 ? "dark" : "light"} align="center" style={{ height }}>
+        <Section
+            bg={currentIndex % 2 === 0 ? "dark" : "light"}
+            align="center"
+            style={{ height }}
+            className="relative"
+        >
+            <Steps
+                currentIndex={currentIndex}
+                length={formFiels.length}
+                bgColor={currentIndex % 2 === 0 ? "dark" : "light"}
+                className="pt-page absolute top-0 left-0 right-0"
+            />
+
             <form className="flex w-full max-w-xl flex-col" onSubmit={handleSubmit(onSubmit)}>
                 {formFiels.map(
                     ({ title, name, placeholder, type, options, previous }, index, array) => (
