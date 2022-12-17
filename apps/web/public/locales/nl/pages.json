@@ -5,7 +5,7 @@
         },
         "mission": {
             "title": "Onze Missie",
-            "description": "Bij NewCode willen we graag het leven vergemakkelijken aan de hand van technologie. Dit doen we door naar uw problemen en uw verhaal te luisteren en deze op de best mogelijke manier op te lossen. We pakken dit aan op een kwalitatieve, transparante en eerlijke werkwijze.",
+            "description": "NewCode wilt het leven van de mens vergemakkelijken met behulp van technologie. Er wordt geluisterd naar de problemen en verhalen, en lossen deze op een zo effectief mogelijke manier op aan de hand van een kwalitatieve, transparante en eerlijke werkwijze.",
             "button": "De backend van NewCode"
         },
         "services": {
@@ -27,19 +27,19 @@
             "items": [
                 {
                     "title": "Analysis",
-                    "description": "In de analysefase worden de problemen geanalyseerd en bekijken we hoe we het proces zullen aanpakken. We bekijken in deze fase niet enkel de technische im- plementatie, maar gaan eveneens na hoe we het best mogelijke gebruiksge- mak kunnen aanbieden."
+                    "description": "We starten met een grondige analyse van uw huidige problemen en passen onze aanpak hierop aan. Naast de technische implementatie, wordt er in deze fase ook al bekeken hoe we het meest aangename gebruiksgemak kunnen aanbieden."
                 },
                 {
                     "title": "Strategy",
-                    "description": "In de strategiefase definiëren we doel- stellingen qua tijd en kwaliteit, om u een doordacht product op te leveren waar- op u kan rekenen. We definiëren onze doelstellingen niet enkel technisch, maar ook visueel zodat het resultaat perfect plaats kan nemen in uw ecosysteem."
+                    "description": "In deze fase definiëren we doelstellingen voor/op tijd en kwaliteit. Zo kunnen we u een doordacht product opleveren waarop u kan rekenen. Dit wordt zowel technisch als visueel voorgesteld zodat het resultaat perfect plaats kan nemen in uw ecosysteem."
                 },
                 {
                     "title": "Creation",
-                    "description": "Na een onderzoeksfase zijn we klaar en voorbereid om te starten met de imple- mentatie. In deze fase realiseren we uw oplossing."
+                    "description": "Na een uitgebreide onderzoeksfase zijn we voldoende voorbereid om met/aan de implementatie te starten. Aan het einde van deze fase realiseren we uw oplossing."
                 },
                 {
                     "title": "Polishing",
-                    "description": "Wanneer alles is afgewerkt, kunnen er nog oneffenheden achterblijven. Daar- om gaan we in deze fase alle imperfec- ties polijsten. Dit doen we door het pro- duct uitvoerig te testen, te optimaliseren en te herevalueren, zodat uw product van de beste kwaliteit is."
+                    "description": "In deze laatste fase testen, optimaliseren en herevalueren we het product uitvoerig. We polijsten de imperfecties en creëren een product dat van hoogste kwaliteit is."
                 }
             ]
         }
@@ -51,38 +51,38 @@
         "nature": [
             {
                 "title": "Our nature",
-                "values": ["Powerful", "Strong", "Dynamic", "Classy", "Simplicity", "Structure"]
+                "values": ["Krachtig", "Sterk", "Dynamisch", "Klasse", "Simplistisch", "Structuur"]
             },
             {
                 "title": "Nature of our partner",
                 "values": [
-                    "Innovative",
-                    "Ambitious",
-                    "Growth mindset",
-                    "Authentic",
-                    "Enthusiastic",
-                    "Hands-on"
+                    "Innovatief",
+                    "Ambitieus",
+                    "Groeimindset",
+                    "Authentiek",
+                    "Enthousiast",
+                    "Praktisch"
                 ]
             }
         ],
         "vision": {
             "title": "Our Vision",
-            "description": "Our vision is a world where we move everyone forward and create positive change. Facilitate, simplify and optimize."
+            "description": "Iedereen vooruit helpen en positieve verandering teweegbrengen. Vergemakkelijken, vereenvoudigen en optimaliseren"
         },
         "values": {
             "title": "Values",
             "items": [
                 {
                     "title": "Accessible",
-                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                    "description": "API, HTML, CSS en Javascript. Voor veel mensen zijn dit abstracte termen. Wij helpen u met plezier door dit doolhof van vaktermen zodat u ook begrijpt wat we doen. Wij vertalen het allemaal naar mensentaal."
                 },
                 {
                     "title": "Surprising",
-                    "description": "Wij onderscheiden ons, zowel qua aanpak als eindresultaat."
+                    "description": "Wij onderscheiden ons, zowel in aanpak als eindresultaat."
                 },
                 {
                     "title": "Made easy",
-                    "description": "De wereld is ingewikkeld genoeg, daarom maken wij het graag makkelijk voor u."
+                    "description": "De wereld is al moeilijk genoeg, daarom maken wij het graag makkelijk voor u. Zo kan u gefocust blijven de fundamentele onderdelen van u onderneming."
                 },
                 {
                     "title": "Mindful",
@@ -97,7 +97,7 @@
     "case": {
         "banner": {
             "title": "Case Study",
-            "link": "See case study"
+            "link": "Bekijk case study"
         },
         "landing": {
             "client": "Klant",
@@ -105,50 +105,50 @@
             "service": "Service",
             "type": "Type",
             "year": "Jaar",
-            "link": "Launch Site"
+            "link": "Lanceer Site"
         },
         "content": {
-            "problem": "The problem",
-            "solution": "The Solution"
+            "problem": "Het probleem",
+            "solution": "De oplossing"
         },
         "connect": {
             "title": "Lets get this code going",
-            "link": "Start a project",
+            "link": "Start een project",
             "scroll": "Scroll down to all cases"
         }
     },
     "form": {
         "name": {
-            "title": "What is your name?",
-            "placeholder": "Hi, I’m the Codemaster. Who are you?",
+            "title": "Wat is jouw naam?",
+            "placeholder": "Hallo, ik ben de Codemaster. Wie ben jij?",
             "errors": {
-                "required": "Vul hier uw naam in"
+                "required": "Vul hier je naam in..."
             }
         },
         "business": {
-            "title": "What’s your business?",
-            "placeholder": "We are NewCode, What’s yours?",
+            "title": "Wat is jouw zaak?",
+            "placeholder": "Wij zijn NewCode, wat is de jouwe?",
             "errors": {
-                "required": "Vul hier uw bedrijfsnaam in"
+                "required": "Vul hier je bedrijfsnaam in..."
             }
         },
         "email": {
-            "title": "How can we reach you?",
-            "placeholder": "Send me an email at...",
+            "title": "Hoe kunnen we u bereiken?",
+            "placeholder": "Stuur me een e-mail op...",
             "errors": {
-                "required": "Vul hier uw emailadres in",
-                "pattern": "Vul een geldig emailadres in"
+                "required": "Vul hier uw e-mailadres in",
+                "pattern": "Vul een geldig e-mailadres in..."
             }
         },
         "phone": {
-            "title": "Can we call you?",
-            "placeholder": "Yeah you can call me at... (optional)"
+            "title": "Kunnen we je bellen?",
+            "placeholder": "Je kunt me bellen op... (optioneel)"
         },
         "message": {
-            "title": "Got an exciting project to work on? \n Or just wanna say hello?",
-            "placeholder": "Let’s make a plan. Make a difference. Make it big.",
+            "title": "Heb je een spannend project om aan te werken? \n Of wil je gewoon hallo zeggen?",
+            "placeholder": "Laten we een plan maken. Maak een verschil. Maak het groots.",
             "errors": {
-                "required": "Vul hier uw bericht in"
+                "required": "Vul hier je bericht in..."
             }
         },
         "thanks": {

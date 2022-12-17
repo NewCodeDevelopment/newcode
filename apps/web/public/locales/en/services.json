@@ -1,0 +1,32 @@
+{
+    "new": {
+        "title": "NewCode",
+        "items": [
+            {
+                "title": "Web",
+                "description": "Would you like to automate your business or create an interactive platform that is all possible using web applications. This way you can access your application from anywhere in the world with just a few clicks."
+            },
+            {
+                "title": "App",
+                "description": "Are web applications not your thing? Do you prefer a mobile solution to improve ease of use? Then mobile applications might be for you. Mobile applications are like web applications at your fingertips and easy to use."
+            },
+            {
+                "title": "Automation",
+                "description": "Are you planning to digitally transform your business or want to make processes more efficient by minimizing repetitive manual work? It's all possible thanks to Automation software. It gives you more time for what really matters."
+            }
+        ]
+    },
+    "existing": {
+        "title": "ExistingCode",
+        "items": [
+            {
+                "title": "E-commerce",
+                "description": ""
+            },
+            {
+                "title": "Payment gateway",
+                "description": "Give your customers the ability to make payments quickly, securely and easily. This way they will never encounter unexpected surprises during a transaction."
+            }
+        ]
+    }
+}

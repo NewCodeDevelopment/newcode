@@ -2,19 +2,9 @@
     "title": "Testimonials",
     "items": [
         {
-            "body": "1Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-            "name": "John Doe",
-            "company": "Donvil"
-        },
-        {
-            "body": "1Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-            "name": "John Doe",
+            "body": "Als branding bureau krijgen wij ooit de vraag van klanten om iets custom te developen, sinds 2 jaar werken we samen met NewCode als klankbord en voor het development. Grote flexibiliteit, sterk meedenkend en optimale code!",
+            "name": "Lennert Gysen",
             "company": "KAPMES"
-        },
-        {
-            "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-            "name": "John Doe",
-            "company": "Momento"
         }
     ]
 }

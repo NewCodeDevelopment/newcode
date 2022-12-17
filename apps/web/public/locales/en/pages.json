@@ -1,0 +1,161 @@
+{
+    "home": {
+        "landing": {
+            "title": "Code makes life easier"
+        },
+        "mission": {
+            "title": "Our Mission",
+            "description": "NewCode wants to make people's lives easier with technology. It listens to problems and stories, and solves them in the most effective way possible using a quality, transparent and honest approach.",
+            "button": "NewCode's backend."
+        },
+        "services": {
+            "title": "Services",
+            "link": "View our services"
+        }
+    },
+    "work": {
+        "landing": {
+            "title": "Life made easier"
+        }
+    },
+    "services": {
+        "landing": {
+            "title": "Services"
+        },
+        "approach": {
+            "title": "approach",
+            "items": [
+                {
+                    "title": "analysis",
+                    "description": "We start with a thorough analysis of your current problems and adapt our approach accordingly. In addition to the technical implementation, at this stage we already look at how we can offer the most pleasant ease of use."
+                },
+                {
+                    "title": "Strategy",
+                    "description": "In this phase, we define objectives for/on time and quality. This allows us to deliver a well-thought-out product that you can count on. This is presented both technically and visually so that the result can perfectly take its place in your ecosystem."
+                },
+                {
+                    "title": "Creation",
+                    "description": "After an extensive research phase, we are sufficiently prepared to start/work on the implementation. At the end of this phase, we realize your solution."
+                },
+                {
+                    "title": "Polishing",
+                    "description": "In this final phase, we extensively test, optimize and re-evaluate the product. We polish the imperfections and create a product that is of the highest quality."
+                }
+            ]
+        }
+    },
+    "about": {
+        "landing": {
+            "title": "Our Backend"
+        },
+        "nature": [
+            {
+                "title": "Our nature",
+                "values": ["Powerful", "Strong", "Dynamic", "Class", "Simplistic", "Structure"]
+            },
+            {
+                "title": "Nature of our partner",
+                "values": [
+                    "Innovative",
+                    "Ambitious",
+                    "Growth mindset",
+                    "Authentic",
+                    "Enthusiastic",
+                    "Practical."
+                ]
+            }
+        ],
+        "vision": {
+            "title": "Our Vision",
+            "description": "Helping everyone move forward and create positive change. Facilitate, simplify and optimize."
+        },
+        "values": {
+            "title": "Values",
+            "items": [
+                {
+                    "title": "Accessible",
+                    "description": "API, HTML, CSS and Javascript. For many people, these are abstract terms. We are happy to help you through this maze of technical terms so that you also understand what we do. We translate it all into human language."
+                },
+                {
+                    "title": "Surprising",
+                    "description": "We stand out, both in approach and end result."
+                },
+                {
+                    "title": "Made easy",
+                    "description": "The world is hard enough, so we like to make it easy for you, so you can stay focused on the fundamental parts of your business."
+                },
+                {
+                    "title": "Mindful",
+                    "description": "We understand where you want to go as a business."
+                }
+            ]
+        },
+        "tools": {
+            "title": "Tools"
+        }
+    },
+    "case": {
+        "banner": {
+            "title": "Case Study",
+            "link": "view case study"
+        },
+        "landing": {
+            "client": "client",
+            "sector": "Sector",
+            "service": "service",
+            "type": "type",
+            "year": "year",
+            "link": "Launch Site"
+        },
+        "content": {
+            "problem": "The problem",
+            "solution": "The solution"
+        },
+        "connect": {
+            "title": "Lets get this code going",
+            "link": "Start a project",
+            "scroll": "Scroll down to all cases"
+        }
+    },
+    "form": {
+        "name": {
+            "title": "What is your name?",
+            "placeholder": "Hello, I am the Codemaster. Who are you?",
+            "errors": {
+                "required": "Please enter your name here..."
+            }
+        },
+        "business": {
+            "title": "What is your business?",
+            "placeholder": "We are NewCode, what is yours?",
+            "errors": {
+                "required": "Please enter your business name here..."
+            }
+        },
+        "email": {
+            "title": "How can we reach you?",
+            "placeholder": "Send me an email at...",
+            "errors": {
+                "required": "Please enter your email address here",
+                "pattern": "Please enter a valid email address..."
+            }
+        },
+        "phone": {
+            "title": "Can we call you?",
+            "placeholder": "You can call me at.... (optional)"
+        },
+        "message": {
+            "title": "Do you have an exciting project to work on? \n Or do you just want to say hello?",
+            "placeholder": "Let's make a plan. Make a difference. Make it big.",
+            "errors": {
+                "required": "Enter your message here..."
+            }
+        },
+        "thanks": {
+            "title": "You've done it! Ready to make something great?"
+        },
+        "fail": {
+            "title": "Oops, something went wrong. Please try again later."
+        }
+    }
+}

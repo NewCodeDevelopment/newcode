@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { ReactElement, useEffect } from "react";
+import { Fragment, ReactElement, useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
@@ -8,6 +8,7 @@ import Image from "next/legacy/image";
 import { useInView } from "react-intersection-observer";
 import { useRouter } from "next/router";
 import casesFile from "@/public/locales/nl/cases.json";
+import { DescriptionSection } from "ui";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Heading = dynamic(() => import("ui").then((mod) => mod.Heading));
@@ -130,58 +131,33 @@ export default function CasePage({ handle }: Props) {
                     title: t("content.solution"),
                     description: description.solution,
                 },
-            ].map(({ title, description }, index) => (
-                <Section bg="dark" align="center" key={index} py={false} px={false}>
-                    <div className="flex h-full w-full flex-col">
+            ].map(({ title, description }, index, array) => (
+                <Fragment key={index}>
+                    <Section bg="dark">
                         <Image
                             {...checkImage(images[index])}
                             width={100}
                             height={100}
-                            layout="responsive"
+                            layout="fill"
                             objectFit="cover"
                         />
+                    </Section>
 
-                        <div className="px-page flex flex-col gap-6 py-16 lg:flex-row lg:gap-40 lg:py-20">
-                            <Heading type="h3">
-                                {title}
-                                <span className="text-red-500">_</span>
-                            </Heading>
+                    <DescriptionSection bg="dark" title={title} description={description} />
 
-                            <Paragraph size="large" weight="bold">
-                                {description}
-                            </Paragraph>
-                        </div>
-                    </div>
-                </Section>
+                    {index === array.length - 1 && (
+                        <Section bg="dark">
+                            <Image
+                                {...checkImage(images[index + 1])}
+                                width={100}
+                                height={100}
+                                layout="fill"
+                                objectFit="cover"
+                            />
+                        </Section>
+                    )}
+                </Fragment>
             ))}
-            {/* 
-            
-            
-                Image Gallery
-            
-            */}
-            <Section bg="dark" py={false} px={false}>
-                <div className="grid h-full w-full grid-cols-1 grid-rows-3 gap-y-12 gap-x-12 pt-8 lg:grid-cols-2 lg:grid-rows-2 lg:p-0">
-                    <Image
-                        {...checkImage(images[2])}
-                        width={100}
-                        height={100}
-                        objectFit="cover"
-                        layout="responsive"
-                    />
-                    <Image
-                        {...checkImage(images[3])}
-                        width={100}
-                        height={100}
-                        objectFit="cover"
-                        layout="responsive"
-                    />
-
-                    <span className="relative lg:col-span-2">
-                        <Image {...checkImage(images[4])} objectFit="cover" layout="fill" />
-                    </span>
-                </div>
-            </Section>
             {/* 
                     
                     
@@ -334,3 +310,43 @@ export async function getStaticPaths() {
 //         </div>
 //     </Section>
 // ))}
+
+{
+    /* <Section bg="dark" align="center">
+                        <div className="flex w-1/2 flex-col gap-6 lg:flex-row lg:gap-40 lg:py-20">
+                            <Heading type="h3">
+                                {title}
+                                <span className="text-red-500">_</span>
+                            </Heading>
+
+                            <Paragraph size="large" weight="bold">
+                                {description}
+                            </Paragraph>
+                        </div>
+                    </Section> */
+}
+
+{
+    /* <Section bg="dark" py={false} px={false}>
+    <div className="grid h-full w-full grid-cols-1 grid-rows-3 gap-y-12 gap-x-12 pt-8 lg:grid-cols-2 lg:grid-rows-2 lg:p-0">
+        <Image
+            {...checkImage(images[2])}
+            width={100}
+            height={100}
+            objectFit="cover"
+            layout="responsive"
+        />
+        <Image
+            {...checkImage(images[3])}
+            width={100}
+            height={100}
+            objectFit="cover"
+            layout="responsive"
+        />
+
+        <span className="relative lg:col-span-2">
+            <Image {...checkImage(images[4])} objectFit="cover" layout="fill" />
+        </span>
+    </div>
+</Section>; */
+}
