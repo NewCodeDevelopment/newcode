@@ -26,7 +26,7 @@ export default function InitialLoader() {
 									pathLength: [0, 1, 1],
 									pathOffset: [1, 0, 0],
 									fill: ["#262626", "#262626", "#ff1800"],
-									stroke: ["#ff1800", "#ff1800", "#ff1800"],
+									stroke: ["#d8d8d8", "#d8d8d8", "#ff1800"],
 									strokeWidth: [2, 2, 0],
 								}}
 								transition={{
