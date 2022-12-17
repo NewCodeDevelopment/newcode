@@ -37,8 +37,18 @@ export default function CasePage({ handle }: Props) {
     //     threshold: 1,
     // });
 
-    const { title, description, client, sector, service, type, year, productUrl, images } =
-        useCase(handle);
+    const {
+        title,
+        description,
+        client,
+        sector,
+        service,
+        type,
+        year,
+        productUrl,
+        images,
+        bannerImage,
+    } = useCase(handle);
 
     const { left, right } = useSiblingCases(handle);
 
@@ -119,6 +129,21 @@ export default function CasePage({ handle }: Props) {
             {/* 
             
             
+                Banner
+            
+            */}
+            <Section bg="dark">
+                <Image
+                    {...checkImage(bannerImage)}
+                    width={100}
+                    height={100}
+                    layout="fill"
+                    objectFit="cover"
+                />
+            </Section>
+            {/* 
+            
+            
                 Problem & Solution
             
             */}
@@ -131,8 +156,10 @@ export default function CasePage({ handle }: Props) {
                     title: t("content.solution"),
                     description: description.solution,
                 },
-            ].map(({ title, description }, index, array) => (
+            ].map(({ title, description }, index) => (
                 <Fragment key={index}>
+                    <DescriptionSection bg="dark" title={title} description={description} />
+
                     <Section bg="dark">
                         <Image
                             {...checkImage(images[index])}
@@ -142,20 +169,6 @@ export default function CasePage({ handle }: Props) {
                             objectFit="cover"
                         />
                     </Section>
-
-                    <DescriptionSection bg="dark" title={title} description={description} />
-
-                    {index === array.length - 1 && (
-                        <Section bg="dark">
-                            <Image
-                                {...checkImage(images[index + 1])}
-                                width={100}
-                                height={100}
-                                layout="fill"
-                                objectFit="cover"
-                            />
-                        </Section>
-                    )}
                 </Fragment>
             ))}
             {/* 
@@ -215,11 +228,11 @@ export default function CasePage({ handle }: Props) {
 
                     <div>&nbsp;</div>
                 </div>
-
+                {/* 
                 <div className="absolute left-0 right-0 bottom-20 mx-auto flex flex-col items-center justify-center gap-4 lg:bottom-20">
                     <Heading type="h4">{t("connect.scroll")}</Heading>
                     <Scroll />
-                </div>
+                </div> */}
             </Section>
             {/* 
             

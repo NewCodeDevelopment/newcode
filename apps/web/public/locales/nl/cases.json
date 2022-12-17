@@ -20,23 +20,11 @@
             },
             "images": [
                 {
-                    "url": "https://picsum.photos/id/1/3000/3000",
+                    "url": "/images/cases/donvil/1.jpg",
                     "alt": "Donvil Dimoda"
                 },
                 {
-                    "url": "https://picsum.photos/id/2/3000/3000",
-                    "alt": "Donvil Dimoda"
-                },
-                {
-                    "url": "https://picsum.photos/id/3/3000/3000",
-                    "alt": "Donvil Dimoda"
-                },
-                {
-                    "url": "https://picsum.photos/id/4/3000/3000",
-                    "alt": "Donvil Dimoda"
-                },
-                {
-                    "url": "https://picsum.photos/id/5/3000/3000",
+                    "url": "/images/cases/donvil/2.jpg",
                     "alt": "Donvil Dimoda"
                 }
             ]
@@ -61,24 +49,12 @@
             },
             "images": [
                 {
-                    "url": "https://picsum.photos/id/1/3000/3000",
-                    "alt": "Donvil Dimoda"
+                    "url": "/images/cases/the-god-shot/1.webp",
+                    "alt": "The God Shot"
                 },
                 {
-                    "url": "https://picsum.photos/id/2/3000/3000",
-                    "alt": "Donvil Dimoda"
-                },
-                {
-                    "url": "https://picsum.photos/id/3/3000/3000",
-                    "alt": "Donvil Dimoda"
-                },
-                {
-                    "url": "https://picsum.photos/id/4/3000/3000",
-                    "alt": "Donvil Dimoda"
-                },
-                {
-                    "url": "https://picsum.photos/id/5/3000/3000",
-                    "alt": "Donvil Dimoda"
+                    "url": "/images/cases/the-god-shot/2.webp",
+                    "alt": "The God Shot"
                 }
             ]
         }

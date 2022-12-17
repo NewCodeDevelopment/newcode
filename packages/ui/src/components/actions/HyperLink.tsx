@@ -62,10 +62,12 @@ const HyperLink = forwardRef<HTMLAnchorElement, Props>(
 		};
 
 		return (
-            <Link href={href} target={target} legacyBehavior>
+			<Link href={href} legacyBehavior>
 				<motion.a
 					{...props}
+					href={href}
 					ref={ref}
+					target={target}
 					className={classNames(
 						buttonColors(variant, color),
 						buttonShapes(shape, size),
@@ -81,7 +83,7 @@ const HyperLink = forwardRef<HTMLAnchorElement, Props>(
 					{children}
 				</motion.a>
 			</Link>
-        );
+		);
 	}
 );
 
