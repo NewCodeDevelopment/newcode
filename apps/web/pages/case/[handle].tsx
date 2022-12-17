@@ -132,13 +132,14 @@ export default function CasePage({ handle }: Props) {
                 Banner
             
             */}
-            <Section bg="dark">
+            <Section bg="dark" className="relative">
                 <Image
                     {...checkImage(bannerImage)}
                     width={100}
                     height={100}
                     layout="fill"
                     objectFit="cover"
+                    objectPosition="center"
                 />
             </Section>
             {/* 
@@ -160,13 +161,14 @@ export default function CasePage({ handle }: Props) {
                 <Fragment key={index}>
                     <DescriptionSection bg="dark" title={title} description={description} />
 
-                    <Section bg="dark">
+                    <Section bg="dark" className="relative">
                         <Image
                             {...checkImage(images[index])}
                             width={100}
                             height={100}
                             layout="fill"
                             objectFit="cover"
+                            objectPosition="center"
                         />
                     </Section>
                 </Fragment>
