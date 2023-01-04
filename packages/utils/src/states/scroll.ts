@@ -13,6 +13,6 @@ export const scrollState = atom<IScrollState>({
         currentIndex: 0,
         length: 0,
         caller: "event",
-        enabled: true,
+        enabled: false,
     },
 });
