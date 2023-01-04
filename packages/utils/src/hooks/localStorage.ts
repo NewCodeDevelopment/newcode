@@ -39,7 +39,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
 			}
 		} catch (error) {
 			// A more advanced implementation would handle the error case
-			console.log(error);
+			console.error(error);
 		}
 	};
 	return [storedValue, setValue] as const;

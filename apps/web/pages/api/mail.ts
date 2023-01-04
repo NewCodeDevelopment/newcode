@@ -18,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         await sgMail.send(msg);
         res.status(200).json({ success: true });
     } catch (err: any) {
-        console.log(`
+        console.error(`
         
         
             MAIL ERROR

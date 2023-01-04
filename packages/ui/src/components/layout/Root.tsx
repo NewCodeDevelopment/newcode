@@ -7,7 +7,6 @@ const InitialLoader = dynamic(() => import("..").then((mod) => mod.InitialLoader
 export default function Root({ children }: any) {
     const [scroll] = useRecoilState(scrollState);
 
-    console.log(scroll.enabled);
     return (
         <>
             {process.env.NODE_ENV !== "development" && <InitialLoader />}

@@ -75,7 +75,6 @@ export default function FormPage() {
     }
 
     async function onSubmit(data: typeof IFormInputs) {
-        console.log(data);
         if (currentIndex === formFiels.length - 1) {
             handleSend(data);
             return;
@@ -251,13 +250,13 @@ export default function FormPage() {
                                             >
                                                 <Arrow
                                                     direction="right-to-left"
-                                                    className="w-12 fill-dark-300"
+                                                    className="fill-dark-300 w-12"
                                                 />
                                             </Button>
                                             <Button type="submit" variant="text" shape="none">
                                                 {array.length === index + 1 ? (
                                                     <PlaneIcon
-                                                        className="w-8 fill-dark-300"
+                                                        className="fill-dark-300 w-8"
                                                         initial={{
                                                             x: 0,
                                                             opacity: 1,

@@ -8,11 +8,3 @@ module.exports = withTM({
         domains: ["picsum.photos"],
     },
 });
-
-// if (process.env.ANALYZE === "true") {
-//     const withNextBundleAnalyzer = require("next-bundle-analyzer")();
-//     nextConfig = withNextBundleAnalyzer(nextConfig);
-// }
-// experimental: {
-//     transpilePackages: ["ui", "utils"],
-// },
