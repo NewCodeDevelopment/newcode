@@ -8,6 +8,7 @@ import { useTranslation } from "next-i18next";
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Landing = dynamic(() => import("ui").then((mod) => mod.Landing));
 const CaseBanner = dynamic(() => import("ui").then((mod) => mod.CaseBanner));
+const Seo = dynamic(() => import("ui").then((mod) => mod.Seo));
 /**
  *
  *
@@ -22,6 +23,13 @@ export default function WorkPage() {
 
     return (
         <>
+            <Seo title={t("seo.title")} description={t("seo.description")} />
+            {/*
+             *
+             *
+             * Landing
+             *
+             * */}
             <Landing title={t("landing.title")} />
             {/* 
 				*

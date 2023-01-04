@@ -1,4 +1,4 @@
-import { useRef, useState, useLayoutEffect, useCallback } from "react";
+import { useState, useLayoutEffect, useCallback } from "react";
 
 export function useWindow() {
 	// const height = useRef<number | string>("100vh");

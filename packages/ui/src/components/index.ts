@@ -27,6 +27,7 @@ export { default as ServicesSection } from "./services/ServicesSection";
 export { default as PageTransition } from "./common/PageTransition";
 export { default as SectionIndicator } from "./common/SectionIndicator";
 export { default as Scroll } from "./common/Scroll";
+export { default as Seo } from "./common/Seo";
 export { default as Steps } from "./common/Steps";
 export {
 	type Testimonial,

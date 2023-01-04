@@ -34,18 +34,6 @@ export default function PageLoader() {
 					/>
 				</motion.svg>
 			</motion.div>
-			<style
-				// @ts-ignore
-				jsx
-				global
-			>
-				{`
-					body,
-					html {
-						overflow: hidden !important;
-					}
-				`}
-			</style>
 		</AnimatePresence>
 	);
 }

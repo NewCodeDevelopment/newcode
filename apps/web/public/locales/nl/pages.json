@@ -1,5 +1,10 @@
 {
     "home": {
+        "seo": {
+            "title": "Code makes life easier - NewCode",
+            "description": "Bij NewCode willen we graag jouw leven vergemakkelijken aan de hand van technologie, door naar jouw verhaal te luisteren.",
+            "keywords": "code software automatisering oplossingen"
+        },
         "landing": {
             "title": "Code makes life easier"
         },
@@ -14,11 +19,21 @@
         }
     },
     "work": {
+        "seo": {
+            "title": "Code makes life easier - NewCode",
+            "description": "Bij NewCode willen we graag jouw leven vergemakkelijken aan de hand van technologie, door naar jouw verhaal te luisteren.",
+            "keywords": "code software automatisering oplossingen"
+        },
         "landing": {
             "title": "Life made easier"
         }
     },
     "services": {
+        "seo": {
+            "title": "Code makes life easier - NewCode",
+            "description": "Bij NewCode willen we graag jouw leven vergemakkelijken aan de hand van technologie, door naar jouw verhaal te luisteren.",
+            "keywords": "code software automatisering oplossingen"
+        },
         "landing": {
             "title": "Services"
         },
@@ -45,6 +60,11 @@
         }
     },
     "about": {
+        "seo": {
+            "title": "Code makes life easier - NewCode",
+            "description": "Bij NewCode willen we graag jouw leven vergemakkelijken aan de hand van technologie, door naar jouw verhaal te luisteren.",
+            "keywords": "code software automatisering oplossingen"
+        },
         "landing": {
             "title": "Onze Backend"
         },
@@ -118,6 +138,11 @@
         }
     },
     "form": {
+        "seo": {
+            "title": "Code makes life easier - NewCode",
+            "description": "Bij NewCode willen we graag jouw leven vergemakkelijken aan de hand van technologie, door naar jouw verhaal te luisteren.",
+            "keywords": "code software automatisering oplossingen"
+        },
         "name": {
             "title": "Wat is jouw naam?",
             "placeholder": "Hallo, ik ben de Codemaster. Wie ben jij?",

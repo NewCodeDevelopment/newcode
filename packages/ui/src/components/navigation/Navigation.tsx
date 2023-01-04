@@ -6,7 +6,7 @@ import classNames from "classnames";
 import { useRouter } from "next/router";
 import { usePathHook } from "../../config/paths";
 import { useRecoilState } from "recoil";
-import { bgColorState } from "utils";
+import { bgColorState, scrollState } from "utils";
 import { useTranslation } from "next-i18next";
 
 interface Props extends HTMLAttributes<HTMLElement> {
@@ -27,15 +27,24 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 
 	const [bgColor, setBgColor] = useRecoilState(bgColorState);
 	const [oldBgColor, setOldBgColor] = useState(bgColor);
+	const [scroll, setScroll] = useRecoilState(scrollState);
 
 	const cycleMenu = () => {
 		if (open) {
 			setBgColor(oldBgColor);
+			setScroll({
+				...scroll,
+				enabled: false,
+			});
 		}
 
 		if (!open) {
 			setOldBgColor(bgColor);
 			setBgColor("dark");
+			setScroll({
+				...scroll,
+				enabled: true,
+			});
 		}
 
 		if (!animationComplete) return;
@@ -53,7 +62,7 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
 	}, [router.pathname]);
 
 	return (
-        <header
+		<header
 			{...props}
 			className={classNames(
 				"fixed left-0 top-0 z-40 w-full transform transition-all duration-200 ease-in-out",
@@ -93,33 +102,32 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
                     Shared Components
                 */}
 				<Link
-                    href="/"
-                    className="z-10 flex flex-row items-center gap-3"
-                    onClick={open ? cycleMenu : undefined}>
-
-                    <Logo
-                        className={classNames(
-                            "text-light-500 w-6  xl:w-12",
-                            open && "fill-light-500",
-                            bgColor === "dark" && "fill-red-500",
-                            bgColor === "light" && "fill-red-500",
-                            bgColor === "red" && "fill-dark-500"
-                        )}
-                    />
-                    <span
-                        className={classNames(
-                            "text-lg font-extrabold xl:text-3xl",
-                            open && "text-light-500",
-                            "transition-all duration-1000 ease-in-out",
-                            bgColor === "light" && "text-dark-500",
-                            bgColor === "dark" && "text-light-500",
-                            bgColor === "red" && "text-dark-500"
-                        )}
-                    >
-                        NewCode
-                    </span>
-
-                </Link>
+					href="/"
+					className="z-10 flex flex-row items-center gap-3"
+					onClick={open ? cycleMenu : undefined}
+				>
+					<Logo
+						className={classNames(
+							"text-light-500 w-6  xl:w-12",
+							open && "fill-light-500",
+							bgColor === "dark" && "fill-red-500",
+							bgColor === "light" && "fill-red-500",
+							bgColor === "red" && "fill-dark-500"
+						)}
+					/>
+					<span
+						className={classNames(
+							"text-lg font-extrabold xl:text-3xl",
+							open && "text-light-500",
+							"transition-all duration-1000 ease-in-out",
+							bgColor === "light" && "text-dark-500",
+							bgColor === "dark" && "text-light-500",
+							bgColor === "red" && "text-dark-500"
+						)}
+					>
+						NewCode
+					</span>
+				</Link>
 
 				{/* 
 
@@ -148,31 +156,31 @@ export default function Navigation({ pathsHook, className, ...props }: Props) {
                 */}
 				<div className="hidden xl:flex xl:flex-row xl:gap-16">
 					{mainRoutes.map(({ name, path }, index) => (
-						(<Link
-                            key={index}
-                            href={path}
-                            className={classNames(
-                                "font-bold transition-all duration-1000 ease-in-out xl:text-xl",
-                                bgColor === "light" && "navigation-link-red text-dark-500",
-                                bgColor === "dark" && "navigation-link-red text-light-500",
-                                bgColor === "red" && "navigation-link-dark text-dark-500",
+						<Link
+							key={index}
+							href={path}
+							className={classNames(
+								"font-bold transition-all duration-1000 ease-in-out xl:text-xl",
+								bgColor === "light" && "navigation-link-red text-dark-500",
+								bgColor === "dark" && "navigation-link-red text-light-500",
+								bgColor === "red" && "navigation-link-dark text-dark-500",
 
-                                currentRouteHandler(path) &&
-                                    bgColor === "light" &&
-                                    "navigation-currentRoute-red text-red-500",
-                                currentRouteHandler(path) &&
-                                    bgColor === "dark" &&
-                                    "navigation-currentRoute-red text-red-500",
-                                currentRouteHandler(path) &&
-                                    bgColor === "red" &&
-                                    "navigation-currentRoute-dark text-light-500"
-                            )}>
-
-                            {name}_
-                        </Link>)
+								currentRouteHandler(path) &&
+									bgColor === "light" &&
+									"navigation-currentRoute-red text-red-500",
+								currentRouteHandler(path) &&
+									bgColor === "dark" &&
+									"navigation-currentRoute-red text-red-500",
+								currentRouteHandler(path) &&
+									bgColor === "red" &&
+									"navigation-currentRoute-dark text-light-500"
+							)}
+						>
+							{name}_
+						</Link>
 					))}
 				</div>
 			</div>
 		</header>
-    );
+	);
 }

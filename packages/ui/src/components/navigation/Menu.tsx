@@ -75,99 +75,82 @@ export default function Menu({
 		},
 	};
 
-	return <>
-        <motion.nav
-            className="px-page fixed z-0 flex h-screen w-full flex-col justify-between gap-12 overflow-hidden bg-red-500 pt-28 pb-16"
-            onAnimationComplete={() => animationCompleteCallback(true)}
-            style={{
-                height: height,
-            }}
-            initial={false}
-            animate={open ? "opened" : "closed"}
-            variants={animation.container}
-        >
-            {/* 
+	return (
+		<motion.nav
+			className="px-page fixed z-0 flex h-screen w-full flex-col justify-between gap-12 overflow-hidden bg-red-500 pt-28 pb-16"
+			onAnimationComplete={() => animationCompleteCallback(true)}
+			style={{
+				height: height,
+			}}
+			initial={false}
+			animate={open ? "opened" : "closed"}
+			variants={animation.container}
+		>
+			{/* 
         
         
             Navigation links 
 
         */}
-            <div className="flex flex-col gap-2" onClick={cycleMenuCallback}>
-                {routes.map(({ name, path }, index) => (
-                    <Link key={index} href={path} legacyBehavior>
-                        <motion.a
-                            className={classnames(
-                                "text-light-500 pb-2 text-4xl font-extrabold",
-                                currentRouteHandler(path) && "text-dark-500"
-                            )}
-                            variants={animation.links}
-                        >
-                            {name}_
-                        </motion.a>
-                    </Link>
-                ))}
-            </div>
+			<div className="flex flex-col gap-2" onClick={cycleMenuCallback}>
+				{routes.map(({ name, path }, index) => (
+					<Link key={index} href={path} legacyBehavior>
+						<motion.a
+							className={classnames(
+								"text-light-500 pb-2 text-4xl font-extrabold",
+								currentRouteHandler(path) && "text-dark-500"
+							)}
+							variants={animation.links}
+						>
+							{name}_
+						</motion.a>
+					</Link>
+				))}
+			</div>
 
-            {/* 
+			{/* 
         
         
         
             Contact container 
         
         */}
-            <div className="text-light-500 flex flex-col gap-5">
-                <ArrowCircleLink
-                    description={t("connect")}
-                    path="/connect/form"
-                    onClick={cycleMenuCallback}
-                    variants={animation.links}
-                />
+			<div className="text-light-500 flex flex-col gap-5">
+				<ArrowCircleLink
+					description={t("connect")}
+					path="/connect/form"
+					onClick={cycleMenuCallback}
+					variants={animation.links}
+				/>
 
-                <div className="flex flex-col gap-2">
-                    <motion.a
-                        className="text-xl font-bold xl:text-2xl"
-                        href={contact.phone.href}
-                        variants={animation.links}
-                    >
-                        {contact.phone.text}
-                    </motion.a>
-                    <motion.a
-                        className="text-xl font-bold xl:text-2xl"
-                        href={contact.email.href}
-                        variants={animation.links}
-                    >
-                        {contact.email.text}
-                    </motion.a>
-                </div>
+				<div className="flex flex-col gap-2">
+					<motion.a
+						className="text-xl font-bold xl:text-2xl"
+						href={contact.phone.href}
+						variants={animation.links}
+					>
+						{contact.phone.text}
+					</motion.a>
+					<motion.a
+						className="text-xl font-bold xl:text-2xl"
+						href={contact.email.href}
+						variants={animation.links}
+					>
+						{contact.email.text}
+					</motion.a>
+				</div>
 
-                <motion.div
-                    className="text-md text-dark-500 flex flex-row gap-8 font-bold"
-                    variants={animation.links}
-                >
-                    {socials.map(({ name, url }, index) => (
-                        <a key={index} href={url} target="_blank" rel="noreferrer">
-                            {name}_
-                        </a>
-                    ))}
-                </motion.div>
-            </div>
-        </motion.nav>
-
-        {open ? (
-            <style
-                // @ts-ignore
-                jsx
-                global
-            >
-                {`
-                    body,
-                    html {
-                        overflow: hidden !important;
-                    }
-                `}
-            </style>
-        ) : (
-            ""
-        )}
-    </>;
+				<motion.div
+					className="text-md text-dark-500 flex flex-row gap-8 font-bold"
+					variants={animation.links}
+				>
+					{socials.map(({ name, url }, index) => (
+						<a key={index} href={url} target="_blank" rel="noreferrer">
+							{name}_
+						</a>
+					))}
+				</motion.div>
+			</div>
+		</motion.nav>
+	);
 }

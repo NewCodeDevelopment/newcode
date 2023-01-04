@@ -1,5 +1,10 @@
 {
     "home": {
+        "seo": {
+            "title": "Code makes life easier - NewCode",
+            "description": "At NewCode, we would like to make your life easier through technology, by listening to your story.",
+            "keywords": "code software automation solutions"
+        },
         "landing": {
             "title": "Code makes life easier"
         },
@@ -14,11 +19,21 @@
         }
     },
     "work": {
+        "seo": {
+            "title": "Code makes life easier - NewCode",
+            "description": "At NewCode, we would like to make your life easier through technology, by listening to your story.",
+            "keywords": "code software automation solutions"
+        },
         "landing": {
             "title": "Life made easier"
         }
     },
     "services": {
+        "seo": {
+            "title": "Code makes life easier - NewCode",
+            "description": "At NewCode, we would like to make your life easier through technology, by listening to your story.",
+            "keywords": "code software automation solutions"
+        },
         "landing": {
             "title": "Services"
         },
@@ -45,6 +60,11 @@
         }
     },
     "about": {
+        "seo": {
+            "title": "Code makes life easier - NewCode",
+            "description": "At NewCode, we would like to make your life easier through technology, by listening to your story.",
+            "keywords": "code software automation solutions"
+        },
         "landing": {
             "title": "Our Backend"
         },
@@ -118,6 +138,11 @@
         }
     },
     "form": {
+        "seo": {
+            "title": "Code makes life easier - NewCode",
+            "description": "At NewCode, we would like to make your life easier through technology, by listening to your story.",
+            "keywords": "code software automation solutions"
+        },
         "name": {
             "title": "What is your name?",
             "placeholder": "Hello, I am the Codemaster. Who are you?",

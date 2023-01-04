@@ -17,6 +17,7 @@ const Paragraph = dynamic(() => import("ui").then((mod) => mod.Paragraph));
 const Scroll = dynamic(() => import("ui").then((mod) => mod.Scroll));
 const Section = dynamic(() => import("ui").then((mod) => mod.Section));
 const Arrow = dynamic(() => import("ui").then((mod) => mod.Arrow));
+const Seo = dynamic(() => import("ui").then((mod) => mod.Seo));
 /**
  *
  *
@@ -62,6 +63,7 @@ export default function CasePage({ handle }: Props) {
 
     return (
         <>
+            <Seo title={title} description={description.short} />
             {/* 
             
             

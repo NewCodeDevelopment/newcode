@@ -22,6 +22,7 @@ const NodeIcon = dynamic(() => import("ui").then((mod) => mod.NodeIcon));
 const PostgresIcon = dynamic(() => import("ui").then((mod) => mod.PostgresIcon));
 const ReactIcon = dynamic(() => import("ui").then((mod) => mod.ReactIcon));
 const TailwindLogo = dynamic(() => import("ui").then((mod) => mod.TailwindLogo));
+const Seo = dynamic(() => import("ui").then((mod) => mod.Seo));
 /**
  *
  *
@@ -43,6 +44,8 @@ export default function AboutPage() {
 
     return (
         <>
+            <Seo title={t("seo.title")} description={t("seo.description")} />
+
             {/* 
 				*
 				*

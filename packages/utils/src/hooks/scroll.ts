@@ -51,6 +51,7 @@ export function useScroll(mainRef: RefObject<HTMLElement>) {
 			currentIndexRef.current = 0;
 
 			setScroll({
+				...scroll,
 				currentIndex: currentIndexRef.current,
 				length: functions.scrollIndicatorLength(),
 				caller: "event",
@@ -145,6 +146,7 @@ export function useScroll(mainRef: RefObject<HTMLElement>) {
 				*/
 				setBgColor(currentChild.getAttribute("data-color") ?? "");
 				setScroll({
+					...scroll,
 					currentIndex,
 					length: functions.scrollIndicatorLength(),
 					caller: "event",
@@ -160,7 +162,7 @@ export function useScroll(mainRef: RefObject<HTMLElement>) {
 					child.classList.remove(SCROLLING_CLASS);
 				});
 			},
-			[]
+			[scroll]
 		),
 		/**
 		 *
@@ -169,31 +171,34 @@ export function useScroll(mainRef: RefObject<HTMLElement>) {
 		 *
 		 *
 		 */
-		handleKey: useCallback(async (event: KeyboardEvent) => {
-			if (window.innerWidth <= MIN_WIDTH) return;
+		handleKey: useCallback(
+			async (event: KeyboardEvent) => {
+				if (window.innerWidth <= MIN_WIDTH || !scroll.enabled) return;
 
-			window.removeEventListener("keydown", functions.handleKey);
+				window.removeEventListener("keydown", functions.handleKey);
 
-			const { key } = event;
+				const { key } = event;
 
-			if (key !== "ArrowDown" && key !== "ArrowUp") return;
+				if (key !== "ArrowDown" && key !== "ArrowUp") return;
 
-			let currentIndex = currentIndexRef.current;
+				let currentIndex = currentIndexRef.current;
 
-			if (key === "ArrowDown") currentIndex++;
-			if (key === "ArrowUp") currentIndex--;
+				if (key === "ArrowDown") currentIndex++;
+				if (key === "ArrowUp") currentIndex--;
 
-			currentIndexRef.current = currentIndex;
+				currentIndexRef.current = currentIndex;
 
-			await functions.handleScroll(
-				mainRef,
-				currentIndex,
-				setBgColor,
-				setScroll
-			);
+				await functions.handleScroll(
+					mainRef,
+					currentIndex,
+					setBgColor,
+					setScroll
+				);
 
-			window.addEventListener("keydown", functions.handleKey);
-		}, []),
+				window.addEventListener("keydown", functions.handleKey);
+			},
+			[scroll.enabled]
+		),
 		/**
 		 *
 		 *
@@ -201,41 +206,44 @@ export function useScroll(mainRef: RefObject<HTMLElement>) {
 		 *
 		 *
 		 */
-		handleWheel: useCallback(async (event: WheelEvent) => {
-			if (window.innerWidth <= MIN_WIDTH) return;
+		handleWheel: useCallback(
+			async (event: WheelEvent) => {
+				if (window.innerWidth <= MIN_WIDTH || !scroll.enabled) return;
 
-			window.removeEventListener("wheel", functions.handleWheel);
+				window.removeEventListener("wheel", functions.handleWheel);
 
-			const { deltaY } = event;
+				const { deltaY } = event;
 
-			if (deltaY === 0 || deltaY === -0) {
+				if (deltaY === 0 || deltaY === -0) {
+					await new Promise((r) => setTimeout(r, 100));
+					window.addEventListener("wheel", functions.handleWheel);
+					return;
+				}
+
+				const scrollAmount = Math.round(deltaY) * 10;
+
+				let currentIndex = currentIndexRef.current;
+
+				if (scrollAmount >= 0) currentIndex++;
+				if (scrollAmount <= 0) currentIndex--;
+
+				currentIndexRef.current = currentIndex;
+
 				await new Promise((r) => setTimeout(r, 100));
+
+				await functions.handleScroll(
+					mainRef,
+					currentIndex,
+					setBgColor,
+					setScroll
+				);
+
+				await new Promise((r) => setTimeout(r, 100));
+
 				window.addEventListener("wheel", functions.handleWheel);
-				return;
-			}
-
-			const scrollAmount = Math.round(deltaY) * 10;
-
-			let currentIndex = currentIndexRef.current;
-
-			if (scrollAmount >= 0) currentIndex++;
-			if (scrollAmount <= 0) currentIndex--;
-
-			currentIndexRef.current = currentIndex;
-
-			await new Promise((r) => setTimeout(r, 100));
-
-			await functions.handleScroll(
-				mainRef,
-				currentIndex,
-				setBgColor,
-				setScroll
-			);
-
-			await new Promise((r) => setTimeout(r, 100));
-
-			window.addEventListener("wheel", functions.handleWheel);
-		}, []),
+			},
+			[scroll.enabled]
+		),
 		/**
 		 *
 		 *
@@ -243,15 +251,18 @@ export function useScroll(mainRef: RefObject<HTMLElement>) {
 		 *
 		 *
 		 */
-		handleTouchStart: useCallback(async (event: TouchEvent) => {
-			if (window.innerWidth <= MIN_WIDTH) return;
+		handleTouchStart: useCallback(
+			async (event: TouchEvent) => {
+				if (window.innerWidth <= MIN_WIDTH || !scroll.enabled) return;
 
-			window.removeEventListener("touchstart", functions.handleTouchStart);
+				window.removeEventListener("touchstart", functions.handleTouchStart);
 
-			touchStartRef.current = event.touches[0].clientY;
+				touchStartRef.current = event.touches[0].clientY;
 
-			window.addEventListener("touchstart", functions.handleTouchStart);
-		}, []),
+				window.addEventListener("touchstart", functions.handleTouchStart);
+			},
+			[scroll.enabled]
+		),
 		/**
 		 *
 		 *
@@ -259,34 +270,37 @@ export function useScroll(mainRef: RefObject<HTMLElement>) {
 		 *
 		 *
 		 */
-		handleTouchMove: useCallback(async (event: TouchEvent) => {
-			if (window.innerWidth <= MIN_WIDTH) return;
+		handleTouchMove: useCallback(
+			async (event: TouchEvent) => {
+				if (window.innerWidth <= MIN_WIDTH || !scroll.enabled) return;
 
-			window.removeEventListener("touchmove", functions.handleTouchMove);
+				window.removeEventListener("touchmove", functions.handleTouchMove);
 
-			const { clientY } = event.touches[0];
-			const direction = touchStartRef.current - clientY > 0;
+				const { clientY } = event.touches[0];
+				const direction = touchStartRef.current - clientY > 0;
 
-			let currentIndex = currentIndexRef.current;
+				let currentIndex = currentIndexRef.current;
 
-			if (direction) currentIndex++;
-			if (!direction) currentIndex--;
+				if (direction) currentIndex++;
+				if (!direction) currentIndex--;
 
-			currentIndexRef.current = currentIndex;
+				currentIndexRef.current = currentIndex;
 
-			await new Promise((r) => setTimeout(r, 100));
+				await new Promise((r) => setTimeout(r, 100));
 
-			await functions.handleScroll(
-				mainRef,
-				currentIndex,
-				setBgColor,
-				setScroll
-			);
+				await functions.handleScroll(
+					mainRef,
+					currentIndex,
+					setBgColor,
+					setScroll
+				);
 
-			await new Promise((r) => setTimeout(r, 100));
+				await new Promise((r) => setTimeout(r, 100));
 
-			window.addEventListener("touchmove", functions.handleTouchMove);
-		}, []),
+				window.addEventListener("touchmove", functions.handleTouchMove);
+			},
+			[scroll.enabled]
+		),
 	};
 
 	/**

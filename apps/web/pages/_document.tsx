@@ -33,12 +33,6 @@ export default function Document(props: DocumentProps) {
                 />
 
                 <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
-                <meta name="keywords" content="code software automation solutions" />
-                <meta name="title" content="Code makes life easier. - NewCode" />
-                <meta
-                    name="description"
-                    content="Bij NewCode willen we graag jouw leven vergemakkelijken aan de hand van technologie, door naar jouw verhaal te luisteren."
-                />
                 <link rel="icon" href="/favicon.svg" />
             </Head>
             <body>

@@ -1,4 +1,9 @@
 {
+    "seo": {
+        "title": "Code makes life easier - NewCode",
+        "description": "At NewCode, we would like to make your life easier through technology, by listening to your story.",
+        "keywords": "code software automation solutions"
+    },
     "navigation": {
         "cycleMenu": {
             "open": "Navigate",

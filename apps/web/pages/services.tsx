@@ -10,6 +10,7 @@ const Section = dynamic(() => import("ui").then((mod) => mod.Section));
 const GridSection = dynamic(() => import("ui").then((mod) => mod.GridSection));
 const ServicesSection = dynamic(() => import("ui").then((mod) => mod.ServicesSection));
 const Testimonials = dynamic(() => import("ui").then((mod) => mod.Testimonials));
+const Seo = dynamic(() => import("ui").then((mod) => mod.Seo));
 /**
  *
  *
@@ -22,12 +23,13 @@ export default function ServicesPage() {
 
     return (
         <>
+            <Seo title={t("seo.title")} description={t("seo.description")} />
             {/* 
     
     
-      Services
-    
-    */}
+            Services
+            
+            */}
             <Section
                 bg="dark"
                 style={{

@@ -77,13 +77,3 @@ export default function MainLayout({
 		</>
 	);
 }
-{
-	/* <div className="fixed right-0 top-[50%] z-50 flex flex-col gap-4">
-				<Button shape="square" onClick={() => setScroll("up")}>
-					<Angle className="rotate-180 w-5 fill-light-300" />
-				</Button>
-				<Button shape="square" onClick={() => setScroll("down")}>
-					<Angle className="w-5 fill-light-300" />
-				</Button>
-			</div> */
-}

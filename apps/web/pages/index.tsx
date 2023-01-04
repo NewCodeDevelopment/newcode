@@ -13,6 +13,7 @@ const CaseBanner = dynamic(() => import("ui").then((mod) => mod.CaseBanner));
 const Section = dynamic(() => import("ui").then((mod) => mod.Section));
 const ServicesSection = dynamic(() => import("ui").then((mod) => mod.ServicesSection));
 const DescriptionSection = dynamic(() => import("ui").then((mod) => mod.DescriptionSection));
+const Seo = dynamic(() => import("ui").then((mod) => mod.Seo));
 /**
  *
  *
@@ -27,6 +28,7 @@ export default function HomePage() {
 
     return (
         <>
+            <Seo title={t("seo.title")} description={t("seo.description")} />
             {/* 
 				*
 				*
