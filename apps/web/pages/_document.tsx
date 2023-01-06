@@ -34,6 +34,7 @@ export default function Document(props: DocumentProps) {
 
                 <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
                 <link rel="icon" href="/favicon.svg" />
+                <title>NewCode</title>
             </Head>
             <body>
                 <Main />
