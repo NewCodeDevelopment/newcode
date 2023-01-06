@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://newcode.be
+
+# Sitemaps
+Sitemap: https://newcode.be/sitemap.xml
