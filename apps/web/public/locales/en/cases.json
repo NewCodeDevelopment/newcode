@@ -3,15 +3,15 @@
         "donvil": {
             "title": "Middleware",
             "description": {
-                "short": "Lorem ipsim dolor sit amet",
-                "main": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero leo, pellentesque ornare, adipiscing vitae, rhoncus commodo.",
-                "problem": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero leo, pellentesque ornare, .Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero leo, pellentesque ornare, .",
-                "solution": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero leo, pellentesque ornare, .Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero leo, pellentesque ornare, ."
+                "short": "Synchronizing data between their POS system and their web shop",
+                "main": "By programming a middleware we made sure that the data between their cash register system and their webshop were synchronized",
+                "problem": "By having to enter and modify everything twice, discrepancies arose between the webshop and the shop/stock. Online prices not matching the store, the stock not being able to be tracked properly.... In short, a lot of wasted time and even more frustration.",
+                "solution": "We programmed a Middleware that synchronizes the data between their POS system and their web shop. Products, orders, stock and much more remain evenly matched this way."
             },
             "client": "Donvil",
-            "sector": "Schoenen & Lingerie",
+            "sector": "Shoes & Lingerie",
             "service": "Automation",
-            "type": "software",
+            "type": "Software",
             "year": "2021",
             "productUrl": "https://www.donvil-dimoda.com",
             "bannerImage": {
@@ -20,23 +20,11 @@
             },
             "images": [
                 {
-                    "url": "https://picsum.photos/id/1/1000/1000",
+                    "url": "/images/cases/donvil/1.jpg",
                     "alt": "Donvil Dimoda"
                 },
                 {
-                    "url": "https://picsum.photos/id/2/1000/1000",
-                    "alt": "Donvil Dimoda"
-                },
-                {
-                    "url": "https://picsum.photos/id/3/1000/1000",
-                    "alt": "Donvil Dimoda"
-                },
-                {
-                    "url": "https://picsum.photos/id/4/1000/1000",
-                    "alt": "Donvil Dimoda"
-                },
-                {
-                    "url": "https://picsum.photos/id/5/1000/1000",
+                    "url": "/images/cases/donvil/2.jpg",
                     "alt": "Donvil Dimoda"
                 }
             ]
@@ -44,15 +32,15 @@
         "the-god-shot": {
             "title": "Webshop",
             "description": {
-                "short": "Lorem ipsim dolor sit amet",
-                "main": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero leo, pellentesque ornare, adipiscing vitae, rhoncus commodo.",
-                "problem": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero leo, pellentesque ornare, .Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero leo, pellentesque ornare, .",
-                "solution": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero leo, pellentesque ornare, .Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero leo, pellentesque ornare, ."
+                "short": "A fully customized B2C AND B2B webshop experience",
+                "main": "A fully customized B2C ánd B2B webshop experience, connected to one Shopify backend for automatic data synchronization",
+                "problem": "The God Shot approaches coffee differently. Not for nothing the only Flemish coffee roaster that roasts beans on 100% green energy. But the webshop experience did not match this and was only for their B2C customers.",
+                "solution": "We developed a B2C and B2B webshop, connected to one Shopify backend. By adjusting the data only once, it syncs directly on both webshops. In addition, we provided them with a customized online experience that fully matched The God Shot character."
             },
-            "client": "Momento",
-            "sector": "Fast-food",
+            "client": "The God Shot",
+            "sector": "Coffee",
             "service": "Web & App",
-            "type": "website",
+            "type": "Webshop",
             "year": "2022",
             "productUrl": "https://thegodshot.be",
             "bannerImage": {
@@ -61,24 +49,12 @@
             },
             "images": [
                 {
-                    "url": "https://picsum.photos/id/1/1000/1000",
-                    "alt": "Donvil Dimoda"
+                    "url": "/images/cases/the-god-shot/1.webp",
+                    "alt": "The God Shot"
                 },
                 {
-                    "url": "https://picsum.photos/id/2/1000/1000",
-                    "alt": "Donvil Dimoda"
-                },
-                {
-                    "url": "https://picsum.photos/id/3/1000/1000",
-                    "alt": "Donvil Dimoda"
-                },
-                {
-                    "url": "https://picsum.photos/id/4/1000/1000",
-                    "alt": "Donvil Dimoda"
-                },
-                {
-                    "url": "https://picsum.photos/id/5/1000/1000",
-                    "alt": "Donvil Dimoda"
+                    "url": "/images/cases/the-god-shot/2.webp",
+                    "alt": "The God Shot"
                 }
             ]
         }

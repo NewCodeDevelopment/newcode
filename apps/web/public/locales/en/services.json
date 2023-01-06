@@ -3,16 +3,16 @@
         "title": "NewCode",
         "items": [
             {
-                "title": "Web",
-                "description": "Would you like to automate your business or create an interactive platform that is all possible using web applications. This way you can access your application from anywhere in the world with just a few clicks."
+                "title": "Web & App",
+                "description": "Would you like a website, an app or an interactive platform for your business? We fully customize everything to your needs! This allows us to do full justice to the character of your brand. Both the visual and the user experience for you and your customers."
             },
             {
-                "title": "App",
-                "description": "Are web applications not your thing? Do you prefer a mobile solution to improve ease of use? Then mobile applications might be for you. Mobile applications are like web applications at your fingertips and easy to use."
+                "title": "Digitalization",
+                "description": "Are you looking to digitize or even digitally transform your business? We examine the goals and work processes within your company and find out the pain points. Then we propose a fully customized advice. We guide and support you during your digital transformation so that it runs optimally."
             },
             {
                 "title": "Automation",
-                "description": "Are you planning to digitally transform your business or want to make processes more efficient by minimizing repetitive manual work? It's all possible thanks to Automation software. It gives you more time for what really matters."
+                "description": "Are you tired of doing all those tasks manually or don't have the time? We automate that for you so you can work more efficiently and less repetitively. It also ensures that you make fewer mistakes in day-to-day tasks. In short, more time for what really counts!"
             }
         ]
     },
@@ -21,11 +21,11 @@
         "items": [
             {
                 "title": "E-commerce",
-                "description": ""
+                "description": "Do you want to sell your products digitally? We have the E-commerce solution ready for you. A smooth running webshop adapted to the practical needs of your business. The look-and-feel is completely filled in according to your wishes so that the experience matches your brand."
             },
             {
-                "title": "Payment gateway",
-                "description": "Give your customers the ability to make payments quickly, securely and easily. This way they will never encounter unexpected surprises during a transaction."
+                "title": "Payment Form",
+                "description": "Want to get small online payments from your customers in a simple way without setting up a whole webshop? A Payment Form is what you're looking for! Customers can make payments quickly, safely and easily without any unexpected surprises."
             }
         ]
     }

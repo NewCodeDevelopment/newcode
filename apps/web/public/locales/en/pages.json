@@ -38,7 +38,7 @@
             "title": "Services"
         },
         "approach": {
-            "title": "approach",
+            "title": "Approach",
             "items": [
                 {
                     "title": "analysis",
@@ -117,14 +117,14 @@
     "case": {
         "banner": {
             "title": "Case Study",
-            "link": "view case study"
+            "link": "View case study"
         },
         "landing": {
-            "client": "client",
+            "client": "Client",
             "sector": "Sector",
-            "service": "service",
-            "type": "type",
-            "year": "year",
+            "service": "Service",
+            "type": "Type",
+            "year": "Year",
             "link": "Launch Site"
         },
         "content": {
