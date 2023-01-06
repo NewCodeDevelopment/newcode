@@ -143,6 +143,7 @@ export default function CasePage({ handle }: Props) {
                     objectFit="cover"
                     objectPosition="center"
                 />
+                <div className="bg-dark-700 absolute top-0 left-0 z-10 h-full w-full bg-opacity-40" />
             </Section>
             {/* 
             
@@ -172,6 +173,7 @@ export default function CasePage({ handle }: Props) {
                             objectFit="cover"
                             objectPosition="center"
                         />
+                        <div className="bg-dark-700 absolute top-0 left-0 z-10 h-full w-full bg-opacity-40" />
                     </Section>
                 </Fragment>
             ))}
@@ -201,7 +203,7 @@ export default function CasePage({ handle }: Props) {
                                 variant="text"
                                 shape="none"
                             >
-                                <Arrow direction="right-to-left" className="w-8 fill-light-500" />
+                                <Arrow direction="right-to-left" className="fill-light-500 w-8" />
                                 <Heading type="h4">{right.title}</Heading>
                             </HyperLink>
                         ) : (
@@ -215,7 +217,7 @@ export default function CasePage({ handle }: Props) {
                                 shape="none"
                             >
                                 <Heading type="h4">{left.title}</Heading>
-                                <Arrow direction="left-to-right" className="w-8 fill-light-500" />
+                                <Arrow direction="left-to-right" className="fill-light-500 w-8" />
                             </HyperLink>
                         ) : (
                             <div>&nbsp;</div>
