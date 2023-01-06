@@ -42,15 +42,15 @@
             "items": [
                 {
                     "title": "Analysis",
-                    "description": "We starten met een grondige analyse van uw huidige problemen en passen onze aanpak hierop aan. Naast de technische implementatie, wordt er in deze fase ook al bekeken hoe we het meest aangename gebruiksgemak kunnen aanbieden."
+                    "description": "We starten met een grondige analyse van je huidige problemen en passen onze aanpak hierop aan. Naast de technische implementatie, wordt er in deze fase ook al bekeken hoe we het meest aangename gebruiksgemak kunnen aanbieden."
                 },
                 {
                     "title": "Strategy",
-                    "description": "In deze fase definiëren we doelstellingen voor/op tijd en kwaliteit. Zo kunnen we u een doordacht product opleveren waarop u kan rekenen. Dit wordt zowel technisch als visueel voorgesteld zodat het resultaat perfect plaats kan nemen in uw ecosysteem."
+                    "description": "In deze fase definiëren we doelstellingen voor/op tijd en kwaliteit. Zo kunnen we je een doordacht product opleveren waarop je kan rekenen. Dit wordt zowel technisch als visueel voorgesteld zodat het resultaat perfect plaats kan nemen in je ecosysteem."
                 },
                 {
                     "title": "Creation",
-                    "description": "Na een uitgebreide onderzoeksfase zijn we voldoende voorbereid om met/aan de implementatie te starten. Aan het einde van deze fase realiseren we uw oplossing."
+                    "description": "Na een uitgebreide onderzoeksfase zijn we voldoende voorbereid om met/aan de implementatie te starten. Aan het einde van deze fase realiseren we je oplossing."
                 },
                 {
                     "title": "Polishing",
@@ -94,7 +94,7 @@
             "items": [
                 {
                     "title": "Accessible",
-                    "description": "API, HTML, CSS en Javascript. Voor veel mensen zijn dit abstracte termen. Wij helpen u met plezier door dit doolhof van vaktermen zodat u ook begrijpt wat we doen. Wij vertalen het allemaal naar mensentaal."
+                    "description": "API, HTML, CSS en Javascript. Voor veel mensen zijn dit abstracte termen. Wij helpen je met plezier door dit doolhof van vaktermen zodat je ook begrijpt wat we doen. Wij vertalen het allemaal naar mensentaal."
                 },
                 {
                     "title": "Surprising",
@@ -102,7 +102,7 @@
                 },
                 {
                     "title": "Made easy",
-                    "description": "De wereld is al moeilijk genoeg, daarom maken wij het graag makkelijk voor u. Zo kan u gefocust blijven de fundamentele onderdelen van u onderneming."
+                    "description": "De wereld is al moeilijk genoeg, daarom maken wij het graag makkelijk voor je. Zo kan je gefocust blijven op de fundamentele onderdelen van je onderneming."
                 },
                 {
                     "title": "Mindful",
@@ -158,10 +158,10 @@
             }
         },
         "email": {
-            "title": "Hoe kunnen we u bereiken?",
+            "title": "Hoe kunnen we je bereiken?",
             "placeholder": "Stuur me een e-mail op...",
             "errors": {
-                "required": "Vul hier uw e-mailadres in",
+                "required": "Vul hier je e-mailadres in",
                 "pattern": "Vul een geldig e-mailadres in..."
             }
         },
