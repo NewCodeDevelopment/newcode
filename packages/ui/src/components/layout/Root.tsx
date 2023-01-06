@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import { useRecoilState } from "recoil";
 import { scrollState } from "utils";
+import Head from "next/head";
 
 const InitialLoader = dynamic(() => import("..").then((mod) => mod.InitialLoader));
 
@@ -9,8 +10,11 @@ export default function Root({ children }: any) {
 
     return (
         <>
-            {process.env.NODE_ENV !== "development" && <InitialLoader />}
+            <Head>
+                <title>NewCode</title>
+            </Head>
 
+            {process.env.NODE_ENV !== "development" && <InitialLoader />}
             {children}
 
             {!scroll.enabled && (
