@@ -14,7 +14,7 @@ const Scroll = dynamic(() => import("ui").then((mod) => mod.Scroll));
 const Testimonials = dynamic(() => import("ui").then((mod) => mod.Testimonials));
 const DescriptionSection = dynamic(() => import("ui").then((mod) => mod.DescriptionSection));
 const Section = dynamic(() => import("ui").then((mod) => mod.Section));
-const CSharpIcon = dynamic(() => import("ui").then((mod) => mod.CSharpIcon));
+const NestIcon = dynamic(() => import("ui").then((mod) => mod.NestIcon));
 const DockerIcon = dynamic(() => import("ui").then((mod) => mod.DockerIcon));
 const GraphQLIcon = dynamic(() => import("ui").then((mod) => mod.GraphQLIcon));
 const NextIcon = dynamic(() => import("ui").then((mod) => mod.NextIcon));
@@ -59,9 +59,10 @@ export default function AboutPage() {
                     layout="fill"
                     objectFit="cover"
                     className="-z-10"
+                    priority
                 />
 
-                <div className="absolute top-0 left-0 -z-10 h-full w-full bg-dark-700 bg-opacity-30 backdrop-blur-[6px] backdrop-filter" />
+                <div className="bg-dark-700 absolute top-0 left-0 -z-10 h-full w-full bg-opacity-30 backdrop-blur-[6px] backdrop-filter" />
 
                 <Heading
                     type="h1"
@@ -144,7 +145,7 @@ export default function AboutPage() {
                     <div className="grid grid-cols-2 gap-12 lg:grid-cols-4">
                         {[
                             {
-                                icon: CSharpIcon,
+                                icon: NestIcon,
                             },
                             {
                                 icon: DockerIcon,
@@ -170,7 +171,7 @@ export default function AboutPage() {
                         ].map((icon, index) => (
                             <motion.div
                                 key={index}
-                                className="flex aspect-square h-full w-full flex-col items-center justify-center rounded-xl bg-dark-500"
+                                className="bg-dark-500 flex aspect-square h-full w-full flex-col items-center justify-center rounded-xl"
                                 initial={{
                                     opacity: 0,
                                     y: -20,
@@ -184,7 +185,7 @@ export default function AboutPage() {
                                     },
                                 }}
                             >
-                                {<icon.icon className="w-1/2 fill-light-500 stroke-dark-500" />}
+                                {<icon.icon className="fill-light-500 stroke-dark-500 w-1/2" />}
                             </motion.div>
                         ))}
                     </div>

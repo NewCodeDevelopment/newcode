@@ -33,6 +33,7 @@ export { default as InstagramIcon } from "./socials/InstagramIcon";
 export { default as CSharpIcon } from "./tools/CSharpIcon";
 export { default as DockerIcon } from "./tools/DockerIcon";
 export { default as GraphQLIcon } from "./tools/GraphQLIcon";
+export { default as NestIcon } from "./tools/NestIcon";
 export { default as PostgresIcon } from "./tools/PostgresIcon";
 export { default as ReactIcon } from "./tools/ReactIcon";
 export { default as NodeIcon } from "./tools/NodeIcon";
