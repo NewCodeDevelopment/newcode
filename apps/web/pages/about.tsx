@@ -1,10 +1,10 @@
-import dynamic from "next/dynamic";
-import { ReactElement } from "react";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from "next-i18next";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import Image from "next/legacy/image";
 import landingImage from "@/public/images/about/landing.jpg";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
+import dynamic from "next/dynamic";
+import Image from "next/legacy/image";
+import { ReactElement } from "react";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Heading = dynamic(() => import("ui").then((mod) => mod.Heading));
@@ -37,13 +37,7 @@ export default function AboutPage() {
     return (
         <>
             <Seo title={t("seo.title")} description={t("seo.description")} />
-            {/* 
-                *
-                *
-                Tools
-                *
-            */}
-            <ToolGrid />
+
             {/* 
 				*
 				*
@@ -128,7 +122,13 @@ export default function AboutPage() {
                     },
                 }}
             />
-
+            {/* 
+                *
+                *
+                Tools
+                *
+            */}
+            <ToolGrid />
             {/* 
                 *
                 *
