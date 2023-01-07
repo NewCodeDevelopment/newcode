@@ -1,31 +1,36 @@
-import { useState, useLayoutEffect, useCallback } from "react";
+import { useState, useLayoutEffect, useCallback, useEffect } from "react";
 
 export function useWindow() {
-	// const height = useRef<number | string>("100vh");
-	// const width = useRef<number | string>("100vw");
+    const [height, setHeight] = useState<number | string>("100vh");
+    const [width, setWidth] = useState<number | string>("100vw");
 
-	const [height, setHeight] = useState<number | string>("100vh");
-	const [width, setWidth] = useState<number | string>("100vw");
+    const canUseDOM: boolean = !!(
+        typeof window !== "undefined" &&
+        typeof window.document !== "undefined" &&
+        typeof window.document.createElement !== "undefined"
+    );
 
-	useLayoutEffect(() => {
-		handleResize();
-	}, []);
+    const useIsomorphicLayoutEffect = canUseDOM ? useLayoutEffect : useEffect;
 
-	useLayoutEffect(() => {
-		window.addEventListener("resize", handleResize);
+    useIsomorphicLayoutEffect(() => {
+        handleResize();
+    }, []);
 
-		return () => {
-			window.removeEventListener("resize", handleResize);
-		};
-	}, []);
+    useIsomorphicLayoutEffect(() => {
+        window.addEventListener("resize", handleResize);
 
-	const handleResize = useCallback(() => {
-		setHeight(window.innerHeight);
-		setWidth(window.innerWidth);
-	}, [setHeight, setWidth]);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
 
-	return {
-		width,
-		height,
-	};
+    const handleResize = useCallback(() => {
+        setHeight(window.innerHeight);
+        setWidth(window.innerWidth);
+    }, [setHeight, setWidth]);
+
+    return {
+        width,
+        height,
+    };
 }
