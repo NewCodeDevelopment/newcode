@@ -24,7 +24,7 @@ export function Seo({ title, description, keywords }: Props) {
             <meta property="og:url" content={SITE_URL} />
             <meta property="og:title" content={title || (t("title") as string)} />
             <meta property="og:description" content={description || (t("description") as string)} />
-            <meta property="og:image" content={SITE_URL + "/images/og-image.jpg"} />
+            <meta property="og:image" content="/images/og-image.jpg" />
         </Head>
     );
 }
