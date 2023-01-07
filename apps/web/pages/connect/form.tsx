@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { HTMLInputTypeAttribute, ReactElement, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FormInput, PlaneIcon, Steps } from "ui";
+import { FormInput, PageLoader, PlaneIcon, Steps } from "ui";
 import { MailData } from "utils";
 import { useRecoilState } from "recoil";
 
@@ -53,7 +53,8 @@ export default function FormPage() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [reverse, setReverse] = useState(false);
     const [_, setBgColor] = useRecoilState(bgColorState);
-    const [submit, setSubmit] = useState(false);
+    const [submit, setSubmit] = useState<"idle" | "loading" | "success">("idle");
+    const [loading, setLoading] = useState(false);
 
     const mutation = useSendMail();
 
@@ -87,7 +88,7 @@ export default function FormPage() {
     }
 
     async function handleSend(data: typeof IFormInputs) {
-        setSubmit(true);
+        setSubmit("loading");
 
         const body: MailData = {
             subject: "Contact Form",
@@ -183,106 +184,121 @@ export default function FormPage() {
         <>
             <Seo title={t("seo.title")} description={t("seo.description")} />
 
-            <Section
-                bg={currentIndex % 2 === 0 ? "dark" : "light"}
-                align="center"
-                style={{ height }}
-                className="relative"
-            >
-                <Steps
-                    currentIndex={currentIndex}
-                    length={formFiels.length}
-                    bgColor={currentIndex % 2 === 0 ? "dark" : "light"}
-                    className="pt-page absolute top-0 left-0 right-0"
-                />
+            {loading ? (
+                <PageLoader />
+            ) : (
+                <Section
+                    bg={currentIndex % 2 === 0 ? "dark" : "light"}
+                    align="center"
+                    style={{ height }}
+                    className="relative"
+                >
+                    <Steps
+                        currentIndex={currentIndex}
+                        length={formFiels.length}
+                        bgColor={currentIndex % 2 === 0 ? "dark" : "light"}
+                        className="pt-page absolute top-0 left-0 right-0"
+                    />
 
-                <form className="flex w-full max-w-xl flex-col" onSubmit={handleSubmit(onSubmit)}>
-                    {formFiels.map(
-                        ({ title, name, placeholder, type, options, previous }, index, array) => (
-                            <AnimatePresence mode="wait" key={index}>
-                                {currentIndex === index && (
-                                    <motion.div
-                                        className="flex flex-col gap-12"
-                                        initial={{
-                                            opacity: 0,
-                                            y: reverse ? "-25vh" : "25vh",
-                                        }}
-                                        animate={{
-                                            opacity: 1,
-                                            y: 0,
-                                            transition: {
-                                                duration: 0.5,
-                                                delay: 0.5,
-                                            },
-                                        }}
-                                        exit={{
-                                            opacity: 0,
-                                            y: reverse ? "25vh" : "-25vh",
-                                            transition: {
-                                                duration: 0.5,
-                                            },
-                                        }}
-                                    >
-                                        <Heading
-                                            type="h3"
-                                            color={index % 2 === 0 ? "light" : "dark"}
+                    <form
+                        className="flex w-full max-w-xl flex-col"
+                        onSubmit={handleSubmit(onSubmit)}
+                    >
+                        {formFiels.map(
+                            (
+                                { title, name, placeholder, type, options, previous },
+                                index,
+                                array,
+                            ) => (
+                                <AnimatePresence mode="wait" key={index}>
+                                    {currentIndex === index && (
+                                        <motion.div
+                                            className="flex flex-col gap-12"
+                                            initial={{
+                                                opacity: 0,
+                                                y: reverse ? "-25vh" : "25vh",
+                                            }}
+                                            animate={{
+                                                opacity: 1,
+                                                y: 0,
+                                                transition: {
+                                                    duration: 0.5,
+                                                    delay: 0.5,
+                                                },
+                                            }}
+                                            exit={{
+                                                opacity: 0,
+                                                y: reverse ? "25vh" : "-25vh",
+                                                transition: {
+                                                    duration: 0.5,
+                                                },
+                                            }}
                                         >
-                                            <span className="text-red-500">{index + 1 + ". "}</span>
-                                            {title}_
-                                        </Heading>
-
-                                        <FormInput
-                                            type={type}
-                                            placeholder={placeholder}
-                                            className="w-full"
-                                            theme={index % 2 === 0 ? "dark" : "light"}
-                                            autoFocus={currentIndex === index}
-                                            error={errors[name]?.message}
-                                            {...register(name, options)}
-                                        />
-
-                                        <div className="flex w-full flex-row items-center justify-between gap-4">
-                                            <Button
-                                                type={previous.type}
-                                                onClick={previous.onClick}
-                                                variant="text"
-                                                shape="none"
+                                            <Heading
+                                                type="h3"
+                                                color={index % 2 === 0 ? "light" : "dark"}
                                             >
-                                                <Arrow
-                                                    direction="right-to-left"
-                                                    className="fill-dark-300 w-12"
-                                                />
-                                            </Button>
-                                            <Button type="submit" variant="text" shape="none">
-                                                {array.length === index + 1 ? (
-                                                    <PlaneIcon
-                                                        className="fill-dark-300 w-8"
-                                                        initial={{
-                                                            x: 0,
-                                                            opacity: 1,
-                                                        }}
-                                                        animate={
-                                                            submit && {
-                                                                x: 10,
-                                                                opacity: 0,
-                                                            }
-                                                        }
-                                                    />
-                                                ) : (
+                                                <span className="text-red-500">
+                                                    {index + 1 + ". "}
+                                                </span>
+                                                {title}_
+                                            </Heading>
+
+                                            <FormInput
+                                                type={type}
+                                                placeholder={placeholder}
+                                                className="w-full"
+                                                theme={index % 2 === 0 ? "dark" : "light"}
+                                                autoFocus={currentIndex === index}
+                                                error={errors[name]?.message}
+                                                {...register(name, options)}
+                                            />
+
+                                            <div className="flex w-full flex-row items-center justify-between gap-4">
+                                                <Button
+                                                    type={previous.type}
+                                                    onClick={previous.onClick}
+                                                    variant="text"
+                                                    shape="none"
+                                                >
                                                     <Arrow
-                                                        direction="left-to-right"
-                                                        className="w-12 fill-red-500"
+                                                        direction="right-to-left"
+                                                        className="fill-dark-300 w-12"
                                                     />
-                                                )}
-                                            </Button>
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        ),
-                    )}
-                </form>
-            </Section>
+                                                </Button>
+                                                <Button type="submit" variant="text" shape="none">
+                                                    {array.length === index + 1 ? (
+                                                        <PlaneIcon
+                                                            className="fill-dark-300 w-8"
+                                                            animate={
+                                                                submit === "loading" && {
+                                                                    x: [0, 30],
+                                                                    opacity: [1, 0],
+                                                                    transition: { duration: 1 },
+                                                                    // x: [0, 30, -30, 0],
+                                                                    // opacity: [1, 0, 0, 1],
+                                                                }
+                                                            }
+                                                            onAnimationComplete={() =>
+                                                                setLoading(true)
+                                                            }
+                                                        />
+                                                    ) : (
+                                                        <Arrow
+                                                            direction="left-to-right"
+                                                            className="w-12 fill-red-500"
+                                                        />
+                                                    )}
+                                                </Button>
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            ),
+                        )}
+                    </form>
+                </Section>
+            )}
         </>
     );
 }
