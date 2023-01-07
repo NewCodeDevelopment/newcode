@@ -91,6 +91,7 @@ export default function FormPage() {
         setSubmit("loading");
 
         const body: MailData = {
+            email: data.email,
             subject: "Contact Form",
             body: `
                 <h1>Hello,</h1>
@@ -106,8 +107,6 @@ export default function FormPage() {
                 <p>Sent with love by NewCode bot 🤖 </p>
             `,
         };
-
-        
 
         mutation.mutate(body);
     }

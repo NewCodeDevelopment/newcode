@@ -1,21 +1,28 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import sgMail from "@sendgrid/mail";
+import sgMail, { MailDataRequired } from "@sendgrid/mail";
 import { MailData } from "utils";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY || "");
 
-    const { subject, body } = req.body as MailData;
+    const { email, subject, body } = req.body as MailData;
 
-    const msg = {
+    const adminMsg: MailDataRequired = {
         to: process.env.ADMIN_EMAIL,
         from: "no-reply@newcode.be",
         subject: subject,
         html: body,
     };
 
+    const clientMsg: MailDataRequired = {
+        to: email,
+        from: "no-reply@newcode.be",
+        templateId: "d-688527a41b7449c3ac7c285189cc546c",
+    };
+
     try {
-        await sgMail.send(msg);
+        await sgMail.send(adminMsg);
+        await sgMail.send(clientMsg);
         res.status(200).json({ success: true });
     } catch (err: any) {
         console.error(`

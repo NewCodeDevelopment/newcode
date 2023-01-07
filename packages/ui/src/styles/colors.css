@@ -4,23 +4,23 @@
 
 @layer base {
 	:root {
-		--tailwind-color-red-300: 255 125 92;
-		--tailwind-color-red-400: 255 90 54;
-		--tailwind-color-red-500: 255 24 0;
-		--tailwind-color-red-600: 241 3 0;
-		--tailwind-color-red-700: 218 0 0;
+		--tailwind-color-red-300: 255 125 92; /* #ff7d5c */
+		--tailwind-color-red-400: 255 90 54; /* #ff5a36 */
+		--tailwind-color-red-500: 255 24 0; /* #ff1800 */
+		--tailwind-color-red-600: 241 3 0; /* #f10300 */
+		--tailwind-color-red-700: 218 0 0; /* #da0000 */
 
-		--tailwind-color-light-300: 249 249 249;
-		--tailwind-color-light-400: 228 228 228;
-		--tailwind-color-light-500: 216 216 216;
-		--tailwind-color-light-600: 180 180 180;
-		--tailwind-color-light-700: 200 200 200;
+		--tailwind-color-light-300: 249 249 249; /* #f9f9f9 */
+		--tailwind-color-light-400: 228 228 228; /* #e4e4e4 */
+		--tailwind-color-light-500: 216 216 216; /* #d8d8d8 */
+		--tailwind-color-light-600: 180 180 180; /* #b4b4b4 */
+		--tailwind-color-light-700: 200 200 200; /* #c8c8c8 */
 
-		--tailwind-color-dark-300: 55 55 52;
-		--tailwind-color-dark-400: 94 86 90;
-		--tailwind-color-dark-500: 38 38 38;
-		--tailwind-color-dark-600: 21 21 21;
-		--tailwind-color-dark-700: 13 2 8;
+		--tailwind-color-dark-300: 55 55 52; /* #373734 */
+		--tailwind-color-dark-400: 94 86 90; /* #5e565a */
+		--tailwind-color-dark-500: 38 38 38; /* #262626 */
+		--tailwind-color-dark-600: 21 21 21; /* #151515 */
+		--tailwind-color-dark-700: 13 2 8; /* #0d0208 */
 
 		--color-red-300: rgb(var(--tailwind-color-red-300));
 		--color-red-400: rgb(var(--tailwind-color-red-400));
@@ -40,4 +40,8 @@
 		--color-dark-600: rgb(var(--tailwind-color-dark-600));
 		--color-dark-700: rgb(var(--tailwind-color-dark-700));
 	}
+}
+
+.test {
+	color: #ff7d5c
 }
