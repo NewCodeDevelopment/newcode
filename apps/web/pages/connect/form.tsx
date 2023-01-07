@@ -88,6 +88,7 @@ export default function FormPage() {
     }
 
     async function handleSend(data: typeof IFormInputs) {
+        if (submit !== "idle") return;
         setSubmit("loading");
 
         const body: MailData = {
@@ -267,7 +268,12 @@ export default function FormPage() {
                                                         className="fill-dark-300 w-12"
                                                     />
                                                 </Button>
-                                                <Button type="submit" variant="text" shape="none">
+                                                <Button
+                                                    type="submit"
+                                                    variant="text"
+                                                    shape="none"
+                                                    disabled={submit !== "idle"}
+                                                >
                                                     {array.length === index + 1 ? (
                                                         <PlaneIcon
                                                             className="fill-dark-300 w-8"
