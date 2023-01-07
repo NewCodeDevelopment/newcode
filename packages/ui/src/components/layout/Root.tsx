@@ -1,11 +1,11 @@
 import dynamic from "next/dynamic";
+import Head from "next/head";
 import { useRecoilState } from "recoil";
 import { scrollState } from "utils";
-import Head from "next/head";
 
 const InitialLoader = dynamic(() => import("..").then((mod) => mod.InitialLoader));
 
-export default function Root({ children }: any) {
+export function Root({ children }: any) {
     const [scroll] = useRecoilState(scrollState);
 
     return (

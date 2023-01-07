@@ -25,6 +25,7 @@ export * from "./src/types/paths";
 export * from "./src/types/image";
 export * from "./src/types/cases";
 export * from "./src/types/mail";
+export * from "./src/types/svg";
 /*
 
 

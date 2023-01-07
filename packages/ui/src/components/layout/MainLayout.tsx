@@ -1,10 +1,8 @@
-import Head from "next/head";
-import { HTMLAttributes, useRef } from "react";
 import classNames from "classnames";
-import { usePathHook, usePaths } from "../..";
+import { HTMLAttributes, useRef } from "react";
 import { useScroll } from "utils";
-import Popup from "../actions/Popup";
-import { Navigation, Footer, SectionIndicator } from "..";
+import { Footer, Navigation, Popup, SectionIndicator } from "..";
+import { usePathHook, usePaths } from "../..";
 
 export interface MainLayoutProps extends HTMLAttributes<HTMLElement> {
     px?: boolean;
@@ -21,7 +19,7 @@ export interface MainLayoutProps extends HTMLAttributes<HTMLElement> {
     scrollIndicator?: boolean;
 }
 
-export default function MainLayout({
+export function MainLayout({
     px,
     py,
     pt,

@@ -4,7 +4,6 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import Image from "next/legacy/image";
-import { motion } from "framer-motion";
 import landingImage from "@/public/images/about/landing.jpg";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
@@ -14,14 +13,7 @@ const Scroll = dynamic(() => import("ui").then((mod) => mod.Scroll));
 const Testimonials = dynamic(() => import("ui").then((mod) => mod.Testimonials));
 const DescriptionSection = dynamic(() => import("ui").then((mod) => mod.DescriptionSection));
 const Section = dynamic(() => import("ui").then((mod) => mod.Section));
-const NestIcon = dynamic(() => import("ui").then((mod) => mod.NestIcon));
-const DockerIcon = dynamic(() => import("ui").then((mod) => mod.DockerIcon));
-const GraphQLIcon = dynamic(() => import("ui").then((mod) => mod.GraphQLIcon));
-const NextIcon = dynamic(() => import("ui").then((mod) => mod.NextIcon));
-const NodeIcon = dynamic(() => import("ui").then((mod) => mod.NodeIcon));
-const PostgresIcon = dynamic(() => import("ui").then((mod) => mod.PostgresIcon));
-const ReactIcon = dynamic(() => import("ui").then((mod) => mod.ReactIcon));
-const TailwindLogo = dynamic(() => import("ui").then((mod) => mod.TailwindLogo));
+const ToolGrid = dynamic(() => import("ui").then((mod) => mod.ToolGrid));
 const Seo = dynamic(() => import("ui").then((mod) => mod.Seo));
 /**
  *
@@ -45,7 +37,13 @@ export default function AboutPage() {
     return (
         <>
             <Seo title={t("seo.title")} description={t("seo.description")} />
-
+            {/* 
+                *
+                *
+                Tools
+                *
+            */}
+            <ToolGrid />
             {/* 
 				*
 				*
@@ -130,67 +128,7 @@ export default function AboutPage() {
                     },
                 }}
             />
-            {/* 
-                *
-                *
-                Tools
-                *
-            */}
-            <Section bg="dark" align="center">
-                <div className="flex flex-col gap-6 self-center lg:max-w-xl lg:gap-10 2xl:max-w-4xl">
-                    <Heading type="h3" color="red">
-                        {t("tools.title")}_
-                    </Heading>
 
-                    <div className="grid grid-cols-2 gap-12 lg:grid-cols-4">
-                        {[
-                            {
-                                icon: NestIcon,
-                            },
-                            {
-                                icon: DockerIcon,
-                            },
-                            {
-                                icon: GraphQLIcon,
-                            },
-                            {
-                                icon: NodeIcon,
-                            },
-                            {
-                                icon: PostgresIcon,
-                            },
-                            {
-                                icon: ReactIcon,
-                            },
-                            {
-                                icon: NextIcon,
-                            },
-                            {
-                                icon: TailwindLogo,
-                            },
-                        ].map((icon, index) => (
-                            <motion.div
-                                key={index}
-                                className="bg-dark-500 flex aspect-square h-full w-full flex-col items-center justify-center rounded-xl"
-                                initial={{
-                                    opacity: 0,
-                                    y: -20,
-                                }}
-                                whileInView={{
-                                    opacity: 1,
-                                    y: 0,
-                                    transition: {
-                                        duration: 0.5,
-                                        delay: index * 0.1,
-                                    },
-                                }}
-                            >
-                                {<icon.icon className="fill-light-500 stroke-dark-500 w-1/2" />}
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </Section>
             {/* 
                 *
                 *

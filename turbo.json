@@ -13,6 +13,9 @@
                 "ADMIN_EMAIL"
             ]
         },
+        "format": {
+            "outputs": []
+        },
         "lint": {
             "outputs": []
         },

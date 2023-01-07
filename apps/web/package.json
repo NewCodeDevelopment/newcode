@@ -7,7 +7,8 @@
         "build": "ANALYZE=true next build",
         "start": "next start",
         "lint": "next lint",
-        "postbuild": "next-sitemap"
+        "postbuild": "next-sitemap",
+        "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
     },
     "dependencies": {
         "@sendgrid/mail": "^7.7.0",

@@ -1,19 +1,19 @@
-import Link from "next/link";
-import { HTMLAttributes, useEffect, useState } from "react";
-import Menu from "./Menu";
-import { Logo } from "../..";
 import classNames from "classnames";
+import { useTranslation } from "next-i18next";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import { usePathHook } from "../../config/paths";
+import { HTMLAttributes, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { bgColorState, scrollState } from "utils";
-import { useTranslation } from "next-i18next";
+import { Logo } from "../..";
+import { usePathHook } from "../../config/paths";
+import { Menu } from "./Menu";
 
 interface Props extends HTMLAttributes<HTMLElement> {
     pathsHook: () => usePathHook;
 }
 
-export default function Navigation({ pathsHook, className, ...props }: Props) {
+export function Navigation({ pathsHook, className, ...props }: Props) {
     const router = useRouter();
 
     const { t } = useTranslation("common", { keyPrefix: "navigation" });

@@ -7,7 +7,7 @@ interface Props {
     keywords?: string;
 }
 
-export default function Seo({ title, description, keywords }: Props) {
+export function Seo({ title, description, keywords }: Props) {
     const { t } = useTranslation("common", { keyPrefix: "seo" });
 
     const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;

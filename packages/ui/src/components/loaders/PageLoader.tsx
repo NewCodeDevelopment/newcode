@@ -1,7 +1,7 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useWindow } from "utils";
 
-export default function PageLoader() {
+export function PageLoader() {
     const { height } = useWindow();
 
     return (
