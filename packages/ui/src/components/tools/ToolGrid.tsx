@@ -10,7 +10,7 @@ export function ToolGrid() {
 
     return (
         <Section bg="dark" align="center">
-            <div className="flex flex-col gap-6 self-center lg:max-w-xl lg:gap-10 2xl:max-w-4xl">
+            <div className="flex w-full flex-col gap-6 self-center lg:max-w-xl lg:gap-10 2xl:max-w-4xl">
                 <Heading type="h3" color="red">
                     {t("tools.title")}_
                 </Heading>
@@ -19,7 +19,7 @@ export function ToolGrid() {
                     {[
                         {
                             icon: dynamic(() => import("../..").then((mod) => mod.NestIcon)),
-                            title: "NestJS",
+                            title: "Nest.js",
                         },
                         {
                             icon: dynamic(() => import("../..").then((mod) => mod.DockerIcon)),
@@ -31,7 +31,7 @@ export function ToolGrid() {
                         },
                         {
                             icon: dynamic(() => import("../..").then((mod) => mod.NodeIcon)),
-                            title: "NodeJS",
+                            title: "Node.js",
                         },
                         {
                             icon: dynamic(() => import("../..").then((mod) => mod.PostgresIcon)),
@@ -39,11 +39,11 @@ export function ToolGrid() {
                         },
                         {
                             icon: dynamic(() => import("../..").then((mod) => mod.ReactIcon)),
-                            title: "ReactJS",
+                            title: "React",
                         },
                         {
                             icon: dynamic(() => import("../..").then((mod) => mod.NextIcon)),
-                            title: "NextJS",
+                            title: "Next.js",
                         },
                         {
                             icon: dynamic(() => import("../..").then((mod) => mod.TailwindLogo)),
