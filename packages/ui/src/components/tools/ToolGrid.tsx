@@ -1,5 +1,5 @@
-import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
+import dynamic from "next/dynamic";
 
 const Section = dynamic(() => import("..").then((mod) => mod.Section));
 const Heading = dynamic(() => import("..").then((mod) => mod.Heading));
@@ -15,7 +15,7 @@ export function ToolGrid() {
                     {t("tools.title")}_
                 </Heading>
 
-                <div className="grid grid-cols-2 gap-12 lg:grid-cols-4">
+                <div className="grid w-full grid-cols-2 gap-12 lg:grid-cols-4">
                     {[
                         {
                             icon: dynamic(() => import("../..").then((mod) => mod.NestIcon)),

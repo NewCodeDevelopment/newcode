@@ -1,5 +1,5 @@
+import { motion } from "framer-motion";
 import { ComponentType, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { FramerMotionSVGProps } from "utils";
 
 interface Props {
@@ -43,16 +43,20 @@ export function ToolCard(props: Props) {
     return (
         <motion.div
             className="bg-dark-500 flex aspect-square h-full w-full cursor-pointer flex-col items-center justify-center rounded-xl"
-            {...cardAnimations}
             onHoverStart={() => setHovered(true)}
             onHoverEnd={() => setHovered(false)}
+            onTap={() => setHovered(!hovered)}
+            {...cardAnimations}
         >
             {hovered ? (
                 <motion.span className="text-light-500 text-xl font-bold" {...iconAnimations}>
                     {props.title}
                 </motion.span>
             ) : (
-                <props.icon className="fill-light-500 stroke-dark-500 w-1/2" {...iconAnimations} />
+                <props.icon
+                    className="fill-light-500 stroke-dark-500 min-w-20 w-1/2"
+                    {...iconAnimations}
+                />
             )}
         </motion.div>
     );
