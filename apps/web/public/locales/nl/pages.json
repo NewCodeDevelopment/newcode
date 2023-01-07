@@ -171,7 +171,7 @@
         },
         "message": {
             "title": "Heb je een spannend project om aan te werken? \n Of wil je gewoon hallo zeggen?",
-            "placeholder": "Laten we een plan maken. Maak een verschil. Maak het groots.",
+            "placeholder": "Laten we een plan maken...",
             "errors": {
                 "required": "Vul hier je bericht in..."
             }

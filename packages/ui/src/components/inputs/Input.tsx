@@ -12,7 +12,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
 				{...props}
 				ref={ref}
 				className={classNames(
-					"appearance-none rounded-none border-b-2 bg-transparent pb-4 text-xl font-normal focus:border-red-500 focus:outline-none lg:text-2xl",
+					"appearance-none rounded-none border-b-2 bg-transparent pb-4 text-md font-normal focus:border-red-500 focus:outline-none lg:text-2xl",
 					theme === "light" &&
 						"border-dark-500 text-dark-500 focus:text-dark-700",
 					theme === "dark" &&
