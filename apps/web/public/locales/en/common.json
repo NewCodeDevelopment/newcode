@@ -27,5 +27,10 @@
     "error": {
         "404": "page not found",
         "default": "An error has occurred"
+    },
+    "cookie": {
+        "message": "We use cookies to collect & analyze data regarding the performance and use of this website, to provide social networking features and to improve and personalize our content & advertisements.",
+        "accept": "Yummy!",
+        "decline": "Nope"
     }
 }
