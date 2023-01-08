@@ -27,5 +27,10 @@
     "error": {
         "404": "Pagina niet gevonden",
         "default": "Er is een fout opgetreden"
+    },
+    "cookie": {
+        "message": "We maken gebruik van cookies om gegevens m.b.t. de prestaties en het gebruik van deze website te verzamelen & analyseren, om sociale netwerkfunctionaliteiten aan te bieden en onze content & advertenties te verbeteren en personaliseren.",
+        "accept": "Yummy!",
+        "decline": "Nope"
     }
 }

@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil";
 import { scrollState } from "utils";
 
 const InitialLoader = dynamic(() => import("..").then((mod) => mod.InitialLoader));
+const Cookie = dynamic(() => import("..").then((mod) => mod.Cookie));
 
 export function Root({ children }: any) {
     const [scroll] = useRecoilState(scrollState);
@@ -15,6 +16,7 @@ export function Root({ children }: any) {
             </Head>
 
             {process.env.NODE_ENV !== "development" && <InitialLoader />}
+            <Cookie />
             {children}
 
             {!scroll.enabled && (

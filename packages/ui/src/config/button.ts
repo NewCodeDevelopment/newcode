@@ -14,9 +14,9 @@ export const buttonColors = (variant: buttonVariant, color: Color) => {
             transparent: bgColors.transparent[500],
         },
         outlined: {
-            red: classNames("border-red-500", textColors.red[500]),
-            light: classNames("border-light-500", textColors.light[500]),
-            dark: classNames("border-dark-500", textColors.dark[500]),
+            red: classNames("border-red-500 border-2", textColors.red[500]),
+            light: classNames("border-light-500 border-2", textColors.light[500]),
+            dark: classNames("border-dark-500 border-2", textColors.dark[500]),
             transparent: classNames("border-transparent"),
         },
         text: {
@@ -30,13 +30,13 @@ export const buttonColors = (variant: buttonVariant, color: Color) => {
 
 const sizes = {
     textSizes: {
-        small: "text-sm",
+        small: "text-xs",
         medium: "text-sm",
         large: "text-lg",
     },
     paddingSizes: {
         long: {
-            small: "py-3 px-10",
+            small: "py-2 px-8",
             medium: "py-3 px-10",
             large: "py-4 px-16 lg:py-5 lg:px-20",
         },
