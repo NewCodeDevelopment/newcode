@@ -8,6 +8,7 @@ import { HTMLInputTypeAttribute, ReactElement, useEffect, useState } from "react
 import { RegisterOptions, useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import { bgColorState, MailData, useSendMail, useWindow } from "utils";
+import { FormInput } from "ui";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Arrow = dynamic(() => import("ui").then((mod) => mod.Arrow));
@@ -15,7 +16,6 @@ const Button = dynamic(() => import("ui").then((mod) => mod.Button));
 const Heading = dynamic(() => import("ui").then((mod) => mod.Heading));
 const Section = dynamic(() => import("ui").then((mod) => mod.Section));
 const Seo = dynamic(() => import("ui").then((mod) => mod.Seo));
-const FormInput = dynamic(() => import("ui").then((mod) => mod.FormInput));
 const PageLoader = dynamic(() => import("ui").then((mod) => mod.PageLoader));
 const PlaneIcon = dynamic(() => import("ui").then((mod) => mod.PlaneIcon));
 const Steps = dynamic(() => import("ui").then((mod) => mod.Steps));
