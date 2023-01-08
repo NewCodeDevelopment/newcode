@@ -17,12 +17,13 @@ export * from "./src/hooks/mail";
 export * from "./src/hooks/params";
 export * from "./src/hooks/scroll";
 export * from "./src/hooks/window";
-export * from "./src/states/loading";
 /*
 
 
     States
 */
+export * from "./src/states/cookie";
+export * from "./src/states/loading";
 export * from "./src/states/navigation";
 export * from "./src/states/popup";
 export * from "./src/states/scroll";

@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "next-i18next";
 import Image from "next/legacy/image";
+import Link from "next/link";
 import { ArrowCircleLink, Heading, Paragraph, Section, useContactInformation } from "../..";
 
 export function Footer() {
     const { t } = useTranslation("common", { keyPrefix: "footer" });
 
     const { contact, socials } = useContactInformation();
+
+    const currentYear = new Date().getFullYear();
 
     return (
         <Section bg="dark" className="relative pt-24 pb-12 lg:py-20 lg:pb-12" pt py={false}>
@@ -66,16 +69,22 @@ export function Footer() {
 				*/}
                 <div className="text-light-500 flex flex-col gap-8 text-xs lg:col-span-2 lg:h-min lg:flex-row lg:justify-between lg:self-end">
                     <div className="flex flex-col gap-1 lg:w-1/2">
-                        <a className="cursor-pointer hover:underline">Privacy-and cookieterms</a>
-                        <a className="cursor-pointer hover:underline">ReCaptcha terms</a>
-                        <a className="cursor-pointer hover:underline"> ReCaptcha Serviceterms</a>
+                        <Link
+                            href="/policy/privacy-policy"
+                            className="cursor-pointer hover:underline"
+                        >
+                            Privacy Policy
+                        </Link>
+                        {/* <a className="cursor-pointer hover:underline">ReCaptcha terms</a>
+                        <a className="cursor-pointer hover:underline"> ReCaptcha Serviceterms</a> */}
                     </div>
                     <div className="flex flex-col gap-1 lg:w-1/2 lg:flex-row lg:justify-between lg:self-end">
-                        <span>© NewCode_ All rights reserved_</span>
+                        <span>© {currentYear} NewCode_ All rights reserved_</span>
                         <span>
                             Branded by{" "}
                             <a
                                 href="kapmes.be"
+                                target="_blank"
                                 className="cursor-pointer font-bold hover:underline"
                             >
                                 KAPMES

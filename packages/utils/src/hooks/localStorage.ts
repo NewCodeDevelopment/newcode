@@ -1,45 +1,50 @@
-import { useState, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-export function useLocalStorage<T>(key: string, initialValue: T) {
-    // State to store our value
-    // Pass initial state function to useState so logic is only executed once
-    const [storedValue, setStoredValue] = useState<T>(() => {
-        if (typeof window === "undefined") {
-            return initialValue;
-        }
+export function useLocalStorage<T>(key: string, initialValue: T, callback?: (value: T) => void) {
+    const [storedValue, setStoredValue] = useState<T>(initialValue);
+
+    useEffect(() => {
         try {
-            // Get from local storage by key
             const item = window.localStorage.getItem(key);
-            // Parse stored json or if none return initialValue
+
             if (!item || item == null) {
                 window.localStorage.setItem(key, JSON.stringify(initialValue));
-                return initialValue;
+                setStoredValue(initialValue);
+                return;
             }
 
-            return JSON.parse(item);
+            setStoredValue(JSON.parse(item));
         } catch (error) {
-            // If error also return initialValue
             window.localStorage.setItem(key, JSON.stringify(initialValue));
-            return initialValue;
+            setStoredValue(initialValue);
         }
-    });
+    }, [key, storedValue]);
 
-    // Return a wrapped version of useState's setter function that ...
-    // ... persists the new value to localStorage.
-    const setValue = (value: T | ((val: T) => T)) => {
-        try {
-            // Allow value to be a function so we have same API as useState
-            const valueToStore = value instanceof Function ? value(storedValue) : value;
-            // Save state
-            setStoredValue(valueToStore);
-            // Save to local storage
-            if (typeof window !== "undefined") {
-                window.localStorage.setItem(key, JSON.stringify(valueToStore));
+    useEffect(() => {
+        callback && callback(storedValue);
+    }, [storedValue]);
+
+    /**
+     *
+     *
+     * @param value
+     *
+     */
+    const setValue = useCallback(
+        (value: T | ((val: T) => T)) => {
+            try {
+                const valueToStore = value instanceof Function ? value(storedValue) : value;
+
+                setStoredValue(valueToStore);
+
+                if (typeof window !== "undefined")
+                    window.localStorage.setItem(key, JSON.stringify(valueToStore));
+            } catch (error) {
+                console.error(error);
             }
-        } catch (error) {
-            // A more advanced implementation would handle the error case
-            console.error(error);
-        }
-    };
+        },
+        [key, storedValue],
+    );
+
     return [storedValue, setValue] as const;
 }

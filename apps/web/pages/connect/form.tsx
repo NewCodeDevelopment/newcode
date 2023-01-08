@@ -1,15 +1,13 @@
-import dynamic from "next/dynamic";
+import { AnimatePresence, motion } from "framer-motion";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import { useForm, RegisterOptions } from "react-hook-form";
-import { bgColorState, useSendMail, useWindow } from "utils";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { useTranslation } from "next-i18next";
 import { HTMLInputTypeAttribute, ReactElement, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { FormInput, PageLoader, PlaneIcon, Steps } from "ui";
-import { MailData } from "utils";
+import { RegisterOptions, useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
+import { bgColorState, MailData, useSendMail, useWindow } from "utils";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Arrow = dynamic(() => import("ui").then((mod) => mod.Arrow));
@@ -17,6 +15,10 @@ const Button = dynamic(() => import("ui").then((mod) => mod.Button));
 const Heading = dynamic(() => import("ui").then((mod) => mod.Heading));
 const Section = dynamic(() => import("ui").then((mod) => mod.Section));
 const Seo = dynamic(() => import("ui").then((mod) => mod.Seo));
+const FormInput = dynamic(() => import("ui").then((mod) => mod.FormInput));
+const PageLoader = dynamic(() => import("ui").then((mod) => mod.PageLoader));
+const PlaneIcon = dynamic(() => import("ui").then((mod) => mod.PlaneIcon));
+const Steps = dynamic(() => import("ui").then((mod) => mod.Steps));
 /**
  *
  *

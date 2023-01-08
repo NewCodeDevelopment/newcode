@@ -4,13 +4,15 @@
     "private": true,
     "scripts": {
         "dev": "next dev -p 1000",
-        "build": "ANALYZE=true next build",
+        "build": "yarn partytown && next build",
         "start": "next start",
         "lint": "next lint",
+        "partytown": "partytown copylib public/~partytown",
         "postbuild": "next-sitemap",
         "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
     },
     "dependencies": {
+        "@builder.io/partytown": "^0.7.4",
         "@sendgrid/mail": "^7.7.0",
         "@tanstack/react-query": "^4.15.0",
         "axios": "^1.1.3",

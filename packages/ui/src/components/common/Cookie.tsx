@@ -35,10 +35,6 @@ export function Cookie({ className, ...props }: Props) {
         },
     };
 
-    function handleClick() {
-        setShow(false);
-    }
-
     return (
         <AnimatePresence mode="wait">
             {show === null && (
@@ -66,7 +62,7 @@ export function Cookie({ className, ...props }: Props) {
                             size="small"
                             variant="outlined"
                             className="w-full lg:w-fit"
-                            onClick={handleClick}
+                            onClick={() => setShow(false)}
                         >
                             {t("decline")}
                         </Button>
@@ -75,7 +71,7 @@ export function Cookie({ className, ...props }: Props) {
                             size="small"
                             variant="filled"
                             className="w-full lg:w-fit"
-                            onClick={handleClick}
+                            onClick={() => setShow(true)}
                         >
                             {t("accept")}
                         </Button>

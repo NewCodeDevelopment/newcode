@@ -182,5 +182,43 @@
         "fail": {
             "title": "Oops, something went wrong. Please try again later."
         }
+    },
+    "privacy-policy": {
+        "seo": {
+            "title": "Privacy Policy - NewCode",
+            "description": "At NewCode, we would like to make your life easier through technology, by listening to your story.",
+            "keywords": "code software automation solutions"
+        },
+        "title": "Privacy Policy",
+        "body": [
+            {
+                "title": "1. What data do we collect?",
+                "description": "We collect various information about website visitors and their interactions with our website. This includes information about your device, such as your IP address, browser type and operating system. It also includes information about your location, including country, region and city. In addition, we collect information about the pages on the website you view and the links you click on. We also collect information about the time you spend on our website and the actions you take, such as filling out a form or making a purchase. It is important to note that we do not collect personal information about you, such as your name, email address or phone number, except when you send it to us in our contact form. We only collect anonymous data about your interactions with our website."
+            },
+            {
+                "title": "2. Why do we collect this data?",
+                "description": "We collect this data to provide you with a better and more personalized user experience on our website. The data also helps us improve our site by tracking how people use our site. Data collected may also be used to create targeted marketing and advertising campaigns and to help us better tailor our website to the needs of our visitors. We will only use your personal information for the purposes described above and will not sell or otherwise provide it to third parties unless required to do so by law."
+            },
+            {
+                "title": "3. What do we do with this data?",
+                "description": "We use the data collected to improve and personalize our website for our visitors. We may also use the data to create targeted marketing and advertising campaigns and to help us better tailor our website to the needs of our visitors. In some cases, we may also use the data collected to fulfill our internal operational purposes, such as improving our site and managing our operations. We will never sell or otherwise provide your personal information to third parties unless required to do so by law."
+            },
+            {
+                "title": "4. How long do we keep this data?",
+                "description": "We retain collected data for as long as is necessary to fulfill the purposes for which the data was collected. This may mean that we keep the data for the duration of your use of our website or for as long as necessary to fulfill our legal or regulatory obligations. If we no longer need the data, we will securely delete or anonymize it. If you have specific questions about how long we keep certain data, please feel free to contact us."
+            },
+            {
+                "title": "5. How do we protect this data?",
+                "description": "We take the protection of your data very seriously and have taken appropriate technical and organizational measures to protect your data from loss, misuse and unauthorized access. For example, we secure our site with Secure Sockets Layer (SSL) to prevent your data from being intercepted during transmission over the Internet. We have also implemented internal procedures to regulate the use and protection of your data. If you have specific questions about how we protect your data, please feel free to contact us."
+            },
+            {
+                "title": "6. What are your rights?",
+                "description": "On the privacy policy page of our website, we want to make clear what your rights are in connection with the use of your personal data. For example, you have the right to know what we do with your data and for what purposes we use it. In addition, you have the right to have your data corrected if it is incorrect, or to limit the processing of your data. You also have the right to have your data deleted, or to object to its processing. Finally, you have the right to request and receive your data in a structured, common and machine-readable format so that you can transfer it to another party. If you wish to exercise any of these rights, please contact us at the e-mail address provided on the website. We will process your request as soon as possible."
+            },
+            {
+                "title": "7. How to contact us",
+                "description": "If you have any questions about our privacy statement or wish to exercise any of your rights, please feel free to contact us at the email address or address below. \n \n burak@newcode.be \n \n We will do our best to respond to your request and fulfill your request as quickly as possible, within the legal framework. If you feel that we have not adequately responded to your request, or if you have other complaints or concerns about how we handle your data, please feel free to contact us so we can work together to find a solution. You can also always lodge a complaint with the data protection supervisory authority."
+            }
+        ]
     }
 }
