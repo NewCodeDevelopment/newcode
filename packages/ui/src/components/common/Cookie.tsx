@@ -41,7 +41,7 @@ export function Cookie({ className, ...props }: Props) {
                 <motion.div
                     {...props}
                     className={classNames(
-                        "bg-dark-700 text-light-500 fixed left-4 right-4 bottom-4 z-50 flex flex-col gap-6 rounded-xl border-[1px] border-red-500 border-opacity-20 bg-opacity-100 p-5 backdrop-blur-xl backdrop-filter md:flex-row md:items-center md:justify-between lg:bottom-5 lg:right-8 lg:left-8 lg:px-12 lg:py-4",
+                        "bg-dark-700 text-light-500 fixed left-4 right-4 bottom-4 z-[35] flex flex-col gap-6 rounded-xl border-[1px] border-red-500 border-opacity-20 bg-opacity-100 p-5 backdrop-blur-xl backdrop-filter md:flex-row md:items-center md:justify-between lg:bottom-5 lg:right-8 lg:left-8 lg:px-12 lg:py-4",
                         className,
                     )}
                     variants={animation}
