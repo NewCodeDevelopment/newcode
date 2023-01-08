@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
+import { FramerMotionSVGProps } from "utils";
 
-export default function LandingLogo({ ...props }: any) {
+interface Props extends FramerMotionSVGProps {
+    currentStyle?: number;
+}
+
+export default function LandingLogo({ currentStyle, ...props }: Props) {
     const styles = [
         {
             // default fill black
@@ -47,6 +52,7 @@ export default function LandingLogo({ ...props }: any) {
     ];
 
     function random(options: any[]) {
+        if (currentStyle !== undefined) return options[currentStyle];
         return options[Math.floor(Math.random() * options.length)];
     }
 
