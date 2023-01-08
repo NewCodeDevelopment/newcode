@@ -12,11 +12,11 @@ export function useSendMail() {
         },
         {
             onSuccess: () => {
-                console.log("success");
+                console.info("success");
                 router.push("/connect/thanks");
             },
             onError: () => {
-                console.log("error");
+                console.info("error");
                 router.push("/connect/error");
             },
         },

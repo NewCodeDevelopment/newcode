@@ -115,7 +115,7 @@ export function useScroll(mainRef: RefObject<HTMLElement>) {
 				
 					*/
                 if (!children[currentIndex]) {
-                    console.log("NO MORE CHILDREN");
+                    console.info("NO MORE CHILDREN");
                     return;
                 }
                 /*
