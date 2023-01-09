@@ -2,7 +2,7 @@ import { HTMLAttributes } from "react";
 
 interface Props extends HTMLAttributes<SVGElement> {}
 
-export default function Logo({ ...props }: Props) {
+export function Logo({ ...props }: Props) {
     return (
         <svg {...props} viewBox="0 0 87.912 63.821">
             <path d="M86.534,32.173,37.3.41A2.842,2.842,0,0,0,33,2.846V27.982a2.843,2.843,0,0,1-2.842,2.842H2.842A2.842,2.842,0,0,0,0,33.665V60.98a2.842,2.842,0,0,0,2.842,2.841H30.156A2.842,2.842,0,0,0,33,60.98V35.847a2.841,2.841,0,0,1,4.3-2.436l46.3,30a2.842,2.842,0,0,0,4.305-2.436V34.608a2.842,2.842,0,0,0-1.378-2.436" />

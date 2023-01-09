@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { HTMLInputTypeAttribute, ReactElement, useEffect, useState } from "react";
 import { RegisterOptions, useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
+import { FormInput } from "ui";
 import { bgColorState, MailData, useSendMail, useWindow } from "utils";
 import { FormInput } from "ui";
 
