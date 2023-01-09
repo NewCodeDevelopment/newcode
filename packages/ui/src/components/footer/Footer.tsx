@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "next-i18next";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowCircleLink, Heading, Paragraph, Section, useContactInformation } from "../..";
 
@@ -22,10 +22,9 @@ export function Footer() {
             <Image
                 src="/images/background.jpg"
                 alt="footer background"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-                className="-z-10"
+                width={3840}
+                height={2160}
+                className="absolute top-0 left-0 -z-10 h-full w-full object-cover object-center"
             />
 
             <footer className="z-0 grid h-full w-full grid-cols-1 gap-y-20 self-start lg:grid-cols-2 lg:grid-rows-[1fr_min-content] lg:gap-x-20 lg:self-center">
