@@ -12,15 +12,22 @@ export function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <Section bg="dark" className="relative pt-24 pb-12 lg:py-20 lg:pb-12" pt py={false}>
+        <Section
+            bg="dark"
+            pt
+            py={false}
+            mobileScreen
+            className="relative pt-24 pb-12 lg:py-20 lg:pb-12"
+        >
             <Image
-                src="/images/footer-background.jpg"
+                src="/images/background.jpg"
                 alt="footer background"
                 layout="fill"
                 objectFit="cover"
                 objectPosition="center"
                 className="-z-10"
             />
+
             <footer className="z-0 grid h-full w-full grid-cols-1 gap-y-20 self-start lg:grid-cols-2 lg:grid-rows-[1fr_min-content] lg:gap-x-20 lg:self-center">
                 {/* 
 				

@@ -5,7 +5,7 @@ interface Props extends FramerMotionSVGProps {
     currentStyle?: number;
 }
 
-export default function LandingLogo({ currentStyle, ...props }: Props) {
+export function LandingLogo({ currentStyle, ...props }: Props) {
     const styles = [
         {
             // default fill black
