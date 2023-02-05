@@ -1,4 +1,3 @@
-const withTM = require("next-transpile-modules")(["ui", "utils"]);
 const { RecoilEnv } = require("recoil");
 const { i18n } = require("./next-i18next.config");
 
@@ -9,8 +8,9 @@ if (process.env.NODE_ENV === "development") {
 /**
  * @type {import('next').NextConfig}
  */
-module.exports = withTM({
+module.exports = {
     reactStrictMode: true,
     i18n,
     nextScriptWorkers: true,
-});
+    transpilePackages: ["ui", "utils"],
+};
