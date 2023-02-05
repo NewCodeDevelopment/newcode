@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { HTMLAttributes, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { bgColorState, scrollState } from "utils";
-import { Logo } from "../..";
+import { Symbol } from "../..";
 import { usePathHook } from "../../config/paths";
 import { Menu } from "./Menu";
 
@@ -106,7 +106,7 @@ export function Navigation({ pathsHook, className, ...props }: Props) {
                     className="z-10 flex flex-row items-center gap-3"
                     onClick={open ? cycleMenu : undefined}
                 >
-                    <Logo
+                    <Symbol
                         className={classNames(
                             "text-light-500 w-6  xl:w-12",
                             open && "fill-light-500",

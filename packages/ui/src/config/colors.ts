@@ -1,6 +1,6 @@
 export type Color = "red" | "light" | "dark" | "transparent";
 
-export type ColorVariants = 300 | 400 | 500 | 600 | 700;
+export type ColorShades = 300 | 400 | 500 | 600 | 700;
 
 export const [
     // basic
@@ -15,7 +15,7 @@ export const [
     hoverBorderColors,
 ]: {
     [key in Color]: {
-        [key in ColorVariants]: string;
+        [key in ColorShades]: string;
     };
 }[] = [
     /*
