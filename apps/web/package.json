@@ -30,11 +30,10 @@
         "react-hook-form": "^7.39.1",
         "react-intersection-observer": "^9.4.0",
         "recoil": "^0.7.6",
-        "ui": "1.0.0",
-        "utils": "1.0.0"
+        "ui": "*",
+        "utils": "*"
     },
     "devDependencies": {
-        "@babel/core": "^7.0.0",
         "@tanstack/react-query-devtools": "^4.15.0",
         "@types/node": "^18.8.5",
         "@types/react": "^18.0.21",
@@ -43,6 +42,7 @@
         "eslint-config-custom": "*",
         "next-transpile-modules": "^10.0.0",
         "postcss": "^8.4.18",
+        "tailwind-config": "*",
         "tailwindcss": "^3.1.8",
         "tsconfig": "*",
         "typescript": "^4.5.3"

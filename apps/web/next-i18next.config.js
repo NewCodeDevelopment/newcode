@@ -1,5 +1,8 @@
 const path = require("path");
 
+/**
+ * @type {import('next-i18next').UserConfig}
+ */
 module.exports = {
     // https://www.i18next.com/overview/configuration-options#logging
     debug: false,
