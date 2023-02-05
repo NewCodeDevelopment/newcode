@@ -121,7 +121,7 @@ export default function FormPage() {
             type: "text",
             placeholder: t("name.placeholder"),
             options: {
-                required: t("name.errors.required"),
+                required: t("name.errors.required") as string,
             },
             previous: {
                 type: "button",
@@ -134,7 +134,7 @@ export default function FormPage() {
             type: "text",
             placeholder: t("business.placeholder"),
             options: {
-                required: t("business.errors.required"),
+                required: t("business.errors.required") as string,
             },
             previous: {
                 type: "button",
@@ -147,7 +147,7 @@ export default function FormPage() {
             type: "email",
             placeholder: t("email.placeholder"),
             options: {
-                required: t("email.errors.required"),
+                required: t("email.errors.required") as string,
                 pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
                     message: t("email.errors.pattern"),
@@ -175,7 +175,7 @@ export default function FormPage() {
             type: "text",
             placeholder: t("message.placeholder"),
             options: {
-                required: t("message.errors.required"),
+                required: t("message.errors.required") as string,
             },
             previous: {
                 type: "button",
@@ -186,7 +186,7 @@ export default function FormPage() {
 
     return (
         <>
-            <Seo title={t("seo.title")} description={t("seo.description")} />
+            <Seo title={t("seo.title") as string} description={t("seo.description") as string} />
 
             {loading ? (
                 <PageLoader />

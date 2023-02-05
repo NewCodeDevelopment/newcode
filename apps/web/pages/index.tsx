@@ -28,7 +28,7 @@ export default function HomePage() {
 
     return (
         <>
-            <Seo title={t("seo.title")} description={t("seo.description")} />
+            <Seo title={t("seo.title") as string} description={t("seo.description") as string} />
             {/* 
 				*
 				*
