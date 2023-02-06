@@ -20,6 +20,7 @@ export function ToolCard(props: Props) {
             opacity: 1,
             y: 0,
             transition: {
+                ease: "easeOut",
                 duration: 0.5,
                 delay: props.index * 0.1,
             },
