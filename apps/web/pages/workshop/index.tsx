@@ -4,7 +4,6 @@ import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { ReactElement } from "react";
-import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 import { useDevice } from "utils";
 
@@ -16,6 +15,7 @@ const DescriptionSection = dynamic(() => import("ui").then((mod) => mod.Descript
 const Text = dynamic(() => import("ui").then((mod) => mod.Text));
 const Heading = dynamic(() => import("ui").then((mod) => mod.Heading));
 const Paragraph = dynamic(() => import("ui").then((mod) => mod.Paragraph));
+const CountUp = dynamic(() => import("react-countup"));
 /**
  *
  *
@@ -31,6 +31,7 @@ export default function WorkshopPage() {
     return (
         <>
             <Seo title={t("seo.title") as string} description={t("seo.description") as string} />
+
             {/* 
 				*
 				*
@@ -97,19 +98,24 @@ export default function WorkshopPage() {
                     text: t("about.button"),
                 }}
             />
-
             {/* 
 				*
 				*
 				Wanneer is het?
 				*
 			 */}
-            <Section bg="dark" align="center">
+            <Section bg="red" align="center">
                 <span ref={ref}>
                     {inView && (
-                        <Text type="h2" color="red" weight="bold" className="text-[7vw]">
+                        <Text
+                            type="h2"
+                            color="dark"
+                            shade={700}
+                            weight="extrabold"
+                            className="py-40 text-center text-8xl lg:text-[10vw]"
+                        >
                             <CountUp start={0} end={23} duration={1} />
-                            {" Maart 2023"}
+                            <span className="block text-3xl lg:text-[3vw]">Maart 2023</span>
                         </Text>
                     )}
                 </span>

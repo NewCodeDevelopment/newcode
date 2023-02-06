@@ -189,11 +189,8 @@
             "description": "Bij NewCode willen we graag jouw leven vergemakkelijken aan de hand van technologie, door naar jouw verhaal te luisteren.",
             "keywords": "code software automatisering oplossingen"
         },
-        "landing": {
-            "title": "Workshop"
-        },
         "about": {
-            "title": "Wat is deze workshop?",
+            "title": "Wat kan je verwachten?",
             "description": "Wat wil je maken of oplossen? Wat zijn de vereisten en welke zijn cruciaal? Hoe ziet het eruit? Hoe ga je het implementeren? Werkt het zoals je het verwachtte? Hoe kan je het verbeteren? Deze vragen leren we de leerlingen tijdens deze workshop hands-on op te lossen. Zodat ze kunnen denken als een creatieve developer.",
             "button": "Schrijf je in"
         }
