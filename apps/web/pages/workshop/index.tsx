@@ -25,7 +25,7 @@ const CountUp = dynamic(() => import("react-countup"));
  */
 export default function WorkshopPage() {
     const { t } = useTranslation("pages", { keyPrefix: "workshop" });
-    const { ref, inView } = useInView();
+    const { ref, inView } = useInView({ threshold: 0.5 });
     const device = useDevice();
 
     return (
@@ -106,18 +106,16 @@ export default function WorkshopPage() {
 			 */}
             <Section bg="red" align="center">
                 <span ref={ref}>
-                    {inView && (
-                        <Text
-                            type="h2"
-                            color="dark"
-                            shade={700}
-                            weight="extrabold"
-                            className="py-40 text-center text-8xl lg:text-[10vw]"
-                        >
-                            <CountUp start={0} end={23} duration={1} />
-                            <span className="block text-3xl lg:text-[3vw]">Maart 2023</span>
-                        </Text>
-                    )}
+                    <Text
+                        type="h2"
+                        color="dark"
+                        shade={700}
+                        weight="extrabold"
+                        className="py-40 text-center text-8xl lg:text-[10vw]"
+                    >
+                        <CountUp start={0} end={inView ? 23 : 0} duration={1} />
+                        <span className="block text-3xl lg:text-[3vw]">Maart 2023</span>
+                    </Text>
                 </span>
             </Section>
             {/* 
