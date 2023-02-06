@@ -12,6 +12,7 @@ export * from "./src/const";
 */
 export * from "./src/hooks/cases";
 export * from "./src/hooks/cookie";
+export * from "./src/hooks/device";
 export * from "./src/hooks/localStorage";
 export * from "./src/hooks/mail";
 export * from "./src/hooks/params";

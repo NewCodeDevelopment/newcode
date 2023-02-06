@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ReactElement } from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
+import { useDevice } from "utils";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Seo = dynamic(() => import("ui").then((mod) => mod.Seo));
@@ -25,6 +26,7 @@ const Paragraph = dynamic(() => import("ui").then((mod) => mod.Paragraph));
 export default function WorkshopPage() {
     const { t } = useTranslation("pages", { keyPrefix: "workshop" });
     const { ref, inView } = useInView();
+    const device = useDevice();
 
     return (
         <>
@@ -39,7 +41,11 @@ export default function WorkshopPage() {
                 <div className="absolute inset-0 grid h-full max-h-fit w-full grid-rows-2">
                     <div className="relative grid place-items-center">
                         <Image
-                            src="/images/background.jpg"
+                            src={
+                                device === "mobile"
+                                    ? "/images/background/1x.jpg"
+                                    : "/images/background/2x.jpg"
+                            }
                             alt="footer background"
                             width={3840}
                             height={2160}

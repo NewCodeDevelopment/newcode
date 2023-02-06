@@ -1,7 +1,7 @@
 import Image from "next/legacy/image";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { loadingState, useWindow } from "utils";
+import { loadingState, useDevice, useWindow } from "utils";
 import { Heading, Section } from "..";
 import { RobotIcon } from "../..";
 
@@ -13,6 +13,7 @@ interface Props {
 export function Error({ title, statusCode }: Props) {
     const [_, setLoading] = useRecoilState(loadingState);
     const { height } = useWindow();
+    const device = useDevice();
 
     useEffect(() => {
         setLoading(false);
@@ -27,7 +28,9 @@ export function Error({ title, statusCode }: Props) {
             }}
         >
             <Image
-                src="/images/footer-background.jpg"
+                src={
+                    device === "mobile" ? "/images/background/1x.jpg" : "/images/background/2x.jpg"
+                }
                 alt="footer background"
                 layout="fill"
                 objectFit="cover"
