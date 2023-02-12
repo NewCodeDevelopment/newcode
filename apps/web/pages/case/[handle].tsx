@@ -1,14 +1,14 @@
-import dynamic from "next/dynamic";
-import { Fragment, ReactElement, useEffect } from "react";
+import casesFile from "@/public/locales/nl/cases.json";
+import { GetStaticPathsContext } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import { checkImage, useCase, useSiblingCases } from "utils";
+import dynamic from "next/dynamic";
 import Image from "next/legacy/image";
-import { useInView } from "react-intersection-observer";
 import { useRouter } from "next/router";
-import casesFile from "@/public/locales/nl/cases.json";
+import { Fragment, ReactElement } from "react";
 import { DescriptionSection } from "ui";
+import { checkImage, useCase, useSiblingCases } from "utils";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Heading = dynamic(() => import("ui").then((mod) => mod.Heading));
@@ -137,8 +137,6 @@ export default function CasePage({ handle }: Props) {
             <Section bg="dark" className="relative">
                 <Image
                     {...checkImage(bannerImage)}
-                    width={100}
-                    height={100}
                     layout="fill"
                     objectFit="cover"
                     objectPosition="center"
@@ -167,8 +165,6 @@ export default function CasePage({ handle }: Props) {
                     <Section bg="dark" className="relative">
                         <Image
                             {...checkImage(images[index])}
-                            width={100}
-                            height={100}
                             layout="fill"
                             objectFit="cover"
                             objectPosition="center"
@@ -282,12 +278,21 @@ export async function getStaticProps({ params, locale }: Params) {
     };
 }
 
-export async function getStaticPaths() {
-    const paths = Object.keys(casesFile.cases).map((item) => {
-        return {
-            params: { handle: item },
-        };
-    });
+export async function getStaticPaths({ locales }: GetStaticPathsContext) {
+    if (!locales) throw new Error("No locales found");
+
+    const paths = locales.reduce(
+        (acc: { params: { handle: string }; locale: string }[], locale: string) => [
+            ...acc,
+            ...Object.keys(casesFile.cases).map((item) => {
+                return {
+                    params: { handle: item },
+                    locale,
+                };
+            }),
+        ],
+        [],
+    );
 
     return {
         paths,
