@@ -8,6 +8,7 @@
                 "NODE_ENV",
                 "NEXT_PUBLIC_SITE_URL",
                 "GQL_API_URL",
+                "GQL_API_TOKEN",
                 "SENDGRID_API_KEY",
                 "ADMIN_EMAIL"
             ]
@@ -20,7 +21,14 @@
         },
         "dev": {
             "cache": false,
-            "env": ["NODE_ENV", "GQL_API_URL", "SENDGRID_API_KEY", "ADMIN_EMAIL"]
+            "env": [
+                "NODE_ENV",
+                "NEXT_PUBLIC_SITE_URL",
+                "GQL_API_URL",
+                "GQL_API_TOKEN",
+                "SENDGRID_API_KEY",
+                "ADMIN_EMAIL"
+            ]
         }
     },
     "globalEnv": ["NODE_ENV"]
