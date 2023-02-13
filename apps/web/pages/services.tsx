@@ -104,7 +104,7 @@ ServicesPage.getLayout = function getLayout(page: ReactElement) {
  *
  *
  */
-export async function getStaticProps({ locale }: Params) {
+export async function getServerSideProps({ locale }: Params) {
     const { allServiceGroup } = await client.request<ServicesQuery>(SERVICES_QUERY);
     const { allTestimonial } = await client.request<TestimonialsQuery>(TESTIMONIALS_QUERY);
 
