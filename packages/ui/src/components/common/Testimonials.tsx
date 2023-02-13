@@ -10,7 +10,7 @@ type TestimonialsProps = {
 };
 
 export function Testimonials({ testimonials }: TestimonialsProps) {
-    const { t } = useTranslation("testimonials");
+    const { t } = useTranslation("pages", { keyPrefix: "testimonials" });
 
     const [ref, inView] = useInView();
 

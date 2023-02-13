@@ -137,6 +137,9 @@
             "scroll": "Scroll down to all cases"
         }
     },
+    "testimonials": {
+        "title": "Testimonials"
+    },
     "form": {
         "seo": {
             "title": "Stuur ons een bericht - NewCode",
