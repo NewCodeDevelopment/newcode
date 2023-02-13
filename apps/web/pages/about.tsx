@@ -5,6 +5,7 @@ import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import dynamic from "next/dynamic";
 import Image from "next/legacy/image";
 import { ReactElement } from "react";
+import { client, Testimonial, TestimonialsQuery, TESTIMONIALS_QUERY } from "utils";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Heading = dynamic(() => import("ui").then((mod) => mod.Heading));
@@ -22,12 +23,16 @@ const Seo = dynamic(() => import("ui").then((mod) => mod.Seo));
  *
  *
  */
+type AboutPageProps = {
+    testimonials: Testimonial[];
+};
+
 type NatureItem = {
     title: string;
     values: string[];
 };
 
-export default function AboutPage() {
+export default function AboutPage({ testimonials }: AboutPageProps) {
     const { t } = useTranslation("pages", { keyPrefix: "about" });
 
     const natureObject = t("nature", {
@@ -135,7 +140,7 @@ export default function AboutPage() {
                 Testimonials
                 *
             */}
-            <Testimonials />
+            <Testimonials testimonials={testimonials} />
         </>
     );
 }
@@ -156,9 +161,12 @@ AboutPage.getLayout = function getLayout(page: ReactElement) {
  *
  *
  */
-export async function getStaticProps({ locale }: Params) {
+export async function getServerSideProps({ locale }: Params) {
+    const { allTestimonial } = await client.request<TestimonialsQuery>(TESTIMONIALS_QUERY);
+
     return {
         props: {
+            testimonials: allTestimonial,
             ...(await serverSideTranslations(locale || "nl", ["common", "pages", "testimonials"])),
         },
     };

@@ -12,7 +12,7 @@ interface Props extends HTMLMotionProps<"section"> {
 }
 
 export function CaseBanner({
-    case: { title, description, handle, bannerImage },
+    case: { title, short, slug, bannerImage },
     className,
     ...props
 }: Props) {
@@ -135,8 +135,8 @@ export function CaseBanner({
             <motion.div className="z-10 flex flex-col gap-4 self-end" style={{ y }}>
                 <Heading type="h3">{t("title")}_</Heading>
                 <Heading type="h2">{title + "_"}</Heading>
-                <Paragraph size="small">{description.short}</Paragraph>
-                <ArrowLink description={t("link")} href={"/case/" + handle} />
+                <Paragraph size="small">{short}</Paragraph>
+                <ArrowLink description={t("link")} href={"/case/" + slug?.current} />
             </motion.div>
         </Section>
     );

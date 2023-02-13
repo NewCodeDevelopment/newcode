@@ -13,4 +13,7 @@ module.exports = {
     i18n,
     nextScriptWorkers: true,
     transpilePackages: ["ui", "utils"],
+    images: {
+        domains: ["cdn.sanity.io"],
+    }
 };

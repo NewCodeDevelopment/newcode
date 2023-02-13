@@ -1,14 +1,11 @@
-import casesFile from "@/public/locales/nl/cases.json";
-import { GetStaticPathsContext } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import dynamic from "next/dynamic";
 import Image from "next/legacy/image";
-import { useRouter } from "next/router";
 import { Fragment, ReactElement } from "react";
 import { DescriptionSection } from "ui";
-import { checkImage, useCase, useSiblingCases } from "utils";
+import { Case, CaseQuery, CasesQuery, CASES_QUERY, CASE_QUERY, checkImage, client } from "utils";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Heading = dynamic(() => import("ui").then((mod) => mod.Heading));
@@ -26,21 +23,18 @@ const Seo = dynamic(() => import("ui").then((mod) => mod.Seo));
  *
  */
 interface Props {
-    handle: string;
+    data: Case;
+    left: Case | null;
+    right: Case | null;
 }
 
-export default function CasePage({ handle }: Props) {
-    const router = useRouter();
-    const { t } = useTranslation("pages", { keyPrefix: "case" });
-    // const workTranslation = useTranslation("pages", { keyPrefix: "work" });
-
-    // const { inView, ref } = useInView({
-    //     threshold: 1,
-    // });
-
-    const {
+export default function CasePage({
+    data: {
         title,
-        description,
+        short,
+        main,
+        problem,
+        solution,
         client,
         sector,
         service,
@@ -49,21 +43,15 @@ export default function CasePage({ handle }: Props) {
         productUrl,
         images,
         bannerImage,
-    } = useCase(handle);
-
-    const { left, right } = useSiblingCases(handle);
-
-    // useEffect(() => {
-    //     if (inView) {
-    //         router.prefetch("/work");
-    //         router.push("/work", undefined, { shallow: true, scroll: false });
-    //
-    //     }
-    // }, [inView]);
+    },
+    left,
+    right,
+}: Props) {
+    const { t } = useTranslation("pages", { keyPrefix: "case" });
 
     return (
         <>
-            <Seo title={title} description={description.short} />
+            <Seo title={title || ""} description={short || ""} />
             {/* 
             
             
@@ -78,7 +66,7 @@ export default function CasePage({ handle }: Props) {
                             <span className="text-red-500">_</span>
                         </Heading>
                         <Paragraph size="large" weight="bold" maxCharacters={30}>
-                            {description.main}
+                            {main}
                         </Paragraph>
                     </div>
 
@@ -90,11 +78,11 @@ export default function CasePage({ handle }: Props) {
                             },
                             {
                                 title: t("landing.sector"),
-                                value: sector,
+                                value: sector?.title,
                             },
                             {
                                 title: t("landing.service"),
-                                value: service,
+                                value: service?.title,
                             },
                             {
                                 title: t("landing.type"),
@@ -152,19 +140,19 @@ export default function CasePage({ handle }: Props) {
             {[
                 {
                     title: t("content.problem"),
-                    description: description.problem,
+                    description: problem,
                 },
                 {
                     title: t("content.solution"),
-                    description: description.solution,
+                    description: solution,
                 },
             ].map(({ title, description }, index) => (
                 <Fragment key={index}>
-                    <DescriptionSection bg="dark" title={title} description={description} />
+                    <DescriptionSection bg="dark" title={title} description={description || ""} />
 
                     <Section bg="dark" className="relative">
                         <Image
-                            {...checkImage(images[index])}
+                            {...(images ? checkImage(images[index]) : checkImage(null))}
                             layout="fill"
                             objectFit="cover"
                             objectPosition="center"
@@ -180,21 +168,12 @@ export default function CasePage({ handle }: Props) {
             
             
             */}
-            <Section
-                bg="red"
-                align="center"
-                className="relative"
-                mobileScreen
-                // py={false}
-                // onScroll={() => router.push("/work")}
-                // onTouchMove={() => router.push("/work")}
-                // onWheel={() => router.push("/work")}
-            >
+            <Section bg="red" align="center" className="relative" mobileScreen>
                 <div className="flex h-full w-full flex-col justify-evenly">
                     <div className="flex flex-row items-center justify-between">
                         {right ? (
                             <HyperLink
-                                href={`/case/${right.handle}`}
+                                href={`/case/${right.slug?.current}`}
                                 className="flex flex-row gap-4"
                                 variant="text"
                                 shape="none"
@@ -207,7 +186,7 @@ export default function CasePage({ handle }: Props) {
                         )}
                         {left ? (
                             <HyperLink
-                                href={`/case/${left.handle}`}
+                                href={`/case/${left.slug?.current}`}
                                 className="flex flex-row gap-4"
                                 variant="text"
                                 shape="none"
@@ -236,17 +215,6 @@ export default function CasePage({ handle }: Props) {
                     <Scroll />
                 </div> */}
             </Section>
-            {/* 
-            
-            
-                Overflow
-            
-            */}
-            {/* <Landing
-                title={workTranslation.t("landing.title")}
-                hiddenSection
-                ref={ref}
-            /> */}
         </>
     );
 }
@@ -267,38 +235,59 @@ CasePage.getLayout = function getLayout(page: ReactElement) {
  *
  *
  */
-export async function getStaticProps({ params, locale }: Params) {
-    const { handle } = params;
+export async function getServerSideProps({ params, locale }: Params) {
+    const { allCase } = await client.request<CaseQuery>(CASE_QUERY, { handle: params.handle });
+
+    const data = allCase && allCase[0];
+    if (!data) return { notFound: true };
+
+    const cases = await client.request<CasesQuery>(CASES_QUERY, { limit: 20 });
+    const caseIndex = cases.allCase.findIndex((item) => item._id === data._id);
+    const left = cases.allCase[caseIndex - 1];
+    const right = cases.allCase[caseIndex + 1];
 
     return {
         props: {
+            data,
+            left: left || null,
+            right: right || null,
             ...(await serverSideTranslations(locale || "nl", ["common", "pages", "cases"])),
-            handle,
         },
     };
 }
 
-export async function getStaticPaths({ locales }: GetStaticPathsContext) {
-    if (!locales) throw new Error("No locales found");
+// export async function getStaticProps({ params, locale }: Params) {
+//     const { handle } = params;
 
-    const paths = locales.reduce(
-        (acc: { params: { handle: string }; locale: string }[], locale: string) => [
-            ...acc,
-            ...Object.keys(casesFile.cases).map((item) => {
-                return {
-                    params: { handle: item },
-                    locale,
-                };
-            }),
-        ],
-        [],
-    );
+//     return {
+//         props: {
+//             ...(await serverSideTranslations(locale || "nl", ["common", "pages", "cases"])),
+//             handle,
+//         },
+//     };
+// }
 
-    return {
-        paths,
-        fallback: false,
-    };
-}
+// export async function getStaticPaths({ locales }: GetStaticPathsContext) {
+//     if (!locales) throw new Error("No locales found");
+
+//     const paths = locales.reduce(
+//         (acc: { params: { handle: string }; locale: string }[], locale: string) => [
+//             ...acc,
+//             ...Object.keys(casesFile.cases).map((item) => {
+//                 return {
+//                     params: { handle: item },
+//                     locale,
+//                 };
+//             }),
+//         ],
+//         [],
+//     );
+
+//     return {
+//         paths,
+//         fallback: false,
+//     };
+// }
 
 // {[
 //     {

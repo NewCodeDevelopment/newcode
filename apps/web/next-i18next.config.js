@@ -7,7 +7,7 @@ module.exports = {
     // https://www.i18next.com/overview/configuration-options#logging
     debug: false,
     i18n: {
-        locales: ["nl", "en"],
+        locales: ["nl"],
         defaultLocale: "nl",
         localeDetection: true,
         localePath: path.resolve("./public/locales"),

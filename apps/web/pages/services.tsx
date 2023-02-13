@@ -3,6 +3,15 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import dynamic from "next/dynamic";
 import { ReactElement } from "react";
+import {
+    client,
+    ServiceGroup,
+    ServicesQuery,
+    SERVICES_QUERY,
+    Testimonial,
+    TestimonialsQuery,
+    TESTIMONIALS_QUERY,
+} from "utils";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Heading = dynamic(() => import("ui").then((mod) => mod.Heading));
@@ -18,7 +27,12 @@ const Seo = dynamic(() => import("ui").then((mod) => mod.Seo));
  *
  *
  */
-export default function ServicesPage() {
+type ServicesPageProps = {
+    serviceGroups: ServiceGroup[];
+    testimonials: Testimonial[];
+};
+
+export default function ServicesPage({ serviceGroups, testimonials }: ServicesPageProps) {
     const { t } = useTranslation("pages", { keyPrefix: "services" });
 
     return (
@@ -42,7 +56,7 @@ export default function ServicesPage() {
                         {t("landing.title")}_
                     </Heading>
 
-                    <ServicesSection theme="dark" />
+                    <ServicesSection theme="dark" serviceGroups={serviceGroups} />
                 </div>
             </Section>
             {/* 
@@ -69,7 +83,7 @@ export default function ServicesPage() {
 				Testimonials
 				*
 			 */}
-            <Testimonials />
+            <Testimonials testimonials={testimonials} />
         </>
     );
 }
@@ -91,8 +105,13 @@ ServicesPage.getLayout = function getLayout(page: ReactElement) {
  *
  */
 export async function getStaticProps({ locale }: Params) {
+    const { allServiceGroup } = await client.request<ServicesQuery>(SERVICES_QUERY);
+    const { allTestimonial } = await client.request<TestimonialsQuery>(TESTIMONIALS_QUERY);
+
     return {
         props: {
+            testimonials: allTestimonial,
+            serviceGroups: allServiceGroup,
             ...(await serverSideTranslations(locale || "nl", [
                 "common",
                 "pages",
