@@ -57,6 +57,7 @@ export function LandingLogo({ currentStyle, ...props }: Props) {
         container: {
             animate: {
                 transition: {
+                    ease: "easeInOut",
                     when: "beforeChildren",
                     duration: 2,
                     staggerChildren: 0.2,
