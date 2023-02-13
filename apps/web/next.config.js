@@ -11,9 +11,8 @@ if (process.env.NODE_ENV === "development") {
 module.exports = {
     reactStrictMode: true,
     i18n,
-    nextScriptWorkers: true,
     transpilePackages: ["ui", "utils"],
     images: {
         domains: ["cdn.sanity.io"],
-    }
+    },
 };

@@ -10,7 +10,7 @@ module.exports = {
         locales: ["nl"],
         defaultLocale: "nl",
         localeDetection: true,
-        localePath: path.resolve("./public/locales"),
     },
+    localePath: path.resolve("./public/locales"),
     reloadOnPrerender: process.env.NODE_ENV === "development",
 };
