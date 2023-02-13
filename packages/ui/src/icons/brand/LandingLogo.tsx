@@ -10,7 +10,7 @@ interface Props extends FramerMotionSVGProps {
 export function LandingLogo({ currentStyle, ...props }: Props) {
     const { ref, inView } = useInView();
     const [delta, setDelta] = useState({ x: 0, y: 0 });
-    const [speed, setSpeed] = useState(250);
+    const [speed, setSpeed] = useState(500);
 
     const [prevEvent, setPrevEvent] = useState<MouseEvent>();
 
@@ -140,8 +140,8 @@ export function LandingLogo({ currentStyle, ...props }: Props) {
                     key={index}
                     variants={animations.path}
                     style={{
-                        x: (delta.x / speed) * index,
-                        y: (delta.y / speed) * index,
+                        x: (delta.x / speed) * (index + 1),
+                        y: (delta.y / speed) * (index + 1),
                     }}
                 />
             ))}
