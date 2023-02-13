@@ -1,34 +1,35 @@
 {
     "cases": {
-        "donvil": {
-            "title": "Middleware",
+        "countdown": {
+            "title": "Countdown",
             "description": {
-                "short": "Data tussen hun kassasysteem en hun webshop synchroniseren",
-                "main": "Door de programmatie van een middleware zorgde we ervoor dat de data tussen hun kassasysteem en hun webshop gesynchroniseerd werd.",
-                "problem": "Door alles zelf dubbel te moeten ingeven en aanpassen ontstonden er ongelijkheden tussen de webshop en de winkel/stock. Online prijzen die niet overeenkomen met de winkel, de stock die niet goed opgevolgd kan worden... Kortom veel tijdverlies en nog meer frustraties.",
-                "solution": "We programmeerden een Middleware die de data tussen hun kassasysteem en hun webshop synchroniseert. Producten, orders, stock en nog veel meer blijft zo gelijk afgestemd op elkaar."
+                "short": "Een countdown voor de lancering van de artiesten van Pukkelpop",
+                "main": "Met het vertouwen van SuperViewTv mochten wij de aftelklok ontwikkelen voor de lancering van de artiesten van Pukkelpop.",
+                "problem": "Pukkelpop wilde de artiesten van hun festival op een originele manier voorstellen aan hun publiek. Ze wilden een countdown ontwikkelen die de artiesten van Pukkelpop voorstelt aan hun publiek.",
+                "solution": "We hebben een countdown ontwikkeld die 3 keer aftelde, met elk een andere artiest. De countdown werd op een groot scherm getoond op het festivalterrein."
             },
-            "client": "Donvil",
-            "sector": "Schoenen & Lingerie",
-            "service": "Automation",
-            "type": "Software",
-            "year": "2021",
-            "productUrl": "https://www.donvil-dimoda.com",
+            "client": "SuperViewTv",
+            "sector": "Evenementen",
+            "service": "Web & App",
+            "type": "Webapplicatie",
+            "year": "2023",
+            "productUrl": "https://www.pukkelpop.be",
             "bannerImage": {
-                "url": "/images/cases/donvil/banner.jpg",
-                "alt": "Donvil Dimoda"
+                "url": "/images/cases/countdown/banner.jpg",
+                "alt": "Countdown"
             },
             "images": [
                 {
-                    "url": "/images/cases/donvil/1.jpg",
-                    "alt": "Donvil Dimoda"
+                    "url": "/images/cases/countdown/1.jpg",
+                    "alt": "Countdown"
                 },
                 {
-                    "url": "/images/cases/donvil/2.jpg",
-                    "alt": "Donvil Dimoda"
+                    "url": "/images/cases/countdown/2.jpg",
+                    "alt": "Countdown"
                 }
             ]
         },
+
         "the-god-shot": {
             "title": "Webshop",
             "description": {
@@ -55,6 +56,36 @@
                 {
                     "url": "/images/cases/the-god-shot/2.webp",
                     "alt": "The God Shot"
+                }
+            ]
+        },
+
+        "donvil": {
+            "title": "Middleware",
+            "description": {
+                "short": "Data tussen hun kassasysteem en hun webshop synchroniseren",
+                "main": "Door de programmatie van een middleware zorgde we ervoor dat de data tussen hun kassasysteem en hun webshop gesynchroniseerd werd.",
+                "problem": "Door alles zelf dubbel te moeten ingeven en aanpassen ontstonden er ongelijkheden tussen de webshop en de winkel/stock. Online prijzen die niet overeenkomen met de winkel, de stock die niet goed opgevolgd kan worden... Kortom veel tijdverlies en nog meer frustraties.",
+                "solution": "We programmeerden een Middleware die de data tussen hun kassasysteem en hun webshop synchroniseert. Producten, orders, stock en nog veel meer blijft zo gelijk afgestemd op elkaar."
+            },
+            "client": "Donvil",
+            "sector": "Schoenen & Lingerie",
+            "service": "Automation",
+            "type": "Software",
+            "year": "2021",
+            "productUrl": "https://www.donvil-dimoda.com",
+            "bannerImage": {
+                "url": "/images/cases/donvil/banner.jpg",
+                "alt": "Donvil Dimoda"
+            },
+            "images": [
+                {
+                    "url": "/images/cases/donvil/1.jpg",
+                    "alt": "Donvil Dimoda"
+                },
+                {
+                    "url": "/images/cases/donvil/2.jpg",
+                    "alt": "Donvil Dimoda"
                 }
             ]
         }
