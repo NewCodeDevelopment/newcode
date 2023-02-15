@@ -235,7 +235,7 @@ CasePage.getLayout = function getLayout(page: ReactElement) {
  *
  *
  */
-export async function getServerSideProps({ params, locale }: Params) {
+export async function getServerSideProps({ params, locale, res }: Params) {
     const { allCase } = await client.request<CaseQuery>(CASE_QUERY, { handle: params.handle });
 
     const data = allCase && allCase[0];
@@ -245,6 +245,8 @@ export async function getServerSideProps({ params, locale }: Params) {
     const caseIndex = cases.allCase.findIndex((item) => item._id === data._id);
     const left = cases.allCase[caseIndex - 1];
     const right = cases.allCase[caseIndex + 1];
+
+    res.setHeader("Cache-Control", "public, s-maxage=59, stale-while-revalidate=299");
 
     return {
         props: {
