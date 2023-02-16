@@ -3,7 +3,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import dynamic from "next/dynamic";
 import { ReactElement } from "react";
-import { useCases } from "utils";
+import { Case, CASES_QUERY, client, ServiceGroup, ServicesQuery, SERVICES_QUERY } from "utils";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Landing = dynamic(() => import("ui").then((mod) => mod.Landing));
@@ -21,14 +21,17 @@ const Seo = dynamic(() => import("ui").then((mod) => mod.Seo));
  *
  *
  */
-export default function HomePage() {
-    const { t } = useTranslation("pages", { keyPrefix: "home" });
+type HomePageProps = {
+    serviceGroups: ServiceGroup[];
+    cases: Case[];
+};
 
-    const cases = useCases();
+export default function HomePage({ serviceGroups, cases }: HomePageProps) {
+    const { t } = useTranslation("pages", { keyPrefix: "home" });
 
     return (
         <>
-            <Seo title={t("seo.title")} description={t("seo.description")} />
+            <Seo title={t("seo.title") as string} description={t("seo.description") as string} />
             {/* 
 				*
 				*
@@ -76,7 +79,7 @@ export default function HomePage() {
                         {t("services.title")}_
                     </Heading>
 
-                    <ServicesSection theme="light" />
+                    <ServicesSection theme="light" serviceGroups={serviceGroups} />
 
                     <HyperLink href="/services">{t("services.link")}</HyperLink>
                 </div>
@@ -108,9 +111,16 @@ HomePage.getLayout = function getLayout(page: ReactElement) {
  *
  *
  */
-export async function getStaticProps({ locale }: Params) {
+export async function getServerSideProps({ locale, res }: Params) {
+    const { allServiceGroup } = await client.request<ServicesQuery>(SERVICES_QUERY);
+    const { allCase } = await client.request(CASES_QUERY, { limit: 2 });
+
+    res.setHeader("Cache-Control", "public, s-maxage=59, stale-while-revalidate=299");
+
     return {
         props: {
+            cases: allCase,
+            serviceGroups: allServiceGroup,
             ...(await serverSideTranslations(locale || "nl", [
                 "common",
                 "pages",

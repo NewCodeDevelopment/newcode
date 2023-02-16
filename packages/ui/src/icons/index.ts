@@ -18,6 +18,7 @@ export { default as RobotIcon } from "./actions/RobotIcon";
  */
 export * from "./brand/LandingLogo";
 export * from "./brand/Logo";
+export * from "./brand/Symbol";
 /**
  *
  *

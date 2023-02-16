@@ -2,18 +2,15 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { Testimonial } from "utils";
 import { Heading, Paragraph, Section } from "..";
 
-export type Testimonial = {
-    body: string;
-    name: string;
-    company: string;
+type TestimonialsProps = {
+    testimonials: Testimonial[];
 };
 
-export function Testimonials() {
-    const { t } = useTranslation("testimonials");
-
-    const testimonials = t("items", { returnObjects: true }) as Testimonial[];
+export function Testimonials({ testimonials }: TestimonialsProps) {
+    const { t } = useTranslation("pages", { keyPrefix: "testimonials" });
 
     const [ref, inView] = useInView();
 

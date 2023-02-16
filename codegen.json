@@ -1,0 +1,29 @@
+{
+    "schema": [
+        {
+            "${GQL_API_URL}": {
+                "headers": {
+                    "Authorization": "Bearer ${GQL_API_TOKEN}"
+                }
+            }
+        }
+    ],
+    "documents": "./packages/utils/src/api/**/*.{ts,tsx}",
+    "generates": {
+        "./packages/utils/schema.d.ts": {
+            "plugins": ["typescript", "typescript-operations"],
+            "config": {
+                "scalars": {
+                    "ID": "string"
+                },
+                "dedupeOperationSuffix": true
+            }
+        },
+        "./packages/utils/schema.graphql": {
+            "plugins": ["schema-ast"]
+        }
+    },
+    "hooks": {
+        "afterAllFileWrite": ["prettier --write"]
+    }
+}

@@ -1,3 +1,12 @@
+export * from "./schema.d";
+/*
+    API
+*/
+export * from "./src/api/case";
+export * from "./src/api/cases";
+export * from "./src/api/client";
+export * from "./src/api/services";
+export * from "./src/api/testimonials";
 /*
 
 
@@ -12,6 +21,7 @@ export * from "./src/const";
 */
 export * from "./src/hooks/cases";
 export * from "./src/hooks/cookie";
+export * from "./src/hooks/device";
 export * from "./src/hooks/localStorage";
 export * from "./src/hooks/mail";
 export * from "./src/hooks/params";
@@ -28,13 +38,11 @@ export * from "./src/states/navigation";
 export * from "./src/states/popup";
 export * from "./src/states/scroll";
 export * from "./src/states/transition";
-export * from "./src/types/cases";
-export * from "./src/types/image";
-export * from "./src/types/mail";
 /*
 
 
     Types
 */
+export * from "./src/types/mail";
 export * from "./src/types/paths";
 export * from "./src/types/svg";

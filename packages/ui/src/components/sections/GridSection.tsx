@@ -35,7 +35,9 @@ export function GridSection({ bg, title, items, styles }: Props) {
                                 opacity: [0, 1],
                                 y: [-20, 0],
                                 transition: {
-                                    delay: index * 0.1,
+                                    ease: "easeInOut",
+                                    delay: 0.3 + index * 0.1,
+                                    duration: 0.3,
                                 },
                             }}
                         >

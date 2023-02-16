@@ -23,6 +23,7 @@ export function Root({ children }: any) {
             {process.env.NODE_ENV !== "development" && <InitialLoader />}
             <Analytics />
             <Cookie />
+
             {children}
 
             {!scroll.enabled && (

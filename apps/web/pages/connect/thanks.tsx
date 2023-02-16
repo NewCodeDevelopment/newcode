@@ -1,11 +1,11 @@
+import { motion } from "framer-motion";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import dynamic from "next/dynamic";
 import Image from "next/legacy/image";
 import { ReactElement } from "react";
-import { motion } from "framer-motion";
-import { useWindow } from "utils";
-import { useTranslation } from "next-i18next";
+import { useDevice, useWindow } from "utils";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Heading = dynamic(() => import("ui").then((mod) => mod.Heading));
@@ -21,13 +21,16 @@ const HyperLink = dynamic(() => import("ui").then((mod) => mod.HyperLink));
  */
 export default function ThanksPage() {
     const { height } = useWindow();
+    const device = useDevice();
 
     const { t } = useTranslation("pages", { keyPrefix: "form.thanks" });
 
     return (
         <Section bg="dark" align="center" className="relative" style={{ height }}>
             <Image
-                src="/images/footer-background.jpg"
+                src={
+                    device === "mobile" ? "/images/background/1x.jpg" : "/images/background/2x.jpg"
+                }
                 alt="Background"
                 layout="fill"
                 objectFit="cover"

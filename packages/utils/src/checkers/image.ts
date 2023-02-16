@@ -1,6 +1,6 @@
-import { Image } from "../types/image";
+import { Image, Maybe } from "../../schema";
 
-export function checkImage(image: Image | undefined): {
+export function checkImage(image: Image | Maybe<Image> | undefined): {
     src: string;
     alt: string;
 } {
@@ -10,10 +10,10 @@ export function checkImage(image: Image | undefined): {
     };
 }
 
-export function checkImageSrc(image: Image | undefined): string {
-    return image?.url ? image.url : "/images/placeholder.jpg";
+export function checkImageSrc(image: Image | Maybe<Image> | undefined): string {
+    return image?.asset?.url ? image.asset.url : "/images/placeholder.jpg";
 }
 
-export function checkImageAlt(image: Image | undefined): string {
-    return image?.alt ? image.alt : "placeholder-image";
+export function checkImageAlt(image: Image | Maybe<Image> | undefined): string {
+    return image?.asset?.altText ? image.asset.altText : "placeholder-image";
 }

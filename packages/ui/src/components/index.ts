@@ -96,3 +96,4 @@ export * from "./tools/ToolGrid";
  */
 export * from "./typography/Heading";
 export * from "./typography/Paragraph";
+export * from "./typography/Text";

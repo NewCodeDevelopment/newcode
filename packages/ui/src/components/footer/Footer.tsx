@@ -2,12 +2,14 @@ import { motion } from "framer-motion";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Link from "next/link";
+import { useDevice } from "utils";
 import { ArrowCircleLink, Heading, Paragraph, Section, useContactInformation } from "../..";
 
 export function Footer() {
     const { t } = useTranslation("common", { keyPrefix: "footer" });
 
     const { contact, socials } = useContactInformation();
+    const device = useDevice();
 
     const currentYear = new Date().getFullYear();
 
@@ -20,7 +22,9 @@ export function Footer() {
             className="relative pt-24 pb-12 lg:py-20 lg:pb-12"
         >
             <Image
-                src="/images/background.jpg"
+                src={
+                    device === "mobile" ? "/images/background/1x.jpg" : "/images/background/2x.jpg"
+                }
                 alt="footer background"
                 width={3840}
                 height={2160}

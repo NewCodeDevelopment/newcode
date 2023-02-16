@@ -1,14 +1,18 @@
-const withTM = require("next-transpile-modules")(["ui", "utils"]);
+const { RecoilEnv } = require("recoil");
 const { i18n } = require("./next-i18next.config");
 
-module.exports = withTM({
+if (process.env.NODE_ENV === "development") {
+    RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
+}
+
+/**
+ * @type {import('next').NextConfig}
+ */
+module.exports = {
     reactStrictMode: true,
     i18n,
-    nextScriptWorkers: true,
+    transpilePackages: ["ui", "utils"],
     images: {
-        domains: ["picsum.photos"],
+        domains: ["cdn.sanity.io"],
     },
-});
-
-// assetPrefix:
-//     process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_CDN_URL : undefined,
+};
