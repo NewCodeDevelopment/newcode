@@ -4,14 +4,13 @@ import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import dynamic from "next/dynamic";
 import Image from "next/legacy/image";
 import { Fragment, ReactElement } from "react";
-import { DescriptionSection } from "ui";
 import { Case, CaseQuery, CasesQuery, CASES_QUERY, CASE_QUERY, checkImage, client } from "utils";
 
 const MainLayout = dynamic(() => import("ui").then((mod) => mod.MainLayout));
 const Heading = dynamic(() => import("ui").then((mod) => mod.Heading));
 const HyperLink = dynamic(() => import("ui").then((mod) => mod.HyperLink));
 const Paragraph = dynamic(() => import("ui").then((mod) => mod.Paragraph));
-const Scroll = dynamic(() => import("ui").then((mod) => mod.Scroll));
+const DescriptionSection = dynamic(() => import("ui").then((mod) => mod.DescriptionSection));
 const Section = dynamic(() => import("ui").then((mod) => mod.Section));
 const Arrow = dynamic(() => import("ui").then((mod) => mod.Arrow));
 const Seo = dynamic(() => import("ui").then((mod) => mod.Seo));
