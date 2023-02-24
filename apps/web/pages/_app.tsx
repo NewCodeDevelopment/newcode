@@ -47,6 +47,7 @@ const font = localFont({
         },
     ],
     variable: "--font-family",
+    fallback: ["sans-serif"],
 });
 
 const queryClient = new QueryClient();
@@ -63,7 +64,7 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
     const getLayout = Component.getLayout ?? ((page) => page);
 
     return (
-        <div className={font.variable}>
+        <div className={`${font.variable} font-sans`}>
             <QueryClientProvider client={queryClient}>
                 <RecoilRoot>
                     <Root>
