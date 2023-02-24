@@ -62,11 +62,10 @@ WorkPage.getLayout = function getLayout(page: ReactElement) {
  *
  *
  */
-export async function getServerSideProps({ locale,res }: Params) {
+export async function getStaticProps({ locale, res }: Params) {
     const { allCase } = await client.request<CasesQuery>(CASES_QUERY, { limit: 20 });
 
-    res.setHeader("Cache-Control", "public, s-maxage=59, stale-while-revalidate=299");
-
+    //  res.setHeader("Cache-Control", "public, s-maxage=59, stale-while-revalidate=299");
 
     return {
         props: {

@@ -11,7 +11,6 @@ const Heading = dynamic(() => import("ui").then((mod) => mod.Heading));
 const HyperLink = dynamic(() => import("ui").then((mod) => mod.HyperLink));
 const Paragraph = dynamic(() => import("ui").then((mod) => mod.Paragraph));
 const DescriptionSection = dynamic(() => import("ui").then((mod) => mod.DescriptionSection));
-const Scroll = dynamic(() => import("ui").then((mod) => mod.Scroll));
 const Section = dynamic(() => import("ui").then((mod) => mod.Section));
 const Arrow = dynamic(() => import("ui").then((mod) => mod.Arrow));
 const Seo = dynamic(() => import("ui").then((mod) => mod.Seo));
@@ -235,7 +234,7 @@ CasePage.getLayout = function getLayout(page: ReactElement) {
  *
  *
  */
-export async function getServerSideProps({ params, locale, res }: Params) {
+export async function getStaticProps({ params, locale }: Params) {
     const { allCase } = await client.request<CaseQuery>(CASE_QUERY, { handle: params.handle });
 
     const data = allCase && allCase[0];
@@ -246,8 +245,6 @@ export async function getServerSideProps({ params, locale, res }: Params) {
     const left = cases.allCase[caseIndex - 1];
     const right = cases.allCase[caseIndex + 1];
 
-    res.setHeader("Cache-Control", "public, s-maxage=59, stale-while-revalidate=299");
-
     return {
         props: {
             data,
@@ -257,6 +254,55 @@ export async function getServerSideProps({ params, locale, res }: Params) {
         },
     };
 }
+
+export async function getStaticPaths() {
+    const { allCase } = await client.request<CasesQuery>(CASES_QUERY, { limit: 100 });
+
+    const paths = allCase.map(({ slug }) => ({
+        params: { handle: slug?.current },
+    }));
+
+    // const paths = locales.reduce(
+    //     (acc: { params: { handle: string }; locale: string }[], locale: string) => [
+    //         ...acc,
+    //         ...Object.keys(casesFile.cases).map((item) => {
+    //             return {
+    //                 params: { handle: item },
+    //                 locale,
+    //             };
+    //         }),
+    //     ],
+    //     [],
+    // );
+
+    return {
+        paths,
+        fallback: false,
+    };
+}
+
+// export async function getServerSideProps({ params, locale, res }: Params) {
+//     const { allCase } = await client.request<CaseQuery>(CASE_QUERY, { handle: params.handle });
+
+//     const data = allCase && allCase[0];
+//     if (!data) return { notFound: true };
+
+//     const cases = await client.request<CasesQuery>(CASES_QUERY, { limit: 20 });
+//     const caseIndex = cases.allCase.findIndex((item) => item._id === data._id);
+//     const left = cases.allCase[caseIndex - 1];
+//     const right = cases.allCase[caseIndex + 1];
+
+//     // res.setHeader("Cache-Control", "public, s-maxage=59, stale-while-revalidate=299");
+
+//     return {
+//         props: {
+//             data,
+//             left: left || null,
+//             right: right || null,
+//             ...(await serverSideTranslations(locale || "nl", ["common", "pages", "cases"])),
+//         },
+//     };
+// }
 
 // export async function getStaticProps({ params, locale }: Params) {
 //     const { handle } = params;

@@ -1,7 +1,9 @@
 import { HTMLMotionProps } from "framer-motion";
+import dynamic from "next/dynamic";
 import { forwardRef } from "react";
 import { Heading, Scroll, Section } from "..";
-import { LandingLogo } from "../..";
+
+const LandingLogo = dynamic(() => import("../..").then((mod) => mod.LandingLogo));
 
 interface Props extends HTMLMotionProps<"section"> {
     title: string;

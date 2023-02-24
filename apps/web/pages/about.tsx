@@ -161,10 +161,10 @@ AboutPage.getLayout = function getLayout(page: ReactElement) {
  *
  *
  */
-export async function getServerSideProps({ locale, res }: Params) {
+export async function getStaticProps({ locale, res }: Params) {
     const { allTestimonial } = await client.request<TestimonialsQuery>(TESTIMONIALS_QUERY);
 
-    res.setHeader("Cache-Control", "public, s-maxage=59, stale-while-revalidate=299");
+    //  res.setHeader("Cache-Control", "public, s-maxage=59, stale-while-revalidate=299");
 
     return {
         props: {
