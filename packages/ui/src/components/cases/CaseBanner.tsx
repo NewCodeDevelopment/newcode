@@ -1,11 +1,16 @@
 import classNames from "classnames";
 import { HTMLMotionProps, motion } from "framer-motion";
 import { useTranslation } from "next-i18next";
+import dynamic from "next/dynamic";
 import Image from "next/legacy/image";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Case, checkImage, useWindow } from "utils";
-import { ArrowLink, Heading, Paragraph, Section } from "../..";
+
+const ArrowLink = dynamic(() => import("../..").then((mod) => mod.ArrowLink));
+const Heading = dynamic(() => import("../..").then((mod) => mod.Heading));
+const Paragraph = dynamic(() => import("../..").then((mod) => mod.Paragraph));
+const Section = dynamic(() => import("../..").then((mod) => mod.Section));
 
 interface Props extends HTMLMotionProps<"section"> {
     case: Case;
