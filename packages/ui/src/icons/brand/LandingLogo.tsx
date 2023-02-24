@@ -10,9 +10,6 @@ interface Props extends FramerMotionSVGProps {
 export function LandingLogo({ currentStyle, ...props }: Props) {
     const { ref, inView } = useInView();
     const [delta, setDelta] = useState({ x: 0, y: 0 });
-    const [speed, setSpeed] = useState(500);
-
-    const [prevEvent, setPrevEvent] = useState<MouseEvent>();
 
     function getStyle() {
         const styles = [
@@ -67,23 +64,14 @@ export function LandingLogo({ currentStyle, ...props }: Props) {
         function handleMouseMove(e: MouseEvent) {
             const { clientX, clientY } = e;
 
-            // if (prevEvent && e) {
-            //     const movementX = Math.abs(clientX - prevEvent?.clientX);
-            //     const movementY = Math.abs(clientY - prevEvent?.clientY);
-            //     const movement = Math.sqrt(movementX ** 2 + movementY ** 2);
-            //     console.log(movement);
-            // }
-
             const x = clientX - window.innerWidth / 2;
             const y = clientY - window.innerHeight / 2;
-
             setDelta({ x, y });
-            setPrevEvent(e);
         }
 
         document.addEventListener("mousemove", handleMouseMove);
         return () => document.removeEventListener("mousemove", handleMouseMove);
-    }, [setDelta, setPrevEvent, inView]);
+    }, [inView]);
 
     const animations = {
         container: {
@@ -140,8 +128,8 @@ export function LandingLogo({ currentStyle, ...props }: Props) {
                     key={index}
                     variants={animations.path}
                     style={{
-                        x: (delta.x / speed) * (index + 1),
-                        y: (delta.y / speed) * (index + 1),
+                        x: (delta.x / 500) * (index + 1),
+                        y: (delta.y / 500) * (index + 1),
                     }}
                 />
             ))}
