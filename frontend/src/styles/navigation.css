@@ -1,40 +1,51 @@
 .navigation-link-red::after,
-.navigation-link-dark::after {
-	content: "";
-	display: block;
-	width: 0;
-	height: 3px;
-	margin-top: 0.5rem;
-	transition: width 0.3s ease-in-out;
+.navigation-link-dark::after,
+.navigation-link-light::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 3px;
+  margin-top: 0.5rem;
+  transition: width 0.3s ease-in-out;
 }
 
 .navigation-link-red:hover::after,
-.navigation-link-dark:hover::after {
-	width: 100%;
+.navigation-link-dark:hover::after,
+.navigation-link-light:hover::after {
+  width: 100%;
 }
 
 .navigation-currentRoute-red::after,
-.navigation-currentRoute-dark::after {
-	content: "";
-	display: block;
-	width: 0;
-	height: 3px;
-	margin-top: 0.5rem;
-	width: 100%;
+.navigation-currentRoute-dark::after,
+.navigation-currentRoute-light::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 3px;
+  margin-top: 0.5rem;
+  width: 100%;
 }
 
 .navigation-link-red::after {
-	@apply bg-red-700;
-}
-
-.navigation-currentRoute-red::after {
-	@apply bg-red-700;
+  @apply bg-red-700;
 }
 
 .navigation-link-dark::after {
-	@apply bg-dark-700;
+  @apply bg-dark-700;
+}
+
+.navigation-link-light::after {
+  @apply bg-light-700;
+}
+
+.navigation-currentRoute-red::after {
+  @apply bg-red-700;
 }
 
 .navigation-currentRoute-dark::after {
-	@apply bg-dark-700;
+  @apply bg-dark-700;
+}
+
+.navigation-currentRoute-light::after {
+  @apply bg-light-700;
 }

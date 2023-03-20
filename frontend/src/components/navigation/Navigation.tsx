@@ -174,7 +174,7 @@ export function Navigation({ pathsHook, className, ...props }: NavigationProps) 
                   "navigation-currentRoute-red text-red-500",
                 currentRouteHandler(path) &&
                   bgColor === "red" &&
-                  "navigation-currentRoute-dark text-light-500",
+                  "navigation-currentRoute-light text-light-500",
               )}
             >
               {name}_
