@@ -1,7 +1,6 @@
 import { useWindow } from "@/utils/hooks/window";
 import { AnimatePresence, motion } from "framer-motion";
 
-
 export default function PageLoader() {
   const { height } = useWindow();
 

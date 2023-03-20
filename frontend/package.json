@@ -9,7 +9,7 @@
     "lint": "next lint",
     "partytown": "partytown copylib public/~partytown",
     "postbuild": "next-sitemap",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.{js,ts,jsx,tsx}\"",
     "codegen": "DOTENV_CONFIG_PATH=./.env graphql-codegen -r dotenv/config --config ./codegen.json"
   },
   "dependencies": {
