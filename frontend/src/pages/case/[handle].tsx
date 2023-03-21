@@ -2,8 +2,6 @@ import { CASE_QUERY } from "@/utils/api/case";
 import { CASES_QUERY } from "@/utils/api/cases";
 import { client } from "@/utils/api/client";
 import { checkImage } from "@/utils/checkers/image";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import dynamic from "next/dynamic";
 import Image from "next/legacy/image";
@@ -52,8 +50,6 @@ export default function CasePage({
   left,
   right,
 }: Props) {
-  const { t } = useTranslation("pages", { keyPrefix: "case" });
-
   return (
     <>
       <Seo title={title || ""} description={short || ""} canonical={`/case/${handle}`} />
@@ -78,23 +74,23 @@ export default function CasePage({
           <div className="grid-rows-[min-content_ min-content_ min-content_ min-content_ min-content_max-content] grid w-full gap-y-3 lg:grid-cols-6 lg:grid-rows-1 lg:gap-y-0 lg:gap-x-8">
             {[
               {
-                title: t("landing.client"),
+                title: "Klant",
                 value: client,
               },
               {
-                title: t("landing.sector"),
+                title: "Sector",
                 value: sector?.title,
               },
               {
-                title: t("landing.service"),
+                title: "Service",
                 value: service?.title,
               },
               {
-                title: t("landing.type"),
+                title: "Type",
                 value: type,
               },
               {
-                title: t("landing.year"),
+                title: "Jaar",
                 value: year,
               },
             ].map(({ title, value }, index) => (
@@ -114,7 +110,7 @@ export default function CasePage({
             {productUrl && (
               <div className="py-10 lg:flex lg:flex-col lg:justify-center lg:p-0">
                 <HyperLink href={productUrl} target="_blank">
-                  {t("landing.link")}
+                  Lanceer Site
                 </HyperLink>
               </div>
             )}
@@ -144,11 +140,11 @@ export default function CasePage({
             */}
       {[
         {
-          title: t("content.problem"),
+          title: "Het probleem",
           description: problem,
         },
         {
-          title: t("content.solution"),
+          title: "De oplossing",
           description: solution,
         },
       ].map(({ title, description }, index) => (
@@ -205,10 +201,10 @@ export default function CasePage({
           </div>
 
           <div className="flex  flex-col items-center justify-center gap-12 text-center">
-            <Heading type="h2">{t("connect.title")}_</Heading>
+            <Heading type="h2">Lets get this code going_</Heading>
 
             <HyperLink href="/connect" target="_blank" color="dark" size="large">
-              {t("connect.link")}
+              Start een project
             </HyperLink>
           </div>
 
@@ -258,7 +254,6 @@ export async function getStaticProps({ params, locale }: Params) {
       data,
       left: left || null,
       right: right || null,
-      ...(await serverSideTranslations(locale || "nl", ["common", "pages", "cases"])),
     },
   };
 }
@@ -269,19 +264,6 @@ export async function getStaticPaths() {
   const paths = allCase.map(({ slug }) => ({
     params: { handle: slug?.current },
   }));
-
-  // const paths = locales.reduce(
-  //     (acc: { params: { handle: string }; locale: string }[], locale: string) => [
-  //         ...acc,
-  //         ...Object.keys(casesFile.cases).map((item) => {
-  //             return {
-  //                 params: { handle: item },
-  //                 locale,
-  //             };
-  //         }),
-  //     ],
-  //     [],
-  // );
 
   return {
     paths,

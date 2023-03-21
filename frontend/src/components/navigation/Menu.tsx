@@ -2,7 +2,6 @@ import { useContactInformation } from "@/config/contact";
 import { useWindow } from "@/utils/hooks/window";
 import { IRoute } from "@/utils/types/paths";
 import { motion } from "framer-motion";
-import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 import ArrowCircleLink from "../actions/ArrowCircleLink";
@@ -23,8 +22,6 @@ export function Menu({
   cycleMenuCallback,
 }: MenuProps) {
   const { height } = useWindow();
-
-  const { t } = useTranslation("common", { keyPrefix: "navigation" });
 
   const { socials, contact } = useContactInformation();
 
@@ -119,7 +116,7 @@ export function Menu({
         */}
       <div className="text-light-500 flex flex-col gap-5">
         <ArrowCircleLink
-          description={t("connect")}
+          description="5 steps to connect"
           path="/connect/form"
           onClick={cycleMenuCallback}
           variants={animation.links}

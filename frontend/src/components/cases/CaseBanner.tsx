@@ -1,7 +1,6 @@
 import { checkImage } from "@/utils/checkers/image";
 import { useWindow } from "@/utils/hooks/window";
 import { HTMLMotionProps, motion } from "framer-motion";
-import { useTranslation } from "next-i18next";
 import Image from "next/legacy/image";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
@@ -21,8 +20,6 @@ export default function CaseBanner({
   className,
   ...props
 }: CaseBannerProps) {
-  const { t } = useTranslation("pages", { keyPrefix: "case.banner" });
-
   const previousScroll = useRef<number>(0);
   const { width } = useWindow();
 
@@ -138,10 +135,10 @@ export default function CaseBanner({
       })}
 
       <motion.div className="z-10 flex flex-col gap-4" style={{ y }}>
-        <Heading type="h3">{t("title")}_</Heading>
+        <Heading type="h3">Case Study_</Heading>
         <Heading type="h2">{title + "_"}</Heading>
         <Paragraph size="small">{short}</Paragraph>
-        <ArrowLink description={t("link")} href={"/case/" + slug?.current} />
+        <ArrowLink description="Bekijk case study" href={"/case/" + slug?.current} />
       </motion.div>
     </Section>
   );

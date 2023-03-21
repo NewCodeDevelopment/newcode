@@ -1,7 +1,6 @@
 import { Symbol } from "@/icons/brand/Symbol";
-import { bgColorState } from "@/utils/states/navigation";
-import { scrollState } from "@/utils/states/scroll";
-import { useTranslation } from "next-i18next";
+import { bgColorState } from "@/utils/states/bgColor";
+import { overflowHiddenState } from "@/utils/states/overflow";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { HTMLAttributes, useEffect, useState } from "react";
@@ -17,8 +16,6 @@ type NavigationProps = HTMLAttributes<HTMLElement> & {
 export function Navigation({ pathsHook, className, ...props }: NavigationProps) {
   const router = useRouter();
 
-  const { t } = useTranslation("common", { keyPrefix: "navigation" });
-
   const [currentRoute, setCurrentRoute] = useState("");
 
   const [open, setOpen] = useState(false);
@@ -28,24 +25,18 @@ export function Navigation({ pathsHook, className, ...props }: NavigationProps) 
 
   const [bgColor, setBgColor] = useRecoilState(bgColorState);
   const [oldBgColor, setOldBgColor] = useState(bgColor);
-  const [scroll, setScroll] = useRecoilState(scrollState);
+  const [_, setOverflowHidden] = useRecoilState(overflowHiddenState);
 
   const cycleMenu = () => {
     if (open) {
       setBgColor(oldBgColor);
-      setScroll({
-        ...scroll,
-        enabled: true,
-      });
+      setOverflowHidden(true);
     }
 
     if (!open) {
       setOldBgColor(bgColor);
       setBgColor("dark");
-      setScroll({
-        ...scroll,
-        enabled: false,
-      });
+      setOverflowHidden(false);
     }
 
     if (!animationComplete) return;
@@ -146,7 +137,7 @@ export function Navigation({ pathsHook, className, ...props }: NavigationProps) 
           )}
           onClick={cycleMenu}
         >
-          {open ? t("cycleMenu.close") : t("cycleMenu.open")}_
+          {open ? "Navigate" : "Close"}_
         </a>
 
         {/* 

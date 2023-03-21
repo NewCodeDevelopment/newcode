@@ -1,6 +1,5 @@
 import { useCookieStatus } from "@/utils/hooks/cookie";
 import { AnimatePresence, HTMLMotionProps, motion } from "framer-motion";
-import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 import Button from "../actions/Button";
@@ -9,8 +8,6 @@ type CookieProps = HTMLMotionProps<"div"> & {};
 
 export default function Cookie({ className, ...props }: CookieProps) {
   const [show, setShow] = useCookieStatus();
-
-  const { t } = useTranslation("common", { keyPrefix: "cookie" });
 
   const animation = {
     initial: {
@@ -50,7 +47,9 @@ export default function Cookie({ className, ...props }: CookieProps) {
           exit="exit"
         >
           <span className="text-sm lg:max-w-[100ch] lg:text-lg">
-            {t("message") + " "}
+            We maken gebruik van cookies om gegevens m.b.t. de prestaties en het gebruik van deze
+            website te verzamelen & analyseren, om sociale netwerkfunctionaliteiten aan te bieden en
+            onze content & advertenties te verbeteren en personaliseren.
             <Link href="/policy/privacy-policy" className="underline">
               Privacy Policy
             </Link>
@@ -64,7 +63,7 @@ export default function Cookie({ className, ...props }: CookieProps) {
               className="w-full lg:w-fit"
               onClick={() => setShow(false)}
             >
-              {t("decline")}
+              Nope
             </Button>
 
             <Button
@@ -73,7 +72,7 @@ export default function Cookie({ className, ...props }: CookieProps) {
               className="w-full lg:w-fit"
               onClick={() => setShow(true)}
             >
-              {t("accept")}
+              Yummy!
             </Button>
           </div>
         </motion.div>

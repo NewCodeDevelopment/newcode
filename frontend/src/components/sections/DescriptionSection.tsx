@@ -22,7 +22,7 @@ export default function DescriptionSection({
   return (
     <Section bg={bg} align="center">
       <div className="flex flex-col gap-6 self-center xl:py-[20%]">
-        <Heading type="h3" color="red">
+        <Heading element="h2" type="h3" color="red">
           {title}_
         </Heading>
         <Paragraph

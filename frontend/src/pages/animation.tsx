@@ -1,6 +1,4 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import dynamic from "next/dynamic";
 import { ReactElement, useState } from "react";
 import { twMerge } from "tailwind-merge";
@@ -94,17 +92,3 @@ export default function AnimationPage() {
 AnimationPage.getLayout = function getLayout(page: ReactElement) {
   return <MainLayout footer={false}>{page}</MainLayout>;
 };
-/**
- *
- *
- *
- *
- *
- */
-export async function getStaticProps({ locale }: Params) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale || "nl", ["common", "pages", "services", "cases"])),
-    },
-  };
-}

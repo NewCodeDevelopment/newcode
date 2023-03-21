@@ -1,9 +1,6 @@
 import Seo from "@/components/common/Seo";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import dynamic from "next/dynamic";
 import { ReactElement } from "react";
-import { useTranslation } from "react-i18next";
 
 const MainLayout = dynamic(() => import("@/components/layouts/MainLayout"));
 /**
@@ -14,11 +11,18 @@ const MainLayout = dynamic(() => import("@/components/layouts/MainLayout"));
  *
  */
 export default function ConnectPage() {
-  const { t } = useTranslation("pages", { keyPrefix: "connect" });
-
   return (
     <>
-      <Seo title="Connect" description="Connect" canonical="/connect" />
+      <Seo
+        title="Start een project - NewCode"
+        description="Wil je een project starten, of gewoon gedag zeggen? Neem dan hier contact met ons op."
+        canonical="/connect"
+      />
+
+      <div className="hidden ignore">
+        <h1>Connect</h1>
+        <p>Wil je een project starten, of gewoon gedag zeggen? Neem dan hier contact met ons op.</p>
+      </div>
     </>
   );
 }
@@ -32,17 +36,3 @@ export default function ConnectPage() {
 ConnectPage.getLayout = function getLayout(page: ReactElement) {
   return <MainLayout>{page}</MainLayout>;
 };
-/**
- *
- *
- *
- *
- *
- */
-export async function getStaticProps({ locale }: Params) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale || "nl", ["common"])),
-    },
-  };
-}

@@ -1,5 +1,4 @@
 import { DocumentProps, Head, Html, Main, NextScript } from "next/document";
-import i18nextConfig from "../../next-i18next.config";
 /**
  *
  *
@@ -8,10 +7,8 @@ import i18nextConfig from "../../next-i18next.config";
  *
  */
 export default function Document(props: DocumentProps) {
-  const currentLocale = props.__NEXT_DATA__.locale || i18nextConfig.i18n.defaultLocale;
-
   return (
-    <Html lang={currentLocale}>
+    <Html lang="nl">
       <Head>
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />

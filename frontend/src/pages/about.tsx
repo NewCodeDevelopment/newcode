@@ -1,8 +1,5 @@
 import { client } from "@/utils/api/client";
 import { TESTIMONIALS_QUERY } from "@/utils/api/testimonials";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import dynamic from "next/dynamic";
 import Image from "next/legacy/image";
 import { ReactElement } from "react";
@@ -34,17 +31,11 @@ type NatureItem = {
 };
 
 export default function AboutPage({ testimonials }: AboutPageProps) {
-  const { t } = useTranslation("pages", { keyPrefix: "about" });
-
-  const natureObject = t("nature", {
-    returnObjects: true,
-  }) as NatureItem[];
-
   return (
     <>
       <Seo
-        title={t("seo.title") as string}
-        description={t("seo.description") as string}
+        title="Onze Backend - NewCode"
+        description="Benieuwd naar wie wij zijn? Bekijk hier onze missie en visie en leer ons kennen."
         canonical="/about"
       />
 
@@ -72,7 +63,7 @@ export default function AboutPage({ testimonials }: AboutPageProps) {
           className="col-start-1 row-start-1 lg:text-center"
           maxCharacters={10}
         >
-          {t("landing.title")}
+          Onze Backend
           <span className="text-red-500">_</span>
         </Heading>
 
@@ -87,32 +78,51 @@ export default function AboutPage({ testimonials }: AboutPageProps) {
             */}
       <Section bg="light" align="center">
         <div className="flex w-full flex-col justify-evenly gap-16 md:flex-row">
-          {natureObject.map(({ title, values }, index) => (
-            <div key={index} className="flex flex-col gap-3">
-              <Heading type="h3" color="red">
-                {title + "_"}
-              </Heading>
+          <div className="flex flex-col gap-3">
+            <Heading element="h2" type="h3" color="red">
+              Our nature_
+            </Heading>
 
-              <ul className="text-2xl font-bold lg:text-3xl">
-                {values.map((value, index) => (
+            <ul className="text-2xl font-bold lg:text-3xl">
+              {["Krachtig", "Sterk", "Dynamisch", "Klasse", "Simplistisch", "Structuur"].map(
+                (value, index) => (
                   <li key={index}>{value}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                ),
+              )}
+            </ul>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <Heading element="h2" type="h3" color="red">
+              Nature of our partner_
+            </Heading>
+
+            <ul className="text-2xl font-bold lg:text-3xl">
+              {[
+                "Innovatief",
+                "Ambitieus",
+                "Groeimindset",
+                "Authentiek",
+                "Enthousiast",
+                "Praktisch",
+              ].map((value, index) => (
+                <li key={index}>{value}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </Section>
       {/* 
-                *
-                *
-                Vision
-                *
-                *
-            */}
+        *
+        *
+        Vision
+        *
+        *
+      */}
       <DescriptionSection
         bg="dark"
-        title={t("vision.title")}
-        description={t("vision.description")}
+        title="Our Vision"
+        description="Iedereen vooruit helpen en positieve verandering teweegbrengen. Vergemakkelijken, vereenvoudigen en optimaliseren"
       />
       {/* 
                 *
@@ -122,8 +132,27 @@ export default function AboutPage({ testimonials }: AboutPageProps) {
             */}
       <GridSection
         bg="light"
-        title={t("values.title")}
-        items={t("values.items", { returnObjects: true })}
+        title="Values"
+        items={[
+          {
+            title: "Accessible",
+            description:
+              "API, HTML, CSS en Javascript. Voor veel mensen zijn dit abstracte termen. Wij helpen je met plezier door dit doolhof van vaktermen zodat je ook begrijpt wat we doen. Wij vertalen het allemaal naar mensentaal.",
+          },
+          {
+            title: "Surprising",
+            description: "Wij onderscheiden ons, zowel in aanpak als eindresultaat.",
+          },
+          {
+            title: "Made easy",
+            description:
+              "De wereld is al moeilijk genoeg, daarom maken wij het graag makkelijk voor je. Zo kan je gefocust blijven op de fundamentele onderdelen van je onderneming.",
+          },
+          {
+            title: "Mindful",
+            description: "Wij begrijpen waar jij als bedrijf naartoe wilt.",
+          },
+        ]}
         styles={{
           title: "red",
           items: {
@@ -166,15 +195,12 @@ AboutPage.getLayout = function getLayout(page: ReactElement) {
  *
  *
  */
-export async function getStaticProps({ locale, res }: Params) {
+export async function getStaticProps() {
   const { allTestimonial } = await client.request<TestimonialsQuery>(TESTIMONIALS_QUERY);
-
-  //  res.setHeader("Cache-Control", "public, s-maxage=59, stale-while-revalidate=299");
 
   return {
     props: {
       testimonials: allTestimonial,
-      ...(await serverSideTranslations(locale || "nl", ["common", "pages", "testimonials"])),
     },
   };
 }
