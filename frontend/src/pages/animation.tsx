@@ -20,8 +20,6 @@ export default function AnimationPage() {
 
   return (
     <>
-      <Seo canonical="/animation" />
-
       <Section bg="dark" className="relative h-screen pb-52" mobileScreen align="center">
         {Array.from({ length: length }, (_, i) => i).map(
           (i) =>
