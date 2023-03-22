@@ -86,7 +86,7 @@ export default function Footer() {
             <span>
               Branded by{" "}
               <a
-                href="kapmes.be"
+                href="https://kapmes.be"
                 target="_blank"
                 className="cursor-pointer font-bold hover:underline"
               >
