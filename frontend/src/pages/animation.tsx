@@ -20,17 +20,10 @@ export default function AnimationPage() {
   return (
     <>
       <Section bg="dark" className="relative h-screen pb-52 z-0" mobileScreen align="center">
-        {Array.from({ length: length }, (_, i) => i).map(
-          (i) =>
-            currentIndex === i && (
-              <AnimatePresence mode="wait" key={i}>
-                <LandingLogo
-                  selectedStyle={i}
-                  className="-z-10 col-start-1 row-start-1 lg:w-3/4 2xl:w-1/2"
-                />
-              </AnimatePresence>
-            ),
-        )}
+        <LandingLogo
+          selectedStyle={currentIndex}
+          className="-z-10 col-start-1 row-start-1 lg:w-3/4 2xl:w-1/2"
+        />
 
         <motion.div className="absolute left-0 right-0 bottom-40 mx-auto flex cursor-pointer flex-row justify-center gap-10 lg:bottom-20">
           {length > 1 &&
