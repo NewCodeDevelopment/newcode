@@ -84,7 +84,9 @@ export default function ScrollLayout({
    */
   const handleTouchStart = useCallback(async ({ touches }: TouchEvent) => {
     if (window.innerWidth <= DESKTOP_MIN_WIDTH || eventIsActive) return;
+    window.removeEventListener("touchstart", handleTouchStart);
     touchStartRef.current = touches[0].clientY;
+    window.addEventListener("touchstart", handleTouchStart);
   }, []);
 
   const handleTouchMove = useCallback(
@@ -94,7 +96,10 @@ export default function ScrollLayout({
 
       const direction = touchStartRef.current - touches[0].clientY > 0;
 
-      let newIndex = currentIndex + (direction ? 1 : -1);
+      let newIndex = currentIndex;
+
+      if (direction) newIndex++;
+      if (!direction) newIndex--;
 
       await new Promise((r) => setTimeout(r, 100));
       const succes = await scrollToIndex(newIndex);
