@@ -15,17 +15,17 @@ const LandingLogo = dynamic(() => import("@/icons/brand/LandingLogo"));
  */
 export default function AnimationPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const length = 6;
+  const length = 3;
 
   return (
     <>
-      <Section bg="dark" className="relative h-screen pb-52" mobileScreen align="center">
+      <Section bg="dark" className="relative h-screen pb-52 z-0" mobileScreen align="center">
         {Array.from({ length: length }, (_, i) => i).map(
           (i) =>
             currentIndex === i && (
               <AnimatePresence mode="wait" key={i}>
                 <LandingLogo
-                  currentStyle={i}
+                  selectedStyle={i}
                   className="-z-10 col-start-1 row-start-1 lg:w-3/4 2xl:w-1/2"
                 />
               </AnimatePresence>

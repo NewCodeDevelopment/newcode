@@ -75,7 +75,10 @@ export default function CaseBanner({
         className="top-0 left-0 -z-30"
       />
 
-      <div className="bg-dark-700 absolute top-0 left-0 -z-10 h-full w-full bg-opacity-40 backdrop-blur-[6px] backdrop-filter" />
+      <div
+        className="bg-dark-700 absolute inset-0 -z-10 h-full w-full bg-opacity-40 backdrop-blur-[6px] backdrop-filter"
+        style={{ width }}
+      />
 
       {[
         {
