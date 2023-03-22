@@ -1,13 +1,11 @@
 import "@/styles/globals.css";
-import localFont from "@next/font/local";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { NextPage } from "next";
-import { appWithTranslation } from "next-i18next";
 import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";
+import localFont from "next/font/local";
 import { ReactElement, ReactNode, Suspense } from "react";
 import { RecoilRoot } from "recoil";
-import nextI18NextConfig from "../../next-i18next.config.js";
 
 const PageLoader = dynamic(() => import("@/components/loaders/PageLoader"));
 const Root = dynamic(() => import("@/components/layouts/Root"));
@@ -60,7 +58,7 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
+export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
@@ -68,12 +66,16 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
       <QueryClientProvider client={queryClient}>
         <RecoilRoot>
           <Root>
-            <Suspense fallback={<PageLoader />}>{getLayout(<Component {...pageProps} />)}</Suspense>
+            <Suspense fallback={<PageLoader />}>
+              {/* <Navigation pathsHook={usePaths} />
+              <Scrollable>
+                <Component {...pageProps} />
+              </Scrollable> */}
+              {getLayout(<Component {...pageProps} />)}
+            </Suspense>
           </Root>
         </RecoilRoot>
       </QueryClientProvider>
     </div>
   );
-};
-
-export default appWithTranslation(MyApp, nextI18NextConfig as any);
+}

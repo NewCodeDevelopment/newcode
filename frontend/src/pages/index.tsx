@@ -1,9 +1,6 @@
 import { CASES_QUERY } from "@/utils/api/cases";
 import { client } from "@/utils/api/client";
 import { SERVICES_QUERY } from "@/utils/api/services";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import dynamic from "next/dynamic";
 import { ReactElement } from "react";
 import { Case, CasesQuery, ServiceGroup, ServicesQuery } from "schema";
@@ -30,13 +27,12 @@ type HomePageProps = {
 };
 
 export default function HomePage({ serviceGroups, cases }: HomePageProps) {
-  const { t } = useTranslation("pages", { keyPrefix: "home" });
-
   return (
     <>
       <Seo
-        title={t("seo.title") as string}
-        description={t("seo.description") as string}
+        pageTitle="NewCode"
+        metaTitle="Code makes life easier - NewCode"
+        description="Bij NewCode willen we graag jouw leven vergemakkelijken aan de hand van technologie, door naar jouw verhaal te luisteren."
         canonical=""
       />
       {/* 
@@ -45,7 +41,7 @@ export default function HomePage({ serviceGroups, cases }: HomePageProps) {
 				Landing
 				*
 			 */}
-      <Landing title={t("landing.title")} />
+      <Landing title="Code makes life easier" />
       {/* 
 				*
 				*
@@ -54,11 +50,11 @@ export default function HomePage({ serviceGroups, cases }: HomePageProps) {
 			 */}
       <DescriptionSection
         bg="light"
-        title={t("mission.title")}
-        description={t("mission.description")}
+        title="Onze Missie"
+        description="NewCode wilt het leven van de mens vergemakkelijken met behulp van technologie. Er wordt geluisterd naar de problemen en verhalen, en lossen deze op een zo effectief mogelijke manier op aan de hand van een kwalitatieve, transparante en eerlijke werkwijze."
         link={{
           href: "/about",
-          text: t("mission.button"),
+          text: "De backend van NewCode",
         }}
       />
       {/* 
@@ -83,12 +79,12 @@ export default function HomePage({ serviceGroups, cases }: HomePageProps) {
       >
         <div className="flex w-full flex-col gap-6 self-center lg:gap-10">
           <Heading type="h3" color="dark">
-            {t("services.title")}_
+            Services_
           </Heading>
 
           <ServicesSection theme="light" serviceGroups={serviceGroups} />
 
-          <HyperLink href="/services">{t("services.link")}</HyperLink>
+          <HyperLink href="/services">Bekijk onze services</HyperLink>
         </div>
       </Section>
       {/* 
@@ -118,7 +114,7 @@ HomePage.getLayout = function getLayout(page: ReactElement) {
  *
  *
  */
-export async function getStaticProps({ locale, res }: Params) {
+export async function getStaticProps() {
   const { allServiceGroup } = await client.request<ServicesQuery>(SERVICES_QUERY);
   const { allCase } = await client.request<CasesQuery>(CASES_QUERY, { limit: 2 });
 
@@ -126,7 +122,6 @@ export async function getStaticProps({ locale, res }: Params) {
     props: {
       cases: allCase,
       serviceGroups: allServiceGroup,
-      ...(await serverSideTranslations(locale || "nl", ["common", "pages", "services", "cases"])),
     },
   };
 }

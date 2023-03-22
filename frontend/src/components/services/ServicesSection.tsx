@@ -15,7 +15,7 @@ export default function ServicesSection({ serviceGroups, theme }: ServicesSectio
     <div className="grid grid-cols-1 gap-y-12 lg:grid-cols-2 lg:gap-x-20">
       {serviceGroups.map(({ title, services }, index) => (
         <div key={index} className="flex flex-col gap-4 lg:grow">
-          <Heading type="h4" color="red">
+          <Heading element="h3" type="h4" color="red">
             {title}_
           </Heading>
 

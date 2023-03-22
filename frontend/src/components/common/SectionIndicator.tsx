@@ -1,20 +1,28 @@
-import { bgColorState } from "@/utils/states/navigation";
-import { scrollState } from "@/utils/states/scroll";
+import { bgColorState } from "@/utils/states/bgColor";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRecoilState } from "recoil";
 import { twMerge } from "tailwind-merge";
 
-export default function SectionIndicator() {
+type SectionIndicatorProps = {
+  length: number;
+  scrollToIndex: (index: number) => Promise<boolean>;
+  currentIndex: number;
+};
+
+export default function SectionIndicator({
+  length,
+  scrollToIndex,
+  currentIndex,
+}: SectionIndicatorProps) {
   const [bgColor] = useRecoilState(bgColorState);
-  const [scroll, setScroll] = useRecoilState(scrollState);
 
   return (
     <motion.div className="lg:py-page hidden lg:fixed lg:right-16 lg:top-0 lg:bottom-0 lg:z-40 lg:flex lg:flex-col lg:justify-center lg:gap-10 xl:gap-12">
-      {scroll.length > 1 &&
-        Array.from({ length: scroll.length }, (_, i) => i).map((i) => (
+      {length > 1 &&
+        Array.from({ length: length }, (_, i) => i).map((i) => (
           <AnimatePresence mode="wait" key={i}>
             <motion.div
-              onClick={() => setScroll({ ...scroll, currentIndex: i, caller: "user" })}
+              onClick={() => scrollToIndex(i)}
               initial={{
                 opacity: 0,
                 scale: 0,
@@ -22,7 +30,7 @@ export default function SectionIndicator() {
               }}
               animate={{
                 opacity: 1,
-                scale: scroll.currentIndex === i ? 2 : 1,
+                scale: currentIndex === i ? 2 : 1,
                 y: 0,
               }}
               exit={{

@@ -2,8 +2,6 @@ import { CASE_QUERY } from "@/utils/api/case";
 import { CASES_QUERY } from "@/utils/api/cases";
 import { client } from "@/utils/api/client";
 import { checkImage } from "@/utils/checkers/image";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import dynamic from "next/dynamic";
 import Image from "next/legacy/image";
@@ -52,11 +50,14 @@ export default function CasePage({
   left,
   right,
 }: Props) {
-  const { t } = useTranslation("pages", { keyPrefix: "case" });
-
   return (
     <>
-      <Seo title={title || ""} description={short || ""} canonical={`/case/${handle}`} />
+      <Seo
+        pageTitle={title + " - NewCode"}
+        metaTitle={title + " - NewCode"}
+        description={short || ""}
+        canonical={`/case/${handle}`}
+      />
       {/* 
             
             
@@ -66,7 +67,7 @@ export default function CasePage({
       <Section bg="dark">
         <div className="flex w-full flex-col gap-20 pt-12 lg:h-full lg:justify-between lg:pt-32 2xl:pt-64">
           <div className="flex flex-col gap-6 lg:w-full lg:flex-row lg:justify-between lg:gap-20">
-            <Heading type="h2">
+            <Heading element="h1" type="h2">
               {title}
               <span className="text-red-500">_</span>
             </Heading>
@@ -75,26 +76,27 @@ export default function CasePage({
             </Paragraph>
           </div>
 
+          <h2 className="hidden">Praktische Info</h2>
           <div className="grid-rows-[min-content_ min-content_ min-content_ min-content_ min-content_max-content] grid w-full gap-y-3 lg:grid-cols-6 lg:grid-rows-1 lg:gap-y-0 lg:gap-x-8">
             {[
               {
-                title: t("landing.client"),
+                title: "Klant",
                 value: client,
               },
               {
-                title: t("landing.sector"),
+                title: "Sector",
                 value: sector?.title,
               },
               {
-                title: t("landing.service"),
+                title: "Service",
                 value: service?.title,
               },
               {
-                title: t("landing.type"),
+                title: "Type",
                 value: type,
               },
               {
-                title: t("landing.year"),
+                title: "Jaar",
                 value: year,
               },
             ].map(({ title, value }, index) => (
@@ -102,10 +104,10 @@ export default function CasePage({
                 key={index}
                 className="grid h-min grid-cols-2 lg:grid-cols-1 lg:grid-rows-[min-content_1fr] lg:gap-y-3"
               >
-                <Heading type="h4" weight="extrabold">
+                <Heading element="h3" type="h4" weight="extrabold">
                   {title}
                 </Heading>
-                <Heading type="h4" weight="normal">
+                <Heading element="h4" type="h4" weight="normal">
                   {value}
                 </Heading>
               </div>
@@ -114,7 +116,7 @@ export default function CasePage({
             {productUrl && (
               <div className="py-10 lg:flex lg:flex-col lg:justify-center lg:p-0">
                 <HyperLink href={productUrl} target="_blank">
-                  {t("landing.link")}
+                  Lanceer Site
                 </HyperLink>
               </div>
             )}
@@ -144,11 +146,11 @@ export default function CasePage({
             */}
       {[
         {
-          title: t("content.problem"),
+          title: "Het probleem",
           description: problem,
         },
         {
-          title: t("content.solution"),
+          title: "De oplossing",
           description: solution,
         },
       ].map(({ title, description }, index) => (
@@ -184,7 +186,9 @@ export default function CasePage({
                 shape="none"
               >
                 <Arrow direction="right-to-left" className="fill-light-500 w-8" />
-                <Heading type="h4">{right.title}</Heading>
+                <Heading element="span" type="h4">
+                  {right.title}
+                </Heading>
               </HyperLink>
             ) : (
               <div>&nbsp;</div>
@@ -205,10 +209,10 @@ export default function CasePage({
           </div>
 
           <div className="flex  flex-col items-center justify-center gap-12 text-center">
-            <Heading type="h2">{t("connect.title")}_</Heading>
+            <Heading type="h2">Lets get this code going_</Heading>
 
             <HyperLink href="/connect" target="_blank" color="dark" size="large">
-              {t("connect.link")}
+              Start een project
             </HyperLink>
           </div>
 
@@ -258,7 +262,6 @@ export async function getStaticProps({ params, locale }: Params) {
       data,
       left: left || null,
       right: right || null,
-      ...(await serverSideTranslations(locale || "nl", ["common", "pages", "cases"])),
     },
   };
 }
@@ -269,19 +272,6 @@ export async function getStaticPaths() {
   const paths = allCase.map(({ slug }) => ({
     params: { handle: slug?.current },
   }));
-
-  // const paths = locales.reduce(
-  //     (acc: { params: { handle: string }; locale: string }[], locale: string) => [
-  //         ...acc,
-  //         ...Object.keys(casesFile.cases).map((item) => {
-  //             return {
-  //                 params: { handle: item },
-  //                 locale,
-  //             };
-  //         }),
-  //     ],
-  //     [],
-  // );
 
   return {
     paths,

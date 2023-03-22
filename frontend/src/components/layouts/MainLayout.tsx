@@ -1,11 +1,10 @@
 import { usePathHook, usePaths } from "@/config/paths";
-import { useScroll } from "@/utils/hooks/scroll";
-import { HTMLAttributes, useRef } from "react";
+import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 import Popup from "../actions/Popup";
-import SectionIndicator from "../common/SectionIndicator";
 import Footer from "../footer/Footer";
 import { Navigation } from "../navigation/Navigation";
+import ScrollLayout from "./ScrollLayout";
 
 export type MainLayoutProps = HTMLAttributes<HTMLElement> & {
   px?: boolean;
@@ -38,19 +37,44 @@ export default function MainLayout({
   className,
   ...props
 }: MainLayoutProps) {
-  const mainRef = useRef<HTMLElement>(null);
-
-  // scroll && useScroll(mainRef);
-  useScroll(mainRef);
-
   return (
     <>
       {navigation && <Navigation pathsHook={pathsHook} />}
-      {scrollIndicator && <SectionIndicator />}
 
       <Popup />
 
-      <main
+      <ScrollLayout
+        {...props}
+        enableScroll={scroll}
+        className={twMerge(
+          //  y-axis
+          py && "py-page",
+          pt && "pt-page",
+          pb && "pb-page",
+          // x -axis
+          px && "px-page",
+          pl && "pl-page",
+          pr && "pr-page",
+          "bg-red-500",
+          // other
+          className,
+        )}
+      >
+        {children}
+        {footer && <Footer />}
+      </ScrollLayout>
+    </>
+  );
+}
+
+{
+  /* 
+  
+    const mainRef = useRef<HTMLElement>(null);
+
+  // scroll && useScroll(mainRef);
+  // useScroll(mainRef);
+  <main
         {...props}
         ref={mainRef}
         className={twMerge(
@@ -70,7 +94,5 @@ export default function MainLayout({
         {children}
 
         {footer && <Footer />}
-      </main>
-    </>
-  );
+      </main> */
 }

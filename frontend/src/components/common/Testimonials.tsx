@@ -1,5 +1,4 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Testimonial } from "schema";
@@ -12,8 +11,6 @@ type TestimonialsProps = {
 };
 
 export default function Testimonials({ testimonials }: TestimonialsProps) {
-  const { t } = useTranslation("pages", { keyPrefix: "testimonials" });
-
   const [ref, inView] = useInView();
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -75,8 +72,8 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
           y: [-20, 0],
         }}
       >
-        <Heading type="h3" color="light">
-          {t("title")}_
+        <Heading element="h2" type="h3" color="light">
+          Testimonials_
         </Heading>
 
         <AnimatePresence mode="wait">

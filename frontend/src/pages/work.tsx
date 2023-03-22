@@ -1,8 +1,5 @@
 import { CASES_QUERY } from "@/utils/api/cases";
 import { client } from "@/utils/api/client";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import dynamic from "next/dynamic";
 import { ReactElement } from "react";
 import { Case, CasesQuery } from "schema";
@@ -23,13 +20,12 @@ type WorkPageProps = {
 };
 
 export default function WorkPage({ cases }: WorkPageProps) {
-  const { t } = useTranslation("pages", { keyPrefix: "work" });
-
   return (
     <>
       <Seo
-        title={t("seo.title") as string}
-        description={t("seo.description") as string}
+        pageTitle="Cases - NewCode"
+        metaTitle="Onze Case Studies - NewCode"
+        description="Bekijk onze case studies en ontdek hoe wij onze klanten hebben geholpen."
         canonical="/work"
       />
       {/*
@@ -38,7 +34,7 @@ export default function WorkPage({ cases }: WorkPageProps) {
        * Landing
        *
        * */}
-      <Landing title={t("landing.title")} />
+      <Landing title="Life made easier" />
       {/* 
 				*
 				*
@@ -68,13 +64,12 @@ WorkPage.getLayout = function getLayout(page: ReactElement) {
  *
  *
  */
-export async function getStaticProps({ locale }: Params) {
+export async function getStaticProps() {
   const { allCase } = await client.request<CasesQuery>(CASES_QUERY, { limit: 20 });
 
   return {
     props: {
       cases: allCase,
-      ...(await serverSideTranslations(locale || "nl", ["common", "pages", "cases"])),
     },
   };
 }

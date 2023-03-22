@@ -1,12 +1,12 @@
 import { useWindow } from "@/utils/hooks/window";
 import { loadingState } from "@/utils/states/loading";
-import { scrollState } from "@/utils/states/scroll";
+import { overflowHiddenState } from "@/utils/states/overflow";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRecoilState } from "recoil";
 
 export default function InitialLoader() {
   const [loading, setLoading] = useRecoilState(loadingState);
-  const [scroll, setScroll] = useRecoilState(scrollState);
+  const [_, setOverflowHidden] = useRecoilState(overflowHiddenState);
   const { height } = useWindow();
 
   return (
@@ -37,10 +37,7 @@ export default function InitialLoader() {
                 ease: "easeInOut",
               }}
               onAnimationComplete={() => {
-                setScroll({
-                  ...scroll,
-                  enabled: true,
-                });
+                setOverflowHidden(false);
                 setLoading(false);
               }}
             />

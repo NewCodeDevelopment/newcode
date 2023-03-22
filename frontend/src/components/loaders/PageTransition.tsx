@@ -1,12 +1,10 @@
-import { transitionState } from "@/utils/states/transition";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { useRecoilState } from "recoil";
+import { useEffect, useState } from "react";
 
 export default function PageTransition() {
-  const [transition, setTransition] = useRecoilState(transitionState);
   const router = useRouter();
+  const [transition, setTransition] = useState(false);
 
   useEffect(() => {
     function handleRouteChangeStart() {

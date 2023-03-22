@@ -1,7 +1,6 @@
 import { useContactInformation } from "@/config/contact";
 import { useDevice } from "@/utils/hooks/device";
 import { motion } from "framer-motion";
-import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Link from "next/link";
 import ArrowCircleLink from "../actions/ArrowCircleLink";
@@ -10,8 +9,6 @@ import Heading from "../typography/Heading";
 import Paragraph from "../typography/Paragraph";
 
 export default function Footer() {
-  const { t } = useTranslation("common", { keyPrefix: "footer" });
-
   const { contact, socials } = useContactInformation();
   const device = useDevice();
 
@@ -41,10 +38,12 @@ export default function Footer() {
 				*/}
         <div className="flex flex-col gap-6 lg:gap-12 lg:self-center">
           <Heading type="h2" color="light" maxCharacters={10}>
-            {t("title")}_
+            Let’s get this code going_
           </Heading>
 
-          <Paragraph maxCharacters={25}>{t("description")}</Paragraph>
+          <Paragraph maxCharacters={25}>
+            Got an exciting project to work on or just want to say hello?
+          </Paragraph>
         </div>
 
         {/* 
@@ -55,7 +54,7 @@ export default function Footer() {
             
             */}
         <div className="text-light-500 flex flex-col gap-6 lg:place-self-end lg:self-center">
-          <ArrowCircleLink description={t("connect")} path="/connect/form" bgColor="red" />
+          <ArrowCircleLink description="5 steps to connect" path="/connect/form" bgColor="red" />
 
           <div className="flex flex-col gap-2 text-2xl font-bold lg:text-3xl xl:text-4xl">
             <motion.a href={contact.phone.href}>{contact.phone.text}</motion.a>
@@ -80,15 +79,14 @@ export default function Footer() {
             <Link href="/policy/privacy-policy" className="cursor-pointer hover:underline">
               Privacy Policy
             </Link>
-            {/* <a className="cursor-pointer hover:underline">ReCaptcha terms</a>
-                        <a className="cursor-pointer hover:underline"> ReCaptcha Serviceterms</a> */}
           </div>
+
           <div className="flex flex-col gap-1 lg:w-1/2 lg:flex-row lg:justify-between lg:self-end">
             <span>© {currentYear} NewCode_ All rights reserved_</span>
             <span>
               Branded by{" "}
               <a
-                href="kapmes.be"
+                href="https://kapmes.be"
                 target="_blank"
                 className="cursor-pointer font-bold hover:underline"
               >

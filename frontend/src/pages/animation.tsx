@@ -1,6 +1,4 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import dynamic from "next/dynamic";
 import { ReactElement, useState } from "react";
 import { twMerge } from "tailwind-merge";
@@ -8,7 +6,6 @@ import { twMerge } from "tailwind-merge";
 const MainLayout = dynamic(() => import("@/components/layouts/MainLayout"));
 const Section = dynamic(() => import("@/components/sections/Section"));
 const LandingLogo = dynamic(() => import("@/icons/brand/LandingLogo"));
-const Seo = dynamic(() => import("@/components/common/Seo"));
 /**
  *
  *
@@ -18,19 +15,17 @@ const Seo = dynamic(() => import("@/components/common/Seo"));
  */
 export default function AnimationPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const length = 6;
+  const length = 3;
 
   return (
     <>
-      <Seo canonical="/animation" />
-
-      <Section bg="dark" className="relative h-screen pb-52" mobileScreen align="center">
+      <Section bg="dark" className="relative h-screen pb-52 z-0" mobileScreen align="center">
         {Array.from({ length: length }, (_, i) => i).map(
           (i) =>
             currentIndex === i && (
               <AnimatePresence mode="wait" key={i}>
                 <LandingLogo
-                  currentStyle={i}
+                  selectedStyle={i}
                   className="-z-10 col-start-1 row-start-1 lg:w-3/4 2xl:w-1/2"
                 />
               </AnimatePresence>
@@ -94,17 +89,3 @@ export default function AnimationPage() {
 AnimationPage.getLayout = function getLayout(page: ReactElement) {
   return <MainLayout footer={false}>{page}</MainLayout>;
 };
-/**
- *
- *
- *
- *
- *
- */
-export async function getStaticProps({ locale }: Params) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale || "nl", ["common", "pages", "services", "cases"])),
-    },
-  };
-}

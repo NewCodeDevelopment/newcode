@@ -1,7 +1,6 @@
 import { Symbol } from "@/icons/brand/Symbol";
-import { bgColorState } from "@/utils/states/navigation";
-import { scrollState } from "@/utils/states/scroll";
-import { useTranslation } from "next-i18next";
+import { bgColorState } from "@/utils/states/bgColor";
+import { overflowHiddenState } from "@/utils/states/overflow";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { HTMLAttributes, useEffect, useState } from "react";
@@ -17,8 +16,6 @@ type NavigationProps = HTMLAttributes<HTMLElement> & {
 export function Navigation({ pathsHook, className, ...props }: NavigationProps) {
   const router = useRouter();
 
-  const { t } = useTranslation("common", { keyPrefix: "navigation" });
-
   const [currentRoute, setCurrentRoute] = useState("");
 
   const [open, setOpen] = useState(false);
@@ -28,24 +25,20 @@ export function Navigation({ pathsHook, className, ...props }: NavigationProps) 
 
   const [bgColor, setBgColor] = useRecoilState(bgColorState);
   const [oldBgColor, setOldBgColor] = useState(bgColor);
-  const [scroll, setScroll] = useRecoilState(scrollState);
+  const [_, setOverflowHidden] = useRecoilState(overflowHiddenState);
 
   const cycleMenu = () => {
+    // If the menu is open, we want to close it
     if (open) {
       setBgColor(oldBgColor);
-      setScroll({
-        ...scroll,
-        enabled: true,
-      });
+      setOverflowHidden(false);
     }
 
+    // If the menu is closed, we want to open it
     if (!open) {
       setOldBgColor(bgColor);
       setBgColor("dark");
-      setScroll({
-        ...scroll,
-        enabled: false,
-      });
+      setOverflowHidden(true);
     }
 
     if (!animationComplete) return;
@@ -110,20 +103,20 @@ export function Navigation({ pathsHook, className, ...props }: NavigationProps) 
           <Symbol
             className={twMerge(
               "text-light-500 w-6  xl:w-12",
-              open && "fill-light-500",
               bgColor === "dark" && "fill-red-500",
               bgColor === "light" && "fill-red-500",
               bgColor === "red" && "fill-dark-500",
+              open && "fill-light-500",
             )}
           />
           <span
             className={twMerge(
               "text-lg font-extrabold xl:text-3xl",
-              open && "text-light-500",
               "transition-all duration-1000 ease-in-out",
               bgColor === "light" && "text-dark-500",
               bgColor === "dark" && "text-light-500",
               bgColor === "red" && "text-dark-500",
+              open && "text-light-500",
             )}
           >
             NewCode
@@ -146,7 +139,7 @@ export function Navigation({ pathsHook, className, ...props }: NavigationProps) 
           )}
           onClick={cycleMenu}
         >
-          {open ? t("cycleMenu.close") : t("cycleMenu.open")}_
+          {open ? "Close" : "Navigate"}_
         </a>
 
         {/* 

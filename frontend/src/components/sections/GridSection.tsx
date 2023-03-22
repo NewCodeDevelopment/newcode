@@ -24,7 +24,7 @@ export default function GridSection({ bg, title, items, styles }: GridSectionPro
   return (
     <Section bg={bg} align="center">
       <div className="flex w-full flex-col gap-6 self-center lg:gap-10">
-        <Heading type="h3" color={styles.title} className="max-w-fit">
+        <Heading element="h2" type="h3" color={styles.title} className="max-w-fit">
           {title + "_"}
         </Heading>
 

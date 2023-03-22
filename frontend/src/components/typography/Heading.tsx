@@ -6,6 +6,7 @@ import { twMerge } from "tailwind-merge";
 interface Props extends HTMLAttributes<HTMLHeadingElement> {
   children: any;
   type: HeadingTypes;
+  element?: "h1" | "h2" | "h3" | "h4" | "h5" | "span" | "p";
   color?: Color;
   className?: string;
   breakpoint?: number;
@@ -23,8 +24,10 @@ export default function Heading({
   maxCharacters,
   ...props
 }: Props) {
+  const elementType = props.element || type;
+
   return createElement(
-    type,
+    elementType,
     {
       ...props,
       className: twMerge(headingStyles(type, weight), textColors[color][500], className),

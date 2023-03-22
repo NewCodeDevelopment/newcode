@@ -1,12 +1,9 @@
 import FormInput from "@/components/inputs/FormInput";
 import { useSendMail } from "@/utils/hooks/mail";
 import { useWindow } from "@/utils/hooks/window";
-import { bgColorState } from "@/utils/states/navigation";
+import { bgColorState } from "@/utils/states/bgColor";
 import { MailData } from "@/utils/types/mail";
 import { AnimatePresence, motion } from "framer-motion";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { HTMLInputTypeAttribute, ReactElement, useEffect, useState } from "react";
@@ -52,8 +49,6 @@ const IFormInputs = {
 export default function FormPage() {
   const router = useRouter();
   const { height } = useWindow();
-
-  const { t } = useTranslation("pages", { keyPrefix: "form" });
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [reverse, setReverse] = useState(false);
@@ -119,12 +114,12 @@ export default function FormPage() {
 
   const formFiels: FormFieldType[] = [
     {
-      title: t("name.title"),
+      title: "Wat is jouw naam?",
       name: "name",
       type: "text",
-      placeholder: t("name.placeholder"),
+      placeholder: "Hallo, ik ben de Codemaster. Wie ben jij?",
       options: {
-        required: t("name.errors.required") as string,
+        required: "Vul hier je naam in...",
       },
       previous: {
         type: "button",
@@ -132,12 +127,12 @@ export default function FormPage() {
       },
     },
     {
-      title: t("business.title"),
+      title: "Wat is jouw zaak?",
       name: "business",
       type: "text",
-      placeholder: t("business.placeholder"),
+      placeholder: "Wij zijn NewCode, wat is de jouwe?",
       options: {
-        required: t("business.errors.required") as string,
+        required: "Vul hier je bedrijfsnaam in...",
       },
       previous: {
         type: "button",
@@ -145,15 +140,15 @@ export default function FormPage() {
       },
     },
     {
-      title: t("email.title"),
+      title: "Hoe kunnen we je bereiken?",
       name: "email",
       type: "email",
-      placeholder: t("email.placeholder"),
+      placeholder: "Stuur me een e-mail op...",
       options: {
-        required: t("email.errors.required") as string,
+        required: "Vul hier je e-mailadres in",
         pattern: {
           value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-          message: t("email.errors.pattern"),
+          message: "Vul een geldig e-mailadres in...",
         },
       },
       previous: {
@@ -162,10 +157,10 @@ export default function FormPage() {
       },
     },
     {
-      title: t("phone.title"),
+      title: "Kunnen we je bellen?",
       name: "phone",
       type: "tel",
-      placeholder: t("phone.placeholder"),
+      placeholder: "Je kunt me bellen op... (optioneel)",
       options: {},
       previous: {
         type: "button",
@@ -173,12 +168,12 @@ export default function FormPage() {
       },
     },
     {
-      title: t("message.title"),
+      title: "Heb je een spannend project om aan te werken? \n Of wil je gewoon hallo zeggen?",
       name: "message",
       type: "text",
-      placeholder: t("message.placeholder"),
+      placeholder: "Laten we een plan maken...",
       options: {
-        required: t("message.errors.required") as string,
+        required: "Vul hier je bericht in...",
       },
       previous: {
         type: "button",
@@ -190,8 +185,9 @@ export default function FormPage() {
   return (
     <>
       <Seo
-        title={t("seo.title") as string}
-        description={t("seo.description") as string}
+        pageTitle="Form - NewCode"
+        metaTitle="Stuur ons een bericht - NewCode"
+        description="Heb je cool idee? Of wil je gewoon even hallo zeggen? Stuur ons een berichtje!"
         canonical="/connect/form"
       />
 
@@ -312,17 +308,3 @@ FormPage.getLayout = function getLayout(page: ReactElement) {
     </MainLayout>
   );
 };
-/**
- *
- *
- *
- *
- *
- */
-export async function getStaticProps({ locale }: Params) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale || "nl", ["common", "pages"])),
-    },
-  };
-}
