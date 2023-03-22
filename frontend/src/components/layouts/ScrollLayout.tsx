@@ -83,10 +83,8 @@ export default function ScrollLayout({
    *
    */
   const handleTouchStart = useCallback(async ({ touches }: TouchEvent) => {
-    if (window.innerWidth <= DESKTOP_MIN_WIDTH || eventIsActive) return;
-    window.removeEventListener("touchstart", handleTouchStart);
+    if (window.innerWidth <= DESKTOP_MIN_WIDTH) return;
     touchStartRef.current = touches[0].clientY;
-    window.addEventListener("touchstart", handleTouchStart);
   }, []);
 
   const handleTouchMove = useCallback(
