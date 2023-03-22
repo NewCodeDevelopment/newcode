@@ -13,25 +13,32 @@ export default function LandingLogo({ selectedStyle, ...props }: LandingLogoProp
   const { ref, inView } = useInView();
   const [delta, setDelta] = useState({ x: 0, y: 0 });
 
-  const styles = [
-    {
-      fill: "#d8d8d830",
-      stroke: ["#d8d8d830", "#ff180070", "#d8d8d830"],
-    },
-    {
-      fill: "#ff180030",
-      stroke: ["#ff180030", "#d8d8d870", "#ff180030"],
-    },
-    {
-      fill: "#00000030",
-      stroke: ["#ff180030", "#fefefe70", "#ff180030"],
-    },
-  ];
+  const styles = useMemo(
+    () => [
+      {
+        fill: "#d8d8d830",
+        stroke: ["#d8d8d830", "#ff180070", "#d8d8d830"],
+      },
+      {
+        fill: "#ff180030",
+        stroke: ["#ff180030", "#d8d8d870", "#ff180030"],
+      },
+      {
+        fill: "#00000030",
+        stroke: ["#ff180030", "#fefefe70", "#ff180030"],
+      },
+    ],
+    [],
+  );
 
   const currentStyle = useMemo(() => {
     const currentIndex = Math.floor(animateIndex / 3) % styles.length;
     return styles[selectedStyle ?? currentIndex];
-  }, [animateIndex]);
+  }, [animateIndex, selectedStyle, styles]);
+
+  useEffect(() => {
+    controls.start("animate");
+  }, [selectedStyle, controls]);
 
   useEffect(() => {
     if (!inView) return;
@@ -59,7 +66,7 @@ export default function LandingLogo({ selectedStyle, ...props }: LandingLogoProp
           staggerChildren: 0.2,
           delayChildren: 0.5,
           staggerDirection: -1,
-          repeat: selectedStyle ? Infinity : 3,
+          repeat: 3,
         },
       },
     },
@@ -81,7 +88,6 @@ export default function LandingLogo({ selectedStyle, ...props }: LandingLogoProp
       variants={animations.container}
       animate={controls}
       onAnimationComplete={() => {
-        if (selectedStyle) return;
         setAnimateIndex(animateIndex + 1);
         controls.start("animate");
       }}
