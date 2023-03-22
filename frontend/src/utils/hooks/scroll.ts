@@ -12,8 +12,6 @@ export function useScroll() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [childrenLength, setChildrenLength] = useState(0);
 
-  console.log("useScroll", childrenLength);
-
   /**
    * Get the child nodes
    * @param
@@ -46,8 +44,6 @@ export function useScroll() {
    * @returns
    */
   const handleScroll = useCallback(async () => {
-    console.log("handleScroll", currentIndex);
-
     const childNodes = getChildNodes();
     const currentChild = childNodes[currentIndex];
 
@@ -105,7 +101,7 @@ export function useScroll() {
    */
   useEffect(() => {
     setInitial().catch(console.error);
-  }, [router]);
+  }, [router, setInitial]);
 
   return { ref: mainRef, currentIndex, setCurrentIndex: setCurrentIndexCallback, childrenLength };
 }

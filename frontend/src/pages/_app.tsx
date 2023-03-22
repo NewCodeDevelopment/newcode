@@ -1,9 +1,9 @@
 import "@/styles/globals.css";
-import localFont from "@next/font/local";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";
+import localFont from "next/font/local";
 import { ReactElement, ReactNode, Suspense } from "react";
 import { RecoilRoot } from "recoil";
 
