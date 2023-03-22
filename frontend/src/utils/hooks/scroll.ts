@@ -8,8 +8,8 @@ export function useScroll() {
   const router = useRouter();
   const mainRef = useRef<HTMLElement>(null);
 
-  const [_, setBgColor] = useRecoilState(bgColorState);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [_, setBgColor] = useRecoilState(bgColorState);
   const [childrenLength, setChildrenLength] = useState(0);
 
   /**
@@ -19,7 +19,9 @@ export function useScroll() {
    */
   const getChildNodes = useCallback(() => {
     const childNodes = mainRef.current?.childNodes || [];
-    return [...(childNodes as any)].filter((child: any) => !child.classList.contains("ignore"));
+    return [...(childNodes as any)].filter(
+      (child: HTMLElement) => child.getAttribute("data-visibility") !== "hidden",
+    );
   }, [mainRef]);
 
   /**
@@ -27,89 +29,80 @@ export function useScroll() {
    * @param
    * @returns
    */
-  const scrolling = useCallback(
-    async (y: string | number) => {
-      await gsap.to(mainRef.current, {
-        duration: 1,
-        y,
-        ease: "power2.inOut",
-      });
-    },
-    [mainRef],
-  );
+  const scrolling = useCallback(async (to: number) => {
+    await gsap.to(window, {
+      duration: 1,
+      scrollTo: to,
+      ease: "power2.inOut",
+    });
+  }, []);
 
   /**
    * Hannle scroll
-   * @param
-   * @returns
-   */
-  const handleScroll = useCallback(async () => {
-    const childNodes = getChildNodes();
-    const currentChild = childNodes[currentIndex];
-
-    if (!currentChild) return;
-
-    setBgColor((currentChild as any).getAttribute("data-color") ?? "");
-
-    const y = -(currentIndex * window.innerHeight);
-    await scrolling(y);
-  }, [currentIndex, getChildNodes, setBgColor, scrolling]);
-
-  /**
-   * Set current index
    * @param index
+   * @returns boolean
    */
-  const setCurrentIndexCallback = useCallback(
-    (index: number) => {
-      if (index < 0) {
-        setCurrentIndex(0);
-        return;
-      }
+  const handleScroll = useCallback(
+    async (index: number) => {
+      const childNodes = getChildNodes();
+      const currentChild = childNodes[index];
 
-      if (index > childrenLength - 1) {
-        setCurrentIndex(childrenLength - 1);
-        return;
-      }
+      if (!currentChild) return false;
 
+      childNodes.forEach((child: any) => child.classList.add("scrolling-section"));
+      await new Promise((r) => setTimeout(r, 200));
+
+      await scrolling(index * window.innerHeight);
+
+      setBgColor((currentChild as any).getAttribute("data-color") ?? "");
       setCurrentIndex(index);
+
+      childNodes.forEach((child: any) => child.classList.remove("scrolling-section"));
+
+      return true;
     },
-    [setCurrentIndex, childrenLength],
+    [getChildNodes, setBgColor, scrolling, setCurrentIndex],
   );
+
   /**
    * Set initial
    * @param
    * @returns
    */
   const setInitial = useCallback(async () => {
-    await new Promise((resolve) => setTimeout(resolve, 200));
-
-    await scrolling(window.scrollY);
-    setBgColor("dark");
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    scrolling(0);
     setCurrentIndex(0);
+    setBgColor("dark");
     setChildrenLength(getChildNodes().length || 0);
-  }, [setBgColor, scrolling, setCurrentIndex, setChildrenLength, getChildNodes]);
+  }, [setBgColor, scrolling, setChildrenLength, getChildNodes]);
 
   /**
-   * Handle scroll on current index change
+   *
+   * Setting GSAP ScrollTo Plugin
+   *
    */
   useEffect(() => {
-    handleScroll().catch(console.error);
-  }, [currentIndex, handleScroll, router]);
-
+    const ScrollToPlugin = require("gsap/ScrollToPlugin");
+    gsap.registerPlugin(ScrollToPlugin);
+  }, []);
   /**
-   * Initial scroll
+   *
+   *
+   * On route change
+   *
    */
   useEffect(() => {
-    setInitial().catch(console.error);
+    setInitial();
   }, [router, setInitial]);
 
-  return { ref: mainRef, currentIndex, setCurrentIndex: setCurrentIndexCallback, childrenLength };
+  return {
+    ref: mainRef,
+    scrollToIndex: handleScroll,
+    currentIndex,
+    childrenLength,
+  };
 }
-
-// childNodes.forEach((child: any) => child.classList.add("scrolling-section"));
-// await new Promise((r) => setTimeout(r, 150));
-// await new Promise((r) => setTimeout(r, 150));
-// childNodes.forEach((child: any) => child.classList.remove("scrolling-section"));
 
 // export function useScroll(mainRef: RefObject<HTMLElement>) {
 //   const router = useRouter();
@@ -396,12 +389,12 @@ export function useScroll() {
 //    *
 //    *
 //    */
-//   useEffect(() => {
-//     if (scroll.caller === "event") return;
+// //   useEffect(() => {
+// //     if (scroll.caller === "event") return;
 
-//     currentIndexRef.current = scroll.currentIndex;
-//     handleScroll(mainRef, scroll.currentIndex, setBgColor, () => {});
-//   }, [scroll]);
+// //     currentIndexRef.current = scroll.currentIndex;
+// //     handleScroll(mainRef, scroll.currentIndex, setBgColor, () => {});
+// //   }, [scroll]);
 //   /**
 //    *
 //    *

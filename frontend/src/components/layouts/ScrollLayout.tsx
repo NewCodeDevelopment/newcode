@@ -1,7 +1,7 @@
 import { DESKTOP_MIN_WIDTH } from "@/utils/const";
 import { useScroll } from "@/utils/hooks/scroll";
 import { overflowHiddenState } from "@/utils/states/overflow";
-import { HTMLAttributes, TouchEvent, useCallback, useRef, WheelEvent } from "react";
+import { HTMLAttributes, useCallback, useEffect, useRef } from "react";
 import { useRecoilState } from "recoil";
 import SectionIndicator from "../common/SectionIndicator";
 
@@ -16,7 +16,7 @@ export default function ScrollLayout({
   ...props
 }: ScrollLayoutProps) {
   const [overflowHidden] = useRecoilState(overflowHiddenState);
-  const { ref, currentIndex, setCurrentIndex, childrenLength } = useScroll();
+  const { ref, scrollToIndex, currentIndex, childrenLength } = useScroll();
 
   const eventIsActive = useRef(false);
   const touchStartRef = useRef<number>(0);
@@ -27,23 +27,44 @@ export default function ScrollLayout({
    *
    *
    */
-  const handleWheel = useCallback(
-    async ({ deltaY }: WheelEvent<HTMLElement>) => {
+  const handleKey = useCallback(
+    async ({ key }: KeyboardEvent) => {
       if (window.innerWidth <= DESKTOP_MIN_WIDTH) return;
-      eventIsActive.current = true;
+      window.removeEventListener("keydown", handleKey);
 
-      if (deltaY === 0 || deltaY === -0) return;
+      if (key !== "ArrowDown" && key !== "ArrowUp") return;
+
+      const newIndex = currentIndex + (key === "ArrowDown" ? 1 : 0) + (key === "ArrowUp" ? -1 : 0);
+
+      await new Promise((r) => setTimeout(r, 100));
+      const succes = await scrollToIndex(newIndex);
+
+      if (!succes) window.addEventListener("keydown", handleKey);
+    },
+    [currentIndex, scrollToIndex],
+  );
+  /**
+   *
+   *
+   * Handle Wheel
+   *
+   *
+   */
+  const handleWheel = useCallback(
+    async ({ deltaY }: WheelEvent) => {
+      if (window.innerWidth <= DESKTOP_MIN_WIDTH) return;
+      window.removeEventListener("wheel", handleWheel);
 
       const scrollAmount = Math.round(deltaY) * 10;
 
-      if (scrollAmount >= 0) setCurrentIndex(currentIndex + 1);
-      if (scrollAmount <= 0) setCurrentIndex(currentIndex - 1);
+      let newIndex = currentIndex + (scrollAmount > 0 ? 1 : -1);
 
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((r) => setTimeout(r, 100));
+      const succes = await scrollToIndex(newIndex);
 
-      eventIsActive.current = false;
+      if (!succes) window.addEventListener("wheel", handleWheel);
     },
-    [setCurrentIndex, currentIndex],
+    [currentIndex, scrollToIndex],
   );
   /**
    *
@@ -52,51 +73,58 @@ export default function ScrollLayout({
    *
    *
    */
-  const handleTouchStart = useCallback(async ({ touches }: TouchEvent<HTMLElement>) => {
+  const handleTouchStart = useCallback(async ({ touches }: TouchEvent) => {
     if (window.innerWidth <= DESKTOP_MIN_WIDTH || eventIsActive) return;
     touchStartRef.current = touches[0].clientY;
   }, []);
 
   const handleTouchMove = useCallback(
-    async ({ touches }: TouchEvent<HTMLElement>) => {
+    async ({ touches }: TouchEvent) => {
       if (window.innerWidth <= DESKTOP_MIN_WIDTH) return;
-      eventIsActive.current = true;
+      window.removeEventListener("touchmove", handleTouchMove);
 
       const direction = touchStartRef.current - touches[0].clientY > 0;
 
-      if (direction) setCurrentIndex(currentIndex + 1);
-      if (!direction) setCurrentIndex(currentIndex - 1);
+      let newIndex = currentIndex + (direction ? 1 : -1);
 
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      eventIsActive.current = false;
+      await new Promise((r) => setTimeout(r, 100));
+      const succes = await scrollToIndex(newIndex);
+
+      if (!succes) window.addEventListener("touchmove", handleTouchMove);
     },
-    [setCurrentIndex, currentIndex],
+    [currentIndex, scrollToIndex],
   );
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKey);
+
+    window.addEventListener("wheel", handleWheel);
+
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchmove", handleTouchMove);
+
+    return () => {
+      window.removeEventListener("keydown", handleKey);
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, [handleKey, handleWheel, handleTouchStart, handleTouchMove]);
 
   return (
     <>
       <SectionIndicator
         length={childrenLength}
+        scrollToIndex={scrollToIndex}
         currentIndex={currentIndex}
-        setCurrentIndex={setCurrentIndex}
       />
 
-      <main
-        {...props}
-        ref={ref}
-        onWheel={(e) => !eventIsActive.current && handleWheel(e)}
-        onTouchMove={(e) => !eventIsActive.current && handleTouchMove(e)}
-        onTouchStart={handleTouchStart}
-      >
+      <main {...props} ref={ref}>
         {children}
       </main>
 
       {overflowHidden && (
-        <style
-          // @ts-ignore
-          jsx
-          global
-        >
+        <style jsx global>
           {`
             body,
             html {

@@ -5,14 +5,14 @@ import { twMerge } from "tailwind-merge";
 
 type SectionIndicatorProps = {
   length: number;
+  scrollToIndex: (index: number) => Promise<boolean>;
   currentIndex: number;
-  setCurrentIndex: (index: number) => void;
 };
 
 export default function SectionIndicator({
   length,
+  scrollToIndex,
   currentIndex,
-  setCurrentIndex,
 }: SectionIndicatorProps) {
   const [bgColor] = useRecoilState(bgColorState);
 
@@ -22,7 +22,7 @@ export default function SectionIndicator({
         Array.from({ length: length }, (_, i) => i).map((i) => (
           <AnimatePresence mode="wait" key={i}>
             <motion.div
-              onClick={() => setCurrentIndex(i)}
+              onClick={() => scrollToIndex(i)}
               initial={{
                 opacity: 0,
                 scale: 0,

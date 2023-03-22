@@ -20,7 +20,7 @@ export default function ConnectPage() {
         canonical="/connect"
       />
 
-      <div className="hidden ignore">
+      <div className="hidden" data-visibility="hidden">
         <h1>Connect</h1>
         <p>Wil je een project starten, of gewoon gedag zeggen? Neem dan hier contact met ons op.</p>
       </div>

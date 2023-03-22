@@ -44,6 +44,7 @@ export default function MainLayout({
       <Popup />
 
       <ScrollLayout
+        {...props}
         enableScroll={scroll}
         className={twMerge(
           //  y-axis
