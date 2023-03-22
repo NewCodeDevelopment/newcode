@@ -14,7 +14,8 @@ export default function ConnectPage() {
   return (
     <>
       <Seo
-        title="Start een project - NewCode"
+        pageTitle="Connect - NewCode"
+        metaTitle="Start een project - NewCode"
         description="Wil je een project starten, of gewoon gedag zeggen? Neem dan hier contact met ons op."
         canonical="/connect"
       />

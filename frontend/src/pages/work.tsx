@@ -23,7 +23,8 @@ export default function WorkPage({ cases }: WorkPageProps) {
   return (
     <>
       <Seo
-        title="Onze Case Studies - NewCode"
+        pageTitle="Cases - NewCode"
+        metaTitle="Onze Case Studies - NewCode"
         description="Bekijk onze case studies en ontdek hoe wij onze klanten hebben geholpen."
         canonical="/work"
       />

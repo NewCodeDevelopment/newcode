@@ -16,7 +16,8 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <Seo
-        title="Privacy Policy - NewCode"
+        pageTitle="Privacy Policy - NewCode"
+        metaTitle="Privacy Policy - NewCode"
         description="Lees hier onze privacy policy."
         canonical="/privacy-policy"
       />

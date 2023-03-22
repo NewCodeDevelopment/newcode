@@ -30,7 +30,8 @@ export default function HomePage({ serviceGroups, cases }: HomePageProps) {
   return (
     <>
       <Seo
-        title="Code makes life easier - NewCode"
+        pageTitle="NewCode"
+        metaTitle="Code makes life easier - NewCode"
         description="Bij NewCode willen we graag jouw leven vergemakkelijken aan de hand van technologie, door naar jouw verhaal te luisteren."
         canonical=""
       />

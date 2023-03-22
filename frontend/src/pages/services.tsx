@@ -28,7 +28,8 @@ export default function ServicesPage({ serviceGroups, testimonials }: ServicesPa
   return (
     <>
       <Seo
-        title="Onze Services - NewCode"
+        pageTitle="Services - NewCode"
+        metaTitle="Onze Services - NewCode"
         description="Benieuwd naar onze diensten? Bekijk hier onze diensten en ontdek wat wij voor jou kunnen betekenen."
         canonical="/services"
       />

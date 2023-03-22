@@ -52,7 +52,12 @@ export default function CasePage({
 }: Props) {
   return (
     <>
-      <Seo title={title || ""} description={short || ""} canonical={`/case/${handle}`} />
+      <Seo
+        pageTitle={title + " - NewCode"}
+        metaTitle={title + " - NewCode"}
+        description={short || ""}
+        canonical={`/case/${handle}`}
+      />
       {/* 
             
             
@@ -62,7 +67,7 @@ export default function CasePage({
       <Section bg="dark">
         <div className="flex w-full flex-col gap-20 pt-12 lg:h-full lg:justify-between lg:pt-32 2xl:pt-64">
           <div className="flex flex-col gap-6 lg:w-full lg:flex-row lg:justify-between lg:gap-20">
-            <Heading type="h2">
+            <Heading element="h1" type="h2">
               {title}
               <span className="text-red-500">_</span>
             </Heading>
@@ -71,6 +76,7 @@ export default function CasePage({
             </Paragraph>
           </div>
 
+          <h2 className="hidden">Praktische Info</h2>
           <div className="grid-rows-[min-content_ min-content_ min-content_ min-content_ min-content_max-content] grid w-full gap-y-3 lg:grid-cols-6 lg:grid-rows-1 lg:gap-y-0 lg:gap-x-8">
             {[
               {
@@ -98,10 +104,10 @@ export default function CasePage({
                 key={index}
                 className="grid h-min grid-cols-2 lg:grid-cols-1 lg:grid-rows-[min-content_1fr] lg:gap-y-3"
               >
-                <Heading type="h4" weight="extrabold">
+                <Heading element="h3" type="h4" weight="extrabold">
                   {title}
                 </Heading>
-                <Heading type="h4" weight="normal">
+                <Heading element="h4" type="h4" weight="normal">
                   {value}
                 </Heading>
               </div>
@@ -180,7 +186,9 @@ export default function CasePage({
                 shape="none"
               >
                 <Arrow direction="right-to-left" className="fill-light-500 w-8" />
-                <Heading type="h4">{right.title}</Heading>
+                <Heading element="span" type="h4">
+                  {right.title}
+                </Heading>
               </HyperLink>
             ) : (
               <div>&nbsp;</div>

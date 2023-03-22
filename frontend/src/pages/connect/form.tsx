@@ -185,7 +185,8 @@ export default function FormPage() {
   return (
     <>
       <Seo
-        title="Stuur ons een bericht - NewCode"
+        pageTitle="Form - NewCode"
+        metaTitle="Stuur ons een bericht - NewCode"
         description="Heb je cool idee? Of wil je gewoon even hallo zeggen? Stuur ons een berichtje!"
         canonical="/connect/form"
       />

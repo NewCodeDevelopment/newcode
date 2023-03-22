@@ -34,7 +34,8 @@ export default function AboutPage({ testimonials }: AboutPageProps) {
   return (
     <>
       <Seo
-        title="Onze Backend - NewCode"
+        pageTitle="About - NewCode"
+        metaTitle="Onze Backend - NewCode"
         description="Benieuwd naar wie wij zijn? Bekijk hier onze missie en visie en leer ons kennen."
         canonical="/about"
       />
