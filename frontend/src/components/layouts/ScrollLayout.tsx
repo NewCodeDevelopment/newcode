@@ -55,9 +55,18 @@ export default function ScrollLayout({
       if (window.innerWidth <= DESKTOP_MIN_WIDTH) return;
       window.removeEventListener("wheel", handleWheel);
 
+      if (deltaY === 0 || deltaY === -0) {
+        await new Promise((r) => setTimeout(r, 100));
+        window.addEventListener("wheel", handleWheel);
+        return;
+      }
+
       const scrollAmount = Math.round(deltaY) * 10;
 
-      let newIndex = currentIndex + (scrollAmount > 0 ? 1 : -1);
+      let newIndex = currentIndex;
+
+      if (scrollAmount >= 0) newIndex++;
+      if (scrollAmount <= 0) newIndex--;
 
       await new Promise((r) => setTimeout(r, 100));
       const succes = await scrollToIndex(newIndex);
