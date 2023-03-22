@@ -28,15 +28,17 @@ export function Navigation({ pathsHook, className, ...props }: NavigationProps) 
   const [_, setOverflowHidden] = useRecoilState(overflowHiddenState);
 
   const cycleMenu = () => {
+    // If the menu is open, we want to close it
     if (open) {
       setBgColor(oldBgColor);
-      setOverflowHidden(true);
+      setOverflowHidden(false);
     }
 
+    // If the menu is closed, we want to open it
     if (!open) {
       setOldBgColor(bgColor);
       setBgColor("dark");
-      setOverflowHidden(false);
+      setOverflowHidden(true);
     }
 
     if (!animationComplete) return;
@@ -101,20 +103,20 @@ export function Navigation({ pathsHook, className, ...props }: NavigationProps) 
           <Symbol
             className={twMerge(
               "text-light-500 w-6  xl:w-12",
-              open && "fill-light-500",
               bgColor === "dark" && "fill-red-500",
               bgColor === "light" && "fill-red-500",
               bgColor === "red" && "fill-dark-500",
+              open && "fill-light-500",
             )}
           />
           <span
             className={twMerge(
               "text-lg font-extrabold xl:text-3xl",
-              open && "text-light-500",
               "transition-all duration-1000 ease-in-out",
               bgColor === "light" && "text-dark-500",
               bgColor === "dark" && "text-light-500",
               bgColor === "red" && "text-dark-500",
+              open && "text-light-500",
             )}
           >
             NewCode
@@ -137,7 +139,7 @@ export function Navigation({ pathsHook, className, ...props }: NavigationProps) 
           )}
           onClick={cycleMenu}
         >
-          {open ? "Navigate" : "Close"}_
+          {open ? "Close" : "Navigate"}_
         </a>
 
         {/* 
