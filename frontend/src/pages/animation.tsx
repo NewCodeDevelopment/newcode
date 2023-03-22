@@ -6,7 +6,6 @@ import { twMerge } from "tailwind-merge";
 const MainLayout = dynamic(() => import("@/components/layouts/MainLayout"));
 const Section = dynamic(() => import("@/components/sections/Section"));
 const LandingLogo = dynamic(() => import("@/icons/brand/LandingLogo"));
-const Seo = dynamic(() => import("@/components/common/Seo"));
 /**
  *
  *

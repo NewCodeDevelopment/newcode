@@ -12,6 +12,13 @@ export function useScroll() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [childrenLength, setChildrenLength] = useState(0);
 
+  console.log("useScroll", childrenLength);
+
+  /**
+   * Get the child nodes
+   * @param
+   * @returns child nodes
+   */
   const getChildNodes = useCallback(() => {
     const childNodes = mainRef.current?.childNodes || [];
     return [...(childNodes as any)].filter((child: any) => !child.classList.contains("ignore"));
@@ -39,25 +46,17 @@ export function useScroll() {
    * @returns
    */
   const handleScroll = useCallback(async () => {
-    const { innerHeight } = window;
+    console.log("handleScroll", currentIndex);
 
     const childNodes = getChildNodes();
     const currentChild = childNodes[currentIndex];
 
     if (!currentChild) return;
 
-    // childNodes.forEach((child: any) => child.classList.add("scrolling-section"));
-
-    // await new Promise((r) => setTimeout(r, 150));
-
     setBgColor((currentChild as any).getAttribute("data-color") ?? "");
 
-    const y = -(currentIndex * innerHeight);
+    const y = -(currentIndex * window.innerHeight);
     await scrolling(y);
-
-    // await new Promise((r) => setTimeout(r, 150));
-
-    // childNodes.forEach((child: any) => child.classList.remove("scrolling-section"));
   }, [currentIndex, getChildNodes, setBgColor, scrolling]);
 
   /**
@@ -80,38 +79,41 @@ export function useScroll() {
     },
     [setCurrentIndex, childrenLength],
   );
+  /**
+   * Set initial
+   * @param
+   * @returns
+   */
+  const setInitial = useCallback(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 150));
 
+    scrolling(window.scrollY);
+    setBgColor("dark");
+    setCurrentIndex(0);
+    setChildrenLength(getChildNodes().length || 0);
+  }, [setBgColor, scrolling, setCurrentIndex, setChildrenLength, getChildNodes]);
+
+  /**
+   * Handle scroll on current index change
+   */
   useEffect(() => {
     handleScroll().catch(console.error);
   }, [currentIndex, handleScroll, router]);
-  useEffect(() => setChildrenLength(getChildNodes().length || 0), [getChildNodes, router]);
 
+  /**
+   * Initial scroll
+   */
   useEffect(() => {
-    console.log("Initial");
-    scrolling(0);
-    setCurrentIndexCallback(0);
-    setBgColor("dark");
-  }, [router, scrolling, setBgColor, setCurrentIndexCallback]);
-
-  // useEffect(() => {
-  //   function handleRouteChangeComplete() {
-  //     console.log("routeChangeComplete");
-  //     scrolling(0);
-  //     setCurrentIndexCallback(0);
-  //     setBgColor("dark");
-  //   }
-
-  //   router.events.on("routeChangeStart", handleRouteChangeComplete);
-  //   router.events.on("routeChangeComplete", handleRouteChangeComplete);
-
-  //   return () => {
-  //     router.events.off("routeChangeStart", handleRouteChangeComplete);
-  //     router.events.off("routeChangeComplete", handleRouteChangeComplete);
-  //   };
-  // }, [router, scrolling, setBgColor, setCurrentIndexCallback]);
+    setInitial().catch(console.error);
+  }, [router]);
 
   return { ref: mainRef, currentIndex, setCurrentIndex: setCurrentIndexCallback, childrenLength };
 }
+
+// childNodes.forEach((child: any) => child.classList.add("scrolling-section"));
+// await new Promise((r) => setTimeout(r, 150));
+// await new Promise((r) => setTimeout(r, 150));
+// childNodes.forEach((child: any) => child.classList.remove("scrolling-section"));
 
 // export function useScroll(mainRef: RefObject<HTMLElement>) {
 //   const router = useRouter();
