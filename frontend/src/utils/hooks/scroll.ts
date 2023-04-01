@@ -70,10 +70,11 @@ export function useScroll() {
    * @returns
    */
   const setInitial = useCallback(async () => {
-    await new Promise((resolve) => setTimeout(resolve, 200));
+    await new Promise((resolve) => setTimeout(resolve, 100));
     scrolling(0);
     setCurrentIndex(0);
     setBgColor("dark");
+    await new Promise((resolve) => setTimeout(resolve, 300));
     setChildrenLength(getChildNodes().length || 0);
   }, [setBgColor, scrolling, setChildrenLength, getChildNodes]);
 
