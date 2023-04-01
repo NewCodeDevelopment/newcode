@@ -2,7 +2,7 @@ import RobotIcon from "@/icons/actions/RobotIcon";
 import { useDevice } from "@/utils/hooks/device";
 import { useWindow } from "@/utils/hooks/window";
 import { loadingState } from "@/utils/states/loading";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import Section from "../sections/Section";
@@ -26,6 +26,7 @@ export default function Error({ title, statusCode }: ErrorProps) {
     <Section
       bg="dark"
       align="center"
+      className="relative"
       style={{
         height: height ? height : "100vh",
       }}
@@ -33,10 +34,9 @@ export default function Error({ title, statusCode }: ErrorProps) {
       <Image
         src={device === "mobile" ? "/images/background/1x.jpg" : "/images/background/2x.jpg"}
         alt="footer background"
-        layout="fill"
-        objectFit="cover"
-        objectPosition="center"
-        className="-z-10"
+        width={3840}
+        height={2160}
+        className="absolute top-0 left-0 -z-10 h-full w-full object-cover object-center"
       />
 
       <div className="flex flex-col items-center justify-center gap-12 text-center md:gap-16">

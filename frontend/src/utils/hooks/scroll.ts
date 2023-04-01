@@ -70,7 +70,7 @@ export function useScroll() {
    * @returns
    */
   const setInitial = useCallback(async () => {
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    await new Promise((resolve) => setTimeout(resolve, 200));
     scrolling(0);
     setCurrentIndex(0);
     setBgColor("dark");
