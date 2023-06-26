@@ -23,7 +23,7 @@ export type HeadingTypes = "h1" | "h2" | "h3" | "h4";
 export const headingStyles = (type: HeadingTypes, weight?: FontWeights) => {
   return {
     h1: twMerge(
-      "text-7xl md:text-[9rem] lg:text-9xl 2xl:text-[10vw]",
+      "text-7xl md:text-[9rem] lg:text-9xl 2xl:text-[7vw]",
       fontWeights(weight || "extrabold"),
     ),
     h2: twMerge(
