@@ -3,11 +3,18 @@ import MainLayout from "@/components/layouts/MainLayout";
 import Section from "@/components/sections/Section";
 import Heading from "@/components/typography/Heading";
 import { useDevice } from "@/utils/hooks/device";
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import Image from "next/image";
 import { ReactElement } from "react";
 
+const careersMailto = "mailto:careers@newcode.be";
+
 export default function CareersPage() {
   const device = useDevice();
+
+  // if (redirect) {
+  //   router.push(redirectLink);
+  // }
 
   return (
     <>
@@ -53,7 +60,7 @@ export default function CareersPage() {
             Zoek niet verder!
           </Heading>
 
-          <HyperLink href="mailto:careers@newcode.be">Stuur ons een mailtje</HyperLink>
+          <HyperLink href={careersMailto}>Stuur ons een mailtje</HyperLink>
         </div>
       </Section>
     </>
@@ -69,3 +76,25 @@ export default function CareersPage() {
 CareersPage.getLayout = function getLayout(page: ReactElement) {
   return <MainLayout>{page}</MainLayout>;
 };
+/**
+ *
+ *
+ *
+ *
+ *
+ */
+export async function getServerSideProps({ query }: Params) {
+  const { redirect_from } = query;
+
+  if (!!redirect_from) {
+    return {
+      redirect: {
+        destination: careersMailto,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+}
