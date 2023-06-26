@@ -10,6 +10,11 @@ const nextConfig = {
   images: {
     domains: ["cdn.sanity.io"],
   },
+  compiler: {
+    removeConsole: {
+      exclude: ["error", "warn"],
+    },
+  },
 };
 
 module.exports = nextConfig;
