@@ -1,4 +1,5 @@
 import HyperLink from "@/components/actions/HyperLink";
+import Seo from "@/components/common/Seo";
 import MainLayout from "@/components/layouts/MainLayout";
 import Section from "@/components/sections/Section";
 import Heading from "@/components/typography/Heading";
@@ -12,12 +13,15 @@ const careersMailto = "mailto:careers@newcode.be";
 export default function CareersPage() {
   const device = useDevice();
 
-  // if (redirect) {
-  //   router.push(redirectLink);
-  // }
-
   return (
     <>
+      <Seo
+        pageTitle="Careers - NewCode"
+        metaTitle="Careers - NewCode"
+        description="Ben jij een enthousiaste developer? Zoek je een stageplaats waar je volop kunt groeien? Zoek niet verder!"
+        canonical="/careers"
+      />
+
       <Section bg="dark" align="center" className="text-center" mobileScreen>
         <Image
           src={device === "mobile" ? "/images/background/1x.jpg" : "/images/background/2x.jpg"}
